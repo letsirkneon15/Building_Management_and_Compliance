@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Building_Management_Compliance">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="Building_Management_Compliance"/>
+        <property name="java-output-path" value="/Building_Management_Compliance/build/classes"/>
+    </wb-module>
+</project-modules>
