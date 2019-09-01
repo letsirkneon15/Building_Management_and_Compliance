@@ -29,42 +29,42 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>Home</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-building"></i>
           <span>Buildings</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-file"></i>
           <span>Reports</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-users"></i>
           <span>About Us</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-address-book"></i>
           <span>Contact Us</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-hands-helping"></i>
           <span>Help</span>
         </a>
       </li>

@@ -6,7 +6,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Teki 2019</span>
           </div>
         </div>
       </footer>
@@ -50,6 +50,7 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/sb-admin-2.min.js"></script>
   
   <!-- Page level plugins -->

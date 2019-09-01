@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -25,8 +27,30 @@
                       <th>BWOF Expires</th>
                     </tr>
                   </thead>
+                  
+                  <!-- Start Rows -->
                   <tbody>
+                   	<c:forEach var="b" items="${buildingArr}" varStatus="bIndex">        
+       		 		<tr>
+           				<td>${b.buildingName }</td>
+          				<td>${b.address }</td>
+          				<td>${b.owner}</td>
+           				<td>${b.client }</td>
+           				<td>${b.projectNum }</td>
+           				<td>${b.csNumber }</td>
+           				<td>${b.bwofExpires }</td>      
+	      				<td><a href="#editRecord" data-toggle="modal" data-id="edtLink${bIndex.index}"
+	       					data-buildingId="${b.buildingId}"><img src='images/edit.jpg' height=15 width=15></a>
+	       				</td> 	
+	       				<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
+	       				<td><a href="#deleteRecord" data-toggle="modal" data-id="dltLink${bIndex.index}"
+	       					data-buildingId="${b.buildingId}"><img src='images/delete.jpg' height=15 width=15></a>
+	       				</td>           
+        			</tr> 
+        			</c:forEach>
                   </tbody>
+                  <!-- End Rows -->
+                  
                 </table>
               </div>
             </div>   

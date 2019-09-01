@@ -62,7 +62,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
   color: #858796;
@@ -190,7 +190,7 @@ code,
 kbd,
 samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 pre {
@@ -384,7 +384,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 1.75rem;
+  font-size: 2.5rem;
 }
 
 h4, .h4 {
@@ -396,8 +396,13 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
+
+h7, .h7 {
+  font-size: 1.15rem;
+}
+
 
 .lead {
   font-size: 1.25rem;
@@ -437,7 +442,7 @@ hr {
 
 small,
 .small {
-  font-size: 80%;
+  font-size: 100%;
   font-weight: 400;
 }
 
@@ -3294,7 +3299,7 @@ input[type="button"].btn-block {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 0.85rem;
+  font-size: 1.5rem;
   color: #858796;
   text-align: left;
   list-style: none;
@@ -10918,7 +10923,7 @@ a:focus {
 }
 
 .dropdown .dropdown-menu {
-  font-size: 0.85rem;
+  font-size: 1.5rem;
 }
 
 .dropdown .dropdown-menu .dropdown-header {
@@ -10966,12 +10971,12 @@ a:focus {
 
 .sidebar .nav-item .nav-link .img-profile,
 .topbar .nav-item .nav-link .img-profile {
-  height: 2rem;
-  width: 2rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 .topbar {
-  height: 4.375rem;
+  height: 7rem;
 }
 
 .topbar #sidebarToggleTop {
@@ -11241,7 +11246,7 @@ a:focus {
 }
 
 .sidebar .sidebar-brand {
-  height: 4.375rem;
+  height: 8rem;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 800;
@@ -11273,7 +11278,7 @@ a:focus {
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 14rem !important;
+    width: 25rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;
@@ -11309,11 +11314,11 @@ a:focus {
     margin-right: 0.25rem;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 0.85rem;
+    font-size: 1.5rem;
     display: inline;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
-    width: 1rem;
+    width: 2rem;
     text-align: center;
     float: right;
     vertical-align: 0;
@@ -11326,7 +11331,7 @@ a:focus {
     content: '\f105';
   }
   .sidebar .sidebar-brand .sidebar-brand-icon i {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   .sidebar .sidebar-brand .sidebar-brand-text {
     display: inline;
@@ -12045,14 +12050,14 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
-  padding: 2rem 0;
+  padding: 2.5rem 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 footer.sticky-footer .copyright {
   line-height: 1;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 body.sidebar-toggled footer.sticky-footer {

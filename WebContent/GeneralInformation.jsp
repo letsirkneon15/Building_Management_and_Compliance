@@ -10,10 +10,11 @@
   <meta name="author" content="">
 
   <title>Building Management and Compliance</title>
-
+  
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  
 
   <!-- Custom styles for this template-->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,14 +47,14 @@
 			<div class="card-body">
 				<div class="tab-content">
    					
-   					<div id="generalInformation" class="tab-pane fade in active">
+   					<div id="generalInformation" class="tab-pane active">
    					 
    					 <!-- Horizontal Form -->
       				<div class="row">
        					<div class="col-xs-6">
           				<form class="form-horizontal">
             				<div class="form-group">
-             				 	<label for="buildingName" class="col-xs-8">Name of Building</label>
+             				 	<label for="buildingName" class="col-xs-3">Name of Building</label>
              				 	<div class="col-xs-10">
           					 		<input type="text" class="form-control" id="buildingName" placeholder="Building Name" 
           					 		value="${buildingName}"/>
@@ -61,7 +62,7 @@
            					 </div>
            					 
            					 <div class="form-group">
-             				 	<label for="address" class="col-xs-8">Address</label>
+             				 	<label for="address" class="col-xs-"3>Address</label>
              				 	<div class="col-xs-10">
           					 		<input type="text" class="form-control" id="address" placeholder="Address" 
           					 		value = "${address}"/>
@@ -69,7 +70,7 @@
            					 </div>
            					 
            					 <div class="form-group">
-             				 	<label for="responsibleOffice" class="col-xs-8">Responsible Office</label>
+             				 	<label for="responsibleOffice" class="col-xs-3">Responsible Office</label>
              				 	<div class="col-xs-10">
           					 		<input type="text" class="form-control" id="address" placeholder="Responsible Office" 
           					 		value = "${address}"/>
@@ -79,7 +80,7 @@
    					 	</form>
    					 	</div>
    					</div>
-   					
+   		
    					</div>
    					<!-- End General Information Tab-->
    						
