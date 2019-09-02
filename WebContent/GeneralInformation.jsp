@@ -54,8 +54,8 @@
        					<div class="col-xs-6">
           				<form class="form-horizontal">
             				<div class="form-group">
-             				 	<label for="buildingName" class="col-xs-3">Name of Building</label>
-             				 	<div class="col-xs-10">
+             				 	<label for="buildingName" class="col-xs-4">Name of Building</label>
+             				 	<div class="col-xs-8">
           					 		<input type="text" class="form-control" id="buildingName" placeholder="Building Name" 
           					 		value="${buildingName}"/>
           			   			</div>
