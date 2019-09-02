@@ -70,15 +70,15 @@
 
 						<!-- Start Building WOF Tab-->
 						<div id="wof" class="tab-pane fade">
-							<!-- Include BuildingWof.jsp -->
-							<%@ include file="BuildingWof.jsp"%>
+							<!-- Include BuildingWOF.jsp -->
+							<%@ include file="BuildingWOF.jsp"%>
 						</div>
 						<!-- End Building WOF Tab-->						
 						
 						<!-- Start Consent Tab-->
 						<div id="consent" class="tab-pane fade">
 							<!-- Include Consent.jsp -->
-							<%@ include file="Consent.jsp"%>
+							<%@ include file="BuildingConsent.jsp"%>
 						</div>
 						<!-- End Consent Tab-->	
 						
