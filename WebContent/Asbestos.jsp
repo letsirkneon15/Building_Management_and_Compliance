@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
@@ -22,7 +22,7 @@
 
 				<!-- Start Rows -->
 				<tbody>
-					<c:forEach var="b" items="${asbestosArr}" varStatus="bIndex">
+					<d:forEach var="b" items="${asbestosArr}" varStatus="bIndex">
 						<tr>
 							<td>${b.name }</td>
 							<td>${b.attachment }</td>
@@ -43,7 +43,7 @@
 								data-buildingId="${b.buildingId}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
-					</c:forEach>
+					</d:forEach>
 				</tbody>
 				<!-- End Rows -->
 

@@ -69,21 +69,21 @@
 						<!-- End Contacts Tab-->
 
 						<!-- Start Building WOF Tab-->
-						<div id="wof" class="tab-pane fade">
+						<div id="wof" class="tab-pane">
 							<!-- Include BuildingWOF.jsp -->
 							<%@ include file="BuildingWOF.jsp"%>
 						</div>
 						<!-- End Building WOF Tab-->						
 						
 						<!-- Start Consent Tab-->
-						<div id="consent" class="tab-pane fade">
+						<div id="consent" class="tab-pane">
 							<!-- Include Consent.jsp -->
 							<%@ include file="BuildingConsent.jsp"%>
 						</div>
 						<!-- End Consent Tab-->	
 						
 						<!-- Start Asbestos Tab-->
-						<div id="asbestos" class="tab-pane fade">
+						<div id="asbestos" class="tab-pane">
 							<!-- Include Asbestos.jsp -->
 							<%@ include file="Asbestos.jsp"%>
 						</div>
@@ -97,42 +97,42 @@
 						<!-- End Electrical Tab-->
 						
 						<!-- Start Gas Tab-->
-						<div id="gas" class="tab-pane fade">
+						<div id="gas" class="tab-pane">
 							<!-- Include Gas.jsp -->
 							<%@ include file="Gas.jsp"%>
 						</div>
 						<!-- End Gas Tab-->
 						
 						<!-- Start Hazardous Substances Tab-->
-						<div id="hazardousSubstances" class="tab-pane fade">
+						<div id="hazardousSubstances" class="tab-pane">
 							<!-- Include HazardousSubstances.jsp -->
 							<%@ include file="HazardousSubstances.jsp"%>
 						</div>
 						<!-- End Hazardous Substances Tab-->	
 						
 						<!-- Start Hazard Register Tab-->
-						<div id="hazardRegister" class="tab-pane fade">
+						<div id="hazardRegister" class="tab-pane">
 							<!-- Include HazardRegister.jsp -->
 							<%@ include file="HazardRegister.jsp"%>
 						</div>
 						<!-- End Hazard Register Tab-->	
 		
 						<!-- Start Seismic Resilience Tab-->
-						<div id="seismicResilience" class="tab-pane fade">
+						<div id="seismicResilience" class="tab-pane">
 							<!-- Include SeismicResilience.jsp -->
 							<%@ include file="SeismicResilience.jsp"%>
 						</div>
 						<!-- End Seismic Resilience Tab-->	
 						
 						<!-- Start Resource Consent Tab-->
-						<div id="resourceConsent" class="tab-pane fade">
+						<div id="resourceConsent" class="tab-pane">
 							<!-- Include ResourceConsent.jsp -->
 							<%@ include file="ResourceConsent.jsp"%>
 						</div>
 						<!-- End Resource Consent Tab-->	
 						
 						<!-- Start Compliance Inspection Tab-->
-						<div id="complianceInspection" class="tab-pane fade">
+						<div id="complianceInspection" class="tab-pane">
 							<!-- Include ComplianceInspection.jsp -->
 							<%@ include file="ComplianceInspection.jsp"%>
 						</div>
