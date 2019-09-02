@@ -19,13 +19,16 @@
   <!-- Custom styles for this template-->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
-<body id="page-top">
-
 	<!-- Include Header.jsp -->
 	<%@ include file="Header.jsp" %>
+
+<body id="page-top">
 	
 
 	<!-- Begin Page Content -->
@@ -48,38 +51,55 @@
 				<div class="tab-content">
    					
    					<div id="gas" class="tab-pane active">
-   					 
-   					 <!-- Horizontal Form -->
-      				<div class="row">
-       					<div class="col-xs-6">
-          				<form class="form-horizontal">
-            				<div class="form-group">
-             				 	<label for="buildingName" class="col-xs-3">Name of Building</label>
-             				 	<div class="col-xs-10">
-          					 		<input type="text" class="form-control" id="buildingName" placeholder="Building Name" 
-          					 		value="${buildingName}"/>
-          			   			</div>
-           					 </div>
-           					 
-           					 <div class="form-group">
-             				 	<label for="address" class="col-xs-"3>Address</label>
-             				 	<div class="col-xs-10">
-          					 		<input type="text" class="form-control" id="address" placeholder="Address" 
-          					 		value = "${address}"/>
-          			   			</div>
-           					 </div>
-           					 
-           					 <div class="form-group">
-             				 	<label for="responsibleOffice" class="col-xs-3">Responsible Office</label>
-             				 	<div class="col-xs-10">
-          					 		<input type="text" class="form-control" id="address" placeholder="Responsible Office" 
-          					 		value = "${address}"/>
-          			   			</div>
-           					 </div>
-           					 
-   					 	</form>
-   					 	</div>
-   					</div>
+   					
+   					
+   		<!-- DataTables -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All buildings</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Attachment</th>
+                      <th>Type</th>
+                      <th>Uploaded By</th>
+                      <th>Last Uploaded</th>
+                      <th>Download</th>
+                    </tr>
+                  </thead>
+                  
+                  <!-- Start Rows -->
+                  <tbody>
+                   	<c:forEach var="b" items="${buildingArr}" varStatus="bIndex">        
+       		 		<tr>
+           				<td>${b.name }</td>
+          				<td>${b.attachment }</td>
+          				<td>${b.type }</td>
+           				<td>${b.uploadedBy }</td>
+           				<td>${b.lastUploaded }</td>
+           				<td>${b.download }</td>    
+	      				<td><a href="#editRecord" data-toggle="modal" data-id="edtLink${bIndex.index}"
+	       					data-buildingId="${b.buildingId}"><img src='images/edit.jpg' height=15 width=15></a>
+	       				</td> 	
+	       				<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
+	       				<td><a href="#deleteRecord" data-toggle="modal" data-id="dltLink${bIndex.index}"
+	       					data-buildingId="${b.buildingId}"><img src='images/delete.jpg' height=15 width=15></a>
+	       				</td>           
+        			</tr> 
+        			</c:forEach>
+                  </tbody>
+                  <!-- End Rows -->
+                  
+                </table>
+              </div>
+            </div>   
+         </div>
+ <!-- End of DataTables -->        					
+   			
    		
    					</div>
    					<!-- End GAS Tab-->

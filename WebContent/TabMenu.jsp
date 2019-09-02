@@ -11,7 +11,7 @@
   				<h5 class="m-0 font-weight-bold text-primary">Asbestos <br><br></h5></a></li> 	
   			<li><a data-toggle="tab" href="#electrical">
   				<h5 class="m-0 font-weight-bold text-primary">Electrical <br><br></h5></a></li>	
-  			<li><a data-toggle="tab" href="#gas">
+  			<li class="active"><a data-toggle="tab" href="#gas">
   				<h5 class="m-0 font-weight-bold text-primary">Gas<br><br></h5></a></li>	
   			<li><a data-toggle="tab" href="#hazardousSubstances">
   				<h5 class="m-0 font-weight-bold text-primary">Hazardous <br> Substances</h5></a></li>
