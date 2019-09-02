@@ -22,7 +22,7 @@
 
 				<!-- Start Rows -->
 				<tbody>
-					<c:forEach var="b" items="${gasArr}" varStatus="bIndex">
+					<c:forEach var="b" items="${electricalArr}" varStatus="bIndex">
 						<tr>
 							<td>${b.name }</td>
 							<td>${b.attachment }</td>

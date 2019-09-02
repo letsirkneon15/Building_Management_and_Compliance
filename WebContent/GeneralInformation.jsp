@@ -12,7 +12,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="address" class="col-xs-"3>Address</label>
+				<label for="address" class="col-xs-3">Address</label>
 				<div class="col-xs-10">
 					<input type="text" class="form-control" id="address"
 						placeholder="Address" value="${address}" />

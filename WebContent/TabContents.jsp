@@ -60,6 +60,15 @@
 						</div>
 						<!-- End General Information Tab-->
 						
+						<!-- Start Electrical Tab-->
+						<div id="electrical" class="tab-pane">
+
+							<!-- Include Electrical.jsp -->
+							<%@ include file="Electrical.jsp"%>
+
+						</div>
+						<!-- End Electrical Tab-->
+						
 						<!-- Start Gas Tab-->
 						<div id="gas" class="tab-pane">
 
