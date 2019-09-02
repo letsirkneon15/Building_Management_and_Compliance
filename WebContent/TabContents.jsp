@@ -24,6 +24,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+ <!-- Custom styles for this page -->
+ <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -52,7 +55,7 @@
 					<div class="tab-content">
 
 						<!-- Start General Information Tab-->
-						<div id="generalInformation" class="tab-pane active">
+						<div id="generalInformation" class="tab-pane fade in active">
 
 							<!-- Include GeneralInformation.jsp -->
 							<%@ include file="GeneralInformation.jsp"%>
@@ -70,7 +73,7 @@
 						<!-- End Electrical Tab-->
 						
 						<!-- Start Gas Tab-->
-						<div id="gas" class="tab-pane">
+						<div id="gas" class="tab-pane fade">
 
 							<!-- Include Gas.jsp -->
 							<%@ include file="Gas.jsp"%>
