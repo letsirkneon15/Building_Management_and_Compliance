@@ -1,7 +1,6 @@
-<<<<<<< HEAD
+
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
->>>>>>> refs/remotes/origin/master
+
 
 <!-- DataTables -->
 <div class="card shadow mb-4">

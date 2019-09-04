@@ -180,6 +180,27 @@ $(document).ready(function() {
     $('#asbestosTable').DataTable();
 } );
 
+$(document).ready(function() {
+    $('#complianceInspectionTable').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#resourceConsentTable').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#contactsTable').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#hazardRegisterTable').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#hazardousSubstancesTable').DataTable();
+} );
+
+
 $(".nav-tabs a").click(function(){
     $(this).tab('show');
 });
