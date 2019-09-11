@@ -17,9 +17,9 @@ public class BuildingHeaderMgr {
 
 		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
 
-		String qry = "SELECT * FROM dbo.Building_Header WHERE buidlingID = ? AND buildingName = ?";
+		String qry = "SELECT * FROM dbo.Building_Header WHERE buidlingId LIKE ? AND buildingName LIKE ?";
 
-		System.out.println("");
+		System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);
 
 		try {
 
@@ -116,16 +116,16 @@ public class BuildingHeaderMgr {
 		return isCreated;
 	}
 
-	public boolean updateBuildingHeader(Connection conn, BuildingHeader buildHeader) {
+	public int updateBuildingHeader(Connection conn, BuildingHeader buildHeader) {
 
-		boolean isUpdated = false;
+		int isUpdated = 0;
 
 		try {
 
-			String qry = "UPDATE dbo.Building_Header "
+			String qry = "UPDATE dbo.Building_Header set"
 					+ "buildingName=?, address=?, location=?, levelOrUnitNumber=?, coordinates=?, owner=?,"
 					+ "client=?, responsibleOffice=?, projectNumber=?, billingInformation=?, csNumber=?, legalDescription=?, maxOccupants=?, "
-					+ "fireHazardCategory=?, yearBuilt=?, intendedLife=?, bwofAnniversary=?, asbestosPresent=?, nbsPercentage=?, status=? ";
+					+ "fireHazardCategory=?, yearBuilt=?, intendedLife=?, bwofAnniversary=?, asbestosPresent=?, nbsPercentage=?, status=? WHERE buildingId = ?";
 
 			pstatement = conn.prepareStatement(qry);
 
@@ -166,10 +166,31 @@ public class BuildingHeaderMgr {
 		return isUpdated;
 	}
 
-	public boolean setStatus(Connection conn, String buildingId) {
+	public int setStatus(Connection conn, String status, String buildingId) {
 
-		boolean isSetStatus = false;
-		
+		int isSetStatus = 0;
+
+		try {
+
+			String qry = "UPDATE dbo.Building_Header set status=? WHERE buildingId =?";
+
+			pstatement = conn.prepareStatement(qry);
+
+			pstatement.setString(1, status);
+			pstatement.setString(2, buildingId);
+
+
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		return isSetStatus;
 	}
 
