@@ -4,13 +4,14 @@ import java.util.Date;
 
 public class Contacts {
 
-	private String buildingId; 
+	private int recordID;
+	private int buildingID; 
 	private String name;
 	private String type;
 	private String company;
-	private int phoneNumber;
-	private int faxNumber;
-	private int mobileNumber;
+	private String phoneNumber;
+	private String faxNumber;
+	private String mobileNumber;
 	private String emailAdd;
 	private String createdBy;
 	private Date creationDate;
@@ -18,11 +19,12 @@ public class Contacts {
 	private Date modifiedDate;
 	private String status;
 	
-	public Contacts(String buildingId, String name, String type, String company, int phoneNumber, int faxNumber,
-			int mobileNumber, String emailAdd, String createdBy, Date creationDate, String modifiedBy,
-			Date modifiedDate, String status) {
+	public Contacts(int recordID, int buildingID, String name, String type, String company, String phoneNumber,
+			String faxNumber, String mobileNumber, String emailAdd, String createdBy, Date creationDate,
+			String modifiedBy, Date modifiedDate, String status) {
 		super();
-		this.buildingId = buildingId;
+		this.recordID = recordID;
+		this.buildingID = buildingID;
 		this.name = name;
 		this.type = type;
 		this.company = company;
@@ -37,11 +39,17 @@ public class Contacts {
 		this.status = status;
 	}
 	
-	public String getBuildingId() {
-		return buildingId;
+	public int getRecordID() {
+		return recordID;
 	}
-	public void setBuildingId(String buildingId) {
-		this.buildingId = buildingId;
+	public void setRecordID(int recordID) {
+		this.recordID = recordID;
+	}
+	public int getBuildingID() {
+		return buildingID;
+	}
+	public void setBuildingID(int buildingID) {
+		this.buildingID = buildingID;
 	}
 	public String getName() {
 		return name;
@@ -61,22 +69,22 @@ public class Contacts {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public int getFaxNumber() {
+	public String getFaxNumber() {
 		return faxNumber;
 	}
-	public void setFaxNumber(int faxNumber) {
+	public void setFaxNumber(String faxNumber) {
 		this.faxNumber = faxNumber;
 	}
-	public int getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 	public String getEmailAdd() {

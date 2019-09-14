@@ -4,27 +4,27 @@ import java.util.Date;
 
 public class BuildingDetails {
 	
-	private int recordId; 
+	private int recordID; 
 	private String buildingDetailsType;
-	private String buildingId; 
+	private int buildingID; 
 	private String name;
 	private String attachment;
 	private String type;
 	private int titledYear;
-	private int consentNumber;
+	private String consentNumber;
 	private String uploadedBy;
 	private Date uploadedDate;
 	private String lastUploadedBy; 
 	private Date lastUploadedDate;
 	private String status;
 	
-	public BuildingDetails(int recordId, String buildingDetailsType, String buildingId, String name, String attachment,
-			String type, int titledYear, int consentNumber, String uploadedBy, Date uploadedDate, String lastUploadedBy,
-			Date lastUploadedDate, String status) {
+	public BuildingDetails(int recordID, String buildingDetailsType, int buildingID, String name, String attachment,
+			String type, int titledYear, String consentNumber, String uploadedBy, Date uploadedDate,
+			String lastUploadedBy, Date lastUploadedDate, String status) {
 		super();
-		this.recordId = recordId;
+		this.recordID = recordID;
 		this.buildingDetailsType = buildingDetailsType;
-		this.buildingId = buildingId;
+		this.buildingID = buildingID;
 		this.name = name;
 		this.attachment = attachment;
 		this.type = type;
@@ -37,11 +37,11 @@ public class BuildingDetails {
 		this.status = status;
 	}
 	
-	public int getRecordId() {
-		return recordId;
+	public int getRecordID() {
+		return recordID;
 	}
-	public void setRecordId(int recordId) {
-		this.recordId = recordId;
+	public void setRecordID(int recordID) {
+		this.recordID = recordID;
 	}
 	public String getBuildingDetailsType() {
 		return buildingDetailsType;
@@ -49,11 +49,11 @@ public class BuildingDetails {
 	public void setBuildingDetailsType(String buildingDetailsType) {
 		this.buildingDetailsType = buildingDetailsType;
 	}
-	public String getBuildingId() {
-		return buildingId;
+	public int getBuildingID() {
+		return buildingID;
 	}
-	public void setBuildingId(String buildingId) {
-		this.buildingId = buildingId;
+	public void setBuildingID(int buildingID) {
+		this.buildingID = buildingID;
 	}
 	public String getName() {
 		return name;
@@ -79,10 +79,10 @@ public class BuildingDetails {
 	public void setTitledYear(int titledYear) {
 		this.titledYear = titledYear;
 	}
-	public int getConsentNumber() {
+	public String getConsentNumber() {
 		return consentNumber;
 	}
-	public void setConsentNumber(int consentNumber) {
+	public void setConsentNumber(String consentNumber) {
 		this.consentNumber = consentNumber;
 	}
 	public String getUploadedBy() {
@@ -115,4 +115,5 @@ public class BuildingDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 }

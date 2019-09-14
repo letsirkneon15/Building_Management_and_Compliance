@@ -4,40 +4,40 @@ import java.util.Date;
 
 public class BuildingHeader {
  
-	private String buildingId; 
+	private int buildingID; 
 	private String buildingName;
 	private String address;
 	private String location;
-	private int levelOrUnitNumber;
-	private int coordinates;
+	private String levelOrUnitNumber;
+	private String coordinates;
 	private String owner;
 	private String client;
 	private String responsibleOffice;
-	private int projectNumber;
+	private String projectNumber;
 	private String billingInformation;
-	private int csNumber;
+	private String csNumber;
 	private String legalDescription;
 	private int maxOccupants;
 	private String fireHazardCategory;
 	private int yearBuilt;
 	private String intendedLife;
-	private Date bwofAnniversary;
+	private int bwofAnniversary;
 	private String asbestosPresent;
-	private int nbsPercentage;
+	private float nbsPercentage;
 	private String createdBy;
 	private Date creationDate;
 	private String modifiedBy; 
 	private Date modifiedDate;
 	private String status;
 	
-	public BuildingHeader(String buildingId, String buildingName, String address, String location,
-			int levelOrUnitNumber, int coordinates, String owner, String client, String responsibleOffice,
-			int projectNumber, String billingInformation, int csNumber, String legalDescription, int maxOccupants,
-			String fireHazardCategory, int yearBuilt, String intendedLife, Date bwofAnniversary, String asbestosPresent,
-			int nbsPercentage, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate,
+	public BuildingHeader(int buildingID, String buildingName, String address, String location,
+			String levelOrUnitNumber, String coordinates, String owner, String client, String responsibleOffice,
+			String projectNumber, String billingInformation, String csNumber, String legalDescription, int maxOccupants,
+			String fireHazardCategory, int yearBuilt, String intendedLife, int bwofAnniversary, String asbestosPresent,
+			float nbsPercentage, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate,
 			String status) {
 		super();
-		this.buildingId = buildingId;
+		this.buildingID = buildingID;
 		this.buildingName = buildingName;
 		this.address = address;
 		this.location = location;
@@ -63,154 +63,203 @@ public class BuildingHeader {
 		this.modifiedDate = modifiedDate;
 		this.status = status;
 	}
-	
-	public String getBuildingId() {
-		return buildingId;
+
+	public int getBuildingID() {
+		return buildingID;
 	}
-	public void setBuildingId(String buildingId) {
-		this.buildingId = buildingId;
+
+	public void setBuildingID(int buildingID) {
+		this.buildingID = buildingID;
 	}
+
 	public String getBuildingName() {
 		return buildingName;
 	}
+
 	public void setBuildingName(String buildingName) {
 		this.buildingName = buildingName;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public int getLevelOrUnitNumber() {
+
+	public String getLevelOrUnitNumber() {
 		return levelOrUnitNumber;
 	}
-	public void setLevelOrUnitNumber(int levelOrUnitNumber) {
+
+	public void setLevelOrUnitNumber(String levelOrUnitNumber) {
 		this.levelOrUnitNumber = levelOrUnitNumber;
 	}
-	public int getCoordinates() {
+
+	public String getCoordinates() {
 		return coordinates;
 	}
-	public void setCoordinates(int coordinates) {
+
+	public void setCoordinates(String coordinates) {
 		this.coordinates = coordinates;
 	}
+
 	public String getOwner() {
 		return owner;
 	}
+
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
+
 	public String getClient() {
 		return client;
 	}
+
 	public void setClient(String client) {
 		this.client = client;
 	}
+
 	public String getResponsibleOffice() {
 		return responsibleOffice;
 	}
+
 	public void setResponsibleOffice(String responsibleOffice) {
 		this.responsibleOffice = responsibleOffice;
 	}
-	public int getProjectNumber() {
+
+	public String getProjectNumber() {
 		return projectNumber;
 	}
-	public void setProjectNumber(int projectNumber) {
+
+	public void setProjectNumber(String projectNumber) {
 		this.projectNumber = projectNumber;
 	}
+
 	public String getBillingInformation() {
 		return billingInformation;
 	}
+
 	public void setBillingInformation(String billingInformation) {
 		this.billingInformation = billingInformation;
 	}
-	public int getCsNumber() {
+
+	public String getCsNumber() {
 		return csNumber;
 	}
-	public void setCsNumber(int csNumber) {
+
+	public void setCsNumber(String csNumber) {
 		this.csNumber = csNumber;
 	}
+
 	public String getLegalDescription() {
 		return legalDescription;
 	}
+
 	public void setLegalDescription(String legalDescription) {
 		this.legalDescription = legalDescription;
 	}
+
 	public int getMaxOccupants() {
 		return maxOccupants;
 	}
+
 	public void setMaxOccupants(int maxOccupants) {
 		this.maxOccupants = maxOccupants;
 	}
+
 	public String getFireHazardCategory() {
 		return fireHazardCategory;
 	}
+
 	public void setFireHazardCategory(String fireHazardCategory) {
 		this.fireHazardCategory = fireHazardCategory;
 	}
+
 	public int getYearBuilt() {
 		return yearBuilt;
 	}
+
 	public void setYearBuilt(int yearBuilt) {
 		this.yearBuilt = yearBuilt;
 	}
+
 	public String getIntendedLife() {
 		return intendedLife;
 	}
+
 	public void setIntendedLife(String intendedLife) {
 		this.intendedLife = intendedLife;
 	}
-	public Date getBwofAnniversary() {
+
+	public int getBwofAnniversary() {
 		return bwofAnniversary;
 	}
-	public void setBwofAnniversary(Date bwofAnniversary) {
+
+	public void setBwofAnniversary(int bwofAnniversary) {
 		this.bwofAnniversary = bwofAnniversary;
 	}
+
 	public String getAsbestosPresent() {
 		return asbestosPresent;
 	}
+
 	public void setAsbestosPresent(String asbestosPresent) {
 		this.asbestosPresent = asbestosPresent;
 	}
-	public int getNbsPercentage() {
+
+	public float getNbsPercentage() {
 		return nbsPercentage;
 	}
-	public void setNbsPercentage(int nbsPercentage) {
+
+	public void setNbsPercentage(float nbsPercentage) {
 		this.nbsPercentage = nbsPercentage;
 	}
+
 	public String getCreatedBy() {
 		return createdBy;
 	}
+
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
+
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
+
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
+
 	public Date getModifiedDate() {
 		return modifiedDate;
 	}
+
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}

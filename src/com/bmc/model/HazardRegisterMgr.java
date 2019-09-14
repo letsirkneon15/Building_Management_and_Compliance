@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.bmc.pojo.HazardRegister;
-import com.bmc.pojo.HazardousSubstance;
 
 public class HazardRegisterMgr {
 	
@@ -14,22 +14,22 @@ public class HazardRegisterMgr {
 	private ResultSet resultSet;
 
 	
-	public ArrayList<HazardRegister> getHazardRegister(Connection conn, String buildingId){
+	public ArrayList<HazardRegister> getHazardRegister(Connection conn, String buildingID){
 		
 		   ArrayList<HazardRegister> hrArr = new ArrayList<>();
 		   
-		   String qry = "SELECT * FROM dbo.Hazard_Register WHERE buildingId LIKE ?";
+		   String qry = "SELECT * FROM dbo.Hazard_Register WHERE buildingID LIKE ?";
 
 			try {
 
 				pstatement = conn.prepareStatement(qry);
-				pstatement.setString(1, buildingId.trim());
+				pstatement.setString(1, buildingID.trim());
 
 				resultSet = pstatement.executeQuery();
 				while (resultSet.next()) {
-					hrArr.add(new HazardRegister(resultSet.getInt("recordId"), resultSet.getString("buildingId"), resultSet.getString("identifiedHazard"),
+					hrArr.add(new HazardRegister(resultSet.getInt("recordID"), resultSet.getInt("buildingID"), resultSet.getString("IDentifiedHazard"),
 							resultSet.getString("initialRiskAssessment"), resultSet.getString("controls"),  resultSet.getString("levelOfControl"), 
-							resultSet.getString("residualRiskAssessment"), resultSet.getString("createdBy"), resultSet.getDate("creationDate"), 
+							resultSet.getString("resIDualRiskAssessment"), resultSet.getString("createdBy"), resultSet.getDate("creationDate"), 
 							resultSet.getString("modifiedBy"), resultSet.getDate("modifiedDate"), resultSet.getString("status")));
 				} 
 			}catch (Exception e) {
@@ -55,24 +55,24 @@ public class HazardRegisterMgr {
 			   
 		  
 		   String qry = " INSERT INTO dbo.Hazard_Register"
-					+ "recordId, buildingId, Hazard_Register, initialRiskAssessment, controls, "
+					+ "recordID, buildingID, identifiedHazard, initialRiskAssessment, controls, "
 					+ "levelOfControl, residualRiskAssessment, createdBy, creationDate, modifiedBy, "
 					+ "modifiedDate, status "
 					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		   
 			pstatement = conn.prepareStatement(qry);
 			
-			pstatement.setInt(1, hazardReg.getRecordId());
-			pstatement.setString(2, hazardReg.getBuildingId());
+			pstatement.setInt(1, hazardReg.getRecordID());
+			pstatement.setInt(2, hazardReg.getBuildingID());
 			pstatement.setString(3, hazardReg.getIdentifiedHazard());
 			pstatement.setString(4, hazardReg.getInitialRiskAssessment());
 			pstatement.setString(5, hazardReg.getControls());
 			pstatement.setString(6, hazardReg.getLevelOfControl());
 			pstatement.setString(7, hazardReg.getResidualRiskAssessment());
 			pstatement.setString(8, hazardReg.getCreatedBy());
-			pstatement.setDate(9, hazardReg.getCreationDate());
+			pstatement.setDate(9, (java.sql.Date) hazardReg.getCreationDate());
 			pstatement.setString(10, hazardReg.getModifiedBy());
-			pstatement.setDate(11, hazardReg.getModifiedDate());
+			pstatement.setDate(11, (java.sql.Date) hazardReg.getModifiedDate());
 			pstatement.setString(12, hazardReg.getStatus());
 		   
 			isCreated =  pstatement.execute();
@@ -98,10 +98,10 @@ public class HazardRegisterMgr {
 		
 		try {
 			
-			String qry  = "UPDATE dbo.Hazard_Register set"
-					+ "identifiedHazard=?, initialRiskAssessment=?, controls=?,  levelOfControl=?, residualRiskAssessment=?,"
+			String qry  = "UPDATE dbo.Hazard_Register set "
+					+ "identifiedHazard=?, initialRiskAssessment=?, controls=?,  levelOfControl=?, resIDualRiskAssessment=?, "
 					+ "createdBy, creationDate, modifiedBy, modifiedDate "
-					+ "WHERE buildingId=?";
+					+ "WHERE buildingID=?";
 			
 			pstatement = conn.prepareStatement(qry);
 			
@@ -111,9 +111,10 @@ public class HazardRegisterMgr {
 			pstatement.setString(4, hazardReg.getLevelOfControl());
 			pstatement.setString(5, hazardReg.getResidualRiskAssessment());
 			pstatement.setString(6, hazardReg.getCreatedBy());
-			pstatement.setDate(7, hazardReg.getCreationDate());
+			pstatement.setDate(7, (java.sql.Date) hazardReg.getCreationDate());
 			pstatement.setString(8, hazardReg.getModifiedBy());
-			pstatement.setDate(9, hazardReg.getModifiedDate());
+			pstatement.setDate(9, (java.sql.Date) hazardReg.getModifiedDate());
+			pstatement.setInt(10, hazardReg.getBuildingID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();
@@ -130,19 +131,22 @@ public class HazardRegisterMgr {
 		   return isUpdated;
 	}
 	
-	public int setStatus(Connection conn, String status, int recordId) {
+	public int setStatus(Connection conn, String status, int buildingID, String modifiedBy, Date modifiedDate) {
 
 
 		int isSetStatus = 0;
 
 		try {
 
-			String qry = "UPDATE dbo.Building_Details set status=? WHERE recordId =?";
+			String qry = "UPDATE dbo.Building_Details set status=? "
+					+ "modifiedBy=?, modifiedDate=? WHERE buildingID =?";
 
 			pstatement = conn.prepareStatement(qry);
 
 			pstatement.setString(1, status);
-			pstatement.setInt(2, recordId);
+			pstatement.setString(2, modifiedBy);
+			pstatement.setDate(3, (java.sql.Date) modifiedDate);
+			pstatement.setInt(4, buildingID);
 			
 			isSetStatus = pstatement.executeUpdate();
 			pstatement.close();
