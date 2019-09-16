@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import com.bmc.pojo.BuildingHeader;
 
@@ -14,22 +14,20 @@ public class BuildingHeaderMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<BuildingHeader> getBuildingHeader(Connection conn, int buildingID, String buildingName,
-			int frRowNum, int toRowNum) {
+	public List<BuildingHeader> getBuildingHeader(Connection conn, int buildingID, String buildingName) {
 
-		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
+		
+		List<BuildingHeader> bhArr = new ArrayList<>();
 
 		String qry = "SELECT * FROM dbo.Building_Header WHERE buIDlingID LIKE ? AND buildingName LIKE ?";
-
-		System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setInt(1, buildingID);
 			pstatement.setString(2, buildingName.trim());
-			pstatement.setInt(3, frRowNum);
-			pstatement.setInt(4, toRowNum);
+			//pstatement.setInt(3, frRowNum);
+			//pstatement.setInt(4, toRowNum);
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

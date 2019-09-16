@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.BuildingDetails;
 
@@ -13,9 +14,9 @@ public class BuildingDetailsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingName){
+	public List<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingName){
 
-		ArrayList<BuildingDetails> bdArr = new ArrayList<>();
+		List<BuildingDetails> bdArr = new ArrayList<>();
 
 		String qry = "SELECT * FROM dbo.Building_Details WHERE buildingID LIKE ? AND name LIKE ?";
 
@@ -95,22 +96,24 @@ public class BuildingDetailsMgr {
 
 		try {
 
-			String qry  = "UPDATE dbo.Building_Details set"
-					+ "buildingDetatilsType=?, name=?, attachment=?,  type=?, "
+			String qry  = "UPDATE dbo.Building_Details set "
+					+ "name=?, attachment=?,  type=?, "
 					+ "titledYear=?, consentNumber=?, "
-					+ "lastUploadedBy=?, lastUploadedDate=? WHERE buildingID=?";
+					+ "lastUploadedBy=?, lastUploadedDate=? WHERE buildingID=? "
+					+ "and buildingDetailsType=? and recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
-			pstatement.setString(1, buildDetails.getBuildingDetailsType());
-			pstatement.setString(2, buildDetails.getName());
-			pstatement.setString(3, buildDetails.getAttachment());
-			pstatement.setString(4, buildDetails.getType());
-			pstatement.setInt(5, buildDetails.getTitledYear());
-			pstatement.setString(6, buildDetails.getConsentNumber());
-			pstatement.setString(9, buildDetails.getLastUploadedBy());
-			pstatement.setDate(10, (java.sql.Date) buildDetails.getLastUploadedDate());
-			pstatement.setInt(11, buildDetails.getBuildingID());
+			pstatement.setString(1, buildDetails.getName());
+			pstatement.setString(2, buildDetails.getAttachment());
+			pstatement.setString(3, buildDetails.getType());
+			pstatement.setInt(4, buildDetails.getTitledYear());
+			pstatement.setString(5, buildDetails.getConsentNumber());
+			pstatement.setString(6, buildDetails.getLastUploadedBy());
+			pstatement.setDate(7, (java.sql.Date) buildDetails.getLastUploadedDate());
+			pstatement.setInt(8, buildDetails.getBuildingID());
+			pstatement.setString(9, buildDetails.getBuildingDetailsType());
+			pstatement.setInt(10, buildDetails.getRecordID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();

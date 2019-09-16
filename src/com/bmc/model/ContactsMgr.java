@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.Contacts;
 
@@ -13,18 +14,18 @@ public class ContactsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<Contacts> getContacts(Connection conn, String buildingID){
+	public List<Contacts> getContacts(Connection conn, int buildingID){
 
-		ArrayList<Contacts> conArr = new ArrayList<>();
+		List<Contacts> conArr = new ArrayList<>();
 
 
-		String qry = "SELECT * FROM dbo.Contacts WHERE name LIKE ? AND company LIKE ?";
+		String qry = "SELECT * FROM dbo.Contacts WHERE buildingID=?";
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 
-			pstatement.setString(1, buildingID.trim());
+			pstatement.setInt(1, buildingID);
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.Tab;
 
@@ -13,9 +14,11 @@ public class TabMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<Tab> getTab(Connection conn, int tabID, String tabDescription, int frRowNum, int toRowNum){
+	public List<Tab> getTab(Connection conn, int tabID, String tabDescription){
 		
-		   ArrayList<Tab> tabArr = new ArrayList<>();
+		   int frRowNum=0, toRowNum=0;
+		
+		   List<Tab> tabArr = new ArrayList<>();
 		   
 		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
 					+ "SELECT a.* from dbo.Tab a WHERE tabID Like ? AND tabDescription Like ? " +

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.HazardousSubstance;
 
@@ -13,17 +14,17 @@ public class HazardousSubstanceMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<HazardousSubstance> getHazardousSubstance(Connection conn, String buildingID){
+	public List<HazardousSubstance> getHazardousSubstance(Connection conn, int buildingID){
 
-		ArrayList<HazardousSubstance> hsArr = new ArrayList<>();
+		List<HazardousSubstance> hsArr = new ArrayList<>();
 
 
-		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID LIKE ?";
+		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID=?";
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
-			pstatement.setString(1, buildingID);
+			pstatement.setInt(1, buildingID);
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.ComplianceInspection;
 
@@ -13,9 +14,11 @@ public class ComplianceInspectionMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<ComplianceInspection> getComplianceInspection(Connection conn, int buildingID, int frRowNum, int toRowNum){
+	public List<ComplianceInspection> getComplianceInspection(Connection conn, int buildingID){
+		
+		int frRowNum=0, toRowNum=0;
 
-		ArrayList<ComplianceInspection> ciArr = new ArrayList<>();
+		List<ComplianceInspection> ciArr = new ArrayList<>();
 
 
 		String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("

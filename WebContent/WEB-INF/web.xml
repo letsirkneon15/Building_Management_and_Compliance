@@ -11,10 +11,17 @@
   </welcome-file-list>
 <servlet>
     <servlet-name>BuildingController</servlet-name>
-    <servlet-class>com.bmc.controller.BuildingController</servlet-class>
-  </servlet>
-  <servlet-mapping>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    
+    <init-param>
+    	<param-name>jersey.config.server.provider.packages;org.codehaus.jackson.jaxrs</param-name>
+    	<param-value>com.bmc.webservices</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
     <servlet-name>BuildingController</servlet-name>
     <url-pattern>/main</url-pattern>
-  </servlet-mapping>
+</servlet-mapping>
 </web-app>

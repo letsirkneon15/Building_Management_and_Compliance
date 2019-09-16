@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.UserBuilding;
 
@@ -13,9 +14,11 @@ public class UserBuildingMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<UserBuilding> getUserBuilding(Connection conn, String userID, int frRowNum, int toRowNum){
+	public List<UserBuilding> getUserBuilding(Connection conn, String userID){
 		
-		   ArrayList<UserBuilding> ubArr = new ArrayList<>();
+		   int frRowNum=0, toRowNum=0;
+		
+		   List<UserBuilding> ubArr = new ArrayList<>();
 		   
 		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
 					+ "SELECT a.* from dbo.User_Building a WHERE userID = ?" +

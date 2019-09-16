@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.bmc.pojo.HazardRegister;
 
@@ -14,16 +15,16 @@ public class HazardRegisterMgr {
 	private ResultSet resultSet;
 
 	
-	public ArrayList<HazardRegister> getHazardRegister(Connection conn, String buildingID){
+	public List<HazardRegister> getHazardRegister(Connection conn, int buildingID){
 		
-		   ArrayList<HazardRegister> hrArr = new ArrayList<>();
+		   List<HazardRegister> hrArr = new ArrayList<>();
 		   
-		   String qry = "SELECT * FROM dbo.Hazard_Register WHERE buildingID LIKE ?";
+		   String qry = "SELECT * FROM dbo.Hazard_Register WHERE buildingID=?";
 
 			try {
 
 				pstatement = conn.prepareStatement(qry);
-				pstatement.setString(1, buildingID.trim());
+				pstatement.setInt(1, buildingID);
 
 				resultSet = pstatement.executeQuery();
 				while (resultSet.next()) {
