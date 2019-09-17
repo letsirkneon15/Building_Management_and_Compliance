@@ -49,21 +49,21 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="AboutUs.jsp" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-users"></i>
           <span>About Us</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="ContactUs.jsp" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-address-book"></i>
           <span>Contact Us</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="Help.jsp" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-hands-helping"></i>
           <span>Help</span>
         </a>
