@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.bmc.pojo.UserTab;
 
@@ -14,11 +13,11 @@ public class UserTabMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public List<UserTab> getUserTab(Connection conn, String userID){
+	public ArrayList<UserTab> getUserTab(Connection conn, String userID){
 		
 		   int frRowNum=0, toRowNum=0;
 		   
-		   List<UserTab> utArr = new ArrayList<>();
+		   ArrayList<UserTab> utArr = new ArrayList<>();
 		   
 		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
 					+ "SELECT a.* from dbo.User_Tab a WHERE userID=?" +

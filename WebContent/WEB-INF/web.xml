@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Building Management and Compliance</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+   	<welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
@@ -10,18 +10,23 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 <servlet>
-    <servlet-name>BuildingController</servlet-name>
+    <servlet-name>BuildingHeaderWs</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-    
     <init-param>
-    	<param-name>jersey.config.server.provider.packages;org.codehaus.jackson.jaxrs</param-name>
+    	<param-name>jersey.config.server.provider.packages</param-name>
     	<param-value>com.bmc.webservices</param-value>
     </init-param>
-    <load-on-startup>1</load-on-startup>
+    <!-- <load-on-startup>1</load-on-startup> -->
 </servlet>
+
+<servlet>
+    <servlet-name>BuildingController</servlet-name>
+    <servlet-class>com.bmc.controller.BuildingController</servlet-class>
+  </servlet>
 
 <servlet-mapping>
     <servlet-name>BuildingController</servlet-name>
     <url-pattern>/main</url-pattern>
 </servlet-mapping>
+
 </web-app>

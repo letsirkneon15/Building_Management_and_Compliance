@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.bmc.pojo.BuildingHeader;
 
@@ -14,18 +13,20 @@ public class BuildingHeaderMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public List<BuildingHeader> getBuildingHeader(Connection conn, int buildingID, String buildingName) {
+	public ArrayList<BuildingHeader> getBuildingHeader(Connection conn, int buildingID, String buildingName) {
 
 		
-		List<BuildingHeader> bhArr = new ArrayList<>();
+		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
 
-		String qry = "SELECT * FROM dbo.Building_Header WHERE buIDlingID LIKE ? AND buildingName LIKE ?";
+		//String qry = "SELECT * FROM dbo.Building_Header WHERE buildingID=? AND buildingName LIKE ?";
+		String qry = "SELECT * FROM dbo.Building_Header";
+		System.out.println("QRY: " + qry);
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
-			pstatement.setInt(1, buildingID);
-			pstatement.setString(2, buildingName.trim());
+			//pstatement.setInt(1, buildingID);
+			//pstatement.setString(2, buildingName.trim());
 			//pstatement.setInt(3, frRowNum);
 			//pstatement.setInt(4, toRowNum);
 
@@ -36,7 +37,7 @@ public class BuildingHeaderMgr {
 						resultSet.getString("levelOrUnitNumber"), resultSet.getString("coordinates"),
 						resultSet.getString("owner"), resultSet.getString("client"),
 						resultSet.getString("responsibleOffice"), resultSet.getString("projectNumber"),
-						resultSet.getString("billingInformation"), resultSet.getString("csNumber"),
+						resultSet.getString("buildingInformation"), resultSet.getString("csNumber"),
 						resultSet.getString("legalDescription"), resultSet.getInt("maxOccupants"),
 						resultSet.getString("fireHazardCategory"), resultSet.getInt("yearBuilt"),
 						resultSet.getString("intendedLife"), resultSet.getInt("bwofAnniversary"),

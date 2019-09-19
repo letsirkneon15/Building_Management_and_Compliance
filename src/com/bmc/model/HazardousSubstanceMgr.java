@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.bmc.pojo.HazardousSubstance;
 
@@ -14,9 +13,9 @@ public class HazardousSubstanceMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public List<HazardousSubstance> getHazardousSubstance(Connection conn, int buildingID){
+	public ArrayList<HazardousSubstance> getHazardousSubstance(Connection conn, int buildingID){
 
-		List<HazardousSubstance> hsArr = new ArrayList<>();
+		ArrayList<HazardousSubstance> hsArr = new ArrayList<>();
 
 
 		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID=?";

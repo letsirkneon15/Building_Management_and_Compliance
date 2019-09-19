@@ -19,7 +19,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   
-  <!-- Custom styles for this page -->
+  <!-- DataTable -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
@@ -34,6 +34,20 @@
 
 	<!-- Include Footer.jsp -->
 	<%@ include file="Footer.jsp" %>
+	
+<!-- Java Script function for Pagination -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#dashboardTable').DataTable();
+} );
+
+
+$(".nav-tabs a").click(function(){
+    $(this).tab('show');
+});
+
+</script>
 
 </body>
 

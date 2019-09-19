@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.bmc.pojo.User;
 
@@ -14,11 +13,11 @@ public class UserMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public List<User> getUser(Connection conn, String userID, String name){
+	public ArrayList<User> getUser(Connection conn, String userID, String name){
 		
 		   int frRowNum=0, toRowNum=0;
 		
-		   List<User> userArr = new ArrayList<>();
+		   ArrayList<User> userArr = new ArrayList<>();
 		   
 		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
 					+ "SELECT a.* from dbo.User a WHERE userID Like ? AND name Like ? " +

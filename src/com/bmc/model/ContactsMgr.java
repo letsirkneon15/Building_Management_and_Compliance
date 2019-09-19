@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.bmc.pojo.Contacts;
 
@@ -14,9 +13,9 @@ public class ContactsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public List<Contacts> getContacts(Connection conn, int buildingID){
+	public ArrayList<Contacts> getContacts(Connection conn, int buildingID){
 
-		List<Contacts> conArr = new ArrayList<>();
+		ArrayList<Contacts> conArr = new ArrayList<>();
 
 
 		String qry = "SELECT * FROM dbo.Contacts WHERE buildingID=?";

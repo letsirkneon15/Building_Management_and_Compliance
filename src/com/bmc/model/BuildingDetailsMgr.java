@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.bmc.pojo.BuildingDetails;
 
@@ -14,9 +13,9 @@ public class BuildingDetailsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public List<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingName){
+	public ArrayList<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingName){
 
-		List<BuildingDetails> bdArr = new ArrayList<>();
+		ArrayList<BuildingDetails> bdArr = new ArrayList<>();
 
 		String qry = "SELECT * FROM dbo.Building_Details WHERE buildingID LIKE ? AND name LIKE ?";
 
