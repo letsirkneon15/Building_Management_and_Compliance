@@ -27,7 +27,6 @@
 <link href="vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
 
-
 </head>
 
 <body id="page-top">
@@ -47,58 +46,91 @@
 		</div>
 
 	</div>
-	
-	
-	
 	<!-- /.container-fluid -->
+
 
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
 		<!-- Content Row -->
 		<div class="row">
-			<div class="col-xl-7 col-lg-7">
+			<div class="col-xl-7 col-lg-2" align="center">
 
 				<!-- About Us -->
 				<div class="card shadow mb-4">
 					<div class="card-body">
-						<div>
-							<p class="h2 mb-1 text-gray-600" >Building Management &
-								Compliance is committed to making Building Management &
-								Compliance easy. This system provides your organisation with
-								tools needed to ensure that you can demonstrate compliance with
-								all legislative obligations relevant to buildings</p>
+
+
+
+						<p class="h2 mb-1 text-gray-600" align="center">We would be
+							happy to chat if you have any questions.</p>
+						<br>
+
+						<div class="card-body">
+
+							<div class="col-lg-4 col-md-6 text-center">
+								
+							<div>
+							<i style="font-size: 30px" class="fa">&#xf098; </i>
+							</div>
+								<p class="h2 mb-1 text-gray-600" align="center">0211 440869</p>
+							</div>
+
+
+
+							<div class="col-lg-4 col-md-6 text-center">
+								<p class="h2 mb-1 text-gray-600" align="center">
+									<i style="font-size: 25px" class="glyphicon">&#x2709;</i>
+									natasha.baldwin@gmail.com
+								</p>
+							</div>
+							
+							
+
+							<div class="col-lg-4 col-md-6 text-center">
+								<p class="h2 mb-1 text-gray-600" align="center">
+									<i style="font-size: 20px" class="glyphicon">&#xe021;</i> 12
+									Pharazyn St. Lower Hutt
+								</p>
+							</div>
+							
+							
+							
 
 						</div>
+
 					</div>
 				</div>
 
 			</div>
 
-			<!-- Image Skyscraper -->
+
+			<!-- Image Default Profile -->
 			<div class="col-xl-5 col-lg-5">
 				<div class="card shadow mb-4">
 
-					<!-- Our Buildings -->
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">Our Buildings</h6>
-					</div>
 					<!-- Card Body -->
-					<div class="card-body">
+					<div class="card-body" align="center">
 						<div>
-							<img src="images/building_skyscrapper.jpg" alt="skyscrapper"
-								height=300 width=100%>
+							<img src="images/default_profile.png" alt="skyscrapper"
+								height=85% width=85%>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="col-xl-3 col-lg-3"></div>
+
+
+		</div>
+
 	</div>
 	<!-- /.container-fluid -->
 
 	<br>
-	
+
 
 
 	<!-- The Professionals Section -->

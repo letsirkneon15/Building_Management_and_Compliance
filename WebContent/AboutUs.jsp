@@ -90,7 +90,7 @@
 					<!-- Card Body -->
 					<div class="card-body">
 						<div>
-							<img src="images/building_skyscrapper.jpg" alt="skyscrapper"
+							<img src="images/building_skyscraper.jpg" alt="skyscrapper"
 								height=300 width=100%>
 						</div>
 					</div>

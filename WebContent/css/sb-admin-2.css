@@ -11645,8 +11645,15 @@ a:focus {
   }
 }
 
+.bg-test-image {
+	background: url("http://source.unsplash.com/mpN7xjKQ_Ns/600x800");
+  background-position: center;
+	background-size: cover;
+	
+}
+
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("http://source.unsplash.com/aw/600x800");
   background-position: center;
   background-size: cover;
 }
