@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -57,14 +58,14 @@ public class BuildingController extends HttpServlet {
 		
 		request.setCharacterEncoding( "UTF-8" );
 		String newPage = "/MainPage.jsp";
-		int buildingID = 0;
-		String buildingName = "";
+		String userID = "Jane.Smith001";
 		
 		/* Retrieve session values from BuildingHeader */
 		HttpSession session=request.getSession();
 		
-		ArrayList<BuildingHeader> bHeaderArr = new ArrayList<>();
-		bHeaderArr = new BuildingHeaderMgr().getBuildingHeader(conn, buildingID, buildingName);
+		/* Get Building Header by User ID */
+		List<BuildingHeader> bHeaderArr = new ArrayList<>();
+		bHeaderArr = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID);
 		
 		session.setAttribute("bHeaderArr", bHeaderArr);
 		

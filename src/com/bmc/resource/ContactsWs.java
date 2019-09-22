@@ -1,4 +1,4 @@
-package com.bmc.webservices;
+package com.bmc.resource;
 
 import java.sql.Connection;
 import java.util.List;
@@ -13,21 +13,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-import com.bmc.model.ComplianceInspectionMgr;
-import com.bmc.pojo.ComplianceInspection;
+import com.bmc.model.ContactsMgr;
+import com.bmc.pojo.Contacts;
 import com.google.gson.Gson;
 
-@Path("/ComplianceInspection")
-public class ComplianceInspectionWs {
+@Path("/Contacts")
+public class ContactsWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
 	
 	/**
-	 * This method return Compliance Inspection Information from Azure SQL DB - Compliance_Inspection
+	 * This method return Contacts Information from Azure SQL DB - Contacts
 	 * @param info (buildingID) - buildingID 
-	 * @return Json String of Compliance_Inspection table
-	 * @sampleHTTP http://127.0.0.1:8999/ComplianceInspection/Info/{buildingID}
+	 * @return Json String of Contacts table
+	 * @sampleHTTP http://127.0.0.1:8999/Contacts/Info/{buildingID}
 	 * json format  
 	 */
 	@GET
@@ -37,8 +37,8 @@ public class ComplianceInspectionWs {
 
 		System.out.println("buildingID from webService: " + buildingID);	
 		
-		//Get ComplianceInspection information	
-		List<ComplianceInspection> comIns = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
+		//Get Contacts information	
+		List<Contacts> comIns = new ContactsMgr().getContacts(conn, buildingID);
 		Gson gson = new Gson();
 		String json = gson.toJson(comIns); 
 		System.out.println(json);
@@ -49,18 +49,18 @@ public class ComplianceInspectionWs {
 	/**
 	 * This method will create a new record in Compliance Inspection with boolean as return to indicate 
 	 * if the record is successfully created or not
-	 * @param info (ComplianceInspection) Compliance_Inspection table in JSON String 
+	 * @param info (Contacts) Contacts table in JSON String 
 	 * @return boolean - indicator that the record is successfully created
-	 * @sampleHTTP http://127.0.0.1:8999/ComplianceInspection/Add
+	 * @sampleHTTP http://127.0.0.1:8999/Contacts/Add
 	 */
 	@POST
 	@Path("/Add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createNewInfo(ComplianceInspection comInspection) {
+	public Response createNewInfo(Contacts contact) {
 
 		
 		/* Add new record in Compliance Inspection */
-		boolean result = new ComplianceInspectionMgr().setComplianceInspection(conn, comInspection);
+		boolean result = new ContactsMgr().setContacts(conn, contact);
 
 		return Response.status(201).entity(result).build();
 				
@@ -69,18 +69,18 @@ public class ComplianceInspectionWs {
 	/**
 	 * This method will edit an existing record in Compliance Inspection with int as return to indicate 
 	 * if the record is successfully edited or not
-	 * @param info (ComplianceInspection) Compliance_Inspection table in JSON String 
+	 * @param info (Contacts) Contacts table in JSON String 
 	 * @return int - indicator that the record is successfully created
-	 * @sampleHTTP http://127.0.0.1:8999/ComplianceInspection/Update
+	 * @sampleHTTP http://127.0.0.1:8999/Contacts/Update
 	 */
 	@POST
 	@Path("/Update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateInfo(ComplianceInspection comInspection) {
+	public Response updateInfo(Contacts contact) {
 
 		
 		/* Update records in Compliance Inspection */
-		int result = new ComplianceInspectionMgr().updateComplianceInspection(conn, comInspection);
+		int result = new ContactsMgr().updateContacts(conn, contact);
 
 		return Response.status(201).entity(result).build();
 				
@@ -89,19 +89,19 @@ public class ComplianceInspectionWs {
 	/**
 	 * This method will update the status of existing record in Compliance Inspection with int as return to indicate 
 	 * if the record is successfully edited or not
-	 * @param info (ComplianceInspection) Compliance_Inspection table in JSON String 
+	 * @param info (Contacts) Contacts table in JSON String 
 	 * @return int - indicator that the record is successfully created
-	 * @sampleHTTP http://127.0.0.1:8999/ComplianceInspection/UpdStatus
+	 * @sampleHTTP http://127.0.0.1:8999/Contacts/UpdStatus
 	 */
 	@POST
 	@Path("/UpdStatus")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateStatus(ComplianceInspection comInspection) {
+	public Response updateStatus(Contacts contact) {
 
 		
 		/* Update Status Compliance Inspection */
-		int result = new ComplianceInspectionMgr().setStatus(conn, comInspection.getStatus(), 
-				comInspection.getBuildingID(),comInspection.getModifiedBy(), comInspection.getModifiedDate());
+		int result = new ContactsMgr().setStatus(conn, contact.getStatus(), 
+				contact.getBuildingID(),contact.getModifiedBy(), contact.getModifiedDate());
 		return Response.status(201).entity(result).build();
 				
 	}

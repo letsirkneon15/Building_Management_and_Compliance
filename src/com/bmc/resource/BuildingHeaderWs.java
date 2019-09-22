@@ -1,4 +1,4 @@
-package com.bmc.webservices;
+package com.bmc.resource;
 
 import java.sql.Connection;
 import java.util.List;
@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 public class BuildingHeaderWs {
 	
 	/* Database Connection */
-	private Connection conn = null;
+	private Connection conn;
 	
 	/**
 	 * This method return Building Header Information from Azure SQL DB - Building_Header
@@ -44,6 +44,32 @@ public class BuildingHeaderWs {
 		Gson gson = new Gson();
 		String json = gson.toJson(bHeader); 
 		System.out.println(json);
+		
+		return json;
+				
+	}
+	
+	/**
+	 * This method return Building Header Information from Azure SQL DB - Building_Header by
+	 * userID found in User_Building
+	 * @param info (userID) - userID 
+	 * @return Json String of Building_Header table
+	 * @sampleHTTP http://127.0.0.1:8999/BuildingHeader/Info/ByUserID/{userID}
+	 * json format  
+	 */
+	@GET
+	@Path("/Info/ByUserID/{userID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getBHInfoByUserID(@PathParam("userID") String userID) {
+
+		System.out.println("userID from webService: " + userID);	
+		
+		//Get BuildingHeader information	
+		List<BuildingHeader> bHeader = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID);
+		Gson gson = new Gson();
+		String json = gson.toJson(bHeader); 
+		System.out.println(json);
+		
 		return json;
 				
 	}
@@ -59,11 +85,10 @@ public class BuildingHeaderWs {
 	@Path("/Add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createNewInfo(BuildingHeader buildHeader) {
-
 		
 		/* Add new record in Building Header */
 		boolean result = new BuildingHeaderMgr().setBuildingHeader(conn, buildHeader);
-
+		
 		return Response.status(201).entity(result).build();
 				
 	}
@@ -79,11 +104,10 @@ public class BuildingHeaderWs {
 	@Path("/Update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateInfo(BuildingHeader buildHeader) {
-
 		
 		/* Update records in Building Header */
 		int result = new BuildingHeaderMgr().updateBuildingHeader(conn, buildHeader);
-
+		
 		return Response.status(201).entity(result).build();
 				
 	}
@@ -99,11 +123,11 @@ public class BuildingHeaderWs {
 	@Path("/UpdStatus")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateStatus(BuildingHeader buildHeader) {
-
 		
 		/* Update Status Building Header */
 		int result = new BuildingHeaderMgr().setStatus(conn, buildHeader.getStatus(), 
 				buildHeader.getBuildingID(), buildHeader.getModifiedBy(), buildHeader.getModifiedDate());
+		
 		return Response.status(201).entity(result).build();
 				
 	}

@@ -1,4 +1,4 @@
-package com.bmc.webservices;
+package com.bmc.resource;
 
 import java.sql.Connection;
 import java.util.List;
@@ -39,11 +39,11 @@ public class BuildingDetailsWs {
 		System.out.println("buildingID and building Name from webService: " + buildingID + " "
 				+ buildingName);	
 		
-		//Get Building Detail information	
 		List<BuildingDetails> bDetail = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, buildingName);
 		Gson gson = new Gson();
 		String json = gson.toJson(bDetail); 
 		System.out.println(json);
+		
 		return json;
 				
 	}
@@ -59,11 +59,10 @@ public class BuildingDetailsWs {
 	@Path("/Add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createNewInfo(BuildingDetails buildDetail) {
-
 		
 		/* Add new record in Building Details */
 		boolean result = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetail);
-
+		
 		return Response.status(201).entity(result).build();
 				
 	}
@@ -79,11 +78,10 @@ public class BuildingDetailsWs {
 	@Path("/Update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateInfo(BuildingDetails buildDetail) {
-
 		
 		/* Update records in Building Details */
 		int result = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetail);
-
+		
 		return Response.status(201).entity(result).build();
 				
 	}
@@ -99,11 +97,11 @@ public class BuildingDetailsWs {
 	@Path("/UpdStatus")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateStatus(BuildingDetails buildDetail) {
-
 		
 		/* Update Status Building Details */
 		int result = new BuildingDetailsMgr().setStatus(conn, buildDetail.getStatus(), 
 				buildDetail.getBuildingID(), buildDetail.getLastUploadedBy(), buildDetail.getLastUploadedDate());
+		
 		return Response.status(201).entity(result).build();
 				
 	}

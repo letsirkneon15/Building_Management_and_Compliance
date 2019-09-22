@@ -13,17 +13,24 @@ public class BuildingDetailsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingName){
+	public ArrayList<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingDetailsType){
 
 		ArrayList<BuildingDetails> bdArr = new ArrayList<>();
 
-		String qry = "SELECT * FROM dbo.Building_Details WHERE buildingID LIKE ? AND name LIKE ?";
-
+		String qry = "SELECT * FROM dbo.Building_Details WHERE buildingID=? ";
+				
+		if(!buildingDetailsType.equals("")) {
+			qry = qry + "AND buildingDetailsType=?";
+		}
+				
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setInt(1, buildingID);
-			pstatement.setString(2, buildingName.trim());
+			
+			if(!buildingDetailsType.equals("")) {
+				pstatement.setString(2, buildingDetailsType.trim());
+			}
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

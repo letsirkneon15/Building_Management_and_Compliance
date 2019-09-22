@@ -1,8 +1,10 @@
 package com.bmc.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BuildingHeader {
+public class BuildingHeader implements Serializable {
+	private static final long serialVersionUID = 1L;
  
 	private int buildingID; 
 	private String buildingName;
@@ -14,7 +16,7 @@ public class BuildingHeader {
 	private String client;
 	private String responsibleOffice;
 	private String projectNumber;
-	private String billingInformation;
+	private String buildingInformation;
 	private String csNumber;
 	private String legalDescription;
 	private int maxOccupants;
@@ -30,9 +32,22 @@ public class BuildingHeader {
 	private Date modifiedDate;
 	private String status;
 	
+	@Override
+	public String toString() {
+		return "BuildingHeader [buildingID=" + buildingID + ", buildingName=" + buildingName + ", address=" + address
+				+ ", location=" + location + ", levelOrUnitNumber=" + levelOrUnitNumber + ", coordinates=" + coordinates
+				+ ", owner=" + owner + ", client=" + client + ", responsibleOffice=" + responsibleOffice
+				+ ", projectNumber=" + projectNumber + ", buildingInformation=" + buildingInformation + ", csNumber="
+				+ csNumber + ", legalDescription=" + legalDescription + ", maxOccupants=" + maxOccupants
+				+ ", fireHazardCategory=" + fireHazardCategory + ", yearBuilt=" + yearBuilt + ", intendedLife="
+				+ intendedLife + ", bwofAnniversary=" + bwofAnniversary + ", asbestosPresent=" + asbestosPresent
+				+ ", nbsPercentage=" + nbsPercentage + ", createdBy=" + createdBy + ", creationDate=" + creationDate
+				+ ", modifiedBy=" + modifiedBy + ", modifiedDate=" + modifiedDate + ", status=" + status + "]";
+	}
+
 	public BuildingHeader(int buildingID, String buildingName, String address, String location,
 			String levelOrUnitNumber, String coordinates, String owner, String client, String responsibleOffice,
-			String projectNumber, String billingInformation, String csNumber, String legalDescription, int maxOccupants,
+			String projectNumber, String buildingInformation, String csNumber, String legalDescription, int maxOccupants,
 			String fireHazardCategory, int yearBuilt, String intendedLife, int bwofAnniversary, String asbestosPresent,
 			float nbsPercentage, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate,
 			String status) {
@@ -47,7 +62,7 @@ public class BuildingHeader {
 		this.client = client;
 		this.responsibleOffice = responsibleOffice;
 		this.projectNumber = projectNumber;
-		this.billingInformation = billingInformation;
+		this.buildingInformation = buildingInformation;
 		this.csNumber = csNumber;
 		this.legalDescription = legalDescription;
 		this.maxOccupants = maxOccupants;
@@ -62,6 +77,10 @@ public class BuildingHeader {
 		this.modifiedBy = modifiedBy;
 		this.modifiedDate = modifiedDate;
 		this.status = status;
+	}
+
+	public BuildingHeader() {
+		
 	}
 
 	public int getBuildingID() {
@@ -144,12 +163,12 @@ public class BuildingHeader {
 		this.projectNumber = projectNumber;
 	}
 
-	public String getBillingInformation() {
-		return billingInformation;
+	public String getBuildingInformation() {
+		return buildingInformation;
 	}
 
-	public void setBillingInformation(String billingInformation) {
-		this.billingInformation = billingInformation;
+	public void setbuildingInformation(String buildingInformation) {
+		this.buildingInformation = buildingInformation;
 	}
 
 	public String getCsNumber() {

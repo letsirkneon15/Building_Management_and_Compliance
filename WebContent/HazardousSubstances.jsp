@@ -6,7 +6,7 @@
 <div class="card shadow mb-4">
 	<div class="card-body">
 		<div class="table-responsive">
-			<table class="table table-striped table-bordered dt-responsive nowrap" id="hazardousSubstancesTable" width="100%"
+			<table class="table table-bordered table-hover table-striped table-condensed" id="hazardousSubstancesTable" width="100%"
 				cellspacing="0">
 				<thead>
 					<tr>
@@ -27,7 +27,7 @@
 
 				<!-- Start Rows -->
 				<tbody>
-					<d:forEach var="b" items="${asbestosArr}" varStatus="bIndex">
+					<d:forEach var="b" items="${hazSubstancesArr}" varStatus="bIndex">
 						<tr>
 							<td>${b.productName }</td>
 							<td>${b.unNumber }</td>
@@ -44,16 +44,16 @@
 							<td>${b.maximumLikelyAmount }</td>									
 							<td><a href="#downloadCloud" data-toggle="modal"
 								data-id="downloadLink${bIndex.index}"
-								data-buildingId="${b.buildingId}"><img
+								data-buildingID="${b.buildingID}"><img
 									src='images/download_cloud.png' height=15 width=15></a></td>
 							<td><a href="#editRecord" data-toggle="modal"
 								data-id="edtLink${bIndex.index}"
-								data-buildingId="${b.buildingId}"><img src='images/edit.jpg'
-									height=15 width=15></a></td>
+								data-buildingID="${b.buildingID}"><img src='images/edit.jpg'
+									height=15 widtdata-buildingID="${b.buildingID}"5></a></td>
 							<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
 							<td><a href="#deleteRecord" data-toggle="modal"
 								data-id="dltLink${bIndex.index}"
-								data-buildingId="${b.buildingId}"><img
+								data-buildingID="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
 					</d:forEach>

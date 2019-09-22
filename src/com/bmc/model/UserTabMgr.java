@@ -14,23 +14,15 @@ public class UserTabMgr {
 	private ResultSet resultSet;
 	
 	public ArrayList<UserTab> getUserTab(Connection conn, String userID){
-		
-		   int frRowNum=0, toRowNum=0;
 		   
 		   ArrayList<UserTab> utArr = new ArrayList<>();
 		   
-		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
-					+ "SELECT a.* from dbo.User_Tab a WHERE userID=?" +
-					" ) inner) outer WHERE outer.rn >= ? and outer.rn <= ?";
-
-			System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);	
+		   String qry = "SELECT a.* from dbo.User_Tab a WHERE userID=?";
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, userID);
-				pstatement.setInt(2, frRowNum);
-				pstatement.setInt(3, toRowNum);
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

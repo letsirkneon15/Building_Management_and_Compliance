@@ -15,23 +15,15 @@ public class UserMgr {
 	
 	public ArrayList<User> getUser(Connection conn, String userID, String name){
 		
-		   int frRowNum=0, toRowNum=0;
-		
 		   ArrayList<User> userArr = new ArrayList<>();
 		   
-		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
-					+ "SELECT a.* from dbo.User a WHERE userID Like ? AND name Like ? " +
-					" ) inner) outer WHERE outer.rn >= ? and outer.rn <= ?";
-
-			System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);	
+		   String qry = "SELECT * from dbo.User WHERE userID Like ? AND name Like ? ";
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, userID);
 				pstatement.setString(2, name);
-				pstatement.setInt(3, frRowNum);
-				pstatement.setInt(4, toRowNum);
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

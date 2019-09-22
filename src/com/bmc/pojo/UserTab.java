@@ -1,8 +1,10 @@
 package com.bmc.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserTab {
+public class UserTab implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private String userID; 
 	private int tabID; 

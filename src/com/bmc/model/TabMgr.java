@@ -15,23 +15,15 @@ public class TabMgr {
 	
 	public ArrayList<Tab> getTab(Connection conn, int tabID, String tabDescription){
 		
-		   int frRowNum=0, toRowNum=0;
-		
 		   ArrayList<Tab> tabArr = new ArrayList<>();
 		   
-		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
-					+ "SELECT a.* from dbo.Tab a WHERE tabID Like ? AND tabDescription Like ? " +
-					" ) inner) outer WHERE outer.rn >= ? and outer.rn <= ?";
-
-			System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);	
+		   String qry = "SELECT * from dbo.Tab WHERE tabID Like ? AND tabDescription Like ? ";
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setInt(1, tabID);
 				pstatement.setString(2, tabDescription);
-				pstatement.setInt(3, frRowNum);
-				pstatement.setInt(4, toRowNum);
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

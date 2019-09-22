@@ -1,4 +1,4 @@
-package com.bmc.webservices;
+package com.bmc.resource;
 
 import java.sql.Connection;
 import java.util.List;

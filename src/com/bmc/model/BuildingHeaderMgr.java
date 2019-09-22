@@ -18,15 +18,23 @@ public class BuildingHeaderMgr {
 		
 		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
 
-		//String qry = "SELECT * FROM dbo.Building_Header WHERE buildingID=? AND buildingName LIKE ?";
-		String qry = "SELECT * FROM dbo.Building_Header";
+		
+		String qry = "SELECT * FROM dbo.Building_Header WHERE buildingID=? "; 
+		
+		if(!buildingName.equals("")){
+			qry = qry + "AND buildingName LIKE ?";
+		}
+				
 		System.out.println("QRY: " + qry);
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
-			//pstatement.setInt(1, buildingID);
-			//pstatement.setString(2, buildingName.trim());
+			pstatement.setInt(1, buildingID);
+			
+			if(!buildingName.equals("")){
+				pstatement.setString(2, buildingName.trim());
+			}	
 			//pstatement.setInt(3, frRowNum);
 			//pstatement.setInt(4, toRowNum);
 
@@ -60,6 +68,93 @@ public class BuildingHeaderMgr {
 		return bhArr;
 	}
 
+	public ArrayList<BuildingHeader> getBuildingHeaderByUserId(Connection conn, String userID) {
+
+		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
+
+		String qry = "SELECT * FROM dbo.User_Building ub INNER JOIN dbo.Building_Header bh on "
+				+ "ub.BuildingID = bh.BUildingID where userID=?";
+		System.out.println("QRY: " + qry);
+
+		try {
+
+			pstatement = conn.prepareStatement(qry);
+			pstatement.setString(1, userID);
+
+
+			resultSet = pstatement.executeQuery();
+			while (resultSet.next()) {
+				bhArr.add(new BuildingHeader(resultSet.getInt("buildingID"), resultSet.getString("buildingName"),
+						resultSet.getString("address"), resultSet.getString("location"),
+						resultSet.getString("levelOrUnitNumber"), resultSet.getString("coordinates"),
+						resultSet.getString("owner"), resultSet.getString("client"),
+						resultSet.getString("responsibleOffice"), resultSet.getString("projectNumber"),
+						resultSet.getString("buildingInformation"), resultSet.getString("csNumber"),
+						resultSet.getString("legalDescription"), resultSet.getInt("maxOccupants"),
+						resultSet.getString("fireHazardCategory"), resultSet.getInt("yearBuilt"),
+						resultSet.getString("intendedLife"), resultSet.getInt("bwofAnniversary"),
+						resultSet.getString("asbestosPresent"), resultSet.getFloat("nbsPercentage"),
+						resultSet.getString("createdBy"), resultSet.getDate("creationDate"),
+						resultSet.getString("modifiedBy"), resultSet.getDate("modifiedDate"),
+						resultSet.getString("status")));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultSet.close();
+				pstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return bhArr;
+	}
+	
+	public BuildingHeader getBuildingHeaderByBuildingID(Connection conn, int buildingID) {
+		
+		BuildingHeader bHeader = new BuildingHeader();
+
+		String qry = "SELECT * FROM dbo.Building_Header where buildingID=?";
+		System.out.println("QRY: " + qry);
+
+		try {
+
+			pstatement = conn.prepareStatement(qry);
+			pstatement.setInt(1, buildingID);
+
+
+			resultSet = pstatement.executeQuery();
+			while (resultSet.next()) {
+				bHeader = new BuildingHeader(resultSet.getInt("buildingID"), resultSet.getString("buildingName"),
+						resultSet.getString("address"), resultSet.getString("location"),
+						resultSet.getString("levelOrUnitNumber"), resultSet.getString("coordinates"),
+						resultSet.getString("owner"), resultSet.getString("client"),
+						resultSet.getString("responsibleOffice"), resultSet.getString("projectNumber"),
+						resultSet.getString("buildingInformation"), resultSet.getString("csNumber"),
+						resultSet.getString("legalDescription"), resultSet.getInt("maxOccupants"),
+						resultSet.getString("fireHazardCategory"), resultSet.getInt("yearBuilt"),
+						resultSet.getString("intendedLife"), resultSet.getInt("bwofAnniversary"),
+						resultSet.getString("asbestosPresent"), resultSet.getFloat("nbsPercentage"),
+						resultSet.getString("createdBy"), resultSet.getDate("creationDate"),
+						resultSet.getString("modifiedBy"), resultSet.getDate("modifiedDate"),
+						resultSet.getString("status"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultSet.close();
+				pstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return bHeader;
+	}
+	
 	public boolean setBuildingHeader(Connection conn, BuildingHeader buildHeader) {
 
 		boolean isCreated = false;
@@ -85,7 +180,7 @@ public class BuildingHeaderMgr {
 			pstatement.setString(8, buildHeader.getClient());
 			pstatement.setString(9, buildHeader.getResponsibleOffice());
 			pstatement.setString(10, buildHeader.getProjectNumber());
-			pstatement.setString(11, buildHeader.getBillingInformation());
+			pstatement.setString(11, buildHeader.getBuildingInformation());
 			pstatement.setString(12, buildHeader.getCsNumber());
 			pstatement.setString(13, buildHeader.getLegalDescription());
 			pstatement.setInt(14, buildHeader.getMaxOccupants());
@@ -140,7 +235,7 @@ public class BuildingHeaderMgr {
 			pstatement.setString(7, buildHeader.getClient());
 			pstatement.setString(8, buildHeader.getResponsibleOffice());
 			pstatement.setString(9, buildHeader.getProjectNumber());
-			pstatement.setNString(10, buildHeader.getBillingInformation());
+			pstatement.setString(10, buildHeader.getBuildingInformation());
 			pstatement.setString(11, buildHeader.getCsNumber());
 			pstatement.setString(12, buildHeader.getLegalDescription());
 			pstatement.setInt(13, buildHeader.getMaxOccupants());

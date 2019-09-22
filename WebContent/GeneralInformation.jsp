@@ -7,7 +7,7 @@
 				<label for="buildingName" class="col-xs-2">Name of Building</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="buildingName"
-						value="${buildingName}" />
+						value="${bHeader.buildingName}" />
 				</div>
 			</div>
 
@@ -15,7 +15,7 @@
 				<label for="address" class="col-xs-2">Address</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="address"
-						value="${address}" />
+						value="${bHeader.address}" />
 				</div>
 				<div class="col-xs-3">
 					<button type="submit" class="btn btn-primary" name="button" value="updateBuilding"><h5><span class="glyphicon glyphicon-edit"></span><b> Update Building</b></h5></button>
@@ -26,8 +26,8 @@
 				<label for="responsibleOffice" class="col-xs-2">Responsible
 					Office</label>
 				<div class="col-xs-7">
-					<input type="text" class="form-control" id="resposibleOffice"
-						value="${resposibleOffice}" />
+					<input type="text" class="form-control" id="responsibleOffice"
+						value="${bHeader.responsibleOffice}" />
 				</div>
 				<div class="col-xs-3">
 					<button type="submit" class="btn btn-primary" name="button" value="deleteBuilding"><h5><span class="glyphicon glyphicon-trash"></span><b> Delete Building &nbsp;</b></h5></button>
@@ -38,7 +38,7 @@
 				<label for="client" class="col-xs-2">Client</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="client"
-						value="${client}" />
+						value="${bHeader.client}" />
 				</div>
 			</div>
 
@@ -46,7 +46,7 @@
 				<label for="projectNumber" class="col-xs-2">Project Number</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="projectNumber"
-						value="${projectNumber}" />
+						value="${bHeader.projectNumber}" />
 				</div>
 			</div>
 			
@@ -54,7 +54,7 @@
 				<label for="buildingInformation" class="col-xs-2">Building Information</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="buildingInformation"
-						value="${buildingInformation}" />
+						value="${bHeader.buildingInformation}" />
 				</div>
 			</div>
 
@@ -62,7 +62,7 @@
 				<label for="csNumber" class="col-xs-2">CS Number</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="csNumber"
-						value="${csNumber}" />
+						value="${bHeader.csNumber}" />
 				</div>
 			</div>
 			
@@ -70,7 +70,7 @@
 				<label for="legalDescription" class="col-xs-2">Legal Description</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="legalDescription"
-						value="${legalDescription}" />
+						value="${bHeader.legalDescription}" />
 				</div>
 			</div>		
 			
@@ -78,7 +78,7 @@
 				<label for="maxOccupants" class="col-xs-2">Max Occupants</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="maxOccupants"
-						value="${maxOccupants}" />
+						value="${bHeader.maxOccupants}" />
 				</div>
 			</div>		
 			
@@ -86,7 +86,7 @@
 				<label for="fireHazardCategory" class="col-xs-2">Fire Hazard Category</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="fireHazardCategory"
-						value="${fireHazardCategory}" />
+						value="${bHeader.fireHazardCategory}" />
 				</div>
 			</div>		
 			
@@ -94,7 +94,7 @@
 				<label for="yearBuilt" class="col-xs-2">Year Built</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="yearBuilt"
-						value="${yearBuilt}" />
+						value="${bHeader.yearBuilt}" />
 				</div>
 			</div>		
 			
@@ -102,7 +102,7 @@
 				<label for="intendedLife" class="col-xs-2">Intended Life</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="intendedLife"
-						value="${intendedLife}" />
+						value="${bHeader.intendedLife}" />
 				</div>
 			</div>								
 			
@@ -110,7 +110,7 @@
 				<label for="bwofAnniversary" class="col-xs-2">BWOF Anniversary</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="bwofAnniversary"
-						value="${bwofAnniversary}" />
+						value="${bHeader.bwofAnniversary}" />
 				</div>
 			</div>		
 			
@@ -118,7 +118,7 @@
 				<label for="asbestosPresent" class="col-xs-2">Asbestos Present</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="asbestosPresent"
-						value="${asbestosPresent}" />
+						value="${bHeader.asbestosPresent}" />
 				</div>
 			</div>		
 			
@@ -126,7 +126,7 @@
 				<label for="nbsPercent" class="col-xs-2">NBS %</label>
 				<div class="col-xs-7">
 					<input type="text" class="form-control" id="nbsPercent"
-						value="${nbsPercent}" />
+						value="${bHeader.nbsPercentage}" />
 				</div>
 			</div>				
 						

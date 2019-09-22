@@ -17,7 +17,6 @@ public class ContactsMgr {
 
 		ArrayList<Contacts> conArr = new ArrayList<>();
 
-
 		String qry = "SELECT * FROM dbo.Contacts WHERE buildingID=?";
 
 		try {

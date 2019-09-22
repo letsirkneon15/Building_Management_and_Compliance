@@ -1,8 +1,10 @@
 package com.bmc.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HazardousSubstance {
+public class HazardousSubstance implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private int recordID; 
 	private int buildingID; 

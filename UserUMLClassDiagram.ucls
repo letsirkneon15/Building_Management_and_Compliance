@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.bmc.model.TabMgr" project="Building_Management_Compliance" 
-    file="/Building_Management_Compliance/src/com/bmc/model/TabMgr.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="com.bmc.model.TabMgr" project="BMC_Web_Services" 
+    file="/BMC_Web_Services/src/com/bmc/model/TabMgr.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="683" y="-116"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.bmc.model.UserMgr" project="Building_Management_Compliance" 
-    file="/Building_Management_Compliance/src/com/bmc/model/UserMgr.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="com.bmc.model.UserMgr" project="BMC_Web_Services" 
+    file="/BMC_Web_Services/src/com/bmc/model/UserMgr.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1032" y="512"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.bmc.model.UserTabMgr" project="Building_Management_Compliance" 
-    file="/Building_Management_Compliance/src/com/bmc/model/UserTabMgr.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="com.bmc.model.UserTabMgr" project="BMC_Web_Services" 
+    file="/BMC_Web_Services/src/com/bmc/model/UserTabMgr.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1093" y="739"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.bmc.model.UserBuildingMgr" project="Building_Management_Compliance" 
-    file="/Building_Management_Compliance/src/com/bmc/model/UserBuildingMgr.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="com.bmc.model.UserBuildingMgr" project="BMC_Web_Services" 
+    file="/BMC_Web_Services/src/com/bmc/model/UserBuildingMgr.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1495" y="512"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

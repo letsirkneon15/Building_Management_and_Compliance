@@ -17,7 +17,6 @@ public class HazardousSubstanceMgr {
 
 		ArrayList<HazardousSubstance> hsArr = new ArrayList<>();
 
-
 		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID=?";
 
 		try {

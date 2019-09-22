@@ -22,6 +22,10 @@
   <!-- DataTable -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<style>
+    .table-row{cursor: pointer;
+</style>
+  
 </head>
 
 <body id="page-top">
@@ -40,11 +44,19 @@
 
 $(document).ready(function() {
     $('#dashboardTable').DataTable();
-} );
+});
 
 
 $(".nav-tabs a").click(function(){
     $(this).tab('show');
+});
+
+$(document).ready(function($) {
+    $(".table-row").click(function() {
+        window.document.location = $(this).data("href");
+        var buildingID = $(this).data('buildingID');
+        $(e.currentTarget).find('input[name="buildingID"]').val(buildingID);  
+    });
 });
 
 </script>

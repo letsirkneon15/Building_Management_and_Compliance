@@ -15,22 +15,14 @@ public class UserBuildingMgr {
 	
 	public ArrayList<UserBuilding> getUserBuilding(Connection conn, String userID){
 		
-		   int frRowNum=0, toRowNum=0;
-		
 		   ArrayList<UserBuilding> ubArr = new ArrayList<>();
 		   
-		   String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
-					+ "SELECT a.* from dbo.User_Building a WHERE userID = ?" +
-					" ) inner) outer WHERE outer.rn >= ? and outer.rn <= ?";
-
-			System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);	
+		   String qry = "SELECT a.* from dbo.User_Building a WHERE userID = ?";
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, userID);
-				pstatement.setInt(2, frRowNum);
-				pstatement.setInt(3, toRowNum);
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

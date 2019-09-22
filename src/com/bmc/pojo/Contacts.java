@@ -1,8 +1,10 @@
 package com.bmc.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Contacts {
+public class Contacts implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private int recordID;
 	private int buildingID; 
@@ -39,6 +41,10 @@ public class Contacts {
 		this.status = status;
 	}
 	
+	public Contacts() {
+		
+	}
+
 	public int getRecordID() {
 		return recordID;
 	}

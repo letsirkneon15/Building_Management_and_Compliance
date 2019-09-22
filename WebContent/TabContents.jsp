@@ -14,18 +14,16 @@
 <title>Building Management and Compliance</title>
 
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-	type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
- <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -40,7 +38,7 @@
 
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
-			<h1 class="h3 mb-0 text-gray-800">Name of the building</h1>
+			<h1 class="h3 mb-0 text-gray-800">${bHeader.buildingName}</h1>
 		</div>
 
 		<div class="card shadow mb-4">
@@ -148,8 +146,7 @@
 		</div>
 	</div>
 	<!--  End Page Content -->
-
-
+	
 	<!-- Include Footer.jsp -->
 	<%@ include file="Footer.jsp"%>
 
@@ -200,9 +197,38 @@ $(document).ready(function() {
     $('#hazardousSubstancesTable').DataTable();
 } );
 
-
 $(".nav-tabs a").click(function(){
     $(this).tab('show');
+});
+
+$('#editContacts').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var type = $(e.relatedTarget).data('type');
+    var company = $(e.relatedTarget).data('company');
+    var phoneNumber = $(e.relatedTarget).data('phoneNumber');
+    var faxNumber = $(e.relatedTarget).data('faxNumber');
+    var mobileNumber = $(e.relatedTarget).data('mobileNumber');
+    var emailAdd = $(e.relatedTarget).data('emailAdd');
+
+    $(e.currentTarget).find('input[name="edtName"]').val(name);
+    $(e.currentTarget).find('input[name="edtType"]').val(type);
+    $(e.currentTarget).find('input[name="edtCompany"]').val(company);
+    $(e.currentTarget).find('input[name="edtPhoneNumber"]').val(phoneNumber);
+    $(e.currentTarget).find('input[name="edtFaxNumber"]').val(faxNumber);
+    $(e.currentTarget).find('input[name="edtMobileNumber"]').val(mobileNumber);
+    $(e.currentTarget).find('input[name="edtEmailAdd"]').val(emailAdd);
+
+});
+
+$('#deleteContacts').on('show.bs.modal', function(e) {
+    var recordId = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltBuildingID"]').val(buildingID);
+
 });
 
 </script>

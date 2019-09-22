@@ -14,24 +14,14 @@ public class ComplianceInspectionMgr {
 	private ResultSet resultSet;
 
 	public ArrayList<ComplianceInspection> getComplianceInspection(Connection conn, int buildingID){
-		
-		int frRowNum=0, toRowNum=0;
 
 		ArrayList<ComplianceInspection> ciArr = new ArrayList<>();
 
-
-		String qry = "SELECT outer.* FROM (SELECT rownum rn, inner.* from("
-				+ "SELECT a.* from dbo.Compliance_Inspection a WHERE buildingID = ? " +
-				" ) inner) outer WHERE outer.rn >= ? and outer.rn <= ?";
-
-		System.out.println("Qry: " + qry + " frRowNum:" + frRowNum + " toRowNum: " + toRowNum);	
+		String qry = "SELECT * from dbo.Compliance_Inspection WHERE buildingID = ? ";
 
 		try{
 			pstatement = conn.prepareStatement(qry);
-			
 			pstatement.setInt(1, buildingID);
-			pstatement.setInt(2, frRowNum);
-			pstatement.setInt(3, toRowNum);
 
 			resultSet = pstatement.executeQuery();
 			while(resultSet.next()){
