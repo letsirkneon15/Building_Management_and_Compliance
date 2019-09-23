@@ -40,16 +40,14 @@
 									src='images/download_cloud.png' height=15 width=15></a></td>
 									
 							<td><a href="#editContacts" data-toggle="modal"
-								data-id="edtLink${bIndex.index}"
-								data-buildingID="${b.buildingID}" data-recodID="${b.recordID}" data-name="${b.name}"
-								data-type="${b.type}" data-company="${b.company}" data-phoneNumber="${b.phoneNumber}"
-								data-faxNumber="${b.faxNumber}" data-mobileNumber="${b.mobileNumber}" 
-								data-emailAdd="${b.emailAdd}"> <img src='images/edit.jpg'	height=15 width=15></a></td>
+								data-id="edtLink${bIndex.index}" data-buildingID="${b.buildingID}" data-recodID="${b.recordID}" data-name="${b.name}" 
+								data-type="${b.type}" data-company="${b.company}" data-phoneNumber="${b.phoneNumber}" data-faxNumber="${b.faxNumber}"  
+								data-mobileNumber="${b.mobileNumber}" data-emailAdd="${b.emailAdd}"> 
+								<img src='images/edit.jpg'	height=15 width=15></a></td>
 
-							<td><a href="#deleteContacts" data-toggle="modal"
-								data-id="dltLink${bIndex.index}"
-								data-recordID="${b.recordID}" data-buildingID="${b.buildingID}"><img
-									src='images/delete.jpg' height=15 width=15></a></td>
+							<td><a href="#deleteRecords" data-toggle="modal"
+								data-id="dltLink${bIndex.index}" data-recordID="${b.recordID}" data-buildingID="${b.buildingID}">
+								<img src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
 					</d:forEach>
 				</tbody>
@@ -82,13 +80,13 @@
      				<!-- Name  -->
      				<div class="col-sm-6">
      					<label for="name">Name:</label>
-     					<input class="form-control" name = "edtName" id="edtName" type="text" value="">
+     					<input class="form-control" name = "edtCName" id="edtCName" type="text" value="">
      				</div>
      				
      				<!-- Type  -->
      				<div class="col-sm-6">
  						<label for="type">Type:</label>
-     					<input class="form-control" name = "edtType" id="edtType" type="text" value="">
+     					<input class="form-control" name = "edtCType" id="edtCType" type="text" value="">
     				</div>
      			</div>
      			</div>
@@ -98,13 +96,13 @@
      				<!-- Company -->
      				<div class="col-sm-6">
      					<label for="company">Company:</label>
-     					<input class="form-control" name="edtCompany" id="edtCompany" type="text" value="">  	
+     					<input class="form-control" name="edtCCompany" id="edtCCompany" type="text" value=""> 	
      				</div>
      	
      				<!-- Phone Number  -->
      				<div class="col-sm-6">
      					<label for="phoneNumber">Phone Number:</label>
-     					<input class="form-control" name="edtPhoneNumber" id="edtPhoneNumber" type="text" value="">	
+     					<input class="form-control" name="edtCPhoneNumber" id="edtCPhoneNumber" type="text" value="">	
      				</div>
      			</div>
      			</div>
@@ -114,13 +112,13 @@
  					<!-- Fax Number  -->
  					<div class="col-sm-6">
  						<label for="faxNumber">Fax Number:</label>
-     					<input class="form-control" name="edtFaxNumber" id="edtFaxNumber" type="text" value="">	
+     					<input class="form-control" name="edtCFaxNumber" id="edtCFaxNumber" type="text" value="">	
      				</div>
      				
      				<!-- Mobile Number -->
      				<div class="col-sm-6">
      					<label for="mobileNumber">Mobile Number:</label>
-     					<input class="form-control" name="edtMobileNumber" id="edtMobileNumber" type="text" value="">    
+     					<input class="form-control" name="edtCMobileNumber" id="edtCMobileNumber" type="text" value="">    
      				</div>			
      			</div>
      			</div>
@@ -130,8 +128,11 @@
      				<!-- Email Address  -->
      				<div class="col-sm-6">
      					<label for="emailAdd">Email Address:</label>
-     					<input class="form-control" name="edtEmailAdd" id="edtEmailAdd" type="text" value="">
+     					<input class="form-control" name="edtCEmailAdd" id="edtCEmailAdd" type="text" value="">
      				</div>	
+     				
+     				<input class="form-control" name="edtCRecordID" id="edtCRecordID" type="hidden" value="">
+        			<input class="form-control" name="edtCBuildingID" id="edtCBuildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -150,7 +151,7 @@
 <!--END- Edit Record (MODAL)-->
 
 <!--START- Delete (MODAL)-->
-<div class="modal fade" id="deleteContacts" role="dialog">
+<div class="modal fade" id="deleteRecords" role="dialog">
   <div class="modal-dialog" style="width: 50%">
     
       <!-- Modal content-->

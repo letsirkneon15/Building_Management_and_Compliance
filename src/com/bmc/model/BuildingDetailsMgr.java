@@ -36,7 +36,7 @@ public class BuildingDetailsMgr {
 			while (resultSet.next()) {
 				bdArr.add(new BuildingDetails(resultSet.getInt("recordID"), resultSet.getString("buildingDetailsType"), 
 						resultSet.getInt("buildingID"), resultSet.getString("name"), resultSet.getString("attachment"), 
-						resultSet.getString("type"), resultSet.getInt("titleYear"), resultSet.getString("consentNumber"), 
+						resultSet.getString("type"), resultSet.getInt("titledYear"), resultSet.getString("consentNumber"), 
 						resultSet.getString("uploadedBy"), resultSet.getDate("uploadedDate"), resultSet.getString("lastUploadedBy"), 
 						resultSet.getDate("lastUploadedDate"), resultSet.getString("status")));
 			} 

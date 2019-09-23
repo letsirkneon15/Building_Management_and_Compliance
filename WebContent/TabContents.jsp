@@ -212,18 +212,204 @@ $('#editContacts').on('show.bs.modal', function(e) {
     var mobileNumber = $(e.relatedTarget).data('mobileNumber');
     var emailAdd = $(e.relatedTarget).data('emailAdd');
 
-    $(e.currentTarget).find('input[name="edtName"]').val(name);
-    $(e.currentTarget).find('input[name="edtType"]').val(type);
-    $(e.currentTarget).find('input[name="edtCompany"]').val(company);
-    $(e.currentTarget).find('input[name="edtPhoneNumber"]').val(phoneNumber);
-    $(e.currentTarget).find('input[name="edtFaxNumber"]').val(faxNumber);
-    $(e.currentTarget).find('input[name="edtMobileNumber"]').val(mobileNumber);
-    $(e.currentTarget).find('input[name="edtEmailAdd"]').val(emailAdd);
+    $(e.currentTarget).find('input[name="edtCRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtCBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtCName"]').val(name);
+    $(e.currentTarget).find('input[name="edtCType"]').val(type);
+    $(e.currentTarget).find('input[name="edtCCompany"]').val(company);
+    $(e.currentTarget).find('input[name="edtCPhoneNumber"]').val(phoneNumber);
+    $(e.currentTarget).find('input[name="edtCFaxNumber"]').val(faxNumber);
+    $(e.currentTarget).find('input[name="edtCMobileNumber"]').val(mobileNumber);
+    $(e.currentTarget).find('input[name="edtCEmailAdd"]').val(emailAdd);
 
 });
 
-$('#deleteContacts').on('show.bs.modal', function(e) {
-    var recordId = $(e.relatedTarget).data('recordID');
+$('#editWof').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var titledYear = $(e.relatedTarget).data('titledYear');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtWRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtWBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtWName"]').val(name);
+    $(e.currentTarget).find('input[name="edtWTitledYear"]').val(titledYear);
+    $(e.currentTarget).find('input[name="edtWAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtWType"]').val(type);
+    $(e.currentTarget).find('input[name="edtWUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtWLastUploadedBy"]').val(lastUploadedBy);
+
+});
+
+$('#editConsent').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var consentNumber = $(e.relatedTarget).data('consentNumber');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtCSRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtCSBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtCSName"]').val(name);
+    $(e.currentTarget).find('input[name="edtCSConsentNumber"]').val(consentNumber);
+    $(e.currentTarget).find('input[name="edtCSAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtCSType"]').val(type);
+    $(e.currentTarget).find('input[name="edtCSUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtCSLastUploadedBy"]').val(lastUploadedBy);
+
+});
+
+$('#editAsbestos').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtARecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtABuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtAName"]').val(name);
+    $(e.currentTarget).find('input[name="edtAAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtAType"]').val(type);
+    $(e.currentTarget).find('input[name="edtAUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtALastUploadedBy"]').val(lastUploadedBy);
+});
+
+$('#editElectrical').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtERecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtEBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtEName"]').val(name);
+    $(e.currentTarget).find('input[name="edtEAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtEType"]').val(type);
+    $(e.currentTarget).find('input[name="edtEUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtELastUploadedBy"]').val(lastUploadedBy);
+});
+
+$('#editGas').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtGRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtGBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtGName"]').val(name);
+    $(e.currentTarget).find('input[name="edtGAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtGType"]').val(type);
+    $(e.currentTarget).find('input[name="edtGUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtGLastUploadedBy"]').val(lastUploadedBy);
+});
+
+$('#editHazardSubstance').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var productName = $(e.relatedTarget).data('productName');
+    var unNumber = $(e.relatedTarget).data('unNumber');
+    var approvalNumber = $(e.relatedTarget).data('approvalNumber');
+    var groupStandard = $(e.relatedTarget).data('groupStandard');
+    var hazardClassification = $(e.relatedTarget).data('hazardClassification');
+    var currentSDSAvailable = $(e.relatedTarget).data('currentSDSAvailable');
+    var specificStorage = $(e.relatedTarget).data('specificStorage');
+    var segregationRequirements = $(e.relatedTarget).data('segregationRequirements');
+    var containerSize = $(e.relatedTarget).data('containerSize');
+    var openCloseContainer = $(e.relatedTarget).data('openCloseContainer');
+    var gasLiquidSolid = $(e.relatedTarget).data('gasLiquidSolid');
+    var location = $(e.relatedTarget).data('location');
+    var maximumLikelyAmount = $(e.relatedTarget).data('maximumLikelyAmount');
+
+    $(e.currentTarget).find('input[name="edtHSRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtHSBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtHSProductName"]').val(productName);
+    $(e.currentTarget).find('input[name="edtHSUnNumber"]').val(unNumber);
+    $(e.currentTarget).find('input[name="edtHSApprovalNumber"]').val(approvalNumber);
+    $(e.currentTarget).find('input[name="edtHSGroupStandard"]').val(groupStandard);
+    $(e.currentTarget).find('input[name="edtHSHazardClassification"]').val(hazardClassification);
+    $(e.currentTarget).find('input[name="edtHSCurrentSDSAvailable"]').val(currentSDSAvailable);
+    $(e.currentTarget).find('input[name="edtHSSpecificStorage"]').val(specificStorage);
+    $(e.currentTarget).find('input[name="edtHSSegregationRequirements"]').val(segregationRequirements);
+    $(e.currentTarget).find('input[name="edtHSContainerSize"]').val(containerSize);
+    $(e.currentTarget).find('input[name="edtHSOpenCloseContainer"]').val(openCloseContainer);
+    $(e.currentTarget).find('input[name="edtHSGasLiquidSolid"]').val(gasLiquidSolid);
+    $(e.currentTarget).find('input[name="edtHSLocation"]').val(location);
+    $(e.currentTarget).find('input[name="edtHSMaximumLikelyAmount"]').val(maximumLikelyAmount);
+});
+
+$('#editHazardRegister').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var identifiedHazard = $(e.relatedTarget).data('identifiedHazard');
+    var initialRiskAssessment = $(e.relatedTarget).data('initialRiskAssessment');
+    var controls = $(e.relatedTarget).data('controls');
+    var levelOfControl = $(e.relatedTarget).data('levelOfControl');
+    var residualRiskAssessment = $(e.relatedTarget).data('residualRiskAssessment');
+
+    $(e.currentTarget).find('input[name="edtHRRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtHRBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtHRidentifiedHazard"]').val(identifiedHazard);
+    $(e.currentTarget).find('input[name="edtHRInitialRiskAssessment"]').val(initialRiskAssessment);
+    $(e.currentTarget).find('input[name="edtHRControls"]').val(controls);
+    $(e.currentTarget).find('input[name="edtHRLevelOfControl"]').val(levelOfControl);
+    $(e.currentTarget).find('input[name="edtHRResidualRiskAssessment"]').val(residualRiskAssessment);
+});
+
+$('#editSeismicResilience').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtSRRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtSRBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtSRName"]').val(name);
+    $(e.currentTarget).find('input[name="edtSRAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtSRType"]').val(type);
+    $(e.currentTarget).find('input[name="edtSRUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtSRLastUploadedBy"]').val(lastUploadedBy);
+});
+
+$('#editResourceConsent').on('show.bs.modal', function(e) {
+    var buildingID = $(e.relatedTarget).data('buildingID');
+    var recordID = $(e.relatedTarget).data('recordID');
+    var name = $(e.relatedTarget).data('name');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedBy = $(e.relatedTarget).data('uploadedBy');
+    var lastUploadedBy = $(e.relatedTarget).data('lastUploadedBy');
+
+    $(e.currentTarget).find('input[name="edtRCRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="edtRCBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="edtRCName"]').val(name);
+    $(e.currentTarget).find('input[name="edtRCAttachment"]').val(attachment);
+    $(e.currentTarget).find('input[name="edtRCType"]').val(type);
+    $(e.currentTarget).find('input[name="edtRCUploadedBy"]').val(uploadedBy);
+    $(e.currentTarget).find('input[name="edtRCLastUploadedBy"]').val(lastUploadedBy);
+});
+
+$('#deleteRecords').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
     var buildingID = $(e.relatedTarget).data('buildingID');
 
     $(e.currentTarget).find('input[name="dltRecordID"]').val(recordID);
