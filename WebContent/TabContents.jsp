@@ -201,6 +201,10 @@ $(".nav-tabs a").click(function(){
     $(this).tab('show');
 });
 
+/**************** CREATE MODALS HERE *************************************/
+
+/**************** EDIT MODALS HERE **************************************/
+
 $('#editContacts').on('show.bs.modal', function(e) {
     var buildingID = $(e.relatedTarget).data('buildingID');
     var recordID = $(e.relatedTarget).data('recordID');
@@ -408,13 +412,86 @@ $('#editResourceConsent').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtRCLastUploadedBy"]').val(lastUploadedBy);
 });
 
-$('#deleteRecords').on('show.bs.modal', function(e) {
+/**************** DELETE MODALS HERE **************************************/
+
+$('#deleteContacts').on('show.bs.modal', function(e) {
     var recordID = $(e.relatedTarget).data('recordID');
     var buildingID = $(e.relatedTarget).data('buildingID');
 
-    $(e.currentTarget).find('input[name="dltRecordID"]').val(recordID);
-    $(e.currentTarget).find('input[name="dltBuildingID"]').val(buildingID);
+    $(e.currentTarget).find('input[name="dltCRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltCBuildingID"]').val(buildingID);
+});
 
+$('#deleteWof').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltWRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltWBuildingID"]').val(buildingID);
+});
+
+$('#deleteConsent').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltCSRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltCSBuildingID"]').val(buildingID);
+});
+
+$('#deleteAsbestos').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltARecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltABuildingID"]').val(buildingID);
+});
+
+$('#deleteElectrical').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltERecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltEBuildingID"]').val(buildingID);
+});
+
+$('#deleteGas').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltGRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltGBuildingID"]').val(buildingID);
+});
+
+$('#deleteHazardSubstance').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltHSRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltHSBuildingID"]').val(buildingID);
+});
+
+$('#deleteHazardRegister').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltHRRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltHRBuildingID"]').val(buildingID);
+});
+
+$('#deleteSeismicResilience').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltSRRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltSRBuildingID"]').val(buildingID);
+});
+
+$('#deleteResourceConsent').on('show.bs.modal', function(e) {
+    var recordID = $(e.relatedTarget).data('recordID');
+    var buildingID = $(e.relatedTarget).data('buildingID');
+
+    $(e.currentTarget).find('input[name="dltRCRecordID"]').val(recordID);
+    $(e.currentTarget).find('input[name="dltRCBuildingID"]').val(buildingID);
 });
 
 </script>

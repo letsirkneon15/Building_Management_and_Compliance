@@ -43,7 +43,7 @@
 								data-lastUploadedBy="${b.lastUploadedBy}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
-							<td><a href="#deleteRecords" data-toggle="modal"
+							<td><a href="#deleteAsbestos" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordID="${b.recordID}"
 								data-buildingID="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
@@ -138,7 +138,7 @@
 <!--END- Edit Record (MODAL)-->
 
 <!--START- Delete (MODAL)-->
-<div class="modal fade" id="deleteRecords" role="dialog">
+<div class="modal fade" id="deleteAsbestos" role="dialog">
   <div class="modal-dialog" style="width: 50%">
     
       <!-- Modal content-->
@@ -148,13 +148,13 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 	
-		<!-- Create a Form to edit record -->
+		<!-- Create a Form to delete record -->
 		<form action="${pageContext.request.contextPath}/Tabs?action=dltAsbestos" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
-         <input class="form-control" name="dltRecordID" id="dltRecordID" type="hidden" value="">
-         <input class="form-control" name="dltBuildingID" id="dltBuildingID" type="hidden" value="">
+         <input class="form-control" name="dltARecordID" id="dltARecordID" type="hidden" value="">
+         <input class="form-control" name="dltABuildingID" id="dltABuildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>
