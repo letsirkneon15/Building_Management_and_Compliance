@@ -59,7 +59,7 @@
 									</form>
 									<hr>
 									<div class="text-center">
-										<a href="Register.jsp"  style="font-size:12px" >Create an Account!</a>
+										<a href="UserRegistration.jsp"  style="font-size:12px" >Create an Account!</a>
 									</div>
 									<div class="text-center">
 										<a  href="Login.jsp" style="font-size:12px">Already have an
