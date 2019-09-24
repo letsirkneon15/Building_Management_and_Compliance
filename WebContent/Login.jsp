@@ -66,7 +66,7 @@
 											class="btn btn-primary btn-user btn-block"> Login </a>
 										<hr>
 										<div class="text-center">
-											<a class="small" href="forgot-password.jsp" style="font-size:12px">Forgot
+											<a class="small" href="ForgotPassword.jsp" style="font-size:12px">Forgot
 												Password?</a>
 										</div>
 										<div class="text-center">
