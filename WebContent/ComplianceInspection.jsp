@@ -13,6 +13,9 @@
 						<th>Status</th>
 						<th>Image File</th>
 						<th>Actions</th>
+						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
 					</tr>
 				</thead>
 
@@ -25,6 +28,7 @@
 							<td>${b.description }</td>
 							<td>${b.inspectionStatus }</td>
 							<td>${b.image }</td>
+							<td> </td>
 							<td><a href="#downloadCloud" data-toggle="modal"
 								data-id="downloadLink${bIndex.index}"
 								data-buildingID="${b.buildingID}"><img

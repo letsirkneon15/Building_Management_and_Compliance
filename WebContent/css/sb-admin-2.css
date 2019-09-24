@@ -6332,6 +6332,7 @@ a.close.disabled {
   .modal-lg,
   .modal-xl {
     max-width: 800px;
+    vertical-align: middle;
   }
 }
 

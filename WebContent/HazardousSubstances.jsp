@@ -40,29 +40,29 @@
 							<td>${b.currentSDSAvailable }</td>
 							<td>${b.specificStorage} / ${b.segregationRequirements}</td>
 							<td>${b.containerSize }</td>
-							<td>${b.openCloseContainerNumber }</td>
+							<td>${b.openCloseContainer }</td>
 							<td>${b.gasLiquidSolid }</td>				
 							<td>${b.location }</td>		
 							<td>${b.maximumLikelyAmount }</td>	
 															
 							<td><a href="#downloadCloud" data-toggle="modal"
 								data-id="downloadLink${bIndex.index}"
-								data-buildingID="${b.buildingID}"><img
+								data-buildingid="${b.buildingID}"><img
 									src='images/download_cloud.png' height=15 width=15></a></td>
 							
 							<td><a href="#editHazardSubstance" data-toggle="modal"
-								data-id="edtLink${bIndex.index}" data-recordID="${b.recordID}" data-buildingID="${b.buildingID}" 
-								data-productName="${b.productName}" data-unNumber="${b.unNumber}" data-approvalNumber="${b.approvalNumber}" data-groupStandard="${b.groupStandard}" 
-								data-hazardClassification="${b.hazardClassification}" data-currentSDSAvailable="${b.currentSDSAvailable}" 
-								data-specificStorage="${b.specificStorage}" data-segregationRequirements="${b.segregationRequirements}" 
-								data-containerSize="${b.containerSize}" data-openCloseContainerNumber="${b.openCloseContainerNumber}" 
-								data-gasLiquidSolid="${b.gasLiquidSolid}" data-location="${b.location}" 
-								data-maximumLikelyAmount="${b.maximumLikelyAmount}">
+								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
+								data-productname="${b.productName}" data-unnumber="${b.unNumber}" data-approvalnumber="${b.approvalNumber}" data-groupstandard="${b.groupStandard}" 
+								data-hazardclassification="${b.hazardClassification}" data-currentsdsavailable="${b.currentSDSAvailable}" 
+								data-specificstorage="${b.specificStorage}" data-segregationrequirements="${b.segregationRequirements}" 
+								data-containersize="${b.containerSize}" data-openclosecontainer="${b.openCloseContainer}" 
+								data-gasliquidsolid="${b.gasLiquidSolid}" data-location="${b.location}" 
+								data-maximumlikelyamount="${b.maximumLikelyAmount}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
 							<td><a href="#deleteHazardSubstance" data-toggle="modal"
-								data-id="dltLink${bIndex.index}" data-recordID="${b.recordID}"
-								data-buildingID="${b.buildingID}">
+								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
+								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>	
 						</tr>
 					</d:forEach>
@@ -77,7 +77,7 @@
 
 <!--START- Edit Record (MODAL)-->
 <div class="modal fade" id="editHazardSubstance" role="dialog">
-  <div class="modal-dialog" style="width: 100%">
+  <div class="modal-lg" style="width: 100%" align="center">
     
       <!-- Modal content-->
       <div class="modal-content">

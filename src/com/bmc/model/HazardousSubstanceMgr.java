@@ -31,7 +31,7 @@ public class HazardousSubstanceMgr {
 						resultSet.getString("hazardClassification"), resultSet.getString("currentSDSAvailable"), resultSet.getString("specificStorage"), 
 						resultSet.getString("segregationRequirements"), resultSet.getString("containerSize"), resultSet.getString("openCloseContainer"), 
 						resultSet.getString("gasLiquIDSolID"), resultSet.getString("location"), resultSet.getInt("maximumLikelyAmount"), 
-						resultSet.getString("createdBy"), resultSet.getDate("creationDate"), resultSet.getString("modifiedBy"), 
+						resultSet.getString("createdBy"), resultSet.getDate("createdDate"), resultSet.getString("modifiedBy"), 
 						resultSet.getDate("modifiedDate"), resultSet.getString("status")));
 			} 
 		}catch (Exception e) {
@@ -58,7 +58,7 @@ public class HazardousSubstanceMgr {
 					+ "recordID, buildingID, productName, unNumber, approvalNumber, "
 					+ "groupStandard, hazardClassification, currentSDSAvailable, specificStorage, segregationRequirements, "
 					+ "containerSize, openCloseContainer, gasLiquIDSolID, location, maximumLikelyAmount, "
-					+ "createdBy, creationDate, modifiedBy, modifiedDate, status"
+					+ "createdBy, createdDate, modifiedBy, modifiedDate, status"
 					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
@@ -79,7 +79,7 @@ public class HazardousSubstanceMgr {
 			pstatement.setString(14, hazardSub.getLocation());
 			pstatement.setInt(15, hazardSub.getMaximumLikelyAmount());
 			pstatement.setString(16, hazardSub.getCreatedBy());
-			pstatement.setDate(17, (java.sql.Date) hazardSub.getCreationDate());
+			pstatement.setDate(17, (java.sql.Date) hazardSub.getCreatedDate());
 			pstatement.setString(18, hazardSub.getModifiedBy());
 			pstatement.setDate(19, (java.sql.Date) hazardSub.getModifiedDate());
 			pstatement.setString(20, hazardSub.getStatus());
@@ -129,7 +129,7 @@ public class HazardousSubstanceMgr {
 			pstatement.setString(12, hazardSub.getLocation());
 			pstatement.setInt(13, hazardSub.getMaximumLikelyAmount());
 			pstatement.setString(14, hazardSub.getCreatedBy());
-			pstatement.setDate(15, (java.sql.Date) hazardSub.getCreationDate());
+			pstatement.setDate(15, (java.sql.Date) hazardSub.getCreatedDate());
 			pstatement.setString(16, hazardSub.getModifiedBy());
 			pstatement.setDate(17, (java.sql.Date) hazardSub.getModifiedDate());
 

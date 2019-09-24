@@ -33,19 +33,19 @@
 											
 							<td><a href="#downloadCloud" data-toggle="modal"
 								data-id="downloadLink${bIndex.index}"
-								data-buildingID="${b.buildingID}"><img
+								data-buildingid="${b.buildingID}"><img
 									src='images/download_cloud.png' height=15 width=15></a></td>
 							
 							<td><a href="#editHazardRegister" data-toggle="modal"
-								data-id="edtLink${bIndex.index}" data-recordID="${b.recordID}" data-buildingID="${b.buildingID}" 
-								data-identifiedHazard="${b.identifiedHazard}" data-initialRiskAssessment="${b.initialRiskAssessment}" 
-								data-controls="${b.controls}" data-ulevelOfControl="${b.levelOfControl}" 
-								data-residualRiskAssessment="${b.residualRiskAssessment}">
+								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
+								data-identifiedhazard="${b.identifiedHazard}" data-initialriskassessment="${b.initialRiskAssessment}" 
+								data-controls="${b.controls}" data-levelofcontrol="${b.levelOfControl}" 
+								data-residualriskassessment="${b.residualRiskAssessment}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
 							<td><a href="#deleteHazardRegister" data-toggle="modal"
-								data-id="dltLink${bIndex.index}" data-recordID="${b.recordID}"
-								data-buildingID="${b.buildingID}">
+								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
+								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>	
 						</tr>
 					</d:forEach>
@@ -100,7 +100,7 @@
      				<!-- Level of Control  -->
  					<div class="col-sm-6">
  						<label for="levelOfControl">Level of Control:</label>
-     					<input class="form-control" name="edtHRLevelOfControly" id="edtHRLevelOfControl" type="text" value="" readOnly>	
+     					<input class="form-control" name="edtHRLevelOfControl" id="edtHRLevelOfControl" type="text" value="">	
      				</div>
      			</div>
      			</div>
@@ -110,7 +110,7 @@
      				<!-- Residual Risk Assessment -->
      				<div class="col-sm-6">
      					<label for="residualRiskAssessment">Residual Risk Assessment:</label>
-     					<input class="form-control" name="edtHRResidualRiskAssessment" id="edtHRResidualRiskAssessment" type="text" value="" readOnly>    
+     					<input class="form-control" name="edtHRResidualRiskAssessment" id="edtHRResidualRiskAssessment" type="text" value="">    
      				</div>			
      			</div>
      			</div>

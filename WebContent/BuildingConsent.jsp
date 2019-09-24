@@ -33,18 +33,18 @@
 							<td></td>
 							<td><a href="#downloadCloud" data-toggle="modal"
 								data-id="downloadLink${bIndex.index}"
-								data-buildingID="${b.buildingID}"><img
+								data-buildingid="${b.buildingID}"><img
 									src='images/download_cloud.png' height=15 width=15></a></td>
 							
 							<td><a href="#editConsent" data-toggle="modal"
-								data-id="edtLink${bIndex.index}" data-recordID="${b.recordID}" data-buildingID="${b.buildingID}"
-								data-name="${b.name}" data-consentNumber="${b.consentNumber}" data-attachment="${b.attachment}"
-								data-type="${b.type}" data-uploadedBy="${b.uploadedBy}" data-lastUploadedBy="${b.lastUploadedBy}">
+								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
+								data-name="${b.name}" data-consentnumber="${b.consentNumber}" data-attachment="${b.attachment}"
+								data-type="${b.type}" data-uploadedby="${b.uploadedBy}" data-lastuploadedby="${b.lastUploadedBy}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
 							<td><a href="#deleteConsent" data-toggle="modal"
-								data-id="dltLink${bIndex.index}" data-recordID="${b.recordID}"
-								data-buildingID="${b.buildingID}"><img
+								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
+								data-buildingid="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
 					</c:forEach>
@@ -79,7 +79,7 @@
      				<!-- Name  -->
      				<div class="col-sm-6">
      					<label for="name">Name:</label>
-     					<input class="form-control" name = "edtWName" id="edtWName" type="text" value="">
+     					<input class="form-control" name = "edtCSName" id="edtCSName" type="text" value="">
      				</div>
      				
      				<!-- Consent Number  -->

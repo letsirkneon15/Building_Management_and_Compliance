@@ -36,17 +36,17 @@
 							
 							<td><a href="#downloadCloud" data-toggle="modal"
 								data-id="downloadLink${bIndex.index}"
-								data-buildingID="${b.buildingID}"><img
+								data-buildingid="${b.buildingID}"><img
 									src='images/download_cloud.png' height=15 width=15></a></td>
 									
 							<td><a href="#editContacts" data-toggle="modal"
-								data-id="edtLink${bIndex.index}" data-buildingID="${b.buildingID}" data-recodID="${b.recordID}" data-name="${b.name}"  
-								data-type="${b.type}" data-company="${b.company}" data-phoneNumber="${b.phoneNumber}" data-faxNumber="${b.faxNumber}"  
-								data-mobileNumber="${b.mobileNumber}" data-emailAdd="${b.emailAdd}"> 
+								data-id="edtLink${bIndex.index}" data-buildingid="${b.buildingID}" data-recodid="${b.recordID}" data-name="${b.name}"  
+								data-type="${b.type}" data-company="${b.company}" data-phonenumber="${b.phoneNumber}" data-faxnumber="${b.faxNumber}"  
+								data-mobilenumber="${b.mobileNumber}" data-emailadd="${b.emailAdd}"> 
 								<img src='images/edit.jpg'	height=15 width=15></a></td>
 
 							<td><a href="#deleteContacts" data-toggle="modal"
-								data-id="dltLink${bIndex.index}" data-recordID="${b.recordID}" data-buildingID="${b.buildingID}">
+								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
 					</d:forEach>

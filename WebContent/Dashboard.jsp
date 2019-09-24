@@ -25,9 +25,7 @@
                       <th>Client</th>
                       <th>Project#</th>
                       <th>CS#</th>
-                      <th>BWOF Expires</th>
-                      <th class="sorting_asc_disabled sorting_desc_disabled"></th>
-           			  <th class="sorting_asc_disabled sorting_desc_disabled"></th>   
+                      <th>BWOF Expires</th> 
                     </tr>
                   </thead>
                   
@@ -42,14 +40,7 @@
            				<td>${b.client }</td>
            				<td>${b.projectNumber }</td>
            				<td>${b.csNumber }</td>
-           				<td>${b.bwofAnniversary }</td>      
-	      				<td><a href="#editRecord" data-toggle="modal" data-id="edtLink${bIndex.index}"
-	       					data-buildingID="${b.buildingID}"><img src='images/edit.jpg' height=15 width=15></a>
-	       				</td> 	
-	       				<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
-	       				<td><a href="#deleteRecord" data-toggle="modal" data-id="dltLink${bIndex.index}"
-	       					data-buildingID="${b.buildingID}"><img src='images/delete.jpg' height=15 width=15></a>
-	       				</td>           
+           				<td>${b.bwofAnniversary }</td>               
         			</tr> 
         			</c:forEach>
                   </tbody>

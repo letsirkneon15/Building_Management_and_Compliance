@@ -34,7 +34,7 @@ public class ComplianceInspectionMgr {
 						resultSet.getString("inspectionStatus"),
 						resultSet.getString("image"),
 						resultSet.getString("createdBy"), 
-						resultSet.getDate("createdDate"),
+						resultSet.getDate("creationDate"),
 						resultSet.getString("modifiedBy"),
 						resultSet.getDate("modifiedDate"),
 						resultSet.getString("status")));		  

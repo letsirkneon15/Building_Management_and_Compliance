@@ -22,7 +22,7 @@ public class HazardousSubstance implements Serializable {
 	private String location;
 	private int maximumLikelyAmount;
 	private String createdBy;
-	private Date creationDate;
+	private Date createdDate;
 	private String modifiedBy; 
 	private Date modifiedDate;
 	private String status;
@@ -30,7 +30,7 @@ public class HazardousSubstance implements Serializable {
 	public HazardousSubstance(int recordID, int buildingID, String productName, String unNumber, String approvalNumber,
 			String groupStandard, String hazardClassification, String currentSDSAvailable, String specificStorage,
 			String segregationRequirements, String containerSize, String openCloseContainer, String gasLiquidSolid,
-			String location, int maximumLikelyAmount, String createdBy, Date creationDate, String modifiedBy,
+			String location, int maximumLikelyAmount, String createdBy, Date createdDate, String modifiedBy,
 			Date modifiedDate, String status) {
 		super();
 		this.recordID = recordID;
@@ -49,7 +49,7 @@ public class HazardousSubstance implements Serializable {
 		this.location = location;
 		this.maximumLikelyAmount = maximumLikelyAmount;
 		this.createdBy = createdBy;
-		this.creationDate = creationDate;
+		this.createdDate = createdDate;
 		this.modifiedBy = modifiedBy;
 		this.modifiedDate = modifiedDate;
 		this.status = status;
@@ -183,12 +183,12 @@ public class HazardousSubstance implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 	public String getModifiedBy() {
