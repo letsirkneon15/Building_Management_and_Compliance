@@ -5,6 +5,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crtContacts"><h5><span class="glyphicon glyphicon-plus-sign"></span><b> Add Contacts</b></h5></button><br><br>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="contactsTable" width="100%" cellspacing="0">
 				<thead>
@@ -57,6 +58,96 @@
 	</div>
 </div>
 <!-- End of DataTables -->
+
+<!--START- Create Record (MODAL)-->
+<div class="modal fade" id="crtContacts" role="dialog">
+  <div class="modal-dialog" style="width: 100%">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 class="modal-title" align="left"><b>Building Contacts - Create a New Record</b></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+	
+		<!-- Create a Form to edit record -->
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtContacts" method="post">
+         <div class="modal-body bgColorWhite">
+         	<div class="table-responsive" style="width:100%">
+         	 <div class="well">
+     				
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Name  -->
+     				<div class="col-sm-6">
+     					<label for="name">Name:</label>
+     					<input class="form-control" name = "crtCName" id="crtCName" type="text" value="${crtCName}">
+     				</div>
+     				
+     				<!-- Type  -->
+     				<div class="col-sm-6">
+ 						<label for="type">Type:</label>
+     					<input class="form-control" name = "crtCType" id="crtCType" type="text" value="${crtCType}">
+    				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Company -->
+     				<div class="col-sm-6">
+     					<label for="company">Company:</label>
+     					<input class="form-control" name="crtCCompany" id="crtCCompany" type="text" value="${crtCCompany}"> 	
+     				</div>
+     	
+     				<!-- Phone Number  -->
+     				<div class="col-sm-6">
+     					<label for="phoneNumber">Phone Number:</label>
+     					<input class="form-control" name="crtCPhoneNumber" id="crtCPhoneNumber" type="text" value="${crtCPhoneNumber}">	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+ 					<!-- Fax Number  -->
+ 					<div class="col-sm-6">
+ 						<label for="faxNumber">Fax Number:</label>
+     					<input class="form-control" name="crtCFaxNumber" id="crtCFaxNumber" type="text" value="${crtCFaxNumber}">	
+     				</div>
+     				
+     				<!-- Mobile Number -->
+     				<div class="col-sm-6">
+     					<label for="mobileNumber">Mobile Number:</label>
+     					<input class="form-control" name="crtCMobileNumber" id="crtCMobileNumber" type="text" value="${crtCMobileNumber}">    
+     				</div>			
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Email Address  -->
+     				<div class="col-sm-6">
+     					<label for="emailAdd">Email Address:</label>
+     					<input class="form-control" name="crtCEmailAdd" id="crtCEmailAdd" type="text" value="${crtCEmailAdd}">
+     				</div>	
+        			<input class="form-control" name="crtCBuildingID" id="crtCBuildingID" type="hidden" value="${crtCBuildingID}">
+     			</div>
+     			</div>
+     						
+  	 		  </div>		
+        	</div>
+        	</div>
+        	<div class="modal-footer">
+  					<!-- Submit Button -->
+         			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Create </button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        	</div>
+        </form>
+	  </div>		     
+  </div>
+</div>	 
+<!--END- Create Record (MODAL)-->
 
 <!--START- Edit Record (MODAL)-->
 <div class="modal fade" id="editContacts" role="dialog">
