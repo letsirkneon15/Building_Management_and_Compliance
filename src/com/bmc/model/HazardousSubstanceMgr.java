@@ -75,7 +75,7 @@ public class HazardousSubstanceMgr {
 			pstatement.setString(10, hazardSub.getSegregationRequirements());
 			pstatement.setString(11, hazardSub.getContainerSize());
 			pstatement.setString(12, hazardSub.getOpenCloseContainer());
-			pstatement.setString(13, hazardSub.getGasLiquIDSolID());
+			pstatement.setString(13, hazardSub.getGasLiquidSolid());
 			pstatement.setString(14, hazardSub.getLocation());
 			pstatement.setInt(15, hazardSub.getMaximumLikelyAmount());
 			pstatement.setString(16, hazardSub.getCreatedBy());
@@ -125,7 +125,7 @@ public class HazardousSubstanceMgr {
 			pstatement.setString(8, hazardSub.getSegregationRequirements());
 			pstatement.setString(9, hazardSub.getContainerSize());
 			pstatement.setString(10, hazardSub.getOpenCloseContainer());
-			pstatement.setString(11, hazardSub.getGasLiquIDSolID());
+			pstatement.setString(11, hazardSub.getGasLiquidSolid());
 			pstatement.setString(12, hazardSub.getLocation());
 			pstatement.setInt(13, hazardSub.getMaximumLikelyAmount());
 			pstatement.setString(14, hazardSub.getCreatedBy());

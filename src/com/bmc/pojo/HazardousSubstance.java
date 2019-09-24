@@ -18,7 +18,7 @@ public class HazardousSubstance implements Serializable {
 	private String segregationRequirements;
 	private String containerSize;
 	private String openCloseContainer;
-	private String gasLiquIDSolID;
+	private String gasLiquidSolid;
 	private String location;
 	private int maximumLikelyAmount;
 	private String createdBy;
@@ -29,7 +29,7 @@ public class HazardousSubstance implements Serializable {
 	
 	public HazardousSubstance(int recordID, int buildingID, String productName, String unNumber, String approvalNumber,
 			String groupStandard, String hazardClassification, String currentSDSAvailable, String specificStorage,
-			String segregationRequirements, String containerSize, String openCloseContainer, String gasLiquIDSolID,
+			String segregationRequirements, String containerSize, String openCloseContainer, String gasLiquidSolid,
 			String location, int maximumLikelyAmount, String createdBy, Date creationDate, String modifiedBy,
 			Date modifiedDate, String status) {
 		super();
@@ -45,7 +45,7 @@ public class HazardousSubstance implements Serializable {
 		this.segregationRequirements = segregationRequirements;
 		this.containerSize = containerSize;
 		this.openCloseContainer = openCloseContainer;
-		this.gasLiquIDSolID = gasLiquIDSolID;
+		this.gasLiquidSolid = gasLiquidSolid;
 		this.location = location;
 		this.maximumLikelyAmount = maximumLikelyAmount;
 		this.createdBy = createdBy;
@@ -151,12 +151,12 @@ public class HazardousSubstance implements Serializable {
 		this.openCloseContainer = openCloseContainer;
 	}
 
-	public String getGasLiquIDSolID() {
-		return gasLiquIDSolID;
+	public String getGasLiquidSolid() {
+		return gasLiquidSolid;
 	}
 
-	public void setGasLiquIDSolID(String gasLiquIDSolID) {
-		this.gasLiquIDSolID = gasLiquIDSolID;
+	public void setGasLiquidSolid(String gasLiquidSolid) {
+		this.gasLiquidSolid = gasLiquidSolid;
 	}
 
 	public String getLocation() {
