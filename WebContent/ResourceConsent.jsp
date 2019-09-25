@@ -3,18 +3,25 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 
-	<div class="card-body">
+	<div class="card-body" align="right">
+	<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtResourceConsent">
+			<h5>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+					Resource Consent</b>
+			</h5>
+		</button>
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="resourceConsentTable" width="100%"
 				cellspacing="0">
 				<thead>
-					<tr>
+					<tr align="center">
 						<th>Name</th>
 						<th>Attachment</th>
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th>Actions</th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
@@ -30,20 +37,14 @@
 							<td>${b.type }</td>
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>
-							<td></td>
 							
-							<td><a href="#downloadCloud" data-toggle="modal"
-								data-id="downloadLink${bIndex.index}"
-								data-buildingid="${b.buildingID}"><img
-									src='images/download_cloud.png' height=15 width=15></a></td>
-							
-							<td><a href="#editResourceConsent" data-toggle="modal"
+							<td align="center"><a href="#editResourceConsent" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"
 								data-name="${b.name}" data-attachment="${b.attachment}" data-type="${b.type}" data-uploadedby="${b.uploadedBy}" 
 								data-lastuploadedby="${b.lastUploadedBy}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
-							<td><a href="#deleteResourceConsent" data-toggle="modal"
+							<td align="center"><a href="#deleteResourceConsent" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>
@@ -57,6 +58,86 @@
 	</div>
 </div>
 <!-- End of DataTables -->
+
+
+<!--START- Create Record (MODAL)-->
+<div class="modal fade" id="crtResourceConsent" role="dialog">
+  <div class="modal-dialog" style="width: 100%">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 class="modal-title" align="left"><b>Resource Consent - Create New Record</b></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+	
+		<!-- Create a Form to create record -->
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtResourceConsent" method="post">
+         <div class="modal-body bgColorWhite">
+         	<div class="table-responsive" style="width:100%">
+         	 <div class="well">
+     				
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Name  -->
+     				<div class="col-sm-6">
+     					<label for="name">Name:</label>
+     					<input class="form-control" name = "crtRCName" id="crtRCName" type="text" value="${crtRCName}">
+     				</div>
+     				<!-- Attachment -->
+     				<div class="col-sm-6">
+     					<label for="attachment">Attachment:</label>
+     					<input class="form-control" name="crtRCAttachment" id="crtRCAttachment" type="text" value="${crtRCAttachment}"> 	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Type  -->
+     				<div class="col-sm-6">
+     					<label for="type">Type:</label>
+     					<input class="form-control" name="crtRCType" id="crtRCType" type="text" value="${crtRCType}">	
+     				</div>
+     				<!-- Uploaded By  -->
+ 					<div class="col-sm-6">
+ 						<label for="uploadedBy">Uploaded By:</label>
+     					<input class="form-control" name="crtRCUploadedBy" id="crtRCUploadedBy" type="text" value="${crtRCUploadedBy}" readOnly>	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Last Uploaded -->
+     				<div class="col-sm-6">
+     					<label for="lastUploadedBy">Last Uploaded:</label>
+     					<input class="form-control" name="crtRCLastUploadedBy" id="crtRCLastUploadedBy" type="text" value="${crtRCLastUploadedBy}" readOnly>    
+     				</div>			
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<input class="form-control" name="crtRCRecordID" id="crtRCRecordID" type="hidden" value="${crtRCRecordID}">
+        			<input class="form-control" name="crtRCBuildingID" id="crtRCBuildingID" type="hidden" value="${crtRCBuildingID}">
+     			</div>
+     			</div>
+     						
+  	 		  </div>		
+        	</div>
+        	</div>
+        	<div class="modal-footer">
+  					<!-- Submit Button -->
+         			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Create</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        	</div>
+        </form>
+	  </div>		     
+  </div>
+</div>	 
+<!--END- Create Record (MODAL)-->
+
 
 <!--START- Edit Record (MODAL)-->
 <div class="modal fade" id="editResourceConsent" role="dialog">
