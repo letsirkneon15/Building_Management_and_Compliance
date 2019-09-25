@@ -101,7 +101,7 @@ public class ComplianceInspectionWs {
 		
 		/* Update Status Compliance Inspection */
 		int result = new ComplianceInspectionMgr().setStatus(conn, comInspection.getStatus(), 
-				comInspection.getBuildingID(),comInspection.getModifiedBy(), comInspection.getModifiedDate());
+				comInspection.getRecordID(), comInspection.getBuildingID(),comInspection.getModifiedBy(), comInspection.getModifiedDate());
 		return Response.status(201).entity(result).build();
 				
 	}

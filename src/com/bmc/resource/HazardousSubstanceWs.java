@@ -100,7 +100,7 @@ public class HazardousSubstanceWs {
 		
 		/* Update Status Hazardous Substance */
 		int result = new HazardousSubstanceMgr().setStatus(conn, hazardSub.getStatus(), 
-				hazardSub.getBuildingID(), hazardSub.getModifiedBy(), hazardSub.getModifiedDate());
+				hazardSub.getRecordID(), hazardSub.getBuildingID(), hazardSub.getModifiedBy(), hazardSub.getModifiedDate());
 		return Response.status(201).entity(result).build();
 				
 	}

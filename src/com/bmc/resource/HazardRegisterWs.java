@@ -100,7 +100,7 @@ public class HazardRegisterWs {
 		
 		/* Update Status Hazard Register */
 		int result = new HazardRegisterMgr().setStatus(conn, hazardReg.getStatus(), 
-				hazardReg.getBuildingID(), hazardReg.getModifiedBy(), hazardReg.getModifiedDate());
+				hazardReg.getRecordID(), hazardReg.getBuildingID(), hazardReg.getModifiedBy(), hazardReg.getModifiedDate());
 		return Response.status(201).entity(result).build();
 				
 	}

@@ -101,7 +101,7 @@ public class ContactsWs {
 		
 		/* Update Status Compliance Inspection */
 		int result = new ContactsMgr().setStatus(conn, contact.getStatus(), 
-				contact.getBuildingID(),contact.getModifiedBy(), contact.getModifiedDate());
+				contact.getRecordID(), contact.getBuildingID(),contact.getModifiedBy(), contact.getModifiedDate());
 		return Response.status(201).entity(result).build();
 				
 	}

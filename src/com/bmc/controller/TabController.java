@@ -75,19 +75,16 @@ public class TabController extends HttpServlet {
 		String tabName="";
 		String userID = "";
 		int isUpdated = 0;
-		int setStatus = 0;
+		int isSetStatus = 0;
 		boolean isCreated = false;
-		String conContacts = "Contacts";
 		String conWOF = "WOF";
 		String conConsent = "Consent";
 		String conAsbestos = "Asbestos";
 		String conElectrical = "Electrical";
 		String conGas = "Gas";
-		String conHazardSubstance = "HazSubs";
-		String conHazardRegister = "HazReg";
 		String conSeismic = "Seismic";
 		String conResourceConsent = "Resource Consent";
-		String conComplianceInspection = "ComIns";
+		String conD = "D";
 		
 		
 		
@@ -448,6 +445,169 @@ public class TabController extends HttpServlet {
 					    isUpdated = new ComplianceInspectionMgr().updateComplianceInspection(conn, comInspection);
 					    
 					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	
+				}
+				
+				/* Do this for setting STATUS=D (means deleted) of TAB records */
+			}else if(action.equalsIgnoreCase("deleteTabs")){
+				
+				tabName = request.getParameter("tab");
+				
+				switch(tabName){
+				
+					case "Contacts":
+						int dltCRecordID = Integer.parseInt(request.getParameter("dltCRecordID"));
+					    int dltCBuildingID = Integer.parseInt(request.getParameter("dltCBuildingID"));
+					    
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new ContactsMgr().setStatus(conn, conD, dltCRecordID, dltCBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "WOF":
+						int dltWRecordID = Integer.parseInt(request.getParameter("dltWRecordID"));
+					    int dltWBuildingID = Integer.parseInt(request.getParameter("dltWBuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltWRecordID, dltWBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "Consent":
+						int dltCSRecordID = Integer.parseInt(request.getParameter("dltCSRecordID"));
+					    int dltCSBuildingID = Integer.parseInt(request.getParameter("dltCSBuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltCSRecordID, dltCSBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+				
+					case "Asbestos":
+						int dltARecordID = Integer.parseInt(request.getParameter("dltARecordID"));
+					    int dltABuildingID = Integer.parseInt(request.getParameter("dltABuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltARecordID, dltABuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "Electrical":
+						int dltERecordID = Integer.parseInt(request.getParameter("dltERecordID"));
+					    int dltEBuildingID = Integer.parseInt(request.getParameter("dltEBuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltERecordID, dltEBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	    
+					    
+					case "Gas":
+						int dltGRecordID = Integer.parseInt(request.getParameter("dltGRecordID"));
+					    int dltGBuildingID = Integer.parseInt(request.getParameter("dltGBuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltGRecordID, dltGBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	
+					    
+					case "HazSubs":
+						  int dltHSRecordID = Integer.parseInt(request.getParameter("dltHSRecordID"));
+						  int dltHSBuildingID = Integer.parseInt(request.getParameter("dltHSBuildingID"));
+						
+						/* Call Manager to edit status=D */
+						isSetStatus = new HazardousSubstanceMgr().setStatus(conn, conD, dltHSRecordID, dltHSBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "HazReg":
+						int dltHRRecordID = Integer.parseInt(request.getParameter("dltHRRecordID"));
+					    int dltHRBuildingID = Integer.parseInt(request.getParameter("dltHRBuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new HazardRegisterMgr().setStatus(conn, conD, dltHRRecordID, dltHRBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	    
+					    
+					case "Seismic":
+						int dltSRRecordID = Integer.parseInt(request.getParameter("dltSRRecordID"));
+					    int dltSRBuildingID = Integer.parseInt(request.getParameter("dltSRBuildingID"));
+						
+						/* Call Manager to edit values from POJO */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltSRRecordID, dltSRBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	    
+					    
+					case "ResourceConsent":
+						int dltRCRecordID = Integer.parseInt(request.getParameter("dltRCRecordID"));
+					    int dltRCBuildingID = Integer.parseInt(request.getParameter("dltRCBuildingID"));
+						
+					    /* Call Manager to edit status=D */
+					    isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltRCRecordID, dltRCBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	
+					    
+					case "ComIns":
+						
+						int dltCIRecordID = Integer.parseInt(request.getParameter("dltCIRecordID"));
+					    int dltCIBuildingID = Integer.parseInt(request.getParameter("dltCIBuildingID"));
+						
+						/* Call Manager to edit status=D */
+					    isSetStatus = new ComplianceInspectionMgr().setStatus(conn, conD, dltCIRecordID, dltCIBuildingID, userID, today);
+					    
+					    if(isSetStatus > 0) {
 					    	System.out.println("Record is successfully updated.");
 					    }else {
 					    	System.out.println("Record is not updated");

@@ -100,7 +100,7 @@ public class BuildingDetailsWs {
 		
 		/* Update Status Building Details */
 		int result = new BuildingDetailsMgr().setStatus(conn, buildDetail.getStatus(), 
-				buildDetail.getBuildingID(), buildDetail.getLastUploadedBy(), buildDetail.getLastUploadedDate());
+				buildDetail.getRecordID(), buildDetail.getBuildingID(), buildDetail.getLastUploadedBy(), buildDetail.getLastUploadedDate());
 		
 		return Response.status(201).entity(result).build();
 				

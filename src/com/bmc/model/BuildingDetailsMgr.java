@@ -137,7 +137,7 @@ public class BuildingDetailsMgr {
 		return isUpdated;
 	}
 
-	public int setStatus(Connection conn, String status, int buildingID, String modifiedBy, Date modifiedDate) {
+	public int setStatus(Connection conn, String status, int recordID, int buildingID, String modifiedBy, Date modifiedDate) {
 
 
 		int isSetStatus = 0;
@@ -145,7 +145,7 @@ public class BuildingDetailsMgr {
 		try {
 
 			String qry = "UPDATE dbo.Building_Details set status=?, "
-					+ "modifiedBy=?, modifiedDate=? WHERE buildingID =?";
+					+ "modifiedBy=?, modifiedDate=? WHERE buildingID =? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
@@ -153,6 +153,7 @@ public class BuildingDetailsMgr {
 			pstatement.setString(2, modifiedBy);
 			pstatement.setDate(3, (java.sql.Date) modifiedDate);
 			pstatement.setInt(4, buildingID);
+			pstatement.setInt(5, recordID);
 			
 			isSetStatus = pstatement.executeUpdate();
 			pstatement.close();
