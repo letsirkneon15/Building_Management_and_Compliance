@@ -4,15 +4,15 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<div class="card-body" align="right">
-		<button type="button" class="btn btn-primary"
+	<div class="card-body" >
+	<div align="right"><button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtContacts">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Contacts</b>
 			</h5>
 		</button>
-		<br> <br>
+		<br> <br></div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="contactsTable" width="100%" cellspacing="0">
 				<thead>

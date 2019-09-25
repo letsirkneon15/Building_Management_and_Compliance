@@ -1,7 +1,8 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<div class="card-body" align="right">
+	<div class="card-body" >
+		<div align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtElectrical">
 			<h5>
@@ -9,7 +10,7 @@
 					Electrical</b>
 			</h5>
 		</button>
-		<br> <br>
+		<br> <br></div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="electricalTable" width="100%"
 				cellspacing="0">
