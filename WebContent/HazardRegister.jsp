@@ -4,7 +4,7 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<div class="card-body">
+	<div class="card-body" align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtHazardRegister">
 			<h5>
@@ -17,7 +17,7 @@
 			<table class="table table-bordered table-hover table-striped table-condensed" id="hazardRegisterTable" width="100%"
 				cellspacing="0">
 				<thead>
-					<tr>
+					<tr align="center">
 						<th>Identified Hazard</th>
 						<th>Risk Assessment</th>
 						<th>Controls</th>
@@ -38,20 +38,16 @@
 							<td>${b.controls }</td>
 							<td>${b.levelOfControl }</td>
 							<td>${b.residualRiskAssessment }</td>	
-											
-							<td><a href="#downloadCloud" data-toggle="modal"
-								data-id="downloadLink${bIndex.index}"
-								data-buildingid="${b.buildingID}"><img
-									src='images/download_cloud.png' height=15 width=15></a></td>
+
 							
-							<td><a href="#editHazardRegister" data-toggle="modal"
+							<td align="center"><a href="#editHazardRegister" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
 								data-identifiedhazard="${b.identifiedHazard}" data-initialriskassessment="${b.initialRiskAssessment}" 
 								data-controls="${b.controls}" data-levelofcontrol="${b.levelOfControl}" 
 								data-residualriskassessment="${b.residualRiskAssessment}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
-							<td><a href="#deleteHazardRegister" data-toggle="modal"
+							<td align="center"><a href="#deleteHazardRegister" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>	

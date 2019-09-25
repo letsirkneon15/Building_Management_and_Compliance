@@ -3,7 +3,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 
-	<div class="card-body">
+	<div class="card-body" align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtResourceConsent">
 			<h5>
@@ -16,13 +16,12 @@
 			<table class="table table-bordered table-hover table-striped table-condensed" id="resourceConsentTable" width="100%"
 				cellspacing="0">
 				<thead>
-					<tr>
+					<tr align="center">
 						<th>Name</th>
 						<th>Attachment</th>
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th>Actions</th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
@@ -38,20 +37,14 @@
 							<td>${b.type }</td>
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>
-							<td></td>
 							
-							<td><a href="#downloadCloud" data-toggle="modal"
-								data-id="downloadLink${bIndex.index}"
-								data-buildingid="${b.buildingID}"><img
-									src='images/download_cloud.png' height=15 width=15></a></td>
-							
-							<td><a href="#editResourceConsent" data-toggle="modal"
+							<td align="center"><a href="#editResourceConsent" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"
 								data-name="${b.name}" data-attachment="${b.attachment}" data-type="${b.type}" data-uploadedby="${b.uploadedBy}" 
 								data-lastuploadedby="${b.lastUploadedBy}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
-							<td><a href="#deleteResourceConsent" data-toggle="modal"
+							<td align="center"><a href="#deleteResourceConsent" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>

@@ -4,7 +4,7 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<div class="card-body">
+	<div class="card-body" align="right">
 		<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtContacts">
 			<h5>
@@ -16,7 +16,7 @@
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="contactsTable" width="100%" cellspacing="0">
 				<thead>
-					<tr>
+					<tr align="center">
 						<th>Name</th>
 						<th>Type</th>
 						<th>Company</th>
@@ -42,18 +42,14 @@
 							<td>${b.mobileNumber }</td>
 							<td>${b.emailAdd }</td>
 							
-							<td><a href="#downloadCloud" data-toggle="modal"
-								data-id="downloadLink${bIndex.index}"
-								data-buildingid="${b.buildingID}"><img
-									src='images/download_cloud.png' height=15 width=15></a></td>
 									
-							<td><a href="#editContacts" data-toggle="modal"
+							<td align="center"><a href="#editContacts" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-buildingid="${b.buildingID}" data-recodid="${b.recordID}" data-name="${b.name}"  
 								data-type="${b.type}" data-company="${b.company}" data-phonenumber="${b.phoneNumber}" data-faxnumber="${b.faxNumber}"  
 								data-mobilenumber="${b.mobileNumber}" data-emailadd="${b.emailAdd}"> 
 								<img src='images/edit.jpg'	height=15 width=15></a></td>
 
-							<td><a href="#deleteContacts" data-toggle="modal"
+							<td align="center"><a href="#deleteContacts" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>

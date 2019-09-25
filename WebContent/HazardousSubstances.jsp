@@ -4,7 +4,7 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<div class="card-body">
+	<div class="card-body" align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtHazardSubstance">
 			<h5>
@@ -39,7 +39,7 @@
 				<!-- Start Rows -->
 				<tbody>
 					<d:forEach var="b" items="${hazSubstancesArr}" varStatus="bIndex">
-						<tr>
+						<tr align="center">
 							<td>${b.productName }</td>
 							<td>${b.unNumber }</td>
 							<td>${b.approvalNumber }</td>
@@ -53,12 +53,8 @@
 							<td>${b.location }</td>		
 							<td>${b.maximumLikelyAmount }</td>	
 															
-							<td><a href="#downloadCloud" data-toggle="modal"
-								data-id="downloadLink${bIndex.index}"
-								data-buildingid="${b.buildingID}"><img
-									src='images/download_cloud.png' height=15 width=15></a></td>
 							
-							<td><a href="#editHazardSubstance" data-toggle="modal"
+							<td align="center"><a href="#editHazardSubstance" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
 								data-productname="${b.productName}" data-unnumber="${b.unNumber}" data-approvalnumber="${b.approvalNumber}" data-groupstandard="${b.groupStandard}" 
 								data-hazardclassification="${b.hazardClassification}" data-currentsdsavailable="${b.currentSDSAvailable}" 
@@ -68,7 +64,7 @@
 								data-maximumlikelyamount="${b.maximumLikelyAmount}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
 							
-							<td><a href="#deleteHazardSubstance" data-toggle="modal"
+							<td align="center"><a href="#deleteHazardSubstance" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>	
