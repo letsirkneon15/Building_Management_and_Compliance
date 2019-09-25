@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.naming.Context;
@@ -70,6 +72,25 @@ public class TabController extends HttpServlet {
 		String newPage = "/TabContents.jsp";
 		int buildingID = 0;
 		String action = "";
+		String tabName="";
+		String userID = "";
+		int isUpdated = 0;
+		int setStatus = 0;
+		boolean isCreated = false;
+		String conContacts = "Contacts";
+		String conWOF = "WOF";
+		String conConsent = "Consent";
+		String conAsbestos = "Asbestos";
+		String conElectrical = "Electrical";
+		String conGas = "Gas";
+		String conHazardSubstance = "HazSubs";
+		String conHazardRegister = "HazReg";
+		String conSeismic = "Seismic";
+		String conResourceConsent = "Resource Consent";
+		String conComplianceInspection = "ComIns";
+		
+		
+		
 		BuildingHeader bHeader = new BuildingHeader();
 		List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
 		List<Contacts> contactsArr = new ArrayList<Contacts>();
@@ -84,6 +105,16 @@ public class TabController extends HttpServlet {
 		List<BuildingDetails> seismicArr = new ArrayList<BuildingDetails>();
 		List<BuildingDetails> resourceConsentArr = new ArrayList<BuildingDetails>();
 		
+		BuildingDetails buildDetails = new BuildingDetails();
+		Contacts contacts = new Contacts();
+		ComplianceInspection comInspection = new ComplianceInspection();
+		HazardousSubstance hazardSub = new HazardousSubstance();
+		HazardRegister hazardReg = new HazardRegister();
+
+		/* Get Today's date */
+		Date today = Calendar.getInstance().getTime();
+		
+		
 		/* Retrieve session values from BuildingHeader */
 		HttpSession session=request.getSession();
 		if(session != null){	
@@ -95,6 +126,8 @@ public class TabController extends HttpServlet {
 		if(action != null){
 			
 			System.out.println("Action: " + action);
+			
+			/* Display Tab Contents */
 			if(action.equalsIgnoreCase("tabContents")){
 				buildingID = Integer.parseInt(request.getParameter("buildingID"));
 				
@@ -117,27 +150,312 @@ public class TabController extends HttpServlet {
 				hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
 				
 				/*Get Building WOF from Building_Details table */
-				buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "WOF");
+				buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF);
 				
 				/*Get Building Consent from Building_Details table */
-				buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "Consent");
+				buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent);
 				
 				/*Get Asbestos from Building_Details table */
-				asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "Asbestos");
+				asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos);
 				
 				/*Get Electrical from Building_Details table */
-				electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "Electrical");
+				electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical);
 				
 				/*Get Gas from Building_Details table */
-				gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "Gas");
+				gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas);
 				
 				/*Get Seismic Resilience from Building_Details table */
-				seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "Seismic");
+				seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic);
 				
 				/*Get Resource Consent from Building_Details table */
-				resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "Resource Consent");
+				resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
+			
+			/* Do this for updating of TAB records */
+			}else if(action.equalsIgnoreCase("editTabs")){
 				
+				tabName = request.getParameter("tab");
+				
+				switch(tabName){
+				
+					case "Contacts":
+						int edtCRecordID = Integer.parseInt(request.getParameter("edtCRecordID"));
+					    int edtCBuildingID = Integer.parseInt(request.getParameter("edtCBuildingID"));
+					    String edtCName = request.getParameter("edtCName");
+					    String edtCType = request.getParameter("edtCType");
+					    String edtCCompany = request.getParameter("edtCCompany");
+					    String edtCPhoneNumber = request.getParameter("edtCPhoneNumber");
+					    String edtCFaxNumber = request.getParameter("edtCFaxNumber");
+					    String edtCMobileNumber = request.getParameter("edtCMobileNumber");
+					    String edtCEmailAdd = request.getParameter("edtCEmailAdd");
+					    
+					    /* Save values in contacts POJO */
+					    contacts = new Contacts(edtCRecordID, edtCBuildingID, edtCName, edtCType, edtCCompany, 
+					    		edtCPhoneNumber, edtCFaxNumber, edtCMobileNumber, edtCEmailAdd, contacts.getCreatedBy(), 
+					    		contacts.getCreationDate(), userID, today, contacts.getStatus());
+					    
+					    /* Call Manager to edit values from POJO */
+					    isUpdated = new ContactsMgr().updateContacts(conn, contacts);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "WOF":
+						int edtWRecordID = Integer.parseInt(request.getParameter("edtWRecordID"));
+					    int edtWBuildingID = Integer.parseInt(request.getParameter("edtWBuildingID"));
+						String edtWName = request.getParameter("edtWName");
+						int edtWTitledYear = Integer.parseInt(request.getParameter("edtWTitledYear"));
+						String edtWAttachment = request.getParameter("edtWAttachment");
+						String edtWType = request.getParameter("edtWType");
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtWRecordID, conWOF, edtWBuildingID, edtWName, 
+								edtWAttachment, edtWType, edtWTitledYear, buildDetails.getConsentNumber(), 
+								buildDetails.getUploadedBy(), buildDetails.getUploadedDate(), userID, 
+								today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "Consent":
+						int edtCSRecordID = Integer.parseInt(request.getParameter("edtCSRecordID"));
+					    int edtCSBuildingID = Integer.parseInt(request.getParameter("edtCSBuildingID"));
+						String edtCSName = request.getParameter("edtCSName");
+						String edtCSConsentNumber = request.getParameter("edtCSConsentNumber");
+						String edtCSAttachment = request.getParameter("edtCSAttachment");
+						String edtCSType = request.getParameter("edtCSType");
+						String edtCSLastUploadedBy = userID;
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtCSRecordID, conConsent, edtCSBuildingID, edtCSName, 
+								edtCSAttachment, edtCSType, buildDetails.getTitledYear(), 
+								edtCSConsentNumber, buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
+								edtCSLastUploadedBy, today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+				
+					case "Asbestos":
+						int edtARecordID = Integer.parseInt(request.getParameter("edtARecordID"));
+					    int edtABuildingID = Integer.parseInt(request.getParameter("edtABuildingID"));
+						String edtAName = request.getParameter("edtAName");
+						String edtAAttachment = request.getParameter("edtAAttachment");
+						String edtAType = request.getParameter("edtAType");
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtARecordID, conAsbestos, edtABuildingID, edtAName, 
+								edtAAttachment, edtAType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
+								buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
+								userID, today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "Electrical":
+						int edtERecordID = Integer.parseInt(request.getParameter("edtERecordID"));
+					    int edtEBuildingID = Integer.parseInt(request.getParameter("edtEBuildingID"));
+						String edtEName = request.getParameter("edtEName");
+						String edtEAttachment = request.getParameter("edtEAttachment");
+						String edtEType = request.getParameter("edtEType");
+						String edtELastUploadedBy = userID;
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtERecordID, conElectrical, edtEBuildingID, edtEName, 
+								edtEAttachment, edtEType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
+								buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
+								edtELastUploadedBy, today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	    
+					    
+					case "Gas":
+						int edtGRecordID = Integer.parseInt(request.getParameter("edtGRecordID"));
+					    int edtGBuildingID = Integer.parseInt(request.getParameter("edtGBuildingID"));
+						String edtGName = request.getParameter("edtGName");
+						String edtGAttachment = request.getParameter("edtGAttachment");
+						String edtGType = request.getParameter("edtGType");
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtGRecordID, conGas, edtGBuildingID, edtGName, 
+								edtGAttachment, edtGType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
+								buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
+								userID, today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	
+					    
+					case "HazSubs":
+						  int edtHSRecordID = Integer.parseInt(request.getParameter("edtHSRecordID"));
+						  int edtHSBuildingID = Integer.parseInt(request.getParameter("edtHSBuildingID"));
+						  String edtHSProductName = request.getParameter("edtHSProductName");
+						  String edtHSUnNumber = request.getParameter("edtHSUnNumber");
+						  String edtHSApprovalNumber = request.getParameter("edtHSApprovalNumber");
+						  String edtHSGroupStandard = request.getParameter("edtHSGroupStandard");
+						  String edtHSHazardClassification = request.getParameter("edtHSHazardClassification");
+						  String edtHSCurrentSDSAvailable = request.getParameter("edtHSCurrentSDSAvailable");
+						  String edtHSSpecificStorage = request.getParameter("edtHSSpecificStorage");
+						  String edtHSSegregationRequirements = request.getParameter("edtHSSegregationRequirements");
+						  String edtHSContainerSize = request.getParameter("edtHSContainerSize");
+						  String edtHSOpenCloseContainer = request.getParameter("edtHSOpenCloseContainer");
+						  String edtHSGasLiquidSolid = request.getParameter("edtHSGasLiquidSolid");
+						  String edtHSLocation = request.getParameter("edtHSLocation");
+						  int edtHSMaximumLikelyAmount = Integer.parseInt(request.getParameter("edtHSMaximumLikelyAmount"));
+						
+						/* Save values in HazardousSubstance POJO */
+						  hazardSub = new HazardousSubstance(edtHSRecordID, edtHSBuildingID, edtHSProductName, edtHSUnNumber, 
+								edtHSApprovalNumber, edtHSGroupStandard, edtHSHazardClassification, edtHSCurrentSDSAvailable, 
+								edtHSSpecificStorage, edtHSSegregationRequirements, edtHSContainerSize, edtHSOpenCloseContainer, 
+								edtHSGasLiquidSolid, edtHSLocation, edtHSMaximumLikelyAmount, hazardSub.getCreatedBy(), 
+								hazardSub.getCreatedDate(), userID, today, hazardSub.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new HazardousSubstanceMgr().updateHazardousSubstance(conn, hazardSub);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;
+					    
+					case "HazReg":
+						int edtHRRecordID = Integer.parseInt(request.getParameter("edtHRRecordID"));
+					    int edtHRBuildingID = Integer.parseInt(request.getParameter("edtHRBuildingID"));
+					    String edtHRIdentifiedHazard = request.getParameter("edtHRIdentifiedHazard");
+					    String edtHRInitialRiskAssessment = request.getParameter("edtHRInitialRiskAssessment");
+					    String edtHRControls = request.getParameter("edtHRControls");
+					    String edtHRLevelOfControl = request.getParameter("edtHRLevelOfControl");
+					    String edtHRResidualRiskAssessment = request.getParameter("edtHRResidualRiskAssessment");
+					    
+						/* Save values in HazardRegister POJO */
+						hazardReg = new HazardRegister(edtHRRecordID, edtHRBuildingID, edtHRIdentifiedHazard, 
+								edtHRInitialRiskAssessment, edtHRControls, edtHRLevelOfControl, edtHRResidualRiskAssessment, 
+								hazardReg.getCreatedBy(), hazardReg.getCreationDate(),
+								userID, today, hazardReg.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new HazardRegisterMgr().updateHazardRegister(conn, hazardReg);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	    
+					    
+					case "Seismic":
+						int edtSRRecordID = Integer.parseInt(request.getParameter("edtSRRecordID"));
+					    int edtSRBuildingID = Integer.parseInt(request.getParameter("edtSRBuildingID"));
+						String edtSRName = request.getParameter("edtSRName");
+						String edtSRAttachment = request.getParameter("edtSRAttachment");
+						String edtSRType = request.getParameter("edtSRType");
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtSRRecordID, conSeismic, edtSRBuildingID, edtSRName, 
+								edtSRAttachment, edtSRType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
+								buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
+								userID, today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	    
+					    
+					case "ResourceConsent":
+						int edtRCRecordID = Integer.parseInt(request.getParameter("edtRCRecordID"));
+					    int edtRCBuildingID = Integer.parseInt(request.getParameter("edtRCBuildingID"));
+						String edtRCName = request.getParameter("edtRCName");
+						String edtRCAttachment = request.getParameter("edtRCAttachment");
+						String edtRCType = request.getParameter("edtRCType");
+						
+						/* Save values in BuildingDetails POJO */
+						buildDetails = new BuildingDetails(edtRCRecordID, conResourceConsent, edtRCBuildingID, edtRCName, 
+								edtRCAttachment, edtRCType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
+								buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
+								userID, today, buildDetails.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new BuildingDetailsMgr().updateBuildingDetails(conn, buildDetails);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	
+					    
+					case "ComIns":
+						
+						int edtCIRecordID = Integer.parseInt(request.getParameter("edtCIRecordID"));
+					    int edtCIBuildingID = Integer.parseInt(request.getParameter("edtCIBuildingID"));
+						//Date edtCIInspectionDate = (java.sql.Date)(request.getParameter("edtCIInspectionDate"));
+					    Date edtCIInspectionDate=null;
+						String edtCIFinding = request.getParameter("edtCIFinding");
+						String edtCIDescription = request.getParameter("edtCIDescription");
+						String edtCIInspectionStat = request.getParameter("edtCIInspectionStat");
+						String edtCIImage = request.getParameter("edtCIImage");
+						
+						/* Save values in Compliance Inspection POJO */
+						comInspection = new ComplianceInspection(edtCIRecordID, edtCIBuildingID, edtCIInspectionDate, 
+								edtCIFinding, edtCIDescription, edtCIInspectionStat, edtCIImage, 
+								comInspection.getCreatedBy(), comInspection.getCreationDate(),
+								userID, today, comInspection.getStatus());
+						
+						/* Call Manager to edit values from POJO */
+					    isUpdated = new ComplianceInspectionMgr().updateComplianceInspection(conn, comInspection);
+					    
+					    if(isUpdated > 0) {
+					    	System.out.println("Record is successfully updated.");
+					    }else {
+					    	System.out.println("Record is not updated");
+					    }
+					    break;	
+				}
 			}
+			
 		}
 		
 		session.setAttribute("bHeader", bHeader);

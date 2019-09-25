@@ -37,6 +37,10 @@ public class ComplianceInspection implements Serializable {
 		this.status = status;
 	}
 
+	public ComplianceInspection() {
+		
+	}
+
 	public int getRecordID() {
 		return recordID;
 	}

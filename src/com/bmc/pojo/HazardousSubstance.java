@@ -55,6 +55,10 @@ public class HazardousSubstance implements Serializable {
 		this.status = status;
 	}
 
+	public HazardousSubstance() {
+		
+	}
+
 	public int getRecordID() {
 		return recordID;
 	}

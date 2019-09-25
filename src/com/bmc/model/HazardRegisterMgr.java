@@ -101,7 +101,7 @@ public class HazardRegisterMgr {
 			String qry  = "UPDATE dbo.Hazard_Register set "
 					+ "identifiedHazard=?, initialRiskAssessment=?, controls=?,  levelOfControl=?, resIDualRiskAssessment=?, "
 					+ "createdBy, creationDate, modifiedBy, modifiedDate "
-					+ "WHERE buildingID=?";
+					+ "WHERE buildingID=? AND recordID=?";
 			
 			pstatement = conn.prepareStatement(qry);
 			
@@ -115,6 +115,7 @@ public class HazardRegisterMgr {
 			pstatement.setString(8, hazardReg.getModifiedBy());
 			pstatement.setDate(9, (java.sql.Date) hazardReg.getModifiedDate());
 			pstatement.setInt(10, hazardReg.getBuildingID());
+			pstatement.setInt(11, hazardReg.getRecordID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();

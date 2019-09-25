@@ -110,7 +110,7 @@ public class HazardousSubstanceMgr {
 					+ "productName=?, unNumber=?, approvalNumber=?,  groupStandard=?, hazardClassification=?,"
 					+ "currentSDSAvailable=?, specificStorage=?, segregationRequirements=?, containerSize=?, openCloseContainer=?,"
 					+ "gasLiquIDSolID=?, location=?, maximumLikelyAmount=?, modifiedBy=?, modifiedDate=? "
-					+ "WHERE buildingID=?";
+					+ "WHERE buildingID=? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
@@ -132,6 +132,8 @@ public class HazardousSubstanceMgr {
 			pstatement.setDate(15, (java.sql.Date) hazardSub.getCreatedDate());
 			pstatement.setString(16, hazardSub.getModifiedBy());
 			pstatement.setDate(17, (java.sql.Date) hazardSub.getModifiedDate());
+			pstatement.setInt(18, hazardSub.getBuildingID());
+			pstatement.setInt(19, hazardSub.getRecordID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();

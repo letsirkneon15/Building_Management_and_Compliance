@@ -102,7 +102,7 @@ public class ContactsMgr {
 			String qry = "UPDATE dbo.Contacts set"
 					+ "name=?, type=?, company=? phoneNumber=?, faxNumber=?, "
 					+ "mobileNumber=?, emailAdd=?, modifiedBy=?, "
-					+ "modifiedDate=? where buildingID=?";
+					+ "modifiedDate=? where buildingID=? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
@@ -116,6 +116,7 @@ public class ContactsMgr {
 			pstatement.setString(8, contact.getModifiedBy());
 			pstatement.setDate(9, (java.sql.Date) contact.getModifiedDate());
 			pstatement.setInt(10, contact.getBuildingID());
+			pstatement.setInt(11, contact.getRecordID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();			

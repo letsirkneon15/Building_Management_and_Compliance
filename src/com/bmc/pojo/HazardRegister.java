@@ -37,6 +37,10 @@ public class HazardRegister implements Serializable {
 		this.status = status;
 	}
 
+	public HazardRegister() {
+		
+	}
+
 	public int getRecordID() {
 		return recordID;
 	}

@@ -104,7 +104,7 @@ public class ComplianceInspectionMgr {
 			String qry = "UPDATE dbo.Compliance_Inspection set "
 					+ "inspectionDate=?, finding=?, description=?, inspectionStatus=?, image=?, "
 					+ "modifiedBy=?, modifiedDate=?, status=? "
-					+ "where buildingID=?";
+					+ "where buildingID=? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 			
@@ -117,6 +117,7 @@ public class ComplianceInspectionMgr {
 			pstatement.setDate(7, (java.sql.Date) comInspection.getModifiedDate());
 			pstatement.setString(8, comInspection.getStatus());
 			pstatement.setInt(9, comInspection.getBuildingID());
+			pstatement.setInt(10, comInspection.getRecordID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();

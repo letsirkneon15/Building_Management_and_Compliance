@@ -106,7 +106,7 @@ public class BuildingDetailsMgr {
 					+ "name=?, attachment=?,  type=?, "
 					+ "titledYear=?, consentNumber=?, "
 					+ "lastUploadedBy=?, lastUploadedDate=? WHERE buildingID=? "
-					+ "and buildingDetailsType=? and recordID=?";
+					+ "and buildingDetailsType=? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
