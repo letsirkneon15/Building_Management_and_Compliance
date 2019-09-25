@@ -2,6 +2,14 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+	<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtConsent">
+			<h5>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+					Building Consent</b>
+			</h5>
+		</button>
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="consentTable" width="100%"
 				cellspacing="0">
@@ -56,6 +64,93 @@
 	</div>
 </div>
 <!-- End of DataTables -->
+
+<!--START- Create Record (MODAL)-->
+<div class="modal fade" id="crtConsent" role="dialog">
+  <div class="modal-dialog" style="width: 100%">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 class="modal-title" align="left"><b>Building Consent - Create New Record</b></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+	
+		<!-- Create a Form to create record -->
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtConsent" method="post">
+         <div class="modal-body bgColorWhite">
+         	<div class="table-responsive" style="width:100%">
+         	 <div class="well">
+     				
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Name  -->
+     				<div class="col-sm-6">
+     					<label for="name">Name:</label>
+     					<input class="form-control" name = "crtCSName" id="crtCSName" type="text" value="${crtCSName}">
+     				</div>
+     				
+     				<!-- Consent Number  -->
+     				<div class="col-sm-6">
+ 						<label for="consentNumber">Consent Number:</label>
+     					<input class="form-control" name = "crtCSConsentNumber" id="crtCSConsentNumber" type="text" value="${crtCSConsentNumber}">
+    				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Attachment -->
+     				<div class="col-sm-6">
+     					<label for="attachment">Attachment:</label>
+     					<input class="form-control" name="crtCSAttachment" id="crtCSAttachment" type="text" value="${crtCSAttachment}"> 	
+     				</div>
+     	
+     				<!-- Type  -->
+     				<div class="col-sm-6">
+     					<label for="type">Type:</label>
+     					<input class="form-control" name="crtCSType" id="crtCSType" type="text" value="${crtCSType}">	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+ 					<!-- Uploaded By  -->
+ 					<div class="col-sm-6">
+ 						<label for="uploadedBy">Uploaded By:</label>
+     					<input class="form-control" name="crtCSUploadedBy" id="crtCSUploadedBy" type="text" value="${crtCSUploadedBy}" readOnly>	
+     				</div>
+     				
+     				<!-- Last Uploaded -->
+     				<div class="col-sm-6">
+     					<label for="lastUploadedBy">Last Uploaded:</label>
+     					<input class="form-control" name="crtCSLastUploadedBy" id="crtCSLastUploadedBy" type="text" value="${crtCSLastUploadedBy}" readOnly>    
+     				</div>			
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<input class="form-control" name="crtCSRecordID" id="crtCSRecordID" type="hidden" value="${crtCSRecordID}">
+        			<input class="form-control" name="crtCSBuildingID" id="crtCSBuildingID" type="hidden" value="${crtCSBuildingID}">
+     			</div>
+     			</div>
+     						
+  	 		  </div>		
+        	</div>
+        	</div>
+        	<div class="modal-footer">
+  					<!-- Submit Button -->
+         			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Create</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        	</div>
+        </form>
+	  </div>		     
+  </div>
+</div>	 
+<!--END- Create Record (MODAL)-->
+
 
 <!--START- Edit Record (MODAL)-->
 <div class="modal fade" id="editConsent" role="dialog">

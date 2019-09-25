@@ -5,7 +5,14 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crtContacts"><h5><span class="glyphicon glyphicon-plus-sign"></span><b> Add Contacts</b></h5></button><br><br>
+		<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtContacts">
+			<h5>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+					Contacts</b>
+			</h5>
+		</button>
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="contactsTable" width="100%" cellspacing="0">
 				<thead>
@@ -70,7 +77,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 	
-		<!-- Create a Form to edit record -->
+		<!-- Create a Form to create record -->
 		<form action="${pageContext.request.contextPath}/Tabs?action=crtContacts" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">

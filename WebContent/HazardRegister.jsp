@@ -5,6 +5,14 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+	<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtHazardRegister">
+			<h5>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+					Hazard Register</b>
+			</h5>
+		</button>
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="hazardRegisterTable" width="100%"
 				cellspacing="0">
@@ -57,6 +65,85 @@
 	</div>
 </div>
 <!-- End of DataTables -->
+
+
+<!--START- Create Record (MODAL)-->
+<div class="modal fade" id="crtHazardRegister" role="dialog">
+  <div class="modal-dialog" style="width: 100%">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 class="modal-title" align="left"><b>Hazard Register - Create New Record</b></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+	
+		<!-- Create a Form to create record -->
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtHazardRegister" method="post">
+         <div class="modal-body bgColorWhite">
+         	<div class="table-responsive" style="width:100%">
+         	 <div class="well">
+     				
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Identified Hazard  -->
+     				<div class="col-sm-6">
+     					<label for="identifiedHazard">Identified Hazard:</label>
+     					<input class="form-control" name = "crtHRIdentifiedHazard" id="crtHRIdentifiedHazard" type="text" value="${crtHRIdentifiedHazard}">
+     				</div>
+     				<!-- Initial Risk Assessment -->
+     				<div class="col-sm-6">
+     					<label for="initialRiskAssessment">Initial Risk Assessment:</label>
+     					<input class="form-control" name="crtHRInitialRiskAssessment" id="crtHRInitialRiskAssessment" type="text" value="${crtHRInitialRiskAssessment}"> 	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Controls  -->
+     				<div class="col-sm-6">
+     					<label for="controls">Controls:</label>
+     					<input class="form-control" name="crtHRControls" id="crtHRControls" type="text" value="${crtHRControls}">	
+     				</div>
+     				<!-- Level of Control  -->
+ 					<div class="col-sm-6">
+ 						<label for="levelOfControl">Level of Control:</label>
+     					<input class="form-control" name="crtHRLevelOfControl" id="crtHRLevelOfControl" type="text" value="${crtHRLevelOfControl}">	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Residual Risk Assessment -->
+     				<div class="col-sm-6">
+     					<label for="residualRiskAssessment">Residual Risk Assessment:</label>
+     					<input class="form-control" name="crtHRResidualRiskAssessment" id="crtHRResidualRiskAssessment" type="text" value="${crtHRResidualRiskAssessment}">    
+     				</div>			
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<input class="form-control" name="crtHRRecordID" id="crtHRRecordID" type="hidden" value="${crtHRRecordID}">
+        			<input class="form-control" name="crtHRBuildingID" id="crtHRBuildingID" type="hidden" value="${crtHRBuildingID}">
+     			</div>
+     			</div>
+     						
+  	 		  </div>		
+        	</div>
+        	</div>
+        	<div class="modal-footer">
+  					<!-- Submit Button -->
+         			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Create</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        	</div>
+        </form>
+	  </div>		     
+  </div>
+</div>	 
+<!--END- Create Record (MODAL)-->
 
 <!--START- Edit Record (MODAL)-->
 <div class="modal fade" id="editHazardRegister" role="dialog">

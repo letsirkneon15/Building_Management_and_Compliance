@@ -2,6 +2,14 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+	<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtElectrical">
+			<h5>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+					Electrical</b>
+			</h5>
+		</button>
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="electricalTable" width="100%"
 				cellspacing="0">
@@ -55,6 +63,86 @@
 	</div>
 </div>
 <!-- End of DataTables -->
+
+
+<!--START- Create Record (MODAL)-->
+<div class="modal fade" id="crtElectrical" role="dialog">
+  <div class="modal-dialog" style="width: 100%">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 class="modal-title" align="left"><b>Electrical - Create New Record</b></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+	
+		<!-- Create a Form to create record -->
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtElectrical" method="post">
+         <div class="modal-body bgColorWhite">
+         	<div class="table-responsive" style="width:100%">
+         	 <div class="well">
+     				
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Name  -->
+     				<div class="col-sm-6">
+     					<label for="name">Name:</label>
+     					<input class="form-control" name = "crtEName" id="crtEName" type="text" value="${crtEName}">
+     				</div>
+     				<!-- Attachment -->
+     				<div class="col-sm-6">
+     					<label for="attachment">Attachment:</label>
+     					<input class="form-control" name="crtEAttachment" id="crtEAttachment" type="text" value="${crtEAttachment}"> 	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Type  -->
+     				<div class="col-sm-6">
+     					<label for="type">Type:</label>
+     					<input class="form-control" name="crtEType" id="crtEType" type="text" value="${crtEType}">	
+     				</div>
+     				<!-- Uploaded By  -->
+ 					<div class="col-sm-6">
+ 						<label for="uploadedBy">Uploaded By:</label>
+     					<input class="form-control" name="crtEUploadedBy" id="crtEUploadedBy" type="text" value="${crtEUploadedBy}" readOnly>	
+     				</div>
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Last Uploaded -->
+     				<div class="col-sm-6">
+     					<label for="lastUploadedBy">Last Uploaded:</label>
+     					<input class="form-control" name="crtELastUploadedBy" id="crtELastUploadedBy" type="text" value="${crtELastUploadedBy}" readOnly>    
+     				</div>			
+     			</div>
+     			</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<input class="form-control" name="crtERecordID" id="crtERecordID" type="hidden" value="${crtERecordID}">
+        			<input class="form-control" name="crtEBuildingID" id="crtEBuildingID" type="hidden" value="${crtEBuildingID}">
+     			</div>
+     			</div>
+     						
+  	 		  </div>		
+        	</div>
+        	</div>
+        	<div class="modal-footer">
+  					<!-- Submit Button -->
+         			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Create</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        	</div>
+        </form>
+	  </div>		     
+  </div>
+</div>	 
+<!--END- Create Record (MODAL)-->
+
 
 <!--START- Edit Record (MODAL)-->
 <div class="modal fade" id="editElectrical" role="dialog">
