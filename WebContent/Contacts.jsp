@@ -74,7 +74,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtContacts" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Contacts" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -164,7 +164,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editContacts" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=action=editTabs&tab=Contacts" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -256,7 +256,7 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltContacts" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=Contacts" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
