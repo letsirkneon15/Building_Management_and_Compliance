@@ -4,7 +4,8 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<div class="card-body" align="right">
+	<div class="card-body">
+		<div align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtHazardRegister">
 			<h5>
@@ -12,7 +13,7 @@
 					Hazard Register</b>
 			</h5>
 		</button>
-		<br> <br>
+		<br> <br> </div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="hazardRegisterTable" width="100%"
 				cellspacing="0">
