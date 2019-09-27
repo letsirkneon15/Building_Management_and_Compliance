@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import com.bmc.pojo.BuildingHeader;
 
@@ -155,9 +155,9 @@ public class BuildingHeaderMgr {
 		return bHeader;
 	}
 	
-	public boolean setBuildingHeader(Connection conn, BuildingHeader buildHeader) {
+	public int setBuildingHeader(Connection conn, BuildingHeader buildHeader) {
 
-		boolean isCreated = false;
+		int isCreated = 0;
 
 		try {
 
@@ -165,7 +165,7 @@ public class BuildingHeaderMgr {
 					+ "(buildingID, buildingName, buildingName, address, location, levelOrUnitNumber, coordinates, owner,"
 					+ "client, responsibleOffice, projectNumber, billingInformation, csNumber, legalDescription, maxOccupants, "
 					+ "fireHazardCategory, yearBuilt, intendedLife, bwofAnniversary, asbestosPresent, nbsPercentage, "
-					+ "createdBy, creationDate, modifiedBy, modifiedDate, status )" + " VALUES"
+					+ "createdBy, creationDate, modifiedBy, modifiedDate, status)" + " VALUES"
 					+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
@@ -191,12 +191,12 @@ public class BuildingHeaderMgr {
 			pstatement.setString(19, buildHeader.getAsbestosPresent());
 			pstatement.setFloat(20, buildHeader.getNbsPercentage());
 			pstatement.setString(21, buildHeader.getCreatedBy());
-			pstatement.setDate(22, (java.sql.Date) buildHeader.getCreationDate());
+			pstatement.setDate(22, buildHeader.getCreationDate());
 			pstatement.setString(23, buildHeader.getModifiedBy());
-			pstatement.setDate(24, (java.sql.Date) buildHeader.getModifiedDate());
+			pstatement.setDate(24, buildHeader.getModifiedDate());
 			pstatement.setString(25, buildHeader.getStatus());
 
-			isCreated = pstatement.execute();
+			isCreated = pstatement.executeUpdate();
 			pstatement.close();
 
 		} catch (Exception e) {
@@ -242,12 +242,12 @@ public class BuildingHeaderMgr {
 			pstatement.setString(14, buildHeader.getFireHazardCategory());
 			pstatement.setInt(15, buildHeader.getYearBuilt());
 			pstatement.setString(16, buildHeader.getIntendedLife());
-			pstatement.setDate(17, new java.sql.Date(buildHeader.getBwofAnniversary()));
+			pstatement.setInt(17, buildHeader.getBwofAnniversary());
 			pstatement.setString(18, buildHeader.getAsbestosPresent());
 			pstatement.setFloat(19, buildHeader.getNbsPercentage());
 			pstatement.setString(20, buildHeader.getStatus());
 			pstatement.setString(21, buildHeader.getModifiedBy());
-			pstatement.setDate(22, (java.sql.Date) buildHeader.getModifiedDate());
+			pstatement.setDate(22,  buildHeader.getModifiedDate());
 			pstatement.setInt(23, buildHeader.getBuildingID());
 
 			isUpdated = pstatement.executeUpdate();
@@ -279,7 +279,7 @@ public class BuildingHeaderMgr {
 
 			pstatement.setString(1, status);
 			pstatement.setString(2, modifiedBy);
-			pstatement.setDate(3, (java.sql.Date) modifiedDate);
+			pstatement.setDate(3,  modifiedDate);
 			pstatement.setInt(4, buildingID);
 
 			isSetStatus = pstatement.executeUpdate();

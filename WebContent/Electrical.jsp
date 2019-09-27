@@ -2,15 +2,16 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body" >
-		<div align="right">
-	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtElectrical">
+	<div align="right">
+		<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtElectrical" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Electrical</b>
 			</h5>
 		</button>
-		<br> <br></div>
+		<br> <br>
+	</div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="electricalTable" width="100%"
 				cellspacing="0">
@@ -22,7 +23,6 @@
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
 					</tr>
 				</thead>
@@ -72,7 +72,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtElectrical" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Electrical" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -119,8 +119,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtERecordID" id="crtERecordID" type="hidden" value="${crtERecordID}">
-        			<input class="form-control" name="crtEBuildingID" id="crtEBuildingID" type="hidden" value="${crtEBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -151,7 +150,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editElectrical" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Electrical" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -199,7 +198,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtERecordID" id="edtERecordID" type="hidden" value="">
-        			<input class="form-control" name="edtEBuildingID" id="edtEBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -229,12 +228,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltElectrical" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=Electrical" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltERecordID" id="dltERecordID" type="hidden" value="">
-         <input class="form-control" name="dltEBuildingID" id="dltEBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

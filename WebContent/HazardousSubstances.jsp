@@ -7,7 +7,7 @@
 	<div class="card-body" >
 		<div align="right">
 	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtHazardSubstance">
+			data-toggle="modal" data-target="#crtHazardSubstance" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Hazard Substance</b>
@@ -32,7 +32,6 @@
 						<th>Location</th>
 						<th>Maximum Likely Amount</th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
 					</tr>
 				</thead>
@@ -93,7 +92,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtHazardSubstance" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=HazSubs" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -190,8 +189,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtHSRecordID" id="crtHSRecordID" type="hidden" value="${crtHSRecordID}">
-        			<input class="form-control" name="crtHSBuildingID" id="crtHSBuildingID" type="hidden" value="${crtHSBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -222,7 +220,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editHazardSubstance" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=HazSubs" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -320,7 +318,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtHSRecordID" id="edtHSRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtHSBuildingID" id="edtHSBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -350,12 +348,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltHazardSubstance" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=HazSubs" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltHSRecordID" id="dltHSRecordID" type="hidden" value="">
-         <input class="form-control" name="dltHSBuildingID" id="dltHSBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

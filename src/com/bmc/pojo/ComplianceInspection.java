@@ -1,7 +1,7 @@
 package com.bmc.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class ComplianceInspection implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -18,6 +18,10 @@ public class ComplianceInspection implements Serializable {
 	private String modifiedBy; 
 	private Date modifiedDate;
 	private String status;
+	
+	public ComplianceInspection() {
+	
+	}
 	
 	public ComplianceInspection(int recordID, int buildingID, Date inspectionDate, String finding, String description,
 			String inspectionStatus, String image, String createdBy, Date creationDate, String modifiedBy,
@@ -37,103 +41,77 @@ public class ComplianceInspection implements Serializable {
 		this.status = status;
 	}
 
-	public ComplianceInspection() {
-		
-	}
-
 	public int getRecordID() {
 		return recordID;
 	}
-
 	public void setRecordID(int recordID) {
 		this.recordID = recordID;
 	}
-
 	public int getBuildingID() {
 		return buildingID;
 	}
-
 	public void setBuildingID(int buildingID) {
 		this.buildingID = buildingID;
 	}
-
 	public Date getInspectionDate() {
 		return inspectionDate;
 	}
-
 	public void setInspectionDate(Date inspectionDate) {
 		this.inspectionDate = inspectionDate;
 	}
-
 	public String getFinding() {
 		return finding;
 	}
-
 	public void setFinding(String finding) {
 		this.finding = finding;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public String getInspectionStatus() {
 		return inspectionStatus;
 	}
-
 	public void setInspectionStatus(String inspectionStatus) {
 		this.inspectionStatus = inspectionStatus;
 	}
-
 	public String getImage() {
 		return image;
 	}
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 	public String getCreatedBy() {
 		return createdBy;
 	}
-
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-
 	public Date getCreationDate() {
 		return creationDate;
 	}
-
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
-
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-
 	public Date getModifiedDate() {
 		return modifiedDate;
 	}
-
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 }
+	

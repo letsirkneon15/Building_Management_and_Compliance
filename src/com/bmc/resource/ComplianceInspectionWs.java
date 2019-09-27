@@ -60,7 +60,7 @@ public class ComplianceInspectionWs {
 
 		
 		/* Add new record in Compliance Inspection */
-		boolean result = new ComplianceInspectionMgr().setComplianceInspection(conn, comInspection);
+		int result = new ComplianceInspectionMgr().setComplianceInspection(conn, comInspection);
 
 		return Response.status(201).entity(result).build();
 				

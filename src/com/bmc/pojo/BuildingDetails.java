@@ -1,7 +1,7 @@
 package com.bmc.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class BuildingDetails implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class BuildingDetails implements Serializable {
 	}
 	
 	public BuildingDetails() {
-	
+		
 	}
 
 	public int getRecordID() {
@@ -121,5 +121,6 @@ public class BuildingDetails implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	
 }

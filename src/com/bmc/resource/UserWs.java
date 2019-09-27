@@ -62,7 +62,7 @@ public class UserWs {
 
 		
 		/* Add new record in User */
-		boolean result = new UserMgr().setUser(conn, user);
+		int result = new UserMgr().setUser(conn, user);
 
 		return Response.status(201).entity(result).build();
 				

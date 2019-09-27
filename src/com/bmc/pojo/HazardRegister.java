@@ -1,7 +1,7 @@
 package com.bmc.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class HazardRegister implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -186,7 +186,7 @@ $(document).ready(function() {
 } );
 
 $(document).ready(function() {
-    $('#contactsTable').DataTable();
+    $('#contentsTable').DataTable();
 } );
 
 $(document).ready(function() {
@@ -201,7 +201,68 @@ $(".nav-tabs a").click(function(){
     $(this).tab('show');
 });
 
-/**************** CREATE MODALS HERE *************************************/
+/**************** CREATE MODALS HERE ************************************/
+
+$('#crtContacts').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtWof').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtConsent').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtAsbestos').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtElectrical').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtGas').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtHazardSubstance').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtHazardRegister').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtSeismicResilience').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtResourceConsent').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
 
 /**************** EDIT MODALS HERE **************************************/
 
@@ -217,7 +278,7 @@ $('#editContacts').on('show.bs.modal', function(e) {
     var emailadd = $(e.relatedTarget).data('emailadd');
     
     $(e.currentTarget).find('input[name="edtCRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtCBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtCName"]').val(name);
     $(e.currentTarget).find('input[name="edtCType"]').val(type);
     $(e.currentTarget).find('input[name="edtCCompany"]').val(company);
@@ -239,7 +300,7 @@ $('#editWof').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtWRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtWBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtWName"]').val(name);
     $(e.currentTarget).find('input[name="edtWTitledYear"]').val(titledyear);
     $(e.currentTarget).find('input[name="edtWAttachment"]').val(attachment);
@@ -260,7 +321,7 @@ $('#editConsent').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtCSRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtCSBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtCSName"]').val(name);
     $(e.currentTarget).find('input[name="edtCSConsentNumber"]').val(consentnumber);
     $(e.currentTarget).find('input[name="edtCSAttachment"]').val(attachment);
@@ -280,7 +341,7 @@ $('#editAsbestos').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtARecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtABuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtAName"]').val(name);
     $(e.currentTarget).find('input[name="edtAAttachment"]').val(attachment);
     $(e.currentTarget).find('input[name="edtAType"]').val(type);
@@ -298,7 +359,7 @@ $('#editElectrical').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtERecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtEBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtEName"]').val(name);
     $(e.currentTarget).find('input[name="edtEAttachment"]').val(attachment);
     $(e.currentTarget).find('input[name="edtEType"]').val(type);
@@ -316,7 +377,7 @@ $('#editGas').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtGRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtGBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtGName"]').val(name);
     $(e.currentTarget).find('input[name="edtGAttachment"]').val(attachment);
     $(e.currentTarget).find('input[name="edtGType"]').val(type);
@@ -342,7 +403,7 @@ $('#editHazardSubstance').on('show.bs.modal', function(e) {
     var maximumlikelyamount = $(e.relatedTarget).data('maximumlikelyamount');
 
     $(e.currentTarget).find('input[name="edtHSRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtHSBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtHSProductName"]').val(productname);
     $(e.currentTarget).find('input[name="edtHSUnNumber"]').val(unnumber);
     $(e.currentTarget).find('input[name="edtHSApprovalNumber"]').val(approvalnumber);
@@ -368,7 +429,7 @@ $('#editHazardRegister').on('show.bs.modal', function(e) {
     var residualriskassessment = $(e.relatedTarget).data('residualriskassessment');
 
     $(e.currentTarget).find('input[name="edtHRRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtHRBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtHRIdentifiedHazard"]').val(identifiedhazard);
     $(e.currentTarget).find('input[name="edtHRInitialRiskAssessment"]').val(initialriskassessment);
     $(e.currentTarget).find('input[name="edtHRControls"]').val(controls);
@@ -386,7 +447,7 @@ $('#editSeismicResilience').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtSRRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtSRBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtSRName"]').val(name);
     $(e.currentTarget).find('input[name="edtSRAttachment"]').val(attachment);
     $(e.currentTarget).find('input[name="edtSRType"]').val(type);
@@ -404,7 +465,7 @@ $('#editResourceConsent').on('show.bs.modal', function(e) {
     var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
 
     $(e.currentTarget).find('input[name="edtRCRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="edtRCBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtRCName"]').val(name);
     $(e.currentTarget).find('input[name="edtRCAttachment"]').val(attachment);
     $(e.currentTarget).find('input[name="edtRCType"]').val(type);
@@ -419,7 +480,7 @@ $('#deleteContacts').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltCRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltCBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteWof').on('show.bs.modal', function(e) {
@@ -427,7 +488,7 @@ $('#deleteWof').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltWRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltWBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteConsent').on('show.bs.modal', function(e) {
@@ -435,7 +496,7 @@ $('#deleteConsent').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltCSRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltCSBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteAsbestos').on('show.bs.modal', function(e) {
@@ -443,7 +504,7 @@ $('#deleteAsbestos').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltARecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltABuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteElectrical').on('show.bs.modal', function(e) {
@@ -451,7 +512,7 @@ $('#deleteElectrical').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltERecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltEBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteGas').on('show.bs.modal', function(e) {
@@ -459,7 +520,7 @@ $('#deleteGas').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltGRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltGBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteHazardSubstance').on('show.bs.modal', function(e) {
@@ -467,7 +528,7 @@ $('#deleteHazardSubstance').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltHSRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltHSBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteHazardRegister').on('show.bs.modal', function(e) {
@@ -475,7 +536,7 @@ $('#deleteHazardRegister').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltHRRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltHRBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteSeismicResilience').on('show.bs.modal', function(e) {
@@ -483,7 +544,7 @@ $('#deleteSeismicResilience').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltSRRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltSRBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 $('#deleteResourceConsent').on('show.bs.modal', function(e) {
@@ -491,7 +552,7 @@ $('#deleteResourceConsent').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltRCRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="dltRCBuildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
 </script>

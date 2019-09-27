@@ -1,22 +1,24 @@
 
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
-	<div align="right"><button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtContacts">
-			<h5>
-				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
-					Contacts</b>
-			</h5>
-		</button>
-		<br> <br></div>
+		<div align="right">
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#crtContacts" data-id="crtLink${bIndex.index}"
+				data-buildingid="${buildingID}">
+				<h5>
+					<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+						Contacts</b>
+				</h5>
+			</button>
+			<br> <br>
+		</div>
 		<div class="table-responsive">
-			<table id="contactsTable" 
-			class="table table-bordered table-hover table-striped table-condensed"
-				width="100%" cellspacing="0">
+			<table
+				class="table table-bordered table-hover table-striped table-condensed"
+				id="contentsTable" width="100%" cellspacing="0">
 				<thead>
 					<tr align="center">
 						<th>Name</th>
@@ -26,7 +28,7 @@
 						<th>Fax</th>
 						<th>Mobile</th>
 						<th>Email Address</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
 					</tr>
@@ -279,6 +281,7 @@
 		</div>
 	</div>
 </div>
+
 <!--END- Edit Record (MODAL)-->
 
 <!--START- Delete (MODAL)-->

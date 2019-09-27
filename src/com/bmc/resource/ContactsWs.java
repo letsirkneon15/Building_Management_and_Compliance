@@ -1,6 +1,7 @@
 package com.bmc.resource;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -60,7 +61,7 @@ public class ContactsWs {
 
 		
 		/* Add new record in Compliance Inspection */
-		boolean result = new ContactsMgr().setContacts(conn, contact);
+		int result = new ContactsMgr().setContacts(conn, contact);
 
 		return Response.status(201).entity(result).build();
 				
@@ -101,7 +102,7 @@ public class ContactsWs {
 		
 		/* Update Status Compliance Inspection */
 		int result = new ContactsMgr().setStatus(conn, contact.getStatus(), 
-				contact.getRecordID(), contact.getBuildingID(),contact.getModifiedBy(), contact.getModifiedDate());
+				contact.getRecordID(), contact.getBuildingID(),contact.getModifiedBy(), (Date) contact.getModifiedDate());
 		return Response.status(201).entity(result).build();
 				
 	}

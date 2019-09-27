@@ -1,10 +1,10 @@
 package com.bmc.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.bmc.pojo.Contacts;
 
@@ -48,36 +48,35 @@ public class ContactsMgr {
 	}
 
 
-	public boolean setContacts(Connection conn, Contacts contact){
+	public int setContacts(Connection conn, Contacts contact){
 
-		boolean isCreated = false;
+		int isCreated = 0;
 
 		try {
 
-			String qry = "INSERT INTO dbo.Contacts"
-					+ "recordID, buildingID, name, type, company, phoneNumber, "
+			String qry = "INSERT INTO dbo.Contacts "
+					+ "(buildingID, name, type, company, phoneNumber, "
 					+ "faxNumber, mobileNumber, emailAdd, createdBy, creationDate, "
-					+ "modifiedBy, modifiedDate, status"
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "modifiedBy, modifiedDate, status) "
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
 
-			pstatement.setInt(1, contact.getRecordID());
-			pstatement.setInt(2, contact.getBuildingID());
-			pstatement.setString(3, contact.getName());
-			pstatement.setString(4, contact.getType());
-			pstatement.setString(5, contact.getCompany());
-			pstatement.setString(6, contact.getPhoneNumber());
-			pstatement.setString(7, contact.getFaxNumber());
-			pstatement.setString(8, contact.getMobileNumber());
-			pstatement.setString(9, contact.getEmailAdd());
-			pstatement.setString(10, contact.getCreatedBy());
-			pstatement.setDate(11, (java.sql.Date) contact.getCreationDate());
-			pstatement.setString(12, contact.getModifiedBy());
-			pstatement.setDate(13, (java.sql.Date) contact.getModifiedDate());
-			pstatement.setString(14, contact.getStatus());
+			pstatement.setInt(1, contact.getBuildingID());
+			pstatement.setString(2, contact.getName());
+			pstatement.setString(3, contact.getType());
+			pstatement.setString(4, contact.getCompany());
+			pstatement.setString(5, contact.getPhoneNumber());
+			pstatement.setString(6, contact.getFaxNumber());
+			pstatement.setString(7, contact.getMobileNumber());
+			pstatement.setString(8, contact.getEmailAdd());
+			pstatement.setString(9, contact.getCreatedBy());
+			pstatement.setDate(10, contact.getCreationDate());
+			pstatement.setString(11, contact.getModifiedBy());
+			pstatement.setDate(12, contact.getModifiedDate());
+			pstatement.setString(13, contact.getStatus());
 
-			isCreated =  pstatement.execute();
+			isCreated =  pstatement.executeUpdate();
 			pstatement.close();
 
 		}catch (Exception e) {
@@ -99,8 +98,8 @@ public class ContactsMgr {
 
 		try {
 
-			String qry = "UPDATE dbo.Contacts set"
-					+ "name=?, type=?, company=? phoneNumber=?, faxNumber=?, "
+			String qry = "UPDATE dbo.Contacts set "
+					+ "name=?, type=?, company=?, phoneNumber=?, faxNumber=?, "
 					+ "mobileNumber=?, emailAdd=?, modifiedBy=?, "
 					+ "modifiedDate=? where buildingID=? AND recordID=?";
 
@@ -114,7 +113,7 @@ public class ContactsMgr {
 			pstatement.setString(6, contact.getMobileNumber());
 			pstatement.setString(7, contact.getEmailAdd());
 			pstatement.setString(8, contact.getModifiedBy());
-			pstatement.setDate(9, (java.sql.Date) contact.getModifiedDate());
+			pstatement.setDate(9,  contact.getModifiedDate());
 			pstatement.setInt(10, contact.getBuildingID());
 			pstatement.setInt(11, contact.getRecordID());
 
@@ -141,14 +140,14 @@ public class ContactsMgr {
 
 		try {
 
-			String qry = "UPDATE dbo.Building_Details set status=? "
+			String qry = "UPDATE dbo.Contacts set status=?, "
 					+ "modifiedBy=?, modifiedDate=? WHERE buildingID =? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
 			pstatement.setString(1, status);
 			pstatement.setString(2, modifiedBy);
-			pstatement.setDate(3, (java.sql.Date) modifiedDate);
+			pstatement.setDate(3,  modifiedDate);
 			pstatement.setInt(4, buildingID);
 			pstatement.setInt(5, recordID);
 			

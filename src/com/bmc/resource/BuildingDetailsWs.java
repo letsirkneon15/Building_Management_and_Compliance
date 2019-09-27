@@ -61,7 +61,7 @@ public class BuildingDetailsWs {
 	public Response createNewInfo(BuildingDetails buildDetail) {
 		
 		/* Add new record in Building Details */
-		boolean result = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetail);
+		int result = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetail);
 		
 		return Response.status(201).entity(result).build();
 				
