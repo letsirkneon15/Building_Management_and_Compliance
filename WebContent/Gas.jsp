@@ -86,7 +86,7 @@
      				<!-- Attachment -->
      				<div class="col-sm-6">
      					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtGAttachment" id="crtGAttachment" type="text" value="${crtGAttachment}"> 	
+     					<input class="form-control" name="crtGAttachment" id="crtGAttachment" type="file" value="${crtGAttachment}"> 	
      				</div>
      			</div>
      			</div>
