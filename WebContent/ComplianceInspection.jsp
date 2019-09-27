@@ -1,15 +1,13 @@
 
 <!-- DataTables -->
 <div class="card shadow mb-4">
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crtInspection"><h5><span class="glyphicon glyphicon-plus-sign"></span><b>Add Inspection</b></h5></button><br><br>
 	<div class="card-body">
 	
 	<div align="right">
 		<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtContacts">
+			data-toggle="modal" data-target="#crtCInspection">
 			<h5>
-				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
-					Compliance Inspection</b>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add Compliance Inspection</b>
 			</h5>
 		</button>
 		<br> <br>
@@ -25,8 +23,6 @@
 						<th>Descriptions</th>
 						<th>Status</th>
 						<th>Image File</th>
-						<th>Actions</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
 					</tr>
@@ -41,17 +37,12 @@
 							<td>${b.description }</td>
 							<td>${b.inspectionStatus }</td>
 							<td>${b.image }</td>
-							<td> </td>
-							<td><a href="#downloadCloud" data-toggle="modal"
-								data-id="downloadLink${bIndex.index}"
-								data-buildingID="${b.buildingID}"><img
-									src='images/download_cloud.png' height=15 width=15></a></td>
-							<td><a href="#editRecord" data-toggle="modal"
+							<td><a href="#editCInspection" data-toggle="modal"
 								data-id="edtLink${bIndex.index}"
 								data-buildingID="${b.buildingID}"><img src='images/edit.jpg'
 									height=15 width=15></a></td>
 							<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
-							<td><a href="#deleteRecord" data-toggle="modal"
+							<td><a href="#deleteСInspection" data-toggle="modal"
 								data-id="dltLink${bIndex.index}"
 								data-buildingID="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
@@ -166,7 +157,7 @@
 
 									<!-- Finding  -->
 									<div class="col-sm-6">
-										<<label for="finding">Finding:</label>
+										<label for="finding">Finding:</label>
 										<input class="form-control" name = "edtCIFinding" id="edtCIFinding" type="text" value="">
 									</div>
 								</div>
