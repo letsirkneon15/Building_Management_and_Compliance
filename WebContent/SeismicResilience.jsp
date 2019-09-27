@@ -6,7 +6,7 @@
 	<div class="card-body" >	
 	<div align="right">
 	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtSeismicResilience">
+			data-toggle="modal" data-target="#crtSeismicResilience" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Seismic Resilience</b>
@@ -74,7 +74,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtSeismicResilience" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Seismic" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -121,8 +121,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtSRRecordID" id="crtSRRecordID" type="hidden" value="${crtSRRecordID}">
-        			<input class="form-control" name="crtSRBuildingID" id="crtSRBuildingID" type="hidden" value="${crtSRBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -153,7 +152,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editSeismicResilience" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Seismic" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -201,7 +200,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtSRRecordID" id="edtSRRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtSRBuildingID" id="edtSRBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -231,12 +230,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltSeismicResilience" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=Seismic" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltSRRecordID" id="dltSRRecordID" type="hidden" value="">
-         <input class="form-control" name="dltSRBuildingID" id="dltSRBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

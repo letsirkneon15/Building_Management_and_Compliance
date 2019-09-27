@@ -59,7 +59,7 @@ public class UserBuildingWs {
 
 		
 		/* Add new record in UserBuilding */
-		boolean result = new UserBuildingMgr().setUserBuilding(conn, UserBuilding);
+		int result = new UserBuildingMgr().setUserBuilding(conn, UserBuilding);
 
 		return Response.status(201).entity(result).build();
 				

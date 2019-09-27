@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import com.bmc.pojo.UserBuilding;
 
@@ -51,9 +51,9 @@ public class UserBuildingMgr {
 	}
 	
 
-	public boolean setUserBuilding(Connection conn, UserBuilding userBuild){
+	public int setUserBuilding(Connection conn, UserBuilding userBuild){
 		
-		   boolean isCreated = false;
+		   int isCreated = 0;
 		   
 		   try{
 
@@ -67,12 +67,12 @@ public class UserBuildingMgr {
 				pstatement.setString(1, userBuild.getUserID());
 				pstatement.setInt(2, userBuild.getBuildingId());
 				pstatement.setString(3, userBuild.getCreatedBy());
-				pstatement.setDate(4, (java.sql.Date) userBuild.getCreationDate());
+				pstatement.setDate(4, userBuild.getCreationDate());
 				pstatement.setString(5, userBuild.getModifiedBy());
-				pstatement.setDate(6, (java.sql.Date) userBuild.getModifiedDate());
+				pstatement.setDate(6, userBuild.getModifiedDate());
 				pstatement.setString(7, userBuild.getStatus());
 
-				isCreated = pstatement.execute();
+				isCreated = pstatement.executeUpdate();
 				pstatement.close();
 
 			}catch(Exception e){
@@ -106,7 +106,7 @@ public class UserBuildingMgr {
 
 				pstatement.setString(1, status);
 				pstatement.setString(2, modifiedBy);
-				pstatement.setDate(3, (java.sql.Date) modifiedDate);
+				pstatement.setDate(3, modifiedDate);
 				pstatement.setString(4, userID);
 				
 				if(buildingID != 0) {

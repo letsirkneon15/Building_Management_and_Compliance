@@ -59,7 +59,7 @@ public class HazardRegisterWs {
 		
 		
 		/* Add new record in Hazard Register */
-		boolean result = new HazardRegisterMgr().setHazardRegister(conn, hazardReg);
+		int result = new HazardRegisterMgr().setHazardRegister(conn, hazardReg);
 
 		return Response.status(201).entity(result).build();
 				

@@ -59,7 +59,7 @@ public class UserTabWs {
 
 		
 		/* Add new record in UserTab */
-		boolean result = new UserTabMgr().setUserTab(conn, userTab);
+		int result = new UserTabMgr().setUserTab(conn, userTab);
 
 		return Response.status(201).entity(result).build();
 				

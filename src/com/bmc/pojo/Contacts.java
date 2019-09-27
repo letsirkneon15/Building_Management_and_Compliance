@@ -1,7 +1,7 @@
 package com.bmc.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Contacts implements Serializable {
 	private static final long serialVersionUID = 1L;

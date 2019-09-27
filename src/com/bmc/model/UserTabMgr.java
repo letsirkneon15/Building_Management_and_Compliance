@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import com.bmc.pojo.UserTab;
 
@@ -51,9 +51,9 @@ public class UserTabMgr {
 	}
 	
 
-	public boolean setUserTab(Connection conn, UserTab uTab){
+	public int setUserTab(Connection conn, UserTab uTab){
 		
-		   boolean isCreated = false;
+		   int isCreated = 0;
 		   
 		   try{
 
@@ -67,12 +67,12 @@ public class UserTabMgr {
 				pstatement.setString(1, uTab.getUserID());
 				pstatement.setInt(2, uTab.getTabID());
 				pstatement.setString(3, uTab.getTabSegment());
-				pstatement.setDate(4, (java.sql.Date) uTab.getCreationDate());
+				pstatement.setDate(4, uTab.getCreationDate());
 				pstatement.setString(5, uTab.getModifiedBy());
-				pstatement.setDate(6, (java.sql.Date) uTab.getModifiedDate());
+				pstatement.setDate(6, uTab.getModifiedDate());
 				pstatement.setString(7, uTab.getStatus());
 
-				isCreated = pstatement.execute();
+				isCreated = pstatement.executeUpdate();
 				pstatement.close();
 
 			}catch(Exception e){
@@ -111,7 +111,7 @@ public class UserTabMgr {
 
 				pstatement.setString(1, status);
 				pstatement.setString(2, modifiedBy);
-				pstatement.setDate(3, (java.sql.Date) modifiedDate);
+				pstatement.setDate(3, modifiedDate);
 				pstatement.setString(4, userID);
 				
 				if(tabID != 0) {

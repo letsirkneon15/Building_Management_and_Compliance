@@ -4,7 +4,7 @@
 	<div class="card-body" >
 		<div align="right">
 	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtGas">
+			data-toggle="modal" data-target="#crtGas" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Gas</b>
@@ -71,7 +71,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtGas" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Gas" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -118,8 +118,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtGRecordID" id="crtGRecordID" type="hidden" value="${crtGRecordID}">
-        			<input class="form-control" name="crtGBuildingID" id="crtGBuildingID" type="hidden" value="${crtGBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -150,7 +149,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editGas" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Gas" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -198,7 +197,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtGRecordID" id="edtGRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtGBuildingID" id="edtGBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -228,12 +227,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltGas" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=Gas" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltGRecordID" id="dltGRecordID" type="hidden" value="">
-         <input class="form-control" name="dltGBuildingID" id="dltGBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import com.bmc.pojo.HazardousSubstance;
 
@@ -48,43 +48,42 @@ public class HazardousSubstanceMgr {
 	}
 
 
-	public boolean setHazardousSubstance(Connection conn, HazardousSubstance hazardSub){
+	public int setHazardousSubstance(Connection conn, HazardousSubstance hazardSub){
 
-		boolean isCreated = false;
+		int isCreated = 0;
 
 		try {
 
-			String qry = " INSERT INTO dbo.Hazardous_Substance"
-					+ "recordID, buildingID, productName, unNumber, approvalNumber, "
+			String qry = " INSERT INTO dbo.Hazardous_Substance "
+					+ "(buildingID, productName, unNumber, approvalNumber, "
 					+ "groupStandard, hazardClassification, currentSDSAvailable, specificStorage, segregationRequirements, "
 					+ "containerSize, openCloseContainer, gasLiquIDSolID, location, maximumLikelyAmount, "
-					+ "createdBy, createdDate, modifiedBy, modifiedDate, status"
+					+ "createdBy, createdDate, modifiedBy, modifiedDate, status)"
 					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
 
-			pstatement.setInt(1, hazardSub.getRecordID());
-			pstatement.setInt(2, hazardSub.getBuildingID());
-			pstatement.setString(3, hazardSub.getProductName());
-			pstatement.setString(4, hazardSub.getUnNumber());
-			pstatement.setString(5, hazardSub.getApprovalNumber());
-			pstatement.setString(6, hazardSub.getGroupStandard());
-			pstatement.setString(7, hazardSub.getHazardClassification());
-			pstatement.setString(8, hazardSub.getCurrentSDSAvailable());
-			pstatement.setString(9, hazardSub.getSpecificStorage());
-			pstatement.setString(10, hazardSub.getSegregationRequirements());
-			pstatement.setString(11, hazardSub.getContainerSize());
-			pstatement.setString(12, hazardSub.getOpenCloseContainer());
-			pstatement.setString(13, hazardSub.getGasLiquidSolid());
-			pstatement.setString(14, hazardSub.getLocation());
-			pstatement.setInt(15, hazardSub.getMaximumLikelyAmount());
-			pstatement.setString(16, hazardSub.getCreatedBy());
-			pstatement.setDate(17, (java.sql.Date) hazardSub.getCreatedDate());
-			pstatement.setString(18, hazardSub.getModifiedBy());
-			pstatement.setDate(19, (java.sql.Date) hazardSub.getModifiedDate());
-			pstatement.setString(20, hazardSub.getStatus());
+			pstatement.setInt(1, hazardSub.getBuildingID());
+			pstatement.setString(2, hazardSub.getProductName());
+			pstatement.setString(3, hazardSub.getUnNumber());
+			pstatement.setString(4, hazardSub.getApprovalNumber());
+			pstatement.setString(5, hazardSub.getGroupStandard());
+			pstatement.setString(6, hazardSub.getHazardClassification());
+			pstatement.setString(7, hazardSub.getCurrentSDSAvailable());
+			pstatement.setString(8, hazardSub.getSpecificStorage());
+			pstatement.setString(9, hazardSub.getSegregationRequirements());
+			pstatement.setString(10, hazardSub.getContainerSize());
+			pstatement.setString(11, hazardSub.getOpenCloseContainer());
+			pstatement.setString(12, hazardSub.getGasLiquidSolid());
+			pstatement.setString(13, hazardSub.getLocation());
+			pstatement.setInt(14, hazardSub.getMaximumLikelyAmount());
+			pstatement.setString(15, hazardSub.getCreatedBy());
+			pstatement.setDate(16, hazardSub.getCreatedDate());
+			pstatement.setString(17, hazardSub.getModifiedBy());
+			pstatement.setDate(18, hazardSub.getModifiedDate());
+			pstatement.setString(19, hazardSub.getStatus());
 
-			isCreated =  pstatement.execute();
+			isCreated =  pstatement.executeUpdate();
 			pstatement.close();
 
 		}catch (Exception e) {
@@ -129,9 +128,9 @@ public class HazardousSubstanceMgr {
 			pstatement.setString(12, hazardSub.getLocation());
 			pstatement.setInt(13, hazardSub.getMaximumLikelyAmount());
 			pstatement.setString(14, hazardSub.getCreatedBy());
-			pstatement.setDate(15, (java.sql.Date) hazardSub.getCreatedDate());
+			pstatement.setDate(15,  hazardSub.getCreatedDate());
 			pstatement.setString(16, hazardSub.getModifiedBy());
-			pstatement.setDate(17, (java.sql.Date) hazardSub.getModifiedDate());
+			pstatement.setDate(17,  hazardSub.getModifiedDate());
 			pstatement.setInt(18, hazardSub.getBuildingID());
 			pstatement.setInt(19, hazardSub.getRecordID());
 
@@ -164,7 +163,7 @@ public class HazardousSubstanceMgr {
 
 			pstatement.setString(1, status);
 			pstatement.setString(2, modifiedBy);
-			pstatement.setDate(3, (java.sql.Date) modifiedDate);
+			pstatement.setDate(3,  modifiedDate);
 			pstatement.setInt(4, buildingID);
 			pstatement.setInt(5, recordID);
 

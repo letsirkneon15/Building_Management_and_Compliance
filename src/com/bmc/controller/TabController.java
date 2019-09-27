@@ -76,7 +76,7 @@ public class TabController extends HttpServlet {
 		String userID = "";
 		int isUpdated = 0;
 		int isSetStatus = 0;
-		boolean isCreated = false;
+		int isCreated = 0;
 		String conWOF = "WOF";
 		String conConsent = "Consent";
 		String conAsbestos = "Asbestos";
@@ -107,7 +107,11 @@ public class TabController extends HttpServlet {
 		HazardRegister hazardReg = new HazardRegister();
 
 		/* Get Today's date */
-		Date today = Calendar.getInstance().getTime();
+		Date todayUtil = Calendar.getInstance().getTime();
+		System.out.println("today :" + todayUtil);
+		java.sql.Date today = new java.sql.Date(todayUtil.getTime());
+		System.out.println("sqlDate :" + today);
+		
 
 
 		/* Retrieve session values from BuildingHeader */
@@ -123,58 +127,55 @@ public class TabController extends HttpServlet {
 			System.out.println("Action: " + action);
 
 			/* Display Tab Contents */
-			if(action.equalsIgnoreCase("tabContents")){
-				buildingID = Integer.parseInt(request.getParameter("buildingID"));
+			buildingID = Integer.parseInt(request.getParameter("buildingID"));
 
-				/* Get Building Header by buildingID */
-				bHeader = new BuildingHeaderMgr().getBuildingHeaderByBuildingID(conn, buildingID);
+			/* Get Building Header by buildingID */
+			bHeader = new BuildingHeaderMgr().getBuildingHeaderByBuildingID(conn, buildingID);
 
-				/* Get Contacts by buildingID */
-				contactsArr = new ContactsMgr().getContacts(conn, buildingID);
+			/* Get Contacts by buildingID */
+			contactsArr = new ContactsMgr().getContacts(conn, buildingID);
 
-				/*Get Building Details */
-				bDetails = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "");
+			/*Get Building Details */
+			bDetails = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "");
 
-				/*Get Compliance Inspection */
-				complianceInspectionArr = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
+			/*Get Compliance Inspection */
+			complianceInspectionArr = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
 
-				/*Get Hazardous Substances */
-				hazSubstancesArr = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID);
+			/*Get Hazardous Substances */
+			hazSubstancesArr = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID);
 
-				/*Get Hazard Register */
-				hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
+			/*Get Hazard Register */
+			hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
 
-				/*Get Building WOF from Building_Details table */
-				buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF);
+			/*Get Building WOF from Building_Details table */
+			buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF);
 
-				/*Get Building Consent from Building_Details table */
-				buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent);
+			/*Get Building Consent from Building_Details table */
+			buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent);
 
-				/*Get Asbestos from Building_Details table */
-				asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos);
+			/*Get Asbestos from Building_Details table */
+			asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos);
 
-				/*Get Electrical from Building_Details table */
-				electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical);
+			/*Get Electrical from Building_Details table */
+			electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical);
 
-				/*Get Gas from Building_Details table */
-				gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas);
+			/*Get Gas from Building_Details table */
+			gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas);
 
-				/*Get Seismic Resilience from Building_Details table */
-				seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic);
+			/*Get Seismic Resilience from Building_Details table */
+			seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic);
 
-				/*Get Resource Consent from Building_Details table */
-				resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
-				
+			/*Get Resource Consent from Building_Details table */
+			resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
+
 			/* Do this for creation of new records in TAB */
-			}else if(action.equalsIgnoreCase("crtTabs")){
+			if(action.equalsIgnoreCase("crtTabs")){
 
 				tabName = request.getParameter("tab");
 
 				switch(tabName){
 
 				case "Contacts":
-					int crtCRecordID = Integer.parseInt(request.getParameter("crtCRecordID"));
-					int crtCBuildingID = Integer.parseInt(request.getParameter("crtCBuildingID"));
 					String crtCName = request.getParameter("crtCName");
 					String crtCType = request.getParameter("crtCType");
 					String crtCCompany = request.getParameter("crtCCompany");
@@ -184,14 +185,15 @@ public class TabController extends HttpServlet {
 					String crtCEmailAdd = request.getParameter("crtCEmailAdd");
 
 					/* Save values in contacts POJO */
-					contacts = new Contacts(crtCRecordID, crtCBuildingID, crtCName, crtCType, crtCCompany, 
+					contacts = new Contacts(contacts.getRecordID(), buildingID, crtCName, crtCType, crtCCompany, 
 							crtCPhoneNumber, crtCFaxNumber, crtCMobileNumber, crtCEmailAdd, userID, 
 							today, contacts.getModifiedBy(), contacts.getModifiedDate(), "");
 
 					/* Call Manager to create values from POJO */
 					isCreated = new ContactsMgr().setContacts(conn, contacts);
+					System.out.println("isCreated:" + isCreated);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -199,15 +201,13 @@ public class TabController extends HttpServlet {
 					break;
 
 				case "WOF":
-					int crtWRecordID = Integer.parseInt(request.getParameter("crtWRecordID"));
-					int crtWBuildingID = Integer.parseInt(request.getParameter("crtWBuildingID"));
 					String crtWName = request.getParameter("crtWName");
 					int crtWTitledYear = Integer.parseInt(request.getParameter("crtWTitledYear"));
 					String crtWAttachment = request.getParameter("crtWAttachment");
 					String crtWType = request.getParameter("crtWType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtWRecordID, conWOF, crtWBuildingID, crtWName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conWOF, buildingID, crtWName, 
 							crtWAttachment, crtWType, crtWTitledYear, buildDetails.getConsentNumber(), 
 							userID, today, buildDetails.getLastUploadedBy(), buildDetails.getLastUploadedDate(), 
 							"");
@@ -215,7 +215,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to created values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -223,15 +223,13 @@ public class TabController extends HttpServlet {
 					break;
 
 				case "Consent":
-					int crtCSRecordID = Integer.parseInt(request.getParameter("crtCSRecordID"));
-					int crtCSBuildingID = Integer.parseInt(request.getParameter("crtCSBuildingID"));
 					String crtCSName = request.getParameter("crtCSName");
 					String crtCSConsentNumber = request.getParameter("crtCSConsentNumber");
 					String crtCSAttachment = request.getParameter("crtCSAttachment");
 					String crtCSType = request.getParameter("crtCSType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtCSRecordID, conConsent, crtCSBuildingID, crtCSName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conConsent, buildingID, crtCSName, 
 							crtCSAttachment, crtCSType, buildDetails.getTitledYear(), 
 							crtCSConsentNumber, userID, today, buildDetails.getLastUploadedBy(),
 							buildDetails.getLastUploadedDate(), "");
@@ -239,7 +237,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -247,14 +245,12 @@ public class TabController extends HttpServlet {
 					break;
 
 				case "Asbestos":
-					int crtARecordID = Integer.parseInt(request.getParameter("crtARecordID"));
-					int crtABuildingID = Integer.parseInt(request.getParameter("crtABuildingID"));
 					String crtAName = request.getParameter("crtAName");
 					String crtAAttachment = request.getParameter("crtAAttachment");
 					String crtAType = request.getParameter("crtAType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtARecordID, conAsbestos, crtABuildingID, crtAName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conAsbestos, buildingID, crtAName, 
 							crtAAttachment, crtAType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							userID, today, buildDetails.getLastUploadedBy(), buildDetails.getLastUploadedDate(),
 							"");
@@ -262,7 +258,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to created values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -270,14 +266,12 @@ public class TabController extends HttpServlet {
 					break;
 
 				case "Electrical":
-					int crtERecordID = Integer.parseInt(request.getParameter("crtERecordID"));
-					int crtEBuildingID = Integer.parseInt(request.getParameter("crtEBuildingID"));
 					String crtEName = request.getParameter("crtEName");
 					String crtEAttachment = request.getParameter("crtEAttachment");
 					String crtEType = request.getParameter("crtEType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtERecordID, conElectrical, crtEBuildingID, crtEName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conElectrical, buildingID, crtEName, 
 							crtEAttachment, crtEType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							userID, today, buildDetails.getLastUploadedBy(), buildDetails.getLastUploadedDate(),
 							"");
@@ -285,7 +279,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -293,14 +287,12 @@ public class TabController extends HttpServlet {
 					break;	    
 
 				case "Gas":
-					int crtGRecordID = Integer.parseInt(request.getParameter("crtGRecordID"));
-					int crtGBuildingID = Integer.parseInt(request.getParameter("crtGBuildingID"));
 					String crtGName = request.getParameter("crtGName");
 					String crtGAttachment = request.getParameter("crtGAttachment");
 					String crtGType = request.getParameter("crtGType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtGRecordID, conGas, crtGBuildingID, crtGName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conGas, buildingID, crtGName, 
 							crtGAttachment, crtGType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							userID, today, buildDetails.getLastUploadedBy(), buildDetails.getLastUploadedDate(),
 							"");
@@ -308,7 +300,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -316,8 +308,6 @@ public class TabController extends HttpServlet {
 					break;	
 
 				case "HazSubs":
-					int crtHSRecordID = Integer.parseInt(request.getParameter("crtHSRecordID"));
-					int crtHSBuildingID = Integer.parseInt(request.getParameter("crtHSBuildingID"));
 					String crtHSProductName = request.getParameter("crtHSProductName");
 					String crtHSUnNumber = request.getParameter("crtHSUnNumber");
 					String crtHSApprovalNumber = request.getParameter("crtHSApprovalNumber");
@@ -333,7 +323,7 @@ public class TabController extends HttpServlet {
 					int crtHSMaximumLikelyAmount = Integer.parseInt(request.getParameter("crtHSMaximumLikelyAmount"));
 
 					/* Save values in HazardousSubstance POJO */
-					hazardSub = new HazardousSubstance(crtHSRecordID, crtHSBuildingID, crtHSProductName, crtHSUnNumber, 
+					hazardSub = new HazardousSubstance(hazardSub.getRecordID(), buildingID, crtHSProductName, crtHSUnNumber, 
 							crtHSApprovalNumber, crtHSGroupStandard, crtHSHazardClassification, crtHSCurrentSDSAvailable, 
 							crtHSSpecificStorage, crtHSSegregationRequirements, crtHSContainerSize, crtHSOpenCloseContainer, 
 							crtHSGasLiquidSolid, crtHSLocation, crtHSMaximumLikelyAmount, userID, 
@@ -342,7 +332,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new HazardousSubstanceMgr().setHazardousSubstance(conn, hazardSub);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -350,8 +340,6 @@ public class TabController extends HttpServlet {
 					break;
 
 				case "HazReg":
-					int crtHRRecordID = Integer.parseInt(request.getParameter("crtHRRecordID"));
-					int crtHRBuildingID = Integer.parseInt(request.getParameter("crtHRBuildingID"));
 					String crtHRIdentifiedHazard = request.getParameter("crtHRIdentifiedHazard");
 					String crtHRInitialRiskAssessment = request.getParameter("crtHRInitialRiskAssessment");
 					String crtHRControls = request.getParameter("crtHRControls");
@@ -359,14 +347,14 @@ public class TabController extends HttpServlet {
 					String crtHRResidualRiskAssessment = request.getParameter("crtHRResidualRiskAssessment");
 
 					/* Save values in HazardRegister POJO */
-					hazardReg = new HazardRegister(crtHRRecordID, crtHRBuildingID, crtHRIdentifiedHazard, 
+					hazardReg = new HazardRegister(hazardReg.getRecordID(), buildingID, crtHRIdentifiedHazard, 
 							crtHRInitialRiskAssessment, crtHRControls, crtHRLevelOfControl, crtHRResidualRiskAssessment, 
 							userID, today, hazardReg.getModifiedBy(), hazardReg.getModifiedDate(), "");
 
 					/* Call Manager to create values from POJO */
 					isCreated = new HazardRegisterMgr().setHazardRegister(conn, hazardReg);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -374,14 +362,12 @@ public class TabController extends HttpServlet {
 					break;	    
 
 				case "Seismic":
-					int crtSRRecordID = Integer.parseInt(request.getParameter("crtSRRecordID"));
-					int crtSRBuildingID = Integer.parseInt(request.getParameter("crtSRBuildingID"));
 					String crtSRName = request.getParameter("crtSRName");
 					String crtSRAttachment = request.getParameter("crtSRAttachment");
 					String crtSRType = request.getParameter("crtSRType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtSRRecordID, conSeismic, crtSRBuildingID, crtSRName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conSeismic, buildingID, crtSRName, 
 							crtSRAttachment, crtSRType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							userID, today, buildDetails.getLastUploadedBy(), buildDetails.getLastUploadedDate(),
 							"");
@@ -389,7 +375,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -397,14 +383,12 @@ public class TabController extends HttpServlet {
 					break;	    
 
 				case "ResourceConsent":
-					int crtRCRecordID = Integer.parseInt(request.getParameter("crtRCRecordID"));
-					int crtRCBuildingID = Integer.parseInt(request.getParameter("crtRCBuildingID"));
 					String crtRCName = request.getParameter("crtRCName");
 					String crtRCAttachment = request.getParameter("crtRCAttachment");
 					String crtRCType = request.getParameter("crtRCType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(crtRCRecordID, conResourceConsent, crtRCBuildingID, crtRCName, 
+					buildDetails = new BuildingDetails(buildDetails.getRecordID(), conResourceConsent, buildingID, crtRCName, 
 							crtRCAttachment, crtRCType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							userID, today, buildDetails.getLastUploadedBy(), buildDetails.getLastUploadedDate(),
 							"");
@@ -412,7 +396,7 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new BuildingDetailsMgr().setBuildingDetails(conn, buildDetails);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
@@ -420,18 +404,15 @@ public class TabController extends HttpServlet {
 					break;	
 
 				case "ComIns":
-
-					int crtCIRecordID = Integer.parseInt(request.getParameter("crtCIRecordID"));
-					int crtCIBuildingID = Integer.parseInt(request.getParameter("crtCIBuildingID"));
 					//Date edtCIInspectionDate = (java.sql.Date)(request.getParameter("edtCIInspectionDate"));
-					Date crtCIInspectionDate=null;
+					java.sql.Date crtCIInspectionDate=null;
 					String crtCIFinding = request.getParameter("crtCIFinding");
 					String crtCIDescription = request.getParameter("crtCIDescription");
 					String crtCIInspectionStat = request.getParameter("crtCIInspectionStat");
 					String crtCIImage = request.getParameter("crtCIImage");
 
 					/* Save values in Compliance Inspection POJO */
-					comInspection = new ComplianceInspection(crtCIRecordID, crtCIBuildingID, crtCIInspectionDate, 
+					comInspection = new ComplianceInspection(comInspection.getRecordID(), buildingID, crtCIInspectionDate, 
 							crtCIFinding, crtCIDescription, crtCIInspectionStat, crtCIImage, 
 							userID, today, comInspection.getModifiedBy(), comInspection.getModifiedDate(),
 							"");
@@ -439,15 +420,15 @@ public class TabController extends HttpServlet {
 					/* Call Manager to create values from POJO */
 					isCreated = new ComplianceInspectionMgr().setComplianceInspection(conn, comInspection);
 
-					if(isCreated) {
+					if(isCreated > 0) {
 						System.out.println("Record is successfully created.");
 					}else {
 						System.out.println("Record is not created");
 					}
 					break;	
 				}
-				
-			/* Do this for updating of TAB records */
+
+				/* Do this for updating of TAB records */
 			}else if(action.equalsIgnoreCase("editTabs")){
 
 				tabName = request.getParameter("tab");
@@ -456,7 +437,6 @@ public class TabController extends HttpServlet {
 
 				case "Contacts":
 					int edtCRecordID = Integer.parseInt(request.getParameter("edtCRecordID"));
-					int edtCBuildingID = Integer.parseInt(request.getParameter("edtCBuildingID"));
 					String edtCName = request.getParameter("edtCName");
 					String edtCType = request.getParameter("edtCType");
 					String edtCCompany = request.getParameter("edtCCompany");
@@ -466,9 +446,9 @@ public class TabController extends HttpServlet {
 					String edtCEmailAdd = request.getParameter("edtCEmailAdd");
 
 					/* Save values in contacts POJO */
-					contacts = new Contacts(edtCRecordID, edtCBuildingID, edtCName, edtCType, edtCCompany, 
+					contacts = new Contacts(edtCRecordID, buildingID, edtCName, edtCType, edtCCompany, 
 							edtCPhoneNumber, edtCFaxNumber, edtCMobileNumber, edtCEmailAdd, contacts.getCreatedBy(), 
-							contacts.getCreationDate(), userID, today, contacts.getStatus());
+							null, userID, today, contacts.getStatus());
 
 					/* Call Manager to edit values from POJO */
 					isUpdated = new ContactsMgr().updateContacts(conn, contacts);
@@ -482,14 +462,13 @@ public class TabController extends HttpServlet {
 
 				case "WOF":
 					int edtWRecordID = Integer.parseInt(request.getParameter("edtWRecordID"));
-					int edtWBuildingID = Integer.parseInt(request.getParameter("edtWBuildingID"));
 					String edtWName = request.getParameter("edtWName");
 					int edtWTitledYear = Integer.parseInt(request.getParameter("edtWTitledYear"));
 					String edtWAttachment = request.getParameter("edtWAttachment");
 					String edtWType = request.getParameter("edtWType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtWRecordID, conWOF, edtWBuildingID, edtWName, 
+					buildDetails = new BuildingDetails(edtWRecordID, conWOF, buildingID, edtWName, 
 							edtWAttachment, edtWType, edtWTitledYear, buildDetails.getConsentNumber(), 
 							buildDetails.getUploadedBy(), buildDetails.getUploadedDate(), userID, 
 							today, buildDetails.getStatus());
@@ -506,14 +485,13 @@ public class TabController extends HttpServlet {
 
 				case "Consent":
 					int edtCSRecordID = Integer.parseInt(request.getParameter("edtCSRecordID"));
-					int edtCSBuildingID = Integer.parseInt(request.getParameter("edtCSBuildingID"));
 					String edtCSName = request.getParameter("edtCSName");
 					String edtCSConsentNumber = request.getParameter("edtCSConsentNumber");
 					String edtCSAttachment = request.getParameter("edtCSAttachment");
 					String edtCSType = request.getParameter("edtCSType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtCSRecordID, conConsent, edtCSBuildingID, edtCSName, 
+					buildDetails = new BuildingDetails(edtCSRecordID, conConsent, buildingID, edtCSName, 
 							edtCSAttachment, edtCSType, buildDetails.getTitledYear(), 
 							edtCSConsentNumber, buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
 							userID, today, buildDetails.getStatus());
@@ -530,13 +508,12 @@ public class TabController extends HttpServlet {
 
 				case "Asbestos":
 					int edtARecordID = Integer.parseInt(request.getParameter("edtARecordID"));
-					int edtABuildingID = Integer.parseInt(request.getParameter("edtABuildingID"));
 					String edtAName = request.getParameter("edtAName");
 					String edtAAttachment = request.getParameter("edtAAttachment");
 					String edtAType = request.getParameter("edtAType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtARecordID, conAsbestos, edtABuildingID, edtAName, 
+					buildDetails = new BuildingDetails(edtARecordID, conAsbestos, buildingID, edtAName, 
 							edtAAttachment, edtAType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
 							userID, today, buildDetails.getStatus());
@@ -553,13 +530,12 @@ public class TabController extends HttpServlet {
 
 				case "Electrical":
 					int edtERecordID = Integer.parseInt(request.getParameter("edtERecordID"));
-					int edtEBuildingID = Integer.parseInt(request.getParameter("edtEBuildingID"));
 					String edtEName = request.getParameter("edtEName");
 					String edtEAttachment = request.getParameter("edtEAttachment");
 					String edtEType = request.getParameter("edtEType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtERecordID, conElectrical, edtEBuildingID, edtEName, 
+					buildDetails = new BuildingDetails(edtERecordID, conElectrical, buildingID, edtEName, 
 							edtEAttachment, edtEType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
 							userID, today, buildDetails.getStatus());
@@ -576,13 +552,12 @@ public class TabController extends HttpServlet {
 
 				case "Gas":
 					int edtGRecordID = Integer.parseInt(request.getParameter("edtGRecordID"));
-					int edtGBuildingID = Integer.parseInt(request.getParameter("edtGBuildingID"));
 					String edtGName = request.getParameter("edtGName");
 					String edtGAttachment = request.getParameter("edtGAttachment");
 					String edtGType = request.getParameter("edtGType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtGRecordID, conGas, edtGBuildingID, edtGName, 
+					buildDetails = new BuildingDetails(edtGRecordID, conGas, buildingID, edtGName, 
 							edtGAttachment, edtGType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
 							userID, today, buildDetails.getStatus());
@@ -599,7 +574,6 @@ public class TabController extends HttpServlet {
 
 				case "HazSubs":
 					int edtHSRecordID = Integer.parseInt(request.getParameter("edtHSRecordID"));
-					int edtHSBuildingID = Integer.parseInt(request.getParameter("edtHSBuildingID"));
 					String edtHSProductName = request.getParameter("edtHSProductName");
 					String edtHSUnNumber = request.getParameter("edtHSUnNumber");
 					String edtHSApprovalNumber = request.getParameter("edtHSApprovalNumber");
@@ -615,7 +589,7 @@ public class TabController extends HttpServlet {
 					int edtHSMaximumLikelyAmount = Integer.parseInt(request.getParameter("edtHSMaximumLikelyAmount"));
 
 					/* Save values in HazardousSubstance POJO */
-					hazardSub = new HazardousSubstance(edtHSRecordID, edtHSBuildingID, edtHSProductName, edtHSUnNumber, 
+					hazardSub = new HazardousSubstance(edtHSRecordID, buildingID, edtHSProductName, edtHSUnNumber, 
 							edtHSApprovalNumber, edtHSGroupStandard, edtHSHazardClassification, edtHSCurrentSDSAvailable, 
 							edtHSSpecificStorage, edtHSSegregationRequirements, edtHSContainerSize, edtHSOpenCloseContainer, 
 							edtHSGasLiquidSolid, edtHSLocation, edtHSMaximumLikelyAmount, hazardSub.getCreatedBy(), 
@@ -633,7 +607,6 @@ public class TabController extends HttpServlet {
 
 				case "HazReg":
 					int edtHRRecordID = Integer.parseInt(request.getParameter("edtHRRecordID"));
-					int edtHRBuildingID = Integer.parseInt(request.getParameter("edtHRBuildingID"));
 					String edtHRIdentifiedHazard = request.getParameter("edtHRIdentifiedHazard");
 					String edtHRInitialRiskAssessment = request.getParameter("edtHRInitialRiskAssessment");
 					String edtHRControls = request.getParameter("edtHRControls");
@@ -641,7 +614,7 @@ public class TabController extends HttpServlet {
 					String edtHRResidualRiskAssessment = request.getParameter("edtHRResidualRiskAssessment");
 
 					/* Save values in HazardRegister POJO */
-					hazardReg = new HazardRegister(edtHRRecordID, edtHRBuildingID, edtHRIdentifiedHazard, 
+					hazardReg = new HazardRegister(edtHRRecordID, buildingID, edtHRIdentifiedHazard, 
 							edtHRInitialRiskAssessment, edtHRControls, edtHRLevelOfControl, edtHRResidualRiskAssessment, 
 							hazardReg.getCreatedBy(), hazardReg.getCreationDate(),
 							userID, today, hazardReg.getStatus());
@@ -658,13 +631,12 @@ public class TabController extends HttpServlet {
 
 				case "Seismic":
 					int edtSRRecordID = Integer.parseInt(request.getParameter("edtSRRecordID"));
-					int edtSRBuildingID = Integer.parseInt(request.getParameter("edtSRBuildingID"));
 					String edtSRName = request.getParameter("edtSRName");
 					String edtSRAttachment = request.getParameter("edtSRAttachment");
 					String edtSRType = request.getParameter("edtSRType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtSRRecordID, conSeismic, edtSRBuildingID, edtSRName, 
+					buildDetails = new BuildingDetails(edtSRRecordID, conSeismic, buildingID, edtSRName, 
 							edtSRAttachment, edtSRType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
 							userID, today, buildDetails.getStatus());
@@ -681,13 +653,12 @@ public class TabController extends HttpServlet {
 
 				case "ResourceConsent":
 					int edtRCRecordID = Integer.parseInt(request.getParameter("edtRCRecordID"));
-					int edtRCBuildingID = Integer.parseInt(request.getParameter("edtRCBuildingID"));
 					String edtRCName = request.getParameter("edtRCName");
 					String edtRCAttachment = request.getParameter("edtRCAttachment");
 					String edtRCType = request.getParameter("edtRCType");
 
 					/* Save values in BuildingDetails POJO */
-					buildDetails = new BuildingDetails(edtRCRecordID, conResourceConsent, edtRCBuildingID, edtRCName, 
+					buildDetails = new BuildingDetails(edtRCRecordID, conResourceConsent, buildingID, edtRCName, 
 							edtRCAttachment, edtRCType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(), 
 							buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
 							userID, today, buildDetails.getStatus());
@@ -705,16 +676,15 @@ public class TabController extends HttpServlet {
 				case "ComIns":
 
 					int edtCIRecordID = Integer.parseInt(request.getParameter("edtCIRecordID"));
-					int edtCIBuildingID = Integer.parseInt(request.getParameter("edtCIBuildingID"));
 					//Date edtCIInspectionDate = (java.sql.Date)(request.getParameter("edtCIInspectionDate"));
-					Date edtCIInspectionDate=null;
+					java.sql.Date edtCIInspectionDate=null;
 					String edtCIFinding = request.getParameter("edtCIFinding");
 					String edtCIDescription = request.getParameter("edtCIDescription");
 					String edtCIInspectionStat = request.getParameter("edtCIInspectionStat");
 					String edtCIImage = request.getParameter("edtCIImage");
 
 					/* Save values in Compliance Inspection POJO */
-					comInspection = new ComplianceInspection(edtCIRecordID, edtCIBuildingID, edtCIInspectionDate, 
+					comInspection = new ComplianceInspection(edtCIRecordID, buildingID, edtCIInspectionDate, 
 							edtCIFinding, edtCIDescription, edtCIInspectionStat, edtCIImage, 
 							comInspection.getCreatedBy(), comInspection.getCreationDate(),
 							userID, today, comInspection.getStatus());
@@ -739,10 +709,9 @@ public class TabController extends HttpServlet {
 
 				case "Contacts":
 					int dltCRecordID = Integer.parseInt(request.getParameter("dltCRecordID"));
-					int dltCBuildingID = Integer.parseInt(request.getParameter("dltCBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new ContactsMgr().setStatus(conn, conD, dltCRecordID, dltCBuildingID, userID, today);
+					isSetStatus = new ContactsMgr().setStatus(conn, conD, dltCRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -753,10 +722,9 @@ public class TabController extends HttpServlet {
 
 				case "WOF":
 					int dltWRecordID = Integer.parseInt(request.getParameter("dltWRecordID"));
-					int dltWBuildingID = Integer.parseInt(request.getParameter("dltWBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltWRecordID, dltWBuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltWRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -767,10 +735,9 @@ public class TabController extends HttpServlet {
 
 				case "Consent":
 					int dltCSRecordID = Integer.parseInt(request.getParameter("dltCSRecordID"));
-					int dltCSBuildingID = Integer.parseInt(request.getParameter("dltCSBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltCSRecordID, dltCSBuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltCSRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -781,10 +748,9 @@ public class TabController extends HttpServlet {
 
 				case "Asbestos":
 					int dltARecordID = Integer.parseInt(request.getParameter("dltARecordID"));
-					int dltABuildingID = Integer.parseInt(request.getParameter("dltABuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltARecordID, dltABuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltARecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -795,10 +761,9 @@ public class TabController extends HttpServlet {
 
 				case "Electrical":
 					int dltERecordID = Integer.parseInt(request.getParameter("dltERecordID"));
-					int dltEBuildingID = Integer.parseInt(request.getParameter("dltEBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltERecordID, dltEBuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltERecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -809,10 +774,9 @@ public class TabController extends HttpServlet {
 
 				case "Gas":
 					int dltGRecordID = Integer.parseInt(request.getParameter("dltGRecordID"));
-					int dltGBuildingID = Integer.parseInt(request.getParameter("dltGBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltGRecordID, dltGBuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltGRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -823,10 +787,9 @@ public class TabController extends HttpServlet {
 
 				case "HazSubs":
 					int dltHSRecordID = Integer.parseInt(request.getParameter("dltHSRecordID"));
-					int dltHSBuildingID = Integer.parseInt(request.getParameter("dltHSBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new HazardousSubstanceMgr().setStatus(conn, conD, dltHSRecordID, dltHSBuildingID, userID, today);
+					isSetStatus = new HazardousSubstanceMgr().setStatus(conn, conD, dltHSRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -837,10 +800,9 @@ public class TabController extends HttpServlet {
 
 				case "HazReg":
 					int dltHRRecordID = Integer.parseInt(request.getParameter("dltHRRecordID"));
-					int dltHRBuildingID = Integer.parseInt(request.getParameter("dltHRBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new HazardRegisterMgr().setStatus(conn, conD, dltHRRecordID, dltHRBuildingID, userID, today);
+					isSetStatus = new HazardRegisterMgr().setStatus(conn, conD, dltHRRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -851,10 +813,9 @@ public class TabController extends HttpServlet {
 
 				case "Seismic":
 					int dltSRRecordID = Integer.parseInt(request.getParameter("dltSRRecordID"));
-					int dltSRBuildingID = Integer.parseInt(request.getParameter("dltSRBuildingID"));
 
 					/* Call Manager to edit values from POJO */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltSRRecordID, dltSRBuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltSRRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -865,10 +826,9 @@ public class TabController extends HttpServlet {
 
 				case "ResourceConsent":
 					int dltRCRecordID = Integer.parseInt(request.getParameter("dltRCRecordID"));
-					int dltRCBuildingID = Integer.parseInt(request.getParameter("dltRCBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltRCRecordID, dltRCBuildingID, userID, today);
+					isSetStatus = new BuildingDetailsMgr().setStatus(conn, conD, dltRCRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -880,10 +840,9 @@ public class TabController extends HttpServlet {
 				case "ComIns":
 
 					int dltCIRecordID = Integer.parseInt(request.getParameter("dltCIRecordID"));
-					int dltCIBuildingID = Integer.parseInt(request.getParameter("dltCIBuildingID"));
 
 					/* Call Manager to edit status=D */
-					isSetStatus = new ComplianceInspectionMgr().setStatus(conn, conD, dltCIRecordID, dltCIBuildingID, userID, today);
+					isSetStatus = new ComplianceInspectionMgr().setStatus(conn, conD, dltCIRecordID, buildingID, userID, today);
 
 					if(isSetStatus > 0) {
 						System.out.println("Record is successfully deleted.");
@@ -909,6 +868,7 @@ public class TabController extends HttpServlet {
 		session.setAttribute("gasArr", gasArr);
 		session.setAttribute("seismicArr", seismicArr);
 		session.setAttribute("resourceConsentArr", resourceConsentArr);
+		session.setAttribute("buildingID", buildingID);
 
 
 		/* do redirection */ 

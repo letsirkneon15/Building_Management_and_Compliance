@@ -59,7 +59,7 @@ public class HazardousSubstanceWs {
 
 		
 		/* Add new record in Hazardous Substance */
-		boolean result = new HazardousSubstanceMgr().setHazardousSubstance(conn, hazardSub);
+		int result = new HazardousSubstanceMgr().setHazardousSubstance(conn, hazardSub);
 
 		return Response.status(201).entity(result).build();
 				

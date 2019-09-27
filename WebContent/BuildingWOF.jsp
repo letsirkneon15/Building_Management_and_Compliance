@@ -4,13 +4,13 @@
 	<div class="card-body">
 	<div align="right">
 	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtWof">
+			data-toggle="modal" data-target="#crtWof" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Building WOF</b>
 			</h5>
 		</button>
-		<br> <br></div>
+		<br><br></div>
 		<div class="table-responsive">
 			<table id="wofTable" class="table table-bordered table-hover table-striped table-condensed" width="100%"
 				cellspacing="0">
@@ -71,7 +71,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtWof" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=WOF" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -126,8 +126,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtWRecordID" id="crtWRecordID" type="hidden" value="${crtWRecordID}">
-        			<input class="form-control" name="crtWBuildingID" id="crtWBuildingID" type="hidden" value="${crtWBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -158,7 +157,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editWof" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=WOF" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -214,7 +213,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtWRecordID" id="edtWRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtWBuildingID" id="edtWBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -244,12 +243,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltWof" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=WOF" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltWRecordID" id="dltWRecordID" type="hidden" value="">
-         <input class="form-control" name="dltWBuildingID" id="dltWBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

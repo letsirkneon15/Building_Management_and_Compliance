@@ -6,7 +6,7 @@
 	<div class="card-body">
 		<div align="right">
 	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtResourceConsent">
+			data-toggle="modal" data-target="#crtResourceConsent" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Resource Consent</b>
@@ -73,7 +73,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtResourceConsent" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=ResourceConsent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -120,8 +120,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtRCRecordID" id="crtRCRecordID" type="hidden" value="${crtRCRecordID}">
-        			<input class="form-control" name="crtRCBuildingID" id="crtRCBuildingID" type="hidden" value="${crtRCBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -152,7 +151,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editResourceConsent" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=ResourceConsent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -200,7 +199,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtRCRecordID" id="edtRCRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtRCBuildingID" id="edtRCBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -230,12 +229,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltResourceConsent" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=ResourceConsent" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltRCRecordID" id="dltRCRecordID" type="hidden" value="">
-         <input class="form-control" name="dltRCBuildingID" id="dltRCBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

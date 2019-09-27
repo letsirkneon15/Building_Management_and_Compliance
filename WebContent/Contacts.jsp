@@ -5,16 +5,18 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body" >
-	<div align="right"><button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtContacts">
+	<div align="right">
+		<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtContacts" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Contacts</b>
 			</h5>
 		</button>
-		<br> <br></div>
+		<br> <br>
+	</div>
 		<div class="table-responsive">
-			<table class="table table-bordered table-hover table-striped table-condensed" id="contactsTable" width="100%" cellspacing="0">
+			<table class="table table-bordered table-hover table-striped table-condensed" id="contentsTable" width="100%" cellspacing="0">
 				<thead>
 					<tr align="center">
 						<th>Name</th>
@@ -41,10 +43,9 @@
 							<td>${b.faxNumber }</td>
 							<td>${b.mobileNumber }</td>
 							<td>${b.emailAdd }</td>
-							
-									
+															
 							<td align="center"><a href="#editContacts" data-toggle="modal"
-								data-id="edtLink${bIndex.index}" data-buildingid="${b.buildingID}" data-recodid="${b.recordID}" data-name="${b.name}"  
+								data-id="edtLink${bIndex.index}" data-buildingid="${b.buildingID}" data-recordid="${b.recordID}" data-name="${b.name}"  
 								data-type="${b.type}" data-company="${b.company}" data-phonenumber="${b.phoneNumber}" data-faxnumber="${b.faxNumber}"  
 								data-mobilenumber="${b.mobileNumber}" data-emailadd="${b.emailAdd}"> 
 								<img src='images/edit.jpg'	height=15 width=15></a></td>
@@ -134,7 +135,7 @@
      					<label for="emailAdd">Email Address:</label>
      					<input class="form-control" name="crtCEmailAdd" id="crtCEmailAdd" type="text" value="${crtCEmailAdd}">
      				</div>	
-        			<input class="form-control" name="crtCBuildingID" id="crtCBuildingID" type="hidden" value="${crtCBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -164,7 +165,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=action=editTabs&tab=Contacts" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Contacts" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -226,7 +227,7 @@
      				</div>	
      				
      				<input class="form-control" name="edtCRecordID" id="edtCRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtCBuildingID" id="edtCBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -261,7 +262,7 @@
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltCRecordID" id="dltCRecordID" type="hidden" value="">
-         <input class="form-control" name="dltCBuildingID" id="dltCBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

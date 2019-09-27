@@ -2,6 +2,18 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+	
+	<div align="right">
+		<button type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#crtContacts">
+			<h5>
+				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
+					Compliance Inspection</b>
+			</h5>
+		</button>
+		<br> <br>
+	</div>
+	
 		<div class="table-responsive">
 			<table id="complianceInspectionTable" class="table table-bordered table-hover table-striped table-condensed" width="100%"
 				cellspacing="0">

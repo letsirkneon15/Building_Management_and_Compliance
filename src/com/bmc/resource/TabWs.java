@@ -62,7 +62,7 @@ public class TabWs {
 
 		
 		/* Add new record in Tab */
-		boolean result = new TabMgr().setTab(conn, tab);
+		int result = new TabMgr().setTab(conn, tab);
 
 		return Response.status(201).entity(result).build();
 				

@@ -1,10 +1,10 @@
 package com.bmc.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.bmc.pojo.BuildingDetails;
 
@@ -53,35 +53,34 @@ public class BuildingDetailsMgr {
 		return bdArr;
 	}
 
-	public boolean setBuildingDetails(Connection conn, BuildingDetails buildDetails) {
+	public int setBuildingDetails(Connection conn, BuildingDetails buildDetails) {
 
-		boolean isCreated = false;
+		int isCreated = 0;
 
 		try {
 
-			String qry = " INSERT INTO dbo.Building_Details"
-					+ "recordID, buildingDetailsType, buildingID, name, "
+			String qry = " INSERT INTO dbo.Building_Details "
+					+ "(buildingDetailsType, buildingID, name, "
 					+ "attachment, type, titledYear, consentNumber, "
 					+ "uploadedBy, uploadedDate, lastUploadedBy, lastUploadedDate, "
-					+ "status" + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "status) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
 
-			pstatement.setInt(1, buildDetails.getRecordID());
-			pstatement.setString(2, buildDetails.getBuildingDetailsType());
-			pstatement.setInt(3, buildDetails.getBuildingID());
-			pstatement.setString(4, buildDetails.getName());
-			pstatement.setString(5, buildDetails.getAttachment());
-			pstatement.setString(6, buildDetails.getType());
-			pstatement.setInt(7, buildDetails.getTitledYear());
-			pstatement.setString(8, buildDetails.getConsentNumber());
-			pstatement.setString(9, buildDetails.getUploadedBy());
-			pstatement.setDate(10, (java.sql.Date) buildDetails.getUploadedDate());
-			pstatement.setString(11, buildDetails.getLastUploadedBy());
-			pstatement.setDate(12, (java.sql.Date) buildDetails.getLastUploadedDate());
-			pstatement.setString(13, buildDetails.getStatus());
+			pstatement.setString(1, buildDetails.getBuildingDetailsType());
+			pstatement.setInt(2, buildDetails.getBuildingID());
+			pstatement.setString(3, buildDetails.getName());
+			pstatement.setString(4, buildDetails.getAttachment());
+			pstatement.setString(5, buildDetails.getType());
+			pstatement.setInt(6, buildDetails.getTitledYear());
+			pstatement.setString(7, buildDetails.getConsentNumber());
+			pstatement.setString(8, buildDetails.getUploadedBy());
+			pstatement.setDate(9, buildDetails.getUploadedDate());
+			pstatement.setString(10, buildDetails.getLastUploadedBy());
+			pstatement.setDate(11, buildDetails.getLastUploadedDate());
+			pstatement.setString(12, buildDetails.getStatus());
 
-			isCreated =  pstatement.execute();
+			isCreated =  pstatement.executeUpdate();
 			pstatement.close();
 
 		}catch (Exception e) {
@@ -116,7 +115,7 @@ public class BuildingDetailsMgr {
 			pstatement.setInt(4, buildDetails.getTitledYear());
 			pstatement.setString(5, buildDetails.getConsentNumber());
 			pstatement.setString(6, buildDetails.getLastUploadedBy());
-			pstatement.setDate(7, (java.sql.Date) buildDetails.getLastUploadedDate());
+			pstatement.setDate(7,  buildDetails.getLastUploadedDate());
 			pstatement.setInt(8, buildDetails.getBuildingID());
 			pstatement.setString(9, buildDetails.getBuildingDetailsType());
 			pstatement.setInt(10, buildDetails.getRecordID());
@@ -145,13 +144,13 @@ public class BuildingDetailsMgr {
 		try {
 
 			String qry = "UPDATE dbo.Building_Details set status=?, "
-					+ "modifiedBy=?, modifiedDate=? WHERE buildingID =? AND recordID=?";
+					+ "lastUploadedBy=?, lastUploadedDate=? WHERE buildingID =? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 
 			pstatement.setString(1, status);
 			pstatement.setString(2, modifiedBy);
-			pstatement.setDate(3, (java.sql.Date) modifiedDate);
+			pstatement.setDate(3, modifiedDate);
 			pstatement.setInt(4, buildingID);
 			pstatement.setInt(5, recordID);
 			

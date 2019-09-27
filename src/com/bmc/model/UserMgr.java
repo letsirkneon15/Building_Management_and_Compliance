@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import com.bmc.pojo.User;
 
@@ -57,9 +57,9 @@ public class UserMgr {
 	}
 	
 
-	public boolean setUser(Connection conn, User user){
+	public int setUser(Connection conn, User user){
 		
-		   boolean isCreated = false;
+		   int isCreated = 0;
 		   
 		   try{
 
@@ -78,12 +78,12 @@ public class UserMgr {
 				pstatement.setString(6, user.getCompanyName());
 				pstatement.setString(7, user.getCompanyAddress());
 				pstatement.setString(8, user.getCreatedBy());
-				pstatement.setDate(9, (java.sql.Date) user.getCreationDate());
+				pstatement.setDate(9, user.getCreationDate());
 				pstatement.setString(10, user.getModifiedBy());
-				pstatement.setDate(11, (java.sql.Date) user.getModifiedDate());
+				pstatement.setDate(11, user.getModifiedDate());
 				pstatement.setString(12, user.getStatus());
 
-				isCreated = pstatement.execute();
+				isCreated = pstatement.executeUpdate();
 				pstatement.close();
 
 			}catch(Exception e){
@@ -118,7 +118,7 @@ public class UserMgr {
 				pstatement.setString(5, user.getCompanyName());
 				pstatement.setString(6, user.getCompanyAddress());
 				pstatement.setString(7, user.getModifiedBy());
-				pstatement.setDate(8, (java.sql.Date) user.getModifiedDate());
+				pstatement.setDate(8, user.getModifiedDate());
 				pstatement.setString(9, user.getStatus());
 				pstatement.setString(10, user.getUserID());
 				
@@ -152,7 +152,7 @@ public class UserMgr {
 
 				pstatement.setString(1, status);
 				pstatement.setString(2, modifiedBy);
-				pstatement.setDate(3, (java.sql.Date) modifiedDate);
+				pstatement.setDate(3, modifiedDate);
 				pstatement.setString(4, userID);
 				
 				isSetStatus = pstatement.executeUpdate();
@@ -185,7 +185,7 @@ public class UserMgr {
 
 				pstatement.setString(1, password);
 				pstatement.setString(2, modifiedBy);
-				pstatement.setDate(3, (java.sql.Date) modifiedDate);
+				pstatement.setDate(3,  modifiedDate);
 				pstatement.setString(4, userID);
 				
 				isSetPassword = pstatement.executeUpdate();

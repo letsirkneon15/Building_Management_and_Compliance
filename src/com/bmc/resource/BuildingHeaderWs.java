@@ -87,7 +87,7 @@ public class BuildingHeaderWs {
 	public Response createNewInfo(BuildingHeader buildHeader) {
 		
 		/* Add new record in Building Header */
-		boolean result = new BuildingHeaderMgr().setBuildingHeader(conn, buildHeader);
+		int result = new BuildingHeaderMgr().setBuildingHeader(conn, buildHeader);
 		
 		return Response.status(201).entity(result).build();
 				

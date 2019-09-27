@@ -4,7 +4,7 @@
 	<div class="card-body">
 		<div align="right">
 	<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtConsent">
+			data-toggle="modal" data-target="#crtConsent" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add
 					Building Consent</b>
@@ -72,7 +72,7 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtConsent" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Consent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -127,8 +127,7 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<input class="form-control" name="crtCSRecordID" id="crtCSRecordID" type="hidden" value="${crtCSRecordID}">
-        			<input class="form-control" name="crtCSBuildingID" id="crtCSBuildingID" type="hidden" value="${crtCSBuildingID}">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -159,7 +158,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editConsent" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Consent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -215,7 +214,7 @@
      			<div class="panel-default">
   				<div class="panel-body">
      				<input class="form-control" name="edtCSRecordID" id="edtCSRecordID" type="hidden" value="">
-        			<input class="form-control" name="edtCSBuildingID" id="edtCSBuildingID" type="hidden" value="">
+        			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
      			</div>
      			</div>
      						
@@ -245,12 +244,12 @@
         </div>
 	
 		<!-- Create a Form to delete record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=dltConsent" method="post">
+		<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=Consent" method="post">
          <div class="modal-body bgColorWhite">
          	<p> Are you sure you wish to delete one record? </p>
          </div>
          <input class="form-control" name="dltCSRecordID" id="dltCSRecordID" type="hidden" value="">
-         <input class="form-control" name="dltCSBuildingID" id="dltCSBuildingID" type="hidden" value="">
+         <input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
          <div class="modal-footer">
   					<!-- Submit Button -->
          			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>
