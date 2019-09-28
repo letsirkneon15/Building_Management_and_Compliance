@@ -81,8 +81,8 @@
 
 
 <!--START- Create Record (MODAL)-->
-<div class="modal fade" id="crtHazardSubstance" role="dialog">
-  <div class="modal-lg" style="width: 100%" align="center">
+<div class="modal fade bd-example-modal-lg" id="crtHazardSubstance" role="dialog">
+  <div class="modal-dialog modal-lg" style="width: 100%">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -209,8 +209,8 @@
 
 
 <!--START- Edit Record (MODAL)-->
-<div class="modal fade" id="editHazardSubstance" role="dialog">
-  <div class="modal-lg" style="width: 100%" align="center">
+<div class="modal fade bd-example-modal-lg" id="editHazardSubstance" role="dialog">
+  <div class="modal-dialog modal-lg" style="width: 100%">
     
       <!-- Modal content-->
       <div class="modal-content">

@@ -57,9 +57,9 @@ public class HazardousSubstanceMgr {
 			String qry = " INSERT INTO dbo.Hazardous_Substance "
 					+ "(buildingID, productName, unNumber, approvalNumber, "
 					+ "groupStandard, hazardClassification, currentSDSAvailable, specificStorage, segregationRequirements, "
-					+ "containerSize, openCloseContainer, gasLiquIDSolID, location, maximumLikelyAmount, "
+					+ "containerSize, openCloseContainer, gasLiquidSolid, location, maximumLikelyAmount, "
 					+ "createdBy, createdDate, modifiedBy, modifiedDate, status)"
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
 
@@ -105,7 +105,7 @@ public class HazardousSubstanceMgr {
 
 		try {
 
-			String qry  = "UPDATE dbo.Hazardous_Substance set"
+			String qry  = "UPDATE dbo.Hazardous_Substance set "
 					+ "productName=?, unNumber=?, approvalNumber=?,  groupStandard=?, hazardClassification=?,"
 					+ "currentSDSAvailable=?, specificStorage=?, segregationRequirements=?, containerSize=?, openCloseContainer=?,"
 					+ "gasLiquIDSolID=?, location=?, maximumLikelyAmount=?, modifiedBy=?, modifiedDate=? "
@@ -127,12 +127,10 @@ public class HazardousSubstanceMgr {
 			pstatement.setString(11, hazardSub.getGasLiquidSolid());
 			pstatement.setString(12, hazardSub.getLocation());
 			pstatement.setInt(13, hazardSub.getMaximumLikelyAmount());
-			pstatement.setString(14, hazardSub.getCreatedBy());
-			pstatement.setDate(15,  hazardSub.getCreatedDate());
-			pstatement.setString(16, hazardSub.getModifiedBy());
-			pstatement.setDate(17,  hazardSub.getModifiedDate());
-			pstatement.setInt(18, hazardSub.getBuildingID());
-			pstatement.setInt(19, hazardSub.getRecordID());
+			pstatement.setString(14, hazardSub.getModifiedBy());
+			pstatement.setDate(15,  hazardSub.getModifiedDate());
+			pstatement.setInt(16, hazardSub.getBuildingID());
+			pstatement.setInt(17, hazardSub.getRecordID());
 
 			isUpdated = pstatement.executeUpdate();
 			pstatement.close();
@@ -157,7 +155,8 @@ public class HazardousSubstanceMgr {
 
 		try {
 
-			String qry = "UPDATE dbo.Building_Details set status=? WHERE buildingID =? AND recordID=?";
+			String qry = "UPDATE dbo.Hazardous_Substance set status=?, modifiedBy=?, "
+					+ "modifiedDate=? WHERE buildingID =? AND recordID=?";
 
 			pstatement = conn.prepareStatement(qry);
 

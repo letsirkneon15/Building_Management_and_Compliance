@@ -75,7 +75,7 @@ public class TabController extends HttpServlet {
 		int buildingID = 0;
 		String action = "";
 		String tabName="";
-		String userID = "";
+		String userID = "Jane.Smith001";
 		int isUpdated = 0;
 		int isSetStatus = 0;
 		int isCreated = 0;
