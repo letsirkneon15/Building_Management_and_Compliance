@@ -22,8 +22,7 @@
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
 					</tr>
 				</thead>
@@ -98,7 +97,7 @@
      				<!-- Attachment -->
      				<div class="col-sm-6">
      					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtCSAttachment" id="crtCSAttachment" type="text" value="${crtCSAttachment}"> 	
+     					<input class="form-control" name="crtCSAttachment" id="crtCSAttachment" type="file" value="${crtCSAttachment}"> 	
      				</div>
      	
      				<!-- Type  -->

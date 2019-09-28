@@ -26,7 +26,6 @@
 						<th>Residual Risk Assessment</th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
            			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
 					</tr>
 				</thead>
 

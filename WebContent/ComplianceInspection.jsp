@@ -2,7 +2,6 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
-	
 	<div align="right">
 		<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtCInspection" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
@@ -37,16 +36,15 @@
 							<td>${b.description }</td>
 							<td>${b.inspectionStatus }</td>
 							<td>${b.image }</td>
+							
 							<td><a href="#editCInspection" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingID="${b.buildingID}"
 								data-inspectiondate="${b.inspectionDate}" data-finding="${b.finding}" data-description="${b.description}"
-								data-inspectionstatus="${b.inspectionStatus}" data-image="${b.image}"><img src='images/edit.jpg'
-									height=15 width=15></a></td>
-							<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
+								data-inspectionstatus="${b.inspectionStatus}" data-image="${b.image}"><img src='images/edit.jpg' height=15 width=15></a></td>
+								
 							<td><a href="#deleteCInspection" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
-								data-buildingID="${b.buildingID}"><img
-									src='images/delete.jpg' height=15 width=15></a></td>
+								data-buildingID="${b.buildingID}"><img src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
