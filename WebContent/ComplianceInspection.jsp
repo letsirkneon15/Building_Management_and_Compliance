@@ -5,7 +5,7 @@
 	
 	<div align="right">
 		<button type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#crtCInspection">
+			data-toggle="modal" data-target="#crtCInspection" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
 				<span class="glyphicon glyphicon-plus-sign"></span><b> Add Compliance Inspection</b>
 			</h5>
@@ -38,12 +38,13 @@
 							<td>${b.inspectionStatus }</td>
 							<td>${b.image }</td>
 							<td><a href="#editCInspection" data-toggle="modal"
-								data-id="edtLink${bIndex.index}"
-								data-buildingID="${b.buildingID}"><img src='images/edit.jpg'
+								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingID="${b.buildingID}"
+								data-inspectiondate="${b.inspectionDate}" data-finding="${b.finding}" data-description="${b.description}"
+								data-inspectionstatus="${b.inspectionStatus}" data-image="${b.image}"><img src='images/edit.jpg'
 									height=15 width=15></a></td>
 							<%-- <td><a href="" id="dltLink${hsIndex.index}"><img src='images/delete.jpg' height=15 width=15></a> --%>
-							<td><a href="#deleteСInspection" data-toggle="modal"
-								data-id="dltLink${bIndex.index}"
+							<td><a href="#deleteCInspection" data-toggle="modal"
+								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingID="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
 						</tr>
@@ -69,7 +70,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form action="${pageContext.request.contextPath}/Tabs?action=crtCInspection" method="post">
+			<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=ComIns" method="post">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width:100%">
 						<div class="well">
@@ -113,7 +114,7 @@
 										<label for="image">Image:</label>
 										<input class="form-control" name="crtCIImage" id="crtCIImage" type="text" value="${crtCIImage}">
 									</div>
-									<input class="form-control" name="crtCIBuildingID" id="crtCIBuildingID" type="hidden" value="${crtCIBuildingID}">
+									<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
 								</div>
 							</div>
 						</div>
@@ -142,7 +143,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form action="${pageContext.request.contextPath}/Tabs?action=editCInspection" method="post">
+			<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=ComIns" method="post">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width:100%">
 						<div class="well">
@@ -192,7 +193,7 @@
 							<div class="panel-default">
 								<div class="panel-body">
 									<input class="form-control" name="edtCIRecordID" id="edtCIRecordID" type="hidden" value="">
-									<input class="form-control" name="edtCIBuildingID" id="edtCIBuildingID" type="hidden" value="">
+									<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
 								</div>
 							</div>
 
@@ -211,7 +212,7 @@
 <!--END- Edit Record (MODAL)-->
 
 <!--START- Delete (MODAL)-->
-<div class="modal fade" id="deleteСInspection" role="dialog">
+<div class="modal fade" id="deleteCInspection" role="dialog">
 	<div class="modal-dialog" style="width: 50%">
 
 		<!-- Modal content-->
@@ -222,12 +223,12 @@
 			</div>
 
 			<!-- Create a Form to delete record -->
-			<form action="${pageContext.request.contextPath}/Tabs?action=dltCInspection" method="post">
+			<form action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=ComIns" method="post">
 				<div class="modal-body bgColorWhite">
 					<p> Are you sure you wish to delete one record? </p>
 				</div>
 				<input class="form-control" name="dltCIRecordID" id="dltCIRecordID" type="hidden" value="">
-				<input class="form-control" name="dltСIBuildingID" id="dltCIBuildingID" type="hidden" value="">
+				<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
 				<div class="modal-footer">
 					<!-- Submit Button -->
 					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Delete</button>

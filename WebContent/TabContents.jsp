@@ -263,6 +263,11 @@ $('#crtResourceConsent').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
+$('#crtCInspection').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
 
 /**************** EDIT MODALS HERE **************************************/
 
@@ -473,6 +478,24 @@ $('#editResourceConsent').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtRCLastUploadedBy"]').val(lastuploadedby);
 });
 
+$('#editCInspection').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+    var recordid = $(e.relatedTarget).data('recordid');
+    var inspectiondate = $(e.relatedTarget).data('inspectiondate');
+    var finding = $(e.relatedTarget).data('finding');
+    var description = $(e.relatedTarget).data('description');
+    var inspectionstatus = $(e.relatedTarget).data('inspectionstatus');
+    var image = $(e.relatedTarget).data('image');
+
+    $(e.currentTarget).find('input[name="edtCIRecordID"]').val(recordid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="edtCIInspectionDate"]').val(inspectiondate);
+    $(e.currentTarget).find('input[name="edtCIFinding"]').val(finding);
+    $(e.currentTarget).find('input[name="edtCIDescription"]').val(description);
+    $(e.currentTarget).find('input[name="edtCIInspectionStat"]').val(inspectionstatus);
+    $(e.currentTarget).find('input[name="edtCIImage"]').val(image);
+});
+
 /**************** DELETE MODALS HERE **************************************/
 
 $('#deleteContacts').on('show.bs.modal', function(e) {
@@ -552,6 +575,14 @@ $('#deleteResourceConsent').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltRCRecordID"]').val(recordid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#deleteCInspection').on('show.bs.modal', function(e) {
+    var recordid = $(e.relatedTarget).data('recordid');
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="dltCIRecordID"]').val(recordid);
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 

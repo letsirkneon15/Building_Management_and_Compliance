@@ -3,6 +3,8 @@ package com.bmc.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -404,8 +406,20 @@ public class TabController extends HttpServlet {
 					break;	
 
 				case "ComIns":
-					//Date edtCIInspectionDate = (java.sql.Date)(request.getParameter("edtCIInspectionDate"));
-					java.sql.Date crtCIInspectionDate=null;
+
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+					String inspectionDateStr = request.getParameter("crtCIInspectionDate").replaceAll("-", "");
+					System.out.println("inspectionDateStr: " + inspectionDateStr);
+					Date inspectionDate = null;
+					try {
+						inspectionDate = sdf1.parse(inspectionDateStr);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					System.out.println("inspectionDate:" + inspectionDate);
+					java.sql.Date crtCIInspectionDate = new java.sql.Date(inspectionDate.getTime());
+					System.out.println("edtCIInspectionDate: " + crtCIInspectionDate);
+					
 					String crtCIFinding = request.getParameter("crtCIFinding");
 					String crtCIDescription = request.getParameter("crtCIDescription");
 					String crtCIInspectionStat = request.getParameter("crtCIInspectionStat");
@@ -676,8 +690,20 @@ public class TabController extends HttpServlet {
 				case "ComIns":
 
 					int edtCIRecordID = Integer.parseInt(request.getParameter("edtCIRecordID"));
-					//Date edtCIInspectionDate = (java.sql.Date)(request.getParameter("edtCIInspectionDate"));
-					java.sql.Date edtCIInspectionDate=null;
+					
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+					String inspectionDateStr = request.getParameter("edtCIInspectionDate").replaceAll("-", "");
+					System.out.println("inspectionDateStr: " + inspectionDateStr);
+					Date inspectionDate = null;
+					try {
+						inspectionDate = sdf1.parse(inspectionDateStr);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					System.out.println("inspectionDate:" + inspectionDate);
+					java.sql.Date edtCIInspectionDate = new java.sql.Date(inspectionDate.getTime());
+					System.out.println("edtCIInspectionDate: " + edtCIInspectionDate);
+					
 					String edtCIFinding = request.getParameter("edtCIFinding");
 					String edtCIDescription = request.getParameter("edtCIDescription");
 					String edtCIInspectionStat = request.getParameter("edtCIInspectionStat");

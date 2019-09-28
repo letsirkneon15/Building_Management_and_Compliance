@@ -62,8 +62,8 @@ public class ComplianceInspectionMgr {
 
 			String qry = "INSERT INTO dbo.Compliance_Inspection "
 					+ "(buildingID, inspectionDate, finding, description, inspectionStatus, image, "
-					+ "createdBy, createdDate, modifiedBy, modifiedDate, status) "
-					+ " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "createdBy, creationDate, modifiedBy, modifiedDate, status) "
+					+ " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
 
