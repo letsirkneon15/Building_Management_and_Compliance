@@ -126,6 +126,7 @@ public class TabController extends HttpServlet {
 		if(action != null){
 
 			buildingID = Integer.parseInt(request.getParameter("buildingID"));
+	
 			System.out.println("Action: " + action);
 
 			/* Do this for creation of new records in TAB */
@@ -884,6 +885,7 @@ public class TabController extends HttpServlet {
 		
 		
 		session.setAttribute("buildingID", buildingID);
+		session.setAttribute("tabName", tabName);
 		session.setAttribute("bHeader", bHeader);
 		session.setAttribute("contactsArr", contactsArr);
 		session.setAttribute("bDetails", bDetails);

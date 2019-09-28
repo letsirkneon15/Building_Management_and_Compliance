@@ -53,84 +53,84 @@
 					<div class="tab-content" id="nav-tabContent">
 
 						<!-- Start General Information Tab-->
-						<div id="generalInformation" class="tab-pane fade in active">
+						<div id="GeneralInformation" class="tab-pane fade in active">
 							<!-- Include GeneralInformation.jsp -->
 							<%@ include file="GeneralInformation.jsp"%>
 						</div>
 						<!-- End General Information Tab-->
 						
 						<!-- Start Contacts Tab-->
-						<div id="contacts" class="tab-pane">
+						<div id="Contacts" class="tab-pane">
 							<!-- Include Contacts.jsp -->
 							<%@ include file="Contacts.jsp"%>
 						</div>
 						<!-- End Contacts Tab-->
 
 						<!-- Start Building WOF Tab-->
-						<div id="wof" class="tab-pane">
+						<div id="WOF" class="tab-pane">
 							<!-- Include BuildingWOF.jsp -->
 							<%@ include file="BuildingWOF.jsp"%>
 						</div>
 						<!-- End Building WOF Tab-->						
 						
 						<!-- Start Consent Tab-->
-						<div id="consent" class="tab-pane">
+						<div id="Consent" class="tab-pane">
 							<!-- Include Consent.jsp -->
 							<%@ include file="BuildingConsent.jsp"%>
 						</div>
 						<!-- End Consent Tab-->	
 						
 						<!-- Start Asbestos Tab-->
-						<div id="asbestos" class="tab-pane">
+						<div id="Asbestos" class="tab-pane">
 							<!-- Include Asbestos.jsp -->
 							<%@ include file="Asbestos.jsp"%>
 						</div>
 						<!-- End Asbestos Tab-->	
 						
 						<!-- Start Electrical Tab-->
-						<div id="electrical" class="tab-pane">
+						<div id="Electrical" class="tab-pane">
 							<!-- Include Electrical.jsp -->
 							<%@ include file="Electrical.jsp"%>
 						</div>
 						<!-- End Electrical Tab-->
 						
 						<!-- Start Gas Tab-->
-						<div id="gas" class="tab-pane">
+						<div id="Gas" class="tab-pane">
 							<!-- Include Gas.jsp -->
 							<%@ include file="Gas.jsp"%>
 						</div>
 						<!-- End Gas Tab-->
 						
 						<!-- Start Hazardous Substances Tab-->
-						<div id="hazardousSubstances" class="tab-pane">
+						<div id="HazSubs" class="tab-pane">
 							<!-- Include HazardousSubstances.jsp -->
 							<%@ include file="HazardousSubstances.jsp"%>
 						</div>
 						<!-- End Hazardous Substances Tab-->	
 						
 						<!-- Start Hazard Register Tab-->
-						<div id="hazardRegister" class="tab-pane">
+						<div id="HazReg" class="tab-pane">
 							<!-- Include HazardRegister.jsp -->
 							<%@ include file="HazardRegister.jsp"%>
 						</div>
 						<!-- End Hazard Register Tab-->	
 		
 						<!-- Start Seismic Resilience Tab-->
-						<div id="seismicResilience" class="tab-pane">
+						<div id="Seismic" class="tab-pane">
 							<!-- Include SeismicResilience.jsp -->
 							<%@ include file="SeismicResilience.jsp"%>
 						</div>
 						<!-- End Seismic Resilience Tab-->	
 						
 						<!-- Start Resource Consent Tab-->
-						<div id="resourceConsent" class="tab-pane">
+						<div id="ResourceConsent" class="tab-pane">
 							<!-- Include ResourceConsent.jsp -->
 							<%@ include file="ResourceConsent.jsp"%>
 						</div>
 						<!-- End Resource Consent Tab-->	
 						
 						<!-- Start Compliance Inspection Tab-->
-						<div id="complianceInspection" class="tab-pane">
+						<div id="ComIns" class="tab-pane">
 							<!-- Include ComplianceInspection.jsp -->
 							<%@ include file="ComplianceInspection.jsp"%>
 						</div>
@@ -198,8 +198,14 @@ $(document).ready(function() {
 } );
 
 $(".nav-tabs a").click(function(){
-    $(this).tab('show');
+    $(this).tab('show'); 
 });
+
+activeTab("${tabName}");
+
+function activeTab(tab){
+    $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+};
 
 /**************** CREATE MODALS HERE ************************************/
 
