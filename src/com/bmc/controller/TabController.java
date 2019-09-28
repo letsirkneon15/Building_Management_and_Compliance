@@ -115,60 +115,18 @@ public class TabController extends HttpServlet {
 		System.out.println("sqlDate :" + today);
 		
 
-
 		/* Retrieve session values from BuildingHeader */
 		HttpSession session=request.getSession();
 		if(session != null){	
-			//buildingID = (int) request.getAttribute("buildingID");
+			//buildingID = (int) session.getAttribute("buildingID");
 		}
 
 		/* Do this when submit button was clicked */
 		action = request.getParameter("action");
 		if(action != null){
 
-			System.out.println("Action: " + action);
-
-			/* Display Tab Contents */
 			buildingID = Integer.parseInt(request.getParameter("buildingID"));
-
-			/* Get Building Header by buildingID */
-			bHeader = new BuildingHeaderMgr().getBuildingHeaderByBuildingID(conn, buildingID);
-
-			/* Get Contacts by buildingID */
-			contactsArr = new ContactsMgr().getContacts(conn, buildingID);
-
-			/*Get Building Details */
-			bDetails = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "");
-
-			/*Get Compliance Inspection */
-			complianceInspectionArr = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
-
-			/*Get Hazardous Substances */
-			hazSubstancesArr = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID);
-
-			/*Get Hazard Register */
-			hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
-
-			/*Get Building WOF from Building_Details table */
-			buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF);
-
-			/*Get Building Consent from Building_Details table */
-			buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent);
-
-			/*Get Asbestos from Building_Details table */
-			asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos);
-
-			/*Get Electrical from Building_Details table */
-			electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical);
-
-			/*Get Gas from Building_Details table */
-			gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas);
-
-			/*Get Seismic Resilience from Building_Details table */
-			seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic);
-
-			/*Get Resource Consent from Building_Details table */
-			resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
+			System.out.println("Action: " + action);
 
 			/* Do this for creation of new records in TAB */
 			if(action.equalsIgnoreCase("crtTabs")){
@@ -881,6 +839,51 @@ public class TabController extends HttpServlet {
 
 		}
 
+		
+		/* Query latest values and Display Tab Contents */
+
+		/* Get Building Header by buildingID */
+		bHeader = new BuildingHeaderMgr().getBuildingHeaderByBuildingID(conn, buildingID);
+
+		/* Get Contacts by buildingID */
+		contactsArr = new ContactsMgr().getContacts(conn, buildingID);
+
+		/*Get Building Details */
+		bDetails = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "");
+
+		/*Get Compliance Inspection */
+		complianceInspectionArr = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
+
+		/*Get Hazardous Substances */
+		hazSubstancesArr = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID);
+
+		/*Get Hazard Register */
+		hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
+
+		/*Get Building WOF from Building_Details table */
+		buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF);
+
+		/*Get Building Consent from Building_Details table */
+		buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent);
+
+		/*Get Asbestos from Building_Details table */
+		asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos);
+
+		/*Get Electrical from Building_Details table */
+		electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical);
+
+		/*Get Gas from Building_Details table */
+		gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas);
+
+		/*Get Seismic Resilience from Building_Details table */
+		seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic);
+
+		/*Get Resource Consent from Building_Details table */
+		resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
+		
+		
+		
+		session.setAttribute("buildingID", buildingID);
 		session.setAttribute("bHeader", bHeader);
 		session.setAttribute("contactsArr", contactsArr);
 		session.setAttribute("bDetails", bDetails);
@@ -894,8 +897,7 @@ public class TabController extends HttpServlet {
 		session.setAttribute("gasArr", gasArr);
 		session.setAttribute("seismicArr", seismicArr);
 		session.setAttribute("resourceConsentArr", resourceConsentArr);
-		session.setAttribute("buildingID", buildingID);
-
+		
 
 		/* do redirection */ 
 		ServletContext sContext = getServletContext();

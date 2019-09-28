@@ -49,7 +49,7 @@
 
 							<td align="center"><a href="#editContacts"
 								data-toggle="modal" data-id="edtLink${bIndex.index}"
-								data-buildingid="${b.buildingID}" data-recodid="${b.recordID}"
+								data-buildingid="${b.buildingID}" data-recordid="${b.recordID}"
 								data-name="${b.name}" data-type="${b.type}"
 								data-company="${b.company}" data-phonenumber="${b.phoneNumber}"
 								data-faxnumber="${b.faxNumber}"
@@ -191,7 +191,7 @@
 
 			<!-- Create a Form to edit record -->
 			<form
-				action="${pageContext.request.contextPath}/Tabs?action=action=editTabs&tab=Contacts"
+				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Contacts"
 				method="post">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width: 100%">
@@ -259,8 +259,8 @@
 									</div>
 
 									<input class="form-control" name="edtCRecordID"
-										id="edtCRecordID" type="hidden" value=""> <input
-										class="form-control" name="edtCBuildingID" id="edtCBuildingID"
+										id="edtCRecordID" type="hidden" value=""> 
+									<input class="form-control" name="buildingID" id="buildingID"
 										type="hidden" value="">
 								</div>
 							</div>
@@ -306,7 +306,7 @@
 				</div>
 				<input class="form-control" name="dltCRecordID" id="dltCRecordID"
 					type="hidden" value=""> <input class="form-control"
-					name="dltCBuildingID" id="dltCBuildingID" type="hidden" value="">
+					name="buildingID" id="buildingID" type="hidden" value="">
 				<div class="modal-footer">
 					<!-- Submit Button -->
 					<button type="submit" class="btn btn-primary">
