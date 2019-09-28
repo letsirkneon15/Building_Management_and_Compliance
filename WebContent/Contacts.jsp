@@ -153,8 +153,8 @@
 											class="form-control" name="crtCEmailAdd" id="crtCEmailAdd"
 											type="text" value="${crtCEmailAdd}">
 									</div>
-									<input class="form-control" name="crtCBuildingID"
-										id="crtCBuildingID" type="hidden" value="${crtCBuildingID}">
+									<input class="form-control" name="buildingID"
+										id="buildingID" type="hidden" value="">
 								</div>
 							</div>
 
