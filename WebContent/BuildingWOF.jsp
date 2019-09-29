@@ -116,7 +116,7 @@
 
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
+										<label for="type">Type:</label> <input class="form-control" class="d-sm-flex align-items-center"
 											name="crtWType" id="crtWType" type="text" value="${crtWType}">
 									</div>
 								</div>
@@ -126,17 +126,17 @@
 								<div class="panel-body">
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
-										<label for="uploadedBy">Uploaded By:</label> <input
+										 <input
 											class="form-control" name="crtWUploadedBy"
-											id="crttWUploadedBy" type="text" value="${crttWUploadedBy}"
+											id="crttWUploadedBy" type="hidden" type="text" value="${crttWUploadedBy}"
 											readOnly>
 									</div>
 
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
-										<label for="lastUploadedBy">Last Uploaded:</label> <input
+										 <input
 											class="form-control" name="crtWLastUploadedBy"
-											id="crtWLastUploadedBy" type="text"
+											id="crtWLastUploadedBy" type="hidden" type="text"
 											value="${crtWLastUploadedBy}" readOnly>
 									</div>
 								</div>
@@ -227,16 +227,16 @@
 								<div class="panel-body">
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
-										<label for="uploadedBy">Uploaded By:</label> <input
+										<input
 											class="form-control" name="edtWUploadedBy"
-											id="edtWUploadedBy" type="text" value="" readOnly>
+											id="edtWUploadedBy" type="hidden" type="text" value="" readOnly>
 									</div>
 
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
-										<label for="lastUploadedBy">Last Uploaded:</label> <input
+										 <input
 											class="form-control" name="edtWLastUploadedBy"
-											id="edtWLastUploadedBy" type="text" value="" readOnly>
+											id="edtWLastUploadedBy" type="hidden" type="text" value="" readOnly>
 									</div>
 								</div>
 							</div>

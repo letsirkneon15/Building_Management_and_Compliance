@@ -99,8 +99,8 @@
      				</div>
      				<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						<label for="uploadedBy">Uploaded By:</label>
-     					<input class="form-control" name="crtGUploadedBy" id="crtGUploadedBy" type="text" value="${crtGUploadedBy}" readOnly>	
+ 				
+     					<input class="form-control" name="crtGUploadedBy" id="crtGUploadedBy" type="hidden" type="text" value="${crtGUploadedBy}" readOnly>	
      				</div>
      			</div>
      			</div>
@@ -109,8 +109,8 @@
   				<div class="panel-body">
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     					<label for="lastUploadedBy">Last Uploaded:</label>
-     					<input class="form-control" name="crtGLastUploadedBy" id="crtGLastUploadedBy" type="text" value="${crtGLastUploadedBy}" readOnly>    
+     		
+     					<input class="form-control" name="crtGLastUploadedBy" id="crtGLastUploadedBy" type="hidden" type="text" value="${crtGLastUploadedBy}" readOnly>    
      				</div>			
      			</div>
      			</div>
@@ -177,8 +177,8 @@
      				</div>
      				<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						<label for="uploadedBy">Uploaded By:</label>
-     					<input class="form-control" name="edtGUploadedBy" id="edtGUploadedBy" type="text" value="" readOnly>	
+ 		
+     					<input class="form-control" name="edtGUploadedBy" id="edtGUploadedBy" type="hidden" type="text" value="" readOnly>	
      				</div>
      			</div>
      			</div>
@@ -187,8 +187,8 @@
   				<div class="panel-body">
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     					<label for="lastUploadedBy">Last Uploaded:</label>
-     					<input class="form-control" name="edtGLastUploadedBy" id="edtGLastUploadedBy" type="text" value="" readOnly>    
+
+     					<input class="form-control" name="edtGLastUploadedBy" id="edtGLastUploadedBy" type="hidden" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

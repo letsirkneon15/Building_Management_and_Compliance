@@ -110,7 +110,7 @@
 									<!-- Image  -->
 									<div class="col-sm-6">
 										<label for="image">Image:</label>
-										<input class="form-control" name="crtCIImage" id="crtCIImage" type="text" value="${crtCIImage}">
+										<input class="form-control" name="crtCIImage" id="crtCIImage" type="file"  accept="image/*" value="${crtCIImage}">
 									</div>
 									<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
 								</div>
@@ -183,7 +183,7 @@
 									<!-- Image  -->
 									<div class="col-sm-6">
 										<label for="image">Image:</label>
-										<input class="form-control" name="edtCIImage" id="edtCIImage" type="text" value="">
+										<input class="form-control" name="edtCIImage" id="edtCIImage" type="file"  accept="image/*" value="">
 									</div>
 								</div>
 							</div>

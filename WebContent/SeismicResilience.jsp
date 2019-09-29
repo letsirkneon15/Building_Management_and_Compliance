@@ -102,8 +102,8 @@
      				</div>
      				<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						<label for="uploadedBy">Uploaded By:</label>
-     					<input class="form-control" name="crtSRUploadedBy" id="crtSRUploadedBy" type="text" value="${crtSRUploadedBy}" readOnly>	
+ 					
+     					<input class="form-control" name="crtSRUploadedBy" id="crtSRUploadedBy" type="hidden" type="text" value="${crtSRUploadedBy}" readOnly>	
      				</div>
      			</div>
      			</div>
@@ -112,8 +112,8 @@
   				<div class="panel-body">
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     					<label for="lastUploadedBy">Last Uploaded:</label>
-     					<input class="form-control" name="crtSRLastUploadedBy" id="crtSRLastUploadedBy" type="text" value="${crtSRLastUploadedBy}" readOnly>    
+     					
+     					<input class="form-control" name="crtSRLastUploadedBy" id="crtSRLastUploadedBy" type="hidden" type="text" value="${crtSRLastUploadedBy}" readOnly>    
      				</div>			
      			</div>
      			</div>
@@ -180,8 +180,8 @@
      				</div>
      				<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						<label for="uploadedBy">Uploaded By:</label>
-     					<input class="form-control" name="edtSRUploadedBy" id="edtSRUploadedBy" type="text" value="" readOnly>	
+ 				 
+     					<input class="form-control" name="edtSRUploadedBy" id="edtSRUploadedBy" type="hidden" type="text" value="" readOnly>	
      				</div>
      			</div>
      			</div>
@@ -190,8 +190,8 @@
   				<div class="panel-body">
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     					<label for="lastUploadedBy">Last Uploaded:</label>
-     					<input class="form-control" name="edtSRLastUploadedBy" id="edtSRLastUploadedBy" type="text" value="" readOnly>    
+     				 
+     					<input class="form-control" name="edtSRLastUploadedBy" id="edtSRLastUploadedBy" type="hidden" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

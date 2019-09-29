@@ -112,14 +112,14 @@
   				<div class="panel-body">
  					<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						<label for="uploadedBy">Uploaded By:</label>
-     					<input class="form-control" name="crtCSUploadedBy" id="crtCSUploadedBy" type="text" value="${crtCSUploadedBy}" readOnly>	
+ 						
+     					<input class="form-control" name="crtCSUploadedBy" id="crtCSUploadedBy"  type="hidden" type="text" value="${crtCSUploadedBy}" readOnly>	
      				</div>
      				
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     					<label for="lastUploadedBy">Last Uploaded:</label>
-     					<input class="form-control" name="crtCSLastUploadedBy" id="crtCSLastUploadedBy" type="text" value="${crtCSLastUploadedBy}" readOnly>    
+     			
+     					<input class="form-control" name="crtCSLastUploadedBy" id="crtCSLastUploadedBy" type="hidden" type="text" value="${crtCSLastUploadedBy}" readOnly>    
      				</div>			
      			</div>
      			</div>
@@ -198,14 +198,14 @@
   				<div class="panel-body">
  					<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						<label for="uploadedBy">Uploaded By:</label>
-     					<input class="form-control" name="edtCSUploadedBy" id="edtCSUploadedBy" type="text" value="" readOnly>	
+ 						
+     					<input class="form-control" name="edtCSUploadedBy" id="edtCSUploadedBy"  type="hidden" type="text" value="" readOnly>	
      				</div>
      				
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     					<label for="lastUploadedBy">Last Uploaded:</label>
-     					<input class="form-control" name="edtCSLastUploadedBy" id="edtCSLastUploadedBy" type="text" value="" readOnly>    
+     				
+     					<input class="form-control" name="edtCSLastUploadedBy" id="edtCSLastUploadedBy" type="hidden" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

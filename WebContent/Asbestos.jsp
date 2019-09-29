@@ -111,9 +111,9 @@
 									</div>
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
-										<label for="uploadedBy">Uploaded By:</label> <input
+										 <input
 											class="form-control" name="crtAUploadedBy"
-											id="crtAUploadedBy" type="text" value="${crtAUploadedBy}"
+											id="crtAUploadedBy" type="hidden" type="text" value="${crtAUploadedBy}"
 											readOnly>
 									</div>
 								</div>
@@ -123,9 +123,9 @@
 								<div class="panel-body">
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
-										<label for="lastUploadedBy">Last Uploaded:</label> <input
+										<input
 											class="form-control" name="crtALastUploadedBy"
-											id="crtALastUploadedBy" type="text"
+											id="crtALastUploadedBy" type="hidden" type="text"
 											value="${crtALastUploadedBy}" readOnly>
 									</div>
 								</div>
@@ -203,9 +203,9 @@
 									</div>
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
-										<label for="uploadedBy">Uploaded By:</label> <input
+										<input
 											class="form-control" name="edtAUploadedBy"
-											id="edtAUploadedBy" type="text" value="" readOnly>
+											id="edtAUploadedBy" type="hidden" type="text" value="" readOnly>
 									</div>
 								</div>
 							</div>
@@ -214,9 +214,9 @@
 								<div class="panel-body">
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
-										<label for="lastUploadedBy">Last Uploaded:</label> <input
+									<input
 											class="form-control" name="edtALastUploadedBy"
-											id="edtALastUploadedBy" type="text" value="" readOnly>
+											id="edtALastUploadedBy" type="hidden" type="text" value="" readOnly>
 									</div>
 								</div>
 							</div>

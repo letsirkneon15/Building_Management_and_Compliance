@@ -60,6 +60,24 @@
 							happy to chat if you have any questions.</p>
 						<br>
 
+					<div class="col-xl-7 col-lg-3" align="center">
+			
+					<span class="glyphicon glyphicon-earphone" aria-hidden="true"
+										style="font-size: 20px"></span>
+					<span class="glyphicon glyphicon-earphone" aria-hidden="true"
+										style="font-size: 20px"></span>
+										<br>
+										<br>
+								<div class="d-sm-flex align-items-center">
+									
+									<p class="h2 mb-1 text-gray-600" align="center"
+										style="font-size: 20px">0211 440869</p>
+							
+							
+							
+						</div>
+						</div>
+						
 						<div class="card mb-4  border-left-info">
 							<div class="container-fluid">
 								<div class="d-sm-flex align-items-center">
