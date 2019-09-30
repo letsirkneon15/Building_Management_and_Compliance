@@ -183,7 +183,7 @@
 									<!-- Image  -->
 									<div class="col-sm-6">
 										<label for="image">Image:</label>
-										<input class="form-control" name="edtCIImage" id="edtCIImage" type="file"  accept="image/*" value="">
+										<input class="form-control" name="edtCIImage" id="edtCIImage" type = "file" accept="image/*" value="">
 									</div>
 								</div>
 							</div>

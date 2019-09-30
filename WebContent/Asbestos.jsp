@@ -189,7 +189,7 @@
 									<div class="col-sm-6">
 										<label for="attachment">Attachment:</label> <input
 											class="form-control" name="edtAAttachment"
-											id="edtAAttachment" type="text" value="">
+											id="edtAAttachment" type="file" value="">
 									</div>
 								</div>
 							</div>

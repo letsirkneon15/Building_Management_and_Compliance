@@ -183,7 +183,7 @@
      				<!-- Attachment -->
      				<div class="col-sm-6">
      					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtCSAttachment" id="edtCSAttachment" type="text" value=""> 	
+     					<input class="form-control" name="edtCSAttachment" id="edtCSAttachment" type="file" value=""> 	
      				</div>
      	
      				<!-- Type  -->

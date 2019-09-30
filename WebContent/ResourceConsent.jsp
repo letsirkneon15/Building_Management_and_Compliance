@@ -165,7 +165,7 @@
      				<!-- Attachment -->
      				<div class="col-sm-6">
      					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtRCAttachment" id="edtRCAttachment" type="text" value=""> 	
+     					<input class="form-control" name="edtRCAttachment" id="edtRCAttachment" type="file" value=""> 	
      				</div>
      			</div>
      			</div>
