@@ -11,12 +11,12 @@
   </welcome-file-list>
 
 <servlet>
-    <servlet-name>BuildingController</servlet-name>
-    <servlet-class>com.bmc.controller.BuildingController</servlet-class>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.bmc.controller.LoginController</servlet-class>
   </servlet>
 
 <servlet-mapping>
-    <servlet-name>BuildingController</servlet-name>
+    <servlet-name>Login</servlet-name>
     <url-pattern>/main/*</url-pattern>
 </servlet-mapping>
 

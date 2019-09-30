@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,15 +45,15 @@
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
 									</div>
-									<form class="user">
+									<form class="user" action="${pageContext.request.contextPath}/Login?action=signin" method="post">
 										<div class="form-group">
-											<input type="email" class="form-control form-control-user"
-												id="exampleInputEmail" aria-describedby="emailHelp"
-												placeholder="Enter Email Address...">
+											<input class="form-control form-control-user"
+												name="userID" id="userID" value="${userID}" aria-describedby="emailHelp"
+												placeholder="Enter User Name...">
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
-												id="exampleInputPassword" placeholder="Password">
+												name="password" id="password" placeholder="Password" value="${password}">
 										</div>
 										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
@@ -62,8 +63,15 @@
 													Me</label>
 											</div>
 										</div>
-										<a href="MainPage.jsp"
-											class="btn btn-primary btn-user btn-block"> Login </a>
+										
+										<c:if test="${not empty errorMsg}">
+											<div class="alert alert-danger" role="alert" style="font-size:14px">
+  												${errorMsg}
+											</div>			
+										</c:if>
+										
+										<button type="submit"
+											class="btn btn-primary btn-user btn-block"> Login </button>
 										<hr>
 										<div class="text-center">
 											<a class="small" href="ForgotPassword.jsp" style="font-size:12px">Forgot
@@ -72,6 +80,7 @@
 										<div class="text-center">
 											<a class="small" href="UserRegistration.jsp" style="font-size:12px">Create an Account!</a>
 										</div>
+									</form>
 								</div>
 							</div>
 						</div>

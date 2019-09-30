@@ -17,7 +17,7 @@ public class UserMgr {
 		
 		   ArrayList<User> userArr = new ArrayList<>();
 		   
-		   String qry = "SELECT * from dbo.User WHERE userID Like ? AND name Like ? ";
+		   String qry = "SELECT * FROM dbo.[User] WHERE userID Like ? AND name Like ? ";
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
@@ -56,6 +56,69 @@ public class UserMgr {
 		   return userArr;
 	}
 	
+	public boolean checkValidUser(Connection conn, String userID, String password) {
+		
+		boolean isValidUser = false;
+		
+		System.out.println("From UserMgr - userID: " + userID + " password: " + password);
+		
+		String qry = "SELECT * FROM dbo.[User] WHERE userID=? AND password=? ";
+		System.out.println("Qry: " + qry);
+		
+		try{
+			pstatement = conn.prepareStatement(qry);
+			pstatement.setString(1, userID.trim());
+			pstatement.setString(2, password.trim());
+			
+			resultSet = pstatement.executeQuery();
+			isValidUser = resultSet.next(); 
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				resultSet.close();
+				pstatement.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		return isValidUser;
+	}
+	
+public String getName(Connection conn, String userID) {
+		
+		String username = "";
+		
+		
+		String qry = "SELECT * FROM dbo.[User] WHERE userID=? ";
+		System.out.println("Qry: " + qry);
+		
+		try{
+			pstatement = conn.prepareStatement(qry);
+			pstatement.setString(1, userID.trim());
+			
+			resultSet = pstatement.executeQuery();
+			
+			while(resultSet.next()){
+				username = resultSet.getString("name");
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				resultSet.close();
+				pstatement.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		return username;
+	}
 
 	public int setUser(Connection conn, User user){
 		
@@ -63,7 +126,7 @@ public class UserMgr {
 		   
 		   try{
 
-				String qry = "INSERT INTO dbo.User "
+				String qry = "INSERT INTO dbo.[User] "
 						+ "(userID, password, name, contactNum, emailAdd, companyName, companyAddress, "
 						+ "createdBy, createdDate, modifiedBy, modifiedDate, status) "
 						+ " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -104,7 +167,7 @@ public class UserMgr {
 		   int isUpdated = 0;
 		   
 		   try {
-				String qry = "UPDATE dbo.User set "
+				String qry = "UPDATE dbo.[User] set "
 						+ "password=?, name=?, contactNum=?, emailAdd=?, ccompanyName=?, "
 						+ "conpanyAddress=?, modifiedBy=?, modifiedDate=?, status=? "
 						+ "where userID=? ";
@@ -145,7 +208,7 @@ public class UserMgr {
 		   
 		   try {
 
-			   String qry = "UPDATE dbo.User set status=?, modifiedBy=?, "
+			   String qry = "UPDATE dbo.[User] set status=?, modifiedBy=?, "
 						+ "modifiedDate=? WHERE userID =?";
 				
 				pstatement = conn.prepareStatement(qry);
@@ -178,7 +241,7 @@ public class UserMgr {
 		   
 		   try {
 
-			   String qry = "UPDATE dbo.User set password=?, modifiedBy=?, "
+			   String qry = "UPDATE dbo.[User] set password=?, modifiedBy=?, "
 						+ "modifiedDate=? WHERE userID =?";
 				
 				pstatement = conn.prepareStatement(qry);
