@@ -60,67 +60,43 @@
 							happy to chat if you have any questions.</p>
 						<br>
 
-					<div class="col-xl-7 col-lg-3" align="center">
-			
-					<span class="glyphicon glyphicon-earphone" aria-hidden="true"
-										style="font-size: 20px"></span>
-					<span class="glyphicon glyphicon-earphone" aria-hidden="true"
-										style="font-size: 20px"></span>
-										<br>
-										<br>
-								<div class="d-sm-flex align-items-center">
-									
-									<p class="h2 mb-1 text-gray-600" align="center"
-										style="font-size: 20px">0211 440869</p>
-							
-							
-							
-						</div>
-						</div>
-						
-						<div class="card mb-4  border-left-info">
-							<div class="container-fluid">
-								<div class="d-sm-flex align-items-center">
+
+
+
+						<div class="card-body">
+
+							<div class="col-lg-4 col-md-6 text-center">
+
+								<div>
 									<span class="glyphicon glyphicon-earphone" aria-hidden="true"
-										style="font-size: 40px"></span>
-									<p class="h2 mb-1 text-gray-600" align="center"
-										style="font-size: 40px; margin-left: 30px">0211 440869</p>
+										style="font-size: 20px"></span>
 								</div>
+								<p class="h2 mb-1 text-gray-600" align="center">0211 440869</p>
 							</div>
-						</div>
 
 
 
-
-						<div class="card mb-4  border-left-info">
-							<div class="container-fluid">
-								<div class="d-sm-flex align-items-center">
+							<div class="col-lg-4 col-md-6 text-center">
+								<div>
 									<span class="glyphicon glyphicon-envelope" aria-hidden="true"
-										style="font-size: 40px"></span>
-									<p class="h2 mb-1 text-gray-600" align="center"
-										style="font-size: 40px; margin-left: 30px">
-										Natasha.Baldwin@Gmail.com</p>
+										style="font-size: 20px"></span>
 								</div>
+								<p class="h2 mb-1 text-gray-600" align="center">Natasha.Baldwin@Gmail.com</p>
 							</div>
-						</div>
 
 
-						<div class="card mb-4  border-left-info">
-							<div class="container-fluid">
-								<div class="d-sm-flex align-items-center">
+							<div class="col-lg-4 col-md-6 text-center">
+								<div>
 									<span class="glyphicon glyphicon-home" aria-hidden="true"
-										style="font-size: 40px"></span>
-									<p class="h2 mb-1 text-gray-600" align="center"
-										style="font-size: 40px; margin-left: 30px">12 Pharazyn St.
-										Lower Hutt</p>
+										style="font-size: 20px"></span>
 								</div>
+								<p class="h2 mb-1 text-gray-600" align="center">12 Pharazyn
+									St. Lower Hutt</p>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
-
 
 			<!-- Image Default Profile -->
 			<div class="col-xl-5 col-lg-5">
@@ -137,9 +113,13 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-xl-3 col-lg-3"></div>
-		</div>
+
+
+	</div>
+
+	<div class="row">
+		<div class="col-xl-3 col-lg-3"></div>
+	</div>
 	</div>
 	<!-- /.container-fluid -->
 
