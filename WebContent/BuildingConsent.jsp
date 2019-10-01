@@ -137,6 +137,9 @@
 
 
 <!--START- Edit Record (MODAL)-->
+
+
+
 <div class="modal fade" id="editConsent" role="dialog">
   <div class="modal-dialog" style="width: 100%">
     
@@ -187,6 +190,7 @@
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
+     					
      					<input class="form-control" name="edtCSType" id="edtCSType" type="text" value="">	
      				</div>
      			</div>
