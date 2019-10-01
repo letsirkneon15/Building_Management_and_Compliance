@@ -23,7 +23,7 @@
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <style>
-    .table-row{cursor: pointer;
+    .table-row{cursor: pointer;}
 </style>
   
 </head>

@@ -82,38 +82,28 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "crtGName" id="crtGName" type="text" value="${crtGName}">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtGAttachment" id="crtGAttachment" type="file" value="${crtGAttachment}"> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
+     				
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="crtGType" id="crtGType" type="text" value="${crtGType}">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 				
-     					<input class="form-control" name="crtGUploadedBy" id="crtGUploadedBy" type="hidden" type="text" value="${crtGUploadedBy}" readOnly>	
-     				</div>
+     				
      			</div>
      			</div>
      			
-     			<div class="panel-default">
+				<div class="panel-default">
   				<div class="panel-body">
-     				<!-- Last Uploaded -->
-     				<div class="col-sm-6">
-     		
-     					<input class="form-control" name="crtGLastUploadedBy" id="crtGLastUploadedBy" type="hidden" type="text" value="${crtGLastUploadedBy}" readOnly>    
-     				</div>			
-     			</div>
-     			</div>
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="crtGAttachment" id="crtGAttachment" value="${crtGAttachment}">
+    						<label class="custom-file-label" for="customFile" id="crtGAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
@@ -160,35 +150,41 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "edtGName" id="edtGName" type="text" value="">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtGAttachment" id="edtGAttachment" type="file" value=""> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
+     				
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="edtGType" id="edtGType" type="text" value="">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 		
-     					<input class="form-control" name="edtGUploadedBy" id="edtGUploadedBy" type="hidden" type="text" value="" readOnly>	
-     				</div>
+     				
      			</div>
      			</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="crtGAttachment" id="crtGAttachment" value="">
+    						<label class="custom-file-label" for="customFile" id="crtGAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Uploaded By  -->
+ 					<div class="col-sm-6">
+ 		
+     					<input class="form-control" name="edtGUploadedBy" id="edtGUploadedBy" type="text" value="" readOnly>	
+     				</div>
+
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
 
-     					<input class="form-control" name="edtGLastUploadedBy" id="edtGLastUploadedBy" type="hidden" type="text" value="" readOnly>    
+     					<input class="form-control" name="edtGLastUploadedBy" id="edtGLastUploadedBy" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

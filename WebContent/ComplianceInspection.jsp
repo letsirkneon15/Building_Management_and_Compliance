@@ -84,7 +84,7 @@
 									<!-- Finding  -->
 									<div class="col-sm-6">
 										<label for="finding">Finding:</label>
-										<input class="form-control" name = "crtCIFinding" id="crtСIFinding" type="text" value="${crtCIFinding}">
+										<input class="form-control" name = "crtCIFinding" id="crtCIFinding" type="text" value="${crtCIFinding}">
 									</div>
 								</div>
 							</div>
@@ -108,10 +108,14 @@
 							<div class="panel-default">
 								<div class="panel-body">
 									<!-- Image  -->
-									<div class="col-sm-6">
-										<label for="image">Image:</label>
-										<input class="form-control" name="crtCIImage" id="crtCIImage" type="file"  accept="image/*" value="${crtCIImage}">
-									</div>
+  									<div class="col-sm-12">
+     				  				<label>Image:</label>	
+     				  				<div class="custom-file">
+    									<input type="file" class="custom-file-input" accept="image/*" name="crtCIImage" id="crtCIImage" value="${crtCIImage}">
+    									<label class="custom-file-label" for="customFile" id="crtCIImageLbl"></label>
+  					  				</div>
+  									</div>
+
 									<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
 								</div>
 							</div>
@@ -181,10 +185,13 @@
 							<div class="panel-default">
 								<div class="panel-body">
 									<!-- Image  -->
-									<div class="col-sm-6">
-										<label for="image">Image:</label>
-										<input class="form-control" name="edtCIImage" id="edtCIImage" type = "file" accept="image/*" value="">
-									</div>
+  									<div class="col-sm-12">
+     				  				<label>Image:</label>	
+     				  				<div class="custom-file">
+    									<input type="file" class="custom-file-input" accept="image/*" name="edtCIImage" id="edtCIImage" value="">
+    									<label class="custom-file-label" for="customFile" id="edtCIImageLbl"></label>
+  					  				</div>
+  									</div>
 								</div>
 							</div>
 

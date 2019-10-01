@@ -84,39 +84,27 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "crtEName" id="crtEName" type="text" value="${crtEName}">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtEAttachment" id="crtEAttachment" type="file" value="${crtEAttachment}"> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="crtEType" id="crtEType" type="text" value="${crtEType}">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 					
-     					<input class="form-control" name="crtEUploadedBy" id="crtEUploadedBy" type="hidden" type="text" value="${crtEUploadedBy}" readOnly>	
-     				</div>
      			</div>
      			</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<!-- Last Uploaded -->
-     				<div class="col-sm-6">
-     			
-     					<input class="form-control" name="crtELastUploadedBy" id="crtELastUploadedBy" type="hidden" type="text" value="${crtELastUploadedBy}" readOnly>    
-     				</div>			
-     			</div>
-     			</div>
-     			
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="crtEAttachment" id="crtEAttachment" value="${crtEAttachment}">
+    						<label class="custom-file-label" for="customFile" id="crtEAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
+     			    			
      			<div class="panel-default">
   				<div class="panel-body">
         			<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
@@ -162,35 +150,41 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "edtEName" id="edtEName" type="text" value="">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtEAttachment" id="edtEAttachment" type="file" value=""> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
+     				
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="edtEType" id="edtEType" type="text" value="">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 					
-     					<input class="form-control" name="edtEUploadedBy" id="edtEUploadedBy" type="hidden" type="text" value="" readOnly>	
-     				</div>
+     				
      			</div>
      			</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="edtEAttachment" id="edtEAttachment" value="">
+    						<label class="custom-file-label" for="customFile" id="edtEAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+
+     				<!-- Uploaded By  -->
+ 					<div class="col-sm-6">
+     					<input class="form-control" name="edtEUploadedBy" id="edtEUploadedBy" type="text" value="" readOnly>	
+     				</div>
+     				
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
      	
-     					<input class="form-control" name="edtELastUploadedBy" id="edtELastUploadedBy" type="hidden" type="text" value="" readOnly>    
+     					<input class="form-control" name="edtELastUploadedBy" id="edtELastUploadedBy" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

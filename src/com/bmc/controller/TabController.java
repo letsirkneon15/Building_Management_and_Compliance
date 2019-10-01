@@ -75,7 +75,7 @@ public class TabController extends HttpServlet {
 		int buildingID = 0;
 		String action = "";
 		String tabName="";
-		String userID = "Jane.Smith001";
+		String userID = "";
 		int isUpdated = 0;
 		int isSetStatus = 0;
 		int isCreated = 0;
@@ -113,12 +113,11 @@ public class TabController extends HttpServlet {
 		System.out.println("today :" + todayUtil);
 		java.sql.Date today = new java.sql.Date(todayUtil.getTime());
 		System.out.println("sqlDate :" + today);
-		
 
 		/* Retrieve session values from BuildingHeader */
 		HttpSession session=request.getSession();
 		if(session != null){	
-			//buildingID = (int) session.getAttribute("buildingID");
+			userID = (String) session.getAttribute("userID");
 		}
 
 		/* Do this when submit button was clicked */

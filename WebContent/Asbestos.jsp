@@ -93,43 +93,28 @@
 										<label for="name">Name:</label> <input class="form-control"
 											name="crtAName" id="crtAName" type="text" value="${crtAName}">
 									</div>
-									<!-- Attachment -->
-									<div class="col-sm-6">
-										<label for="attachment">Attachment:</label> <input
-											class="form-control" name="crtAAttachment"
-											id="crtAAttachment" type="file" value="${crtAAttachment}">
-									</div>
-								</div>
-							</div>
-
-							<div class="panel-default">
-								<div class="panel-body">
+									
 									<!-- Type  -->
 									<div class="col-sm-6">
 										<label for="type">Type:</label> <input class="form-control"
 											name="crtAType" id="crtAType" type="text" value="${crtAType}">
 									</div>
-									<!-- Uploaded By  -->
-									<div class="col-sm-6">
-										 <input
-											class="form-control" name="crtAUploadedBy"
-											id="crtAUploadedBy" type="hidden" type="text" value="${crtAUploadedBy}"
-											readOnly>
-									</div>
 								</div>
 							</div>
 
 							<div class="panel-default">
 								<div class="panel-body">
-									<!-- Last Uploaded -->
-									<div class="col-sm-6">
-										<input
-											class="form-control" name="crtALastUploadedBy"
-											id="crtALastUploadedBy" type="hidden" type="text"
-											value="${crtALastUploadedBy}" readOnly>
-									</div>
-								</div>
-							</div>
+
+  									<div class="col-sm-12">
+     								<!-- Attachment -->
+     				  				<label>Attachment:</label>	
+     				  				<div class="custom-file">
+    									<input type="file" class="custom-file-input" name="crtAAttachment" id="crtAAttachment" value="${crtAAttachment}">
+    									<label class="custom-file-label" for="customFile" id="crtAAttachmentLbl"></label>
+  					  				</div>
+  									</div>
+  								</div>
+  							</div>
 
 							<div class="panel-default">
 								<div class="panel-body">
@@ -185,38 +170,44 @@
 										<label for="name">Name:</label> <input class="form-control"
 											name="edtAName" id="edtAName" type="text" value="">
 									</div>
-									<!-- Attachment -->
-									<div class="col-sm-6">
-										<label for="attachment">Attachment:</label> <input
-											class="form-control" name="edtAAttachment"
-											id="edtAAttachment" type="file" value="">
-									</div>
-								</div>
-							</div>
-
-							<div class="panel-default">
-								<div class="panel-body">
+									
 									<!-- Type  -->
 									<div class="col-sm-6">
 										<label for="type">Type:</label> <input class="form-control"
 											name="edtAType" id="edtAType" type="text" value="">
 									</div>
+									
+								</div>
+							</div>
+
+     						<div class="panel-default">
+  							<div class="panel-body">
+  								<div class="col-sm-12">
+     							<!-- Attachment -->
+     				 		    <label>Attachment:</label>	
+     				  				<div class="custom-file">
+    									<input type="file" class="custom-file-input" name="edtAAttachment" id="edtCSAttachment" value="">
+    									<label class="custom-file-label" for="customFile" id="edtAAttachmentLbl"></label>
+  					  				</div>
+  								</div>
+  							</div>
+  							</div>
+
+							<div class="panel-default">
+								<div class="panel-body">
+
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
 										<input
 											class="form-control" name="edtAUploadedBy"
-											id="edtAUploadedBy" type="hidden" type="text" value="" readOnly>
+											id="edtAUploadedBy" type="text" value="" readOnly>
 									</div>
-								</div>
-							</div>
-
-							<div class="panel-default">
-								<div class="panel-body">
+									
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
 									<input
 											class="form-control" name="edtALastUploadedBy"
-											id="edtALastUploadedBy" type="hidden" type="text" value="" readOnly>
+											id="edtALastUploadedBy" type="text" value="" readOnly>
 									</div>
 								</div>
 							</div>

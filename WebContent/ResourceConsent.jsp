@@ -84,38 +84,28 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "crtRCName" id="crtRCName" type="text" value="${crtRCName}">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtRCAttachment" id="crtRCAttachment" type="file" value="${crtRCAttachment}"> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
+     				
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="crtRCType" id="crtRCType" type="text" value="${crtRCType}">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 					 
-     					<input class="form-control" name="crtRCUploadedBy" id="crtRCUploadedBy" type="hidden" type="text" value="${crtRCUploadedBy}" readOnly>	
-     				</div>
+     				
      			</div>
      			</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<!-- Last Uploaded -->
-     				<div class="col-sm-6">
-     				 
-     					<input class="form-control" name="crtRCLastUploadedBy" id="crtRCLastUploadedBy" type="hidden" type="text" value="${crtRCLastUploadedBy}" readOnly>    
-     				</div>			
-     			</div>
-     			</div>
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="crtRCAttachment" id="crtRCAttachment" value="${crtRCAttachment}">
+    						<label class="custom-file-label" for="customFile" id="crtRCAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
@@ -162,25 +152,36 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "edtRCName" id="edtRCName" type="text" value="">
      				</div>
-     				<!-- Attachment -->
+
+					<!-- Type  -->
      				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtRCAttachment" id="edtRCAttachment" type="file" value=""> 	
+     					<label for="type">Type:</label>
+     					<input class="form-control" name="edtRCType" id="edtRCType" type="text" value="">	
      				</div>
+
      			</div>
      			</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
-     				<!-- Type  -->
-     				<div class="col-sm-6">
-     					<label for="type">Type:</label>
-     					<input class="form-control" name="edtRCType" id="edtRCType" type="text" value="">	
-     				</div>
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="edtRCAttachment" id="edtRCAttachment" value="">
+    						<label class="custom-file-label" for="customFile" id="edtRCAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+
      				<!-- Uploaded By  -->
  					<div class="col-sm-6">
  					 
-     					<input class="form-control" name="edtRCUploadedBy" id="edtRCUploadedBy" type="hidden" type="text" value="" readOnly>	
+     					<input class="form-control" name="edtRCUploadedBy" id="edtRCUploadedBy" type="text" value="" readOnly>	
      				</div>
      			</div>
      			</div>
@@ -190,7 +191,7 @@
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
      			 
-     					<input class="form-control" name="edtRCLastUploadedBy" id="edtRCLastUploadedBy" type="hidden" type="text" value="" readOnly>    
+     					<input class="form-control" name="edtRCLastUploadedBy" id="edtRCLastUploadedBy" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

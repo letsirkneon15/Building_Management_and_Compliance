@@ -85,38 +85,28 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "crtSRName" id="crtSRName" type="text" value="${crtSRName}">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtSRAttachment" id="crtSRAttachment" type="file" value="${crtSRAttachment}"> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
-     				<!-- Type  -->
+					
+					<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="crtSRType" id="crtSRType" type="text" value="${crtSRType}">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 					
-     					<input class="form-control" name="crtSRUploadedBy" id="crtSRUploadedBy" type="hidden" type="text" value="${crtSRUploadedBy}" readOnly>	
-     				</div>
+
      			</div>
      			</div>
      			
-     			<div class="panel-default">
+				<div class="panel-default">
   				<div class="panel-body">
-     				<!-- Last Uploaded -->
-     				<div class="col-sm-6">
-     					
-     					<input class="form-control" name="crtSRLastUploadedBy" id="crtSRLastUploadedBy" type="hidden" type="text" value="${crtSRLastUploadedBy}" readOnly>    
-     				</div>			
-     			</div>
-     			</div>
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="crtSRAttachment" id="crtSRAttachment" value="${crtSRAttachment}">
+    						<label class="custom-file-label" for="customFile" id="crtSRAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
@@ -163,35 +153,40 @@
      					<label for="name">Name:</label>
      					<input class="form-control" name = "edtSRName" id="edtSRName" type="text" value="">
      				</div>
-     				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtSRAttachment" id="edtSRAttachment" type="file" value=""> 	
-     				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
-     				<!-- Type  -->
+
+					<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="edtSRType" id="edtSRType" type="text" value="">	
      				</div>
-     				<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 				 
-     					<input class="form-control" name="edtSRUploadedBy" id="edtSRUploadedBy" type="hidden" type="text" value="" readOnly>	
-     				</div>
+
      			</div>
      			</div>
      			
      			<div class="panel-default">
   				<div class="panel-body">
+  					<div class="col-sm-12">
+     				<!-- Attachment -->
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="edtSRAttachment" id="edtSRAttachment" value="">
+    						<label class="custom-file-label" for="customFile" id="edtSRAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
+     				<!-- Uploaded By  -->
+ 					<div class="col-sm-6">
+     					<input class="form-control" name="edtSRUploadedBy" id="edtSRUploadedBy" type="text" value="" readOnly>	
+     				</div>
+
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
      				 
-     					<input class="form-control" name="edtSRLastUploadedBy" id="edtSRLastUploadedBy" type="hidden" type="text" value="" readOnly>    
+     					<input class="form-control" name="edtSRLastUploadedBy" id="edtSRLastUploadedBy" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

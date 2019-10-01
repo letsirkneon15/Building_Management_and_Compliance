@@ -60,7 +60,7 @@
 <!-- End of DataTables -->
 
 <!--START- Create Record (MODAL)-->
-<div class="modal fade" id="crtConsent" role="dialog">
+<div class="modal fade" id="crtConsent" role="document">
   <div class="modal-dialog" style="width: 100%">
     
       <!-- Modal content-->
@@ -94,33 +94,24 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
+  					<div class="col-sm-12">
      				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="crtCSAttachment" id="crtCSAttachment" type="file" value="${crtCSAttachment}"> 	
-     				</div>
-     	
+     				  <label>Attachment:</label>	
+     				  	<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="crtCSAttachment" id="crtCSAttachment" value="${crtCSAttachment}">
+    						<label class="custom-file-label" for="customFile" id="crtCSAttachmentLbl"></label>
+  					  	</div>
+  					</div>
+  				</div>
+  				</div>
+     			
+     			<div class="panel-default">
+  				<div class="panel-body">
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
      					<input class="form-control" name="crtCSType" id="crtCSType" type="text" value="${crtCSType}">	
      				</div>
-     			</div>
-     			</div>
-     			
-     			<div class="panel-default">
-  				<div class="panel-body">
- 					<!-- Uploaded By  -->
- 					<div class="col-sm-6">
- 						
-     					<input class="form-control" name="crtCSUploadedBy" id="crtCSUploadedBy"  type="hidden" type="text" value="${crtCSUploadedBy}" readOnly>	
-     				</div>
-     				
-     				<!-- Last Uploaded -->
-     				<div class="col-sm-6">
-     			
-     					<input class="form-control" name="crtCSLastUploadedBy" id="crtCSLastUploadedBy" type="hidden" type="text" value="${crtCSLastUploadedBy}" readOnly>    
-     				</div>			
      			</div>
      			</div>
      			
@@ -157,7 +148,7 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Consent" method="post">
+		<form class="md-form" action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Consent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -180,12 +171,19 @@
      			
      			<div class="panel-default">
   				<div class="panel-body">
+  					<div class="col-sm-12">
      				<!-- Attachment -->
-     				<div class="col-sm-6">
-     					<label for="attachment">Attachment:</label>
-     					<input class="form-control" name="edtCSAttachment" id="edtCSAttachment" type="file" value=""> 	
-     				</div>
+     				  <label>Attachment:</label>
+     				  <div class="custom-file">
+    						<input type="file" class="custom-file-input" name="edtCSAttachment" id="edtCSAttachment" value="">
+    						<label class="custom-file-label" for="customFile"  id="edtCSAttachmentLbl"></label>
+  					  </div>
+  					</div>
+  				</div>
+  				</div>
      	
+     			<div class="panel-default">
+  				<div class="panel-body">
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
@@ -198,14 +196,12 @@
   				<div class="panel-body">
  					<!-- Uploaded By  -->
  					<div class="col-sm-6">
- 						
-     					<input class="form-control" name="edtCSUploadedBy" id="edtCSUploadedBy"  type="hidden" type="text" value="" readOnly>	
+     					<input class="form-control" name="edtCSUploadedBy" id="edtCSUploadedBy"  type="text" value="" readOnly>	
      				</div>
      				
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
-     				
-     					<input class="form-control" name="edtCSLastUploadedBy" id="edtCSLastUploadedBy" type="hidden" type="text" value="" readOnly>    
+     					<input class="form-control" name="edtCSLastUploadedBy" id="edtCSLastUploadedBy" type="text" value="" readOnly>    
      				</div>			
      			</div>
      			</div>

@@ -13,7 +13,8 @@
 						Building WOF</b>
 				</h5>
 			</button>
-			<br><br>
+			<br>
+			<br>
 		</div>
 		<div class="table-responsive">
 			<table id="wofTable"
@@ -50,12 +51,12 @@
 								data-attachment="${b.attachment}" data-type="${b.type}"
 								data-uploadedby="${b.uploadedBy}"
 								data-lastuploadedby="${b.lastUploadedBy}"> <img
-									src='images/edit.jpg' height=15 width=15></a></td>
+									src='images/edit.jpg' height="15" width="15" alt=""></a></td>
 
 							<td align="center"><a href="#deleteWof" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}"> <img
-									src='images/delete.jpg' height=15 width=15></a></td>
+									src='images/delete.jpg' height="15" width="15" alt=""></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -82,8 +83,8 @@
 
 			<!-- Create a Form to create record -->
 			<form
-				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=WOF"
-				method="post">
+				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&amp;tab=WOF"
+				method="post" class="form-group">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width: 100%">
 						<div class="well">
@@ -107,37 +108,27 @@
 
 							<div class="panel-default">
 								<div class="panel-body">
-									<!-- Attachment -->
-									<div class="col-sm-6">
-										<label for="attachment">Attachment:</label> <input
-											class="form-control" name="crtWAttachment"
-											id="crtWAttachment" type="file" value="${crtWAttachment}">
-									</div>
-
-									<!-- Type  -->
-									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control" class="d-sm-flex align-items-center"
-											name="crtWType" id="crtWType" type="text" value="${crtWType}">
+									<div class="col-sm-12">
+										<!-- Attachment -->
+										<label>Attachment:</label>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input"
+												name="crtWAttachment" id="crtWAttachment"
+												value="${crtWAttachment}"> <label
+												class="custom-file-label" for="customFile"
+												id="crtWAttachmentLbl"></label>
+										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="panel-default">
 								<div class="panel-body">
-									<!-- Uploaded By  -->
+									<!-- Type  -->
 									<div class="col-sm-6">
-										 <input
-											class="form-control" name="crtWUploadedBy"
-											id="crttWUploadedBy" type="hidden" type="text" value="${crttWUploadedBy}"
-											readOnly>
-									</div>
-
-									<!-- Last Uploaded -->
-									<div class="col-sm-6">
-										 <input
-											class="form-control" name="crtWLastUploadedBy"
-											id="crtWLastUploadedBy" type="hidden" type="text"
-											value="${crtWLastUploadedBy}" readOnly>
+										<label for="type">Type:</label> <input class="form-control"
+											class="d-sm-flex align-items-center" name="crtWType"
+											id="crtWType" type="text" value="${crtWType}">
 									</div>
 								</div>
 							</div>
@@ -183,8 +174,8 @@
 
 			<!-- Create a Form to edit record -->
 			<form
-				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=WOF"
-				method="post">
+				action="${pageContext.request.contextPath}/Tabs?action=editTabs&amp;tab=WOF"
+				method="post" class="form-group">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width: 100%">
 						<div class="well">
@@ -208,13 +199,21 @@
 
 							<div class="panel-default">
 								<div class="panel-body">
-									<!-- Attachment -->
-									<div class="col-sm-6">
-										<label for="attachment">Attachment:</label> <input
-											class="form-control" name="edtWAttachment"
-											id="edtWAttachment" type="file" value="">
+									<div class="col-sm-12">
+										<!-- Attachment -->
+										<label>Attachment:</label>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input"
+												name="edtWAttachment" id="edtWAttachment" value="">
+											<label class="custom-file-label" for="customFile"
+												id="edtWAttachmentLbl"></label>
+										</div>
 									</div>
+								</div>
+							</div>
 
+							<div class="panel-default">
+								<div class="panel-body">
 									<!-- Type  -->
 									<div class="col-sm-6">
 										<label for="type">Type:</label> <input class="form-control"
@@ -227,16 +226,14 @@
 								<div class="panel-body">
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
-										<input
-											class="form-control" name="edtWUploadedBy"
-											id="edtWUploadedBy" type="hidden" type="text" value="" readOnly>
+										<input class="form-control" name="edtWUploadedBy"
+											id="edtWUploadedBy" type="text" value="" readOnly>
 									</div>
 
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
-										 <input
-											class="form-control" name="edtWLastUploadedBy"
-											id="edtWLastUploadedBy" type="hidden" type="text" value="" readOnly>
+										<input class="form-control" name="edtWLastUploadedBy"
+											id="edtWLastUploadedBy" type="text" value="" readOnly>
 									</div>
 								</div>
 							</div>
@@ -283,7 +280,7 @@
 
 			<!-- Create a Form to delete record -->
 			<form
-				action="${pageContext.request.contextPath}/Tabs?action=dltTabs&tab=WOF"
+				action="${pageContext.request.contextPath}/Tabs?action=dltTabs&amp;tab=WOF"
 				method="post">
 				<div class="modal-body bgColorWhite">
 					<p>Are you sure you wish to delete one record?</p>
