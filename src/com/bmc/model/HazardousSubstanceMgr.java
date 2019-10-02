@@ -13,16 +13,24 @@ public class HazardousSubstanceMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<HazardousSubstance> getHazardousSubstance(Connection conn, int buildingID){
+	public ArrayList<HazardousSubstance> getHazardousSubstance(Connection conn, int buildingID, String status){
 
 		ArrayList<HazardousSubstance> hsArr = new ArrayList<>();
 
-		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID=?";
+		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID=? ";
+		
+		if(!status.equals("D")) {
+			qry = qry + " AND (status=? OR status=NULL)";
+		}
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setInt(1, buildingID);
+
+			if(!status.equals("D")) {
+				pstatement.setString(2, status.trim());
+			}
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

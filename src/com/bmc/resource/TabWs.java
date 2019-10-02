@@ -21,6 +21,7 @@ public class TabWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Tab Information from Azure SQL DB - Tab
@@ -40,7 +41,7 @@ public class TabWs {
 				+ tabDescription);	
 		
 		//Get Tab information	
-		List<Tab> tab = new TabMgr().getTab(conn, tabID, tabDescription);
+		List<Tab> tab = new TabMgr().getTab(conn, tabID, tabDescription, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(tab); 
 		System.out.println(json);

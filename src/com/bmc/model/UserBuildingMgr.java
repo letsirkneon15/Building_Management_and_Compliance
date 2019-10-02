@@ -13,16 +13,24 @@ public class UserBuildingMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<UserBuilding> getUserBuilding(Connection conn, String userID){
+	public ArrayList<UserBuilding> getUserBuilding(Connection conn, String userID, String status){
 		
 		   ArrayList<UserBuilding> ubArr = new ArrayList<>();
 		   
-		   String qry = "SELECT a.* from dbo.User_Building a WHERE userID = ?";
+		   String qry = "SELECT a.* from dbo.User_Building a WHERE userID = ? ";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " AND (status=? OR status=NULL)";
+			}
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, userID);
+				
+				if(!status.equals("D")) {
+					pstatement.setString(2, status.trim());
+				}
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

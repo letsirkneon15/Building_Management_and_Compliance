@@ -13,14 +13,18 @@ public class BuildingDetailsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingDetailsType){
+	public ArrayList<BuildingDetails> getBuildingDetails(Connection conn, int buildingID, String buildingDetailsType, String status){
 
 		ArrayList<BuildingDetails> bdArr = new ArrayList<>();
 
 		String qry = "SELECT * FROM dbo.Building_Details WHERE buildingID=? ";
 				
 		if(!buildingDetailsType.equals("")) {
-			qry = qry + "AND buildingDetailsType=?";
+			qry = qry + "AND buildingDetailsType=? ";
+		}
+		
+		if(!status.equals("D")) {
+			qry = qry + " AND (status=? OR status=NULL)";
 		}
 				
 		try {
@@ -32,6 +36,10 @@ public class BuildingDetailsMgr {
 				pstatement.setString(2, buildingDetailsType.trim());
 			}
 
+			if(!status.equals("D")) {
+				pstatement.setString(3, status.trim());
+			}
+			
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {
 				bdArr.add(new BuildingDetails(resultSet.getInt("recordID"), resultSet.getString("buildingDetailsType"), 

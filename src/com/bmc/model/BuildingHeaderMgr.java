@@ -13,7 +13,7 @@ public class BuildingHeaderMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<BuildingHeader> getBuildingHeader(Connection conn, int buildingID, String buildingName) {
+	public ArrayList<BuildingHeader> getBuildingHeader(Connection conn, int buildingID, String buildingName, String status) {
 
 		
 		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
@@ -24,7 +24,11 @@ public class BuildingHeaderMgr {
 		if(!buildingName.equals("")){
 			qry = qry + "AND buildingName LIKE ?";
 		}
-				
+			
+		if(!status.equals("D")) {
+			qry = qry + " AND (status=? OR status=NULL)";
+		}
+		
 		System.out.println("QRY: " + qry);
 
 		try {
@@ -35,9 +39,11 @@ public class BuildingHeaderMgr {
 			if(!buildingName.equals("")){
 				pstatement.setString(2, buildingName.trim());
 			}	
-			//pstatement.setInt(3, frRowNum);
-			//pstatement.setInt(4, toRowNum);
 
+			if(!status.equals("D")) {
+				pstatement.setString(3, status.trim());
+			}
+			
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {
 				bhArr.add(new BuildingHeader(resultSet.getInt("buildingID"), resultSet.getString("buildingName"),
@@ -68,19 +74,28 @@ public class BuildingHeaderMgr {
 		return bhArr;
 	}
 
-	public ArrayList<BuildingHeader> getBuildingHeaderByUserId(Connection conn, String userID) {
+	public ArrayList<BuildingHeader> getBuildingHeaderByUserId(Connection conn, String userID, String status) {
 
 		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
 
 		String qry = "SELECT * FROM dbo.User_Building ub INNER JOIN dbo.Building_Header bh on "
-				+ "ub.BuildingID = bh.BUildingID where userID=?";
+				+ "ub.BuildingID = bh.BUildingID where userID=? ";
+		
+		if(!status.equals("D")) {
+			qry = qry + " AND (ub.status=? OR ub.status=NULL) AND (bh.status=? OR bh.status=NULL)";
+		}
+		
 		System.out.println("QRY: " + qry);
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setString(1, userID);
-
+			
+			if(!status.equals("D")) {
+				pstatement.setString(2, status.trim());
+				pstatement.setString(3, status.trim());
+			}
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {
@@ -112,18 +127,26 @@ public class BuildingHeaderMgr {
 		return bhArr;
 	}
 	
-	public BuildingHeader getBuildingHeaderByBuildingID(Connection conn, int buildingID) {
+	public BuildingHeader getBuildingHeaderByBuildingID(Connection conn, int buildingID, String status) {
 		
 		BuildingHeader bHeader = new BuildingHeader();
 
-		String qry = "SELECT * FROM dbo.Building_Header where buildingID=?";
+		String qry = "SELECT * FROM dbo.Building_Header where buildingID=? ";
+		
+		if(!status.equals("D")) {
+			qry = qry + " AND (status=? OR status=NULL)";
+		}
+	
 		System.out.println("QRY: " + qry);
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setInt(1, buildingID);
-
+			
+			if(!status.equals("D")) {
+				pstatement.setString(2, status.trim());
+			}
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

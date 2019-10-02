@@ -13,15 +13,23 @@ public class ComplianceInspectionMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<ComplianceInspection> getComplianceInspection(Connection conn, int buildingID){
+	public ArrayList<ComplianceInspection> getComplianceInspection(Connection conn, int buildingID, String status){
 
 		ArrayList<ComplianceInspection> ciArr = new ArrayList<>();
 
 		String qry = "SELECT * from dbo.Compliance_Inspection WHERE buildingID = ? ";
+		
+		if(!status.equals("D")) {
+			qry = qry + " AND (status=? OR status=NULL)";
+		}
 
 		try{
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setInt(1, buildingID);
+			
+			if(!status.equals("D")) {
+				pstatement.setString(2, status.trim());
+			}
 
 			resultSet = pstatement.executeQuery();
 			while(resultSet.next()){

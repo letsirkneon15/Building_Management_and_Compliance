@@ -21,6 +21,7 @@ public class HazardousSubstanceWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Hazardous Substance Information from Azure SQL DB - Hazardous_Substance
@@ -37,7 +38,7 @@ public class HazardousSubstanceWs {
 		System.out.println("buildingID from webService: " + buildingID);	
 		
 		//Get HazardousSubstance information	
-		List<HazardousSubstance> hazSubs = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID);
+		List<HazardousSubstance> hazSubs = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(hazSubs); 
 		System.out.println(json);

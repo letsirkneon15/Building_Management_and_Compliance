@@ -22,6 +22,7 @@ public class ComplianceInspectionWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Compliance Inspection Information from Azure SQL DB - Compliance_Inspection
@@ -38,7 +39,7 @@ public class ComplianceInspectionWs {
 		System.out.println("buildingID from webService: " + buildingID);	
 		
 		//Get ComplianceInspection information	
-		List<ComplianceInspection> comIns = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
+		List<ComplianceInspection> comIns = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(comIns); 
 		System.out.println(json);

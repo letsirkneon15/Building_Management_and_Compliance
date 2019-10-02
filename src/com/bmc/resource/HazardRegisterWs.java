@@ -21,6 +21,7 @@ public class HazardRegisterWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Hazard Register Information from Azure SQL DB - Hazard_Register
@@ -37,7 +38,7 @@ public class HazardRegisterWs {
 		System.out.println("buildingID from webService: " + buildingID);	
 		
 		//Get HazardRegister information	
-		List<HazardRegister> hazReg = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
+		List<HazardRegister> hazReg = new HazardRegisterMgr().getHazardRegister(conn, buildingID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(hazReg); 
 		System.out.println(json);

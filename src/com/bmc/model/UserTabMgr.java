@@ -13,16 +13,24 @@ public class UserTabMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<UserTab> getUserTab(Connection conn, String userID){
+	public ArrayList<UserTab> getUserTab(Connection conn, String userID, String status){
 		   
 		   ArrayList<UserTab> utArr = new ArrayList<>();
 		   
-		   String qry = "SELECT a.* from dbo.User_Tab a WHERE userID=?";
+		   String qry = "SELECT a.* from dbo.User_Tab a WHERE userID=? ";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " AND (status=? OR status=NULL)";
+			}
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, userID);
+				
+				if(!status.equals("D")) {
+					pstatement.setString(2, status.trim());
+				}
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

@@ -61,6 +61,7 @@ public class BuildingController extends HttpServlet {
 		String newPage = "/MainPage.jsp";
 		String userID = "";
 		String userName = "";
+		String conStatus="";
 		
 		/* Retrieve session values from BuildingHeader */
 		HttpSession session=request.getSession();
@@ -70,7 +71,7 @@ public class BuildingController extends HttpServlet {
 		
 		/* Get Building Header by User ID */
 		List<BuildingHeader> bHeaderArr = new ArrayList<>();
-		bHeaderArr = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID);
+		bHeaderArr = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID, conStatus);
 		userName = new UserMgr().getName(conn, userID);
 		
 		

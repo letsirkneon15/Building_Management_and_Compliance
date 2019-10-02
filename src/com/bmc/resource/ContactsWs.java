@@ -23,6 +23,7 @@ public class ContactsWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Contacts Information from Azure SQL DB - Contacts
@@ -39,7 +40,7 @@ public class ContactsWs {
 		System.out.println("buildingID from webService: " + buildingID);	
 		
 		//Get Contacts information	
-		List<Contacts> comIns = new ContactsMgr().getContacts(conn, buildingID);
+		List<Contacts> comIns = new ContactsMgr().getContacts(conn, buildingID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(comIns); 
 		System.out.println(json);

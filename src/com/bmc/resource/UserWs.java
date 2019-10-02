@@ -21,6 +21,7 @@ public class UserWs {
 	
 	/* DaUserase Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return User Information from Azure SQL DB - User
@@ -40,7 +41,7 @@ public class UserWs {
 				+ name);	
 		
 		//Get User information	
-		List<User> user = new UserMgr().getUser(conn, userID, name);
+		List<User> user = new UserMgr().getUser(conn, userID, name, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(user); 
 		System.out.println(json);

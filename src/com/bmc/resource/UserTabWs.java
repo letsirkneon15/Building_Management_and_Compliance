@@ -21,6 +21,7 @@ public class UserTabWs {
 	
 	/* DaUserTabase Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return User Tab Information from Azure SQL DB - User_Tab
@@ -37,7 +38,7 @@ public class UserTabWs {
 		System.out.println("userID from webService: " + userID);	
 		
 		//Get UserTab information	
-		List<UserTab> userTab = new UserTabMgr().getUserTab(conn, userID);
+		List<UserTab> userTab = new UserTabMgr().getUserTab(conn, userID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(userTab); 
 		System.out.println(json);

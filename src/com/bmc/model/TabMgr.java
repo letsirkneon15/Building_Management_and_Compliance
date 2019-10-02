@@ -13,17 +13,25 @@ public class TabMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<Tab> getTab(Connection conn, int tabID, String tabDescription){
+	public ArrayList<Tab> getTab(Connection conn, int tabID, String tabDescription, String status){
 		
 		   ArrayList<Tab> tabArr = new ArrayList<>();
 		   
 		   String qry = "SELECT * from dbo.Tab WHERE tabID Like ? AND tabDescription Like ? ";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " AND (status=? OR status=NULL)";
+			}
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setInt(1, tabID);
 				pstatement.setString(2, tabDescription);
+
+				if(!status.equals("D")) {
+					pstatement.setString(3, status.trim());
+				}
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

@@ -13,17 +13,25 @@ public class ContactsMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 
-	public ArrayList<Contacts> getContacts(Connection conn, int buildingID){
+	public ArrayList<Contacts> getContacts(Connection conn, int buildingID, String status){
 
 		ArrayList<Contacts> conArr = new ArrayList<>();
 
-		String qry = "SELECT * FROM dbo.Contacts WHERE buildingID=?";
+		String qry = "SELECT * FROM dbo.Contacts WHERE buildingID=? ";
+		
+		if(!status.equals("D")) {
+			qry = qry + " AND (status=? OR status=NULL)";
+		}
 
 		try {
 
 			pstatement = conn.prepareStatement(qry);
 
 			pstatement.setInt(1, buildingID);
+
+			if(!status.equals("D")) {
+				pstatement.setString(2, status.trim());
+			}
 
 			resultSet = pstatement.executeQuery();
 			while (resultSet.next()) {

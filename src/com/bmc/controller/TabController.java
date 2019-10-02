@@ -89,6 +89,7 @@ public class TabController extends HttpServlet {
         String conResourceConsent = "Resource Consent";
         String conD = "D";
         String conFire = "Fire";
+        String conStatus="";
 
 		BuildingHeader bHeader = new BuildingHeader();
 		List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
@@ -923,49 +924,49 @@ public class TabController extends HttpServlet {
         /* Query latest values and Display Tab Contents */
 
         /* Get Building Header by buildingID */
-        bHeader = new BuildingHeaderMgr().getBuildingHeaderByBuildingID(conn, buildingID);
+        bHeader = new BuildingHeaderMgr().getBuildingHeaderByBuildingID(conn, buildingID, conStatus);
 
         /* Get Contacts by buildingID */
-        contactsArr = new ContactsMgr().getContacts(conn, buildingID);
+        contactsArr = new ContactsMgr().getContacts(conn, buildingID, conStatus);
 
         /*Get Building Details */
-        bDetails = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "");
+        bDetails = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, "", conStatus);
 
         /*Get Compliance Inspection */
-        complianceInspectionArr = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID);
+        complianceInspectionArr = new ComplianceInspectionMgr().getComplianceInspection(conn, buildingID, conStatus);
 
         /*Get Hazardous Substances */
-        hazSubstancesArr = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID);
+        hazSubstancesArr = new HazardousSubstanceMgr().getHazardousSubstance(conn, buildingID, conStatus);
 
         /*Get Hazard Register */
-        hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID);
+        hazRegisterArr = new HazardRegisterMgr().getHazardRegister(conn, buildingID, conStatus);
 
         /*Get Building WOF from Building_Details table */
-        buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF);
+        buildingWOFArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conWOF, conStatus);
 
         /*Get Building Consent from Building_Details table */
-        buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent);
+        buildingConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conConsent, conStatus);
 
         /*Get Asbestos from Building_Details table */
-        asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos);
+        asbestosArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conAsbestos, conStatus);
 
         /*Get Electrical from Building_Details table */
-        electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical);
+        electricalArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conElectrical, conStatus);
 
         /*Get Gas from Building_Details table */
-        gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas);
+        gasArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conGas, conStatus);
 
         /*Get Fire from Building_Details table */
-        fireArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conFire);
+        fireArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conFire, conStatus);
 
         /*Get Seismic Resilience from Building_Details table */
-        seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic);
+        seismicArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conSeismic, conStatus);
 
         /*Get Resource Consent from Building_Details table */
-        resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
+        resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent, conStatus);
 
 		/*Get Resource Consent from Building_Details table */
-		resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
+		resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent, conStatus);
 		
 		session.setAttribute("buildingID", buildingID);
 		session.setAttribute("tabName", tabName);

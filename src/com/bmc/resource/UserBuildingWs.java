@@ -21,6 +21,7 @@ public class UserBuildingWs {
 	
 	/* DaUserBuildingase Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return User Building Information from Azure SQL DB - User_Building
@@ -37,7 +38,7 @@ public class UserBuildingWs {
 		System.out.println("userID from webService: " + userID);	
 		
 		//Get UserBuilding information	
-		List<UserBuilding> userBuilding = new UserBuildingMgr().getUserBuilding(conn, userID);
+		List<UserBuilding> userBuilding = new UserBuildingMgr().getUserBuilding(conn, userID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(userBuilding); 
 		System.out.println(json);

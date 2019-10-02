@@ -21,6 +21,7 @@ public class BuildingHeaderWs {
 	
 	/* Database Connection */
 	private Connection conn;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Building Header Information from Azure SQL DB - Building_Header
@@ -40,7 +41,7 @@ public class BuildingHeaderWs {
 				+ buildingName);	
 		
 		//Get BuildingHeader information	
-		List<BuildingHeader> bHeader = new BuildingHeaderMgr().getBuildingHeader(conn, buildingID, buildingName);
+		List<BuildingHeader> bHeader = new BuildingHeaderMgr().getBuildingHeader(conn, buildingID, buildingName, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(bHeader); 
 		System.out.println(json);
@@ -65,7 +66,7 @@ public class BuildingHeaderWs {
 		System.out.println("userID from webService: " + userID);	
 		
 		//Get BuildingHeader information	
-		List<BuildingHeader> bHeader = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID);
+		List<BuildingHeader> bHeader = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(bHeader); 
 		System.out.println(json);

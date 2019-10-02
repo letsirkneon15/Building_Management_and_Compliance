@@ -13,17 +13,25 @@ public class UserMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<User> getUser(Connection conn, String userID, String name){
+	public ArrayList<User> getUser(Connection conn, String userID, String name, String status){
 		
 		   ArrayList<User> userArr = new ArrayList<>();
 		   
 		   String qry = "SELECT * FROM dbo.[User] WHERE userID Like ? AND name Like ? ";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " AND (status=? OR status=NULL)";
+			}
 			
 			try{
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, userID);
 				pstatement.setString(2, name);
+				
+				if(!status.equals("D")) {
+					pstatement.setString(3, status.trim());
+				}
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){

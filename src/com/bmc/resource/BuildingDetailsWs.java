@@ -21,6 +21,7 @@ public class BuildingDetailsWs {
 	
 	/* Database Connection */
 	private Connection conn = null;
+	private String conStatus = "";
 	
 	/**
 	 * This method return Building Detail Information from Azure SQL DB - Building_Details
@@ -39,7 +40,7 @@ public class BuildingDetailsWs {
 		System.out.println("buildingID and building Name from webService: " + buildingID + " "
 				+ buildingName);	
 		
-		List<BuildingDetails> bDetail = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, buildingName);
+		List<BuildingDetails> bDetail = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, buildingName, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(bDetail); 
 		System.out.println(json);
