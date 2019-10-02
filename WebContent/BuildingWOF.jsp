@@ -126,9 +126,13 @@
 								<div class="panel-body">
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
-											class="d-sm-flex align-items-center" name="crtWType"
-											id="crtWType" type="text" value="${crtWType}">
+										<label for="type">Type:</label> 
+										<select class="form-control" id="crtWType" name="crtWType">
+			  								<c:forEach var="wType" items="${wTypeList}">			  								
+  			     								<option value="${wType}">${wType}</option>
+	   		  								</c:forEach>
+	      								</select>
+	
 									</div>
 								</div>
 							</div>
@@ -216,8 +220,12 @@
 								<div class="panel-body">
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
-											name="edtWType" id="edtWType" type="text" value="">
+										<label for="type">Type:</label> 
+										<select class="form-control" id="edtWType" name="edtWType">
+			  								<c:forEach var="wType" items="${wTypeList}">			  								
+  			     								<option value="${wType}">${wType}</option>
+	   		  								</c:forEach>
+	      								</select>
 									</div>
 								</div>
 							</div>
@@ -226,12 +234,14 @@
 								<div class="panel-body">
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
+									<label>Uploaded By:</label>
 										<input class="form-control" name="edtWUploadedBy"
 											id="edtWUploadedBy" type="text" value="" readOnly>
 									</div>
 
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
+									<label>Last Uploaded:</label>
 										<input class="form-control" name="edtWLastUploadedBy"
 											id="edtWLastUploadedBy" type="text" value="" readOnly>
 									</div>

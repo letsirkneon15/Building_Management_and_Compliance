@@ -103,9 +103,14 @@
 
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
-											name="crtCType" id="crtCType" type="text" value="${crtCType}">
+									<label for="type">Type:</label> 
+									<select class="form-control" id="crtCType" name="crtCType">
+			  							<d:forEach var="cType" items="${cTypeList}">
+  			     							<option value="${cType}">${cType}</option>
+	   		  							</d:forEach>
+	      							</select>
 									</div>
+									
 								</div>
 							</div>
 
@@ -207,8 +212,12 @@
 
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
-											name="edtCType" id="edtCType" type="text" value="">
+										<label for="type">Type:</label> 
+										<select class="form-control" id="edtCType" name="edtCType">
+			  								<d:forEach var="cType" items="${cTypeList}">			  								
+  			     								<option value="${cType}">${cType}</option>
+	   		  								</d:forEach>
+	      								</select>
 									</div>
 								</div>
 							</div>

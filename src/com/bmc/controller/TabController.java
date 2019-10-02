@@ -27,6 +27,7 @@ import com.bmc.model.BuildingDetailsMgr;
 import com.bmc.model.BuildingHeaderMgr;
 import com.bmc.model.ComplianceInspectionMgr;
 import com.bmc.model.ContactsMgr;
+import com.bmc.model.HardCodedData;
 import com.bmc.model.HazardRegisterMgr;
 import com.bmc.model.HazardousSubstanceMgr;
 import com.bmc.pojo.BuildingDetails;
@@ -100,7 +101,16 @@ public class TabController extends HttpServlet {
 		List<BuildingDetails> electricalArr = new ArrayList<BuildingDetails>();
 		List<BuildingDetails> gasArr = new ArrayList<BuildingDetails>();
 		List<BuildingDetails> seismicArr = new ArrayList<BuildingDetails>();
-		List<BuildingDetails> resourceConsentArr = new ArrayList<BuildingDetails>();
+		List<BuildingDetails> resourceConsentArr = new ArrayList<BuildingDetails>();	
+		ArrayList<String> cTypeList = new ArrayList<String>(); 
+		ArrayList<String> wTypeList = new ArrayList<String>();
+		ArrayList<String> csTypeList = new ArrayList<String>();
+		ArrayList<String> aTypeList = new ArrayList<String>();
+		ArrayList<String> eTypeList = new ArrayList<String>();
+		ArrayList<String> gTypeList = new ArrayList<String>();
+		ArrayList<String> hrRiskAssessList = new ArrayList<String>();
+		ArrayList<String> sTypeList = new ArrayList<String>();
+		ArrayList<String> rcTypeList = new ArrayList<String>();
 
 		BuildingDetails buildDetails = new BuildingDetails();
 		Contacts contacts = new Contacts();
@@ -120,6 +130,17 @@ public class TabController extends HttpServlet {
 			userID = (String) session.getAttribute("userID");
 		}
 
+		/* Get Type/Assessment - Item List */
+		cTypeList = new HardCodedData().getTypeContacts();
+		wTypeList = new HardCodedData().getTypeWof();
+		csTypeList = new HardCodedData().getTypeConsent();
+		aTypeList = new HardCodedData().getTypeAsbestos();
+		eTypeList = new HardCodedData().getTypeElectrical();
+		gTypeList = new HardCodedData().getTypeGas();
+		hrRiskAssessList = new HardCodedData().getAssessmentHazRegister();
+		sTypeList = new HardCodedData().getTypeSeismic();
+		rcTypeList = new HardCodedData().getTypeResource();
+		
 		/* Do this when submit button was clicked */
 		action = request.getParameter("action");
 		if(action != null){
@@ -896,7 +917,15 @@ public class TabController extends HttpServlet {
 		session.setAttribute("gasArr", gasArr);
 		session.setAttribute("seismicArr", seismicArr);
 		session.setAttribute("resourceConsentArr", resourceConsentArr);
-		
+		session.setAttribute("cTypeList", cTypeList);
+		session.setAttribute("wTypeList", wTypeList);
+		session.setAttribute("csTypeList", csTypeList);
+		session.setAttribute("aTypeList", aTypeList);
+		session.setAttribute("eTypeList", eTypeList);
+		session.setAttribute("gTypeList", gTypeList);
+		session.setAttribute("hrRiskAssessList", hrRiskAssessList);
+		session.setAttribute("sTypeList", sTypeList);
+		session.setAttribute("rcTypeList", rcTypeList);
 
 		/* do redirection */ 
 		ServletContext sContext = getServletContext();

@@ -96,8 +96,12 @@
 									
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
-											name="crtAType" id="crtAType" type="text" value="${crtAType}">
+										<label for="type">Type:</label> 
+										<select class="form-control" id="crtAType" name="crtAType">
+			  								<d:forEach var="aType" items="${aTypeList}">			  								
+  			     								<option value="${aType}">${aType}</option>
+	   		  								</d:forEach>
+     									</select>	
 									</div>
 								</div>
 							</div>
@@ -173,8 +177,13 @@
 									
 									<!-- Type  -->
 									<div class="col-sm-6">
-										<label for="type">Type:</label> <input class="form-control"
-											name="edtAType" id="edtAType" type="text" value="">
+										<label for="type">Type:</label> 
+										<select class="form-control" id="edtAType" name="edtAType">
+			  								<d:forEach var="aType" items="${aTypeList}">			  								
+  			     								<option value="${aType}">${aType}</option>
+	   		  								</d:forEach>
+     									</select>
+
 									</div>
 									
 								</div>
@@ -198,6 +207,7 @@
 
 									<!-- Uploaded By  -->
 									<div class="col-sm-6">
+									<label>Uploaded By:</label>
 										<input
 											class="form-control" name="edtAUploadedBy"
 											id="edtAUploadedBy" type="text" value="" readOnly>
@@ -205,6 +215,7 @@
 									
 									<!-- Last Uploaded -->
 									<div class="col-sm-6">
+									<label>Last Uploaded:</label>
 									<input
 											class="form-control" name="edtALastUploadedBy"
 											id="edtALastUploadedBy" type="text" value="" readOnly>

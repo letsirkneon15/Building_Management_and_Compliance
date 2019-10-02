@@ -110,7 +110,11 @@
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
-     					<input class="form-control" name="crtCSType" id="crtCSType" type="text" value="${crtCSType}">	
+     					<select class="form-control" id="crtCSType" name="crtCSType">
+			  				<c:forEach var="csType" items="${csTypeList}">			  								
+  			     				<option value="${csType}">${csType}</option>
+	   		  				</c:forEach>
+						</select>	
      				</div>
      			</div>
      			</div>
@@ -190,8 +194,11 @@
      				<!-- Type  -->
      				<div class="col-sm-6">
      					<label for="type">Type:</label>
-     					
-     					<input class="form-control" name="edtCSType" id="edtCSType" type="text" value="">	
+     					<select class="form-control" id="edtCSType" name="edtCSType">
+			  				<c:forEach var="csType" items="${csTypeList}">			  								
+  			     				<option value="${csType}">${csType}</option>
+	   		  				</c:forEach>
+     					</select>	
      				</div>
      			</div>
      			</div>
@@ -200,11 +207,13 @@
   				<div class="panel-body">
  					<!-- Uploaded By  -->
  					<div class="col-sm-6">
+ 						<label>Uploaded By:</label>
      					<input class="form-control" name="edtCSUploadedBy" id="edtCSUploadedBy"  type="text" value="" readOnly>	
      				</div>
      				
      				<!-- Last Uploaded -->
      				<div class="col-sm-6">
+     					<label>Last Uploaded:</label>
      					<input class="form-control" name="edtCSLastUploadedBy" id="edtCSLastUploadedBy" type="text" value="" readOnly>    
      				</div>			
      			</div>
