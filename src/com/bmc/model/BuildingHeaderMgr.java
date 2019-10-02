@@ -19,11 +19,7 @@ public class BuildingHeaderMgr {
 		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
 
 		
-		String qry = "SELECT * FROM dbo.Building_Header WHERE buildingID=? "; 
-		
-		if(!buildingName.equals("")){
-			qry = qry + "AND buildingName LIKE ?";
-		}
+		String qry = "SELECT * FROM dbo.Building_Header WHERE buildingID=? AND buildingName LIKE ? "; 
 			
 		if(!status.equals("D")) {
 			qry = qry + " AND (status=? OR status=NULL)";
@@ -35,10 +31,7 @@ public class BuildingHeaderMgr {
 
 			pstatement = conn.prepareStatement(qry);
 			pstatement.setInt(1, buildingID);
-			
-			if(!buildingName.equals("")){
-				pstatement.setString(2, buildingName.trim());
-			}	
+			pstatement.setString(2, buildingName.trim());
 
 			if(!status.equals("D")) {
 				pstatement.setString(3, status.trim());
@@ -184,9 +177,9 @@ public class BuildingHeaderMgr {
 
 		try {
 
-			String qry = "INSERT INTO dbo.Building_Header"
+			String qry = "INSERT INTO dbo.Building_Header "
 					+ "(buildingID, buildingName, buildingName, address, location, levelOrUnitNumber, coordinates, owner,"
-					+ "client, responsibleOffice, projectNumber, billingInformation, csNumber, legalDescription, maxOccupants, "
+					+ "client, responsibleOffice, projectNumber, buildingInformation, csNumber, legalDescription, maxOccupants, "
 					+ "fireHazardCategory, yearBuilt, intendedLife, bwofAnniversary, asbestosPresent, nbsPercentage, "
 					+ "createdBy, creationDate, modifiedBy, modifiedDate, status)" + " VALUES"
 					+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -241,9 +234,9 @@ public class BuildingHeaderMgr {
 
 		try {
 
-			String qry = "UPDATE dbo.Building_Header set"
+			String qry = "UPDATE dbo.Building_Header set "
 					+ "buildingName=?, address=?, location=?, levelOrUnitNumber=?, coordinates=?, owner=?,"
-					+ "client=?, responsibleOffice=?, projectNumber=?, billingInformation=?, csNumber=?, legalDescription=?, maxOccupants=?, "
+					+ "client=?, responsibleOffice=?, projectNumber=?, buildingInformation=?, csNumber=?, legalDescription=?, maxOccupants=?, "
 					+ "fireHazardCategory=?, yearBuilt=?, intendedLife=?, bwofAnniversary=?, asbestosPresent=?, nbsPercentage=?, status=?, "
 					+ "modifiedBy=?, modifiedDate=? WHERE buildingID = ?";
 

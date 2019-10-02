@@ -82,6 +82,28 @@ public ArrayList<String> getTypeGas(){
 	return typeArr;
 }
 
+public ArrayList<String> getTypeFire(){
+	
+	ArrayList<String> typeArr = new ArrayList<String>();
+	
+	typeArr.add("Certificate of Compliance");
+	typeArr.add("Evacuation Scheme");
+	typeArr.add("Emergency Evacuation Procedures");
+	typeArr.add("Fire Report");
+	typeArr.add("Trial Evacuation Report");
+	typeArr.add("Surveys");
+	typeArr.add("Producer Statements");
+	typeArr.add("Site Report");
+	typeArr.add("Condition Assessment");
+	typeArr.add("Test Results");
+	typeArr.add("Inspection Results");
+	typeArr.add("Isolation Notifications");
+	typeArr.add("Shutdown Notifications");
+	typeArr.add("Plans");
+	
+	return typeArr;
+}
+
 public ArrayList<String> getAssessmentHazRegister(){
 	
 	ArrayList<String> typeArr = new ArrayList<String>();
@@ -115,6 +137,16 @@ public ArrayList<String> getTypeResource(){
 	typeArr.add("Resource Consent");
 	typeArr.add("Reports");
 	typeArr.add("Plans");
+	
+	return typeArr;
+}
+
+public ArrayList<String> getYesNo(){
+	
+	ArrayList<String> typeArr = new ArrayList<String>();
+	
+	typeArr.add("Yes");
+	typeArr.add("No");
 	
 	return typeArr;
 }

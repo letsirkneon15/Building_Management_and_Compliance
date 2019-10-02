@@ -81,38 +81,34 @@
                                         <label for="name">Name:</label>
                                         <input class="form-control" name = "crtFName" id="crtFName" type="text" value="${crtFName}">
                                     </div>
-                                    <!-- Attachment -->
-                                    <div class="col-sm-6">
-                                        <label for="attachment">Attachment:</label>
-                                        <input class="form-control" name="crtFAttachment" id="crtFAttachment" type="file" value="${crtFAttachment}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel-default">
-                                <div class="panel-body">
+                                    
                                     <!-- Type  -->
-                                    <div class="col-sm-6">
-                                        <label for="type">Type:</label>
-                                        <input class="form-control" name="crtFType" id="crtFType" type="text" value="${crtFType}">
-                                    </div>
-                                    <!-- Uploaded By  -->
-                                    <div class="col-sm-6">
-
-                                        <input class="form-control" name="crtFUploadedBy" id="crtFUploadedBy" type="hidden" type="text" value="${crtFUploadedBy}" readOnly>
-                                    </div>
+									<div class="col-sm-6">
+										<label for="type">Type:</label> <select class="form-control"
+											id="crtFType" name="crtFType">
+											<c:forEach var="fType" items="${fTypeList}">
+												<option value="${fType}">${fType}</option>
+											</c:forEach>
+										</select>
+									</div>
                                 </div>
                             </div>
-
+                            
                             <div class="panel-default">
-                                <div class="panel-body">
-                                    <!-- Last Uploaded -->
-                                    <div class="col-sm-6">
-
-                                        <input class="form-control" name="crtFLastUploadedBy" id="crtFLastUploadedBy" type="hidden" type="text" value="${crtFLastUploadedBy}" readOnly>
-                                    </div>
-                                </div>
-                            </div>
+								<div class="panel-body">
+									<div class="col-sm-12">
+										<!-- Attachment -->
+										<label>Attachment:</label>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input"
+												name="crtFAttachment" id="crtFAttachment"
+												value="${crtFAttachment}"> <label
+												class="custom-file-label" for="customFile"
+												id="crtFAttachmentLbl"></label>
+										</div>
+									</div>
+								</div>
+							</div>
 
                             <div class="panel-default">
                                 <div class="panel-body">
@@ -159,35 +155,48 @@
                                         <label for="name">Name:</label>
                                         <input class="form-control" name = "edtFName" id="edtFName" type="text" value="">
                                     </div>
-                                    <!-- Attachment -->
-                                    <div class="col-sm-6">
-                                        <label for="attachment">Attachment:</label>
-                                        <input class="form-control" name="edtFAttachment" id="edtFAttachment" type="text" value="">
-                                    </div>
+                                    
+                                     <!-- Type  -->
+									<div class="col-sm-6">
+										<label for="type">Type:</label> <select class="form-control"
+											id="edtFType" name="edtFType">
+											<c:forEach var="fType" items="${fTypeList}">
+												<option value="${fType}">${fType}</option>
+											</c:forEach>
+										</select>
+									</div>
+
                                 </div>
                             </div>
 
+							<div class="panel-default">
+								<div class="panel-body">
+									<div class="col-sm-12">
+										<!-- Attachment -->
+										<label>Attachment:</label>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input"
+												name="edtFAttachment" id="edtFAttachment"
+												value="${edtFAttachment}"> <label
+												class="custom-file-label" for="customFile"
+												id="edtFAttachmentLbl"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							
                             <div class="panel-default">
                                 <div class="panel-body">
-                                    <!-- Type  -->
-                                    <div class="col-sm-6">
-                                        <label for="type">Type:</label>
-                                        <input class="form-control" name="edtFType" id="edtFType" type="text" value="">
-                                    </div>
                                     <!-- Uploaded By  -->
                                     <div class="col-sm-6">
-
-                                        <input class="form-control" name="edtFUploadedBy" id="edtFUploadedBy" type="hidden" type="text" value="" readOnly>
+									<label>Uploaded By:</label>
+                                        <input class="form-control" name="edtFUploadedBy" id="edtFUploadedBy" type="text" value="" readOnly>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="panel-default">
-                                <div class="panel-body">
                                     <!-- Last Uploaded -->
                                     <div class="col-sm-6">
-
-                                        <input class="form-control" name="edtFLastUploadedBy" id="edtFLastUploadedBy" type="hidden" type="text" value="" readOnly>
+									<label>Last Uploaded:</label>
+                                        <input class="form-control" name="edtFLastUploadedBy" id="edtFLastUploadedBy" type="text" value="" readOnly>
                                     </div>
                                 </div>
                             </div>

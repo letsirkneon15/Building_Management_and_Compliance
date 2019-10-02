@@ -1,5 +1,5 @@
     	<ul class="nav nav-tabs">
-  			<li class="active"><a data-toggle="tab" href="#GeneralInformation">
+  			<li class="active"><a data-toggle="tab" href="#GenInfo">
   				<h5 class="m-0 font-weight-bold text-primary">General <br> Information</h5></a></li>
   			<li><a data-toggle="tab" href="#Contacts">
   				<h5 class="m-0 font-weight-bold text-primary">Contacts <br><br></h5></a></li>
@@ -13,6 +13,8 @@
   				<h5 class="m-0 font-weight-bold text-primary">Electrical <br><br></h5></a></li>	
   			<li><a data-toggle="tab" href="#Gas">
   				<h5 class="m-0 font-weight-bold text-primary">Gas<br><br></h5></a></li>	
+  			<li><a data-toggle="tab" href="#Fire">
+  				<h5 class="m-0 font-weight-bold text-primary">Fire<br><br></h5></a></li>	
   			<li><a data-toggle="tab" href="#HazSubs">
   				<h5 class="m-0 font-weight-bold text-primary">Hazardous <br> Substances</h5></a></li>
   			<li><a data-toggle="tab" href="#HazReg">

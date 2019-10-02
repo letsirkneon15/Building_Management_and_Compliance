@@ -56,7 +56,7 @@
 					<div class="tab-content" id="nav-tabContent">
 
 						<!-- Start General Information Tab-->
-						<div id="GeneralInformation" class="tab-pane fade in active">
+						<div id="GenInfo" class="tab-pane fade in active">
 							<!-- Include GeneralInformation.jsp -->
 							<%@ include file="GeneralInformation.jsp"%>
 						</div>
@@ -103,6 +103,13 @@
 							<%@ include file="Gas.jsp"%>
 						</div>
 						<!-- End Gas Tab-->
+						
+						<!-- Start Fire Tab-->
+						<div id="Fire" class="tab-pane">
+							<!-- Include Fire.jsp -->
+							<%@ include file="Fire.jsp"%>
+						</div>
+						<!-- End Fire Tab-->
 						
 						<!-- Start Hazardous Substances Tab-->
 						<div id="HazSubs" class="tab-pane">
@@ -170,6 +177,10 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#gasTable').DataTable();
+} );
+
+$(document).ready(function() {
+    $('#fireTable').DataTable();
 } );
 
 $(document).ready(function() {
@@ -250,6 +261,12 @@ $('#crtElectrical').on('show.bs.modal', function(e) {
 });
 
 $('#crtGas').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#crtFire').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
@@ -407,6 +424,24 @@ $('#editGas').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtGLastUploadedBy"]').val(lastuploadedby);
 });
 
+$('#editFire').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+    var recordid = $(e.relatedTarget).data('recordid');
+    var name = $(e.relatedTarget).data('name');
+    var attachment = $(e.relatedTarget).data('attachment');
+    var type = $(e.relatedTarget).data('type');
+    var uploadedby = $(e.relatedTarget).data('uploadedby');
+    var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
+
+    $(e.currentTarget).find('input[name="edtFRecordID"]').val(recordid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+    $(e.currentTarget).find('input[name="edtFName"]').val(name);
+    $(e.currentTarget).find('label[id="edtFAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('select[name="edtFType"]').val(type);
+    $(e.currentTarget).find('input[name="edtFUploadedBy"]').val(uploadedby);
+    $(e.currentTarget).find('input[name="edtFLastUploadedBy"]').val(lastuploadedby);
+});
+
 $('#editHazardSubstance').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
     var recordid = $(e.relatedTarget).data('recordid');
@@ -515,6 +550,12 @@ $('#editCInspection').on('show.bs.modal', function(e) {
 
 /**************** DELETE MODALS HERE **************************************/
 
+$('#deleteGenInfo').on('show.bs.modal', function(e) {
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
 $('#deleteContacts').on('show.bs.modal', function(e) {
     var recordid = $(e.relatedTarget).data('recordid');
     var buildingid = $(e.relatedTarget).data('buildingid');
@@ -560,6 +601,14 @@ $('#deleteGas').on('show.bs.modal', function(e) {
     var buildingid = $(e.relatedTarget).data('buildingid');
 
     $(e.currentTarget).find('input[name="dltGRecordID"]').val(recordid);
+    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
+});
+
+$('#deleteFire').on('show.bs.modal', function(e) {
+    var recordid = $(e.relatedTarget).data('recordid');
+    var buildingid = $(e.relatedTarget).data('buildingid');
+
+    $(e.currentTarget).find('input[name="dltFRecordID"]').val(recordid);
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
 });
 
