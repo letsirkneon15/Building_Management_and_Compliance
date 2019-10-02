@@ -90,7 +90,6 @@ public class TabController extends HttpServlet {
         String conD = "D";
         String conFire = "Fire";
 
-<<<<<<< HEAD
 		BuildingHeader bHeader = new BuildingHeader();
 		List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
 		List<Contacts> contactsArr = new ArrayList<Contacts>();
@@ -103,7 +102,9 @@ public class TabController extends HttpServlet {
 		List<BuildingDetails> electricalArr = new ArrayList<BuildingDetails>();
 		List<BuildingDetails> gasArr = new ArrayList<BuildingDetails>();
 		List<BuildingDetails> seismicArr = new ArrayList<BuildingDetails>();
-		List<BuildingDetails> resourceConsentArr = new ArrayList<BuildingDetails>();	
+		List<BuildingDetails> resourceConsentArr = new ArrayList<BuildingDetails>();
+        List<BuildingDetails> fireArr = new ArrayList<BuildingDetails>();
+        
 		ArrayList<String> cTypeList = new ArrayList<String>(); 
 		ArrayList<String> wTypeList = new ArrayList<String>();
 		ArrayList<String> csTypeList = new ArrayList<String>();
@@ -113,23 +114,7 @@ public class TabController extends HttpServlet {
 		ArrayList<String> hrRiskAssessList = new ArrayList<String>();
 		ArrayList<String> sTypeList = new ArrayList<String>();
 		ArrayList<String> rcTypeList = new ArrayList<String>();
-=======
-        BuildingHeader bHeader = new BuildingHeader();
-        List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
-        List<Contacts> contactsArr = new ArrayList<Contacts>();
-        List<ComplianceInspection> complianceInspectionArr = new ArrayList<ComplianceInspection>();
-        List<HazardousSubstance> hazSubstancesArr = new ArrayList<HazardousSubstance>();
-        List<HazardRegister> hazRegisterArr = new ArrayList<HazardRegister>();
-        List<BuildingDetails> buildingWOFArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> buildingConsentArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> asbestosArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> electricalArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> gasArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> seismicArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> resourceConsentArr = new ArrayList<BuildingDetails>();
-        List<BuildingDetails> fireArr = new ArrayList<BuildingDetails>();
->>>>>>> refs/remotes/origin/master
-
+		
         BuildingDetails buildDetails = new BuildingDetails();
         Contacts contacts = new Contacts();
         ComplianceInspection comInspection = new ComplianceInspection();
@@ -148,7 +133,7 @@ public class TabController extends HttpServlet {
             userID = (String) session.getAttribute("userID");
         }
 
-<<<<<<< HEAD
+
 		/* Get Type/Assessment - Item List */
 		cTypeList = new HardCodedData().getTypeContacts();
 		wTypeList = new HardCodedData().getTypeWof();
@@ -160,14 +145,9 @@ public class TabController extends HttpServlet {
 		sTypeList = new HardCodedData().getTypeSeismic();
 		rcTypeList = new HardCodedData().getTypeResource();
 		
-		/* Do this when submit button was clicked */
-		action = request.getParameter("action");
-		if(action != null){
-=======
         /* Do this when submit button was clicked */
         action = request.getParameter("action");
         if (action != null) {
->>>>>>> refs/remotes/origin/master
 
             buildingID = Integer.parseInt(request.getParameter("buildingID"));
 
@@ -984,24 +964,6 @@ public class TabController extends HttpServlet {
         /*Get Resource Consent from Building_Details table */
         resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
 
-        session.setAttribute("buildingID", buildingID);
-        session.setAttribute("tabName", tabName);
-        session.setAttribute("bHeader", bHeader);
-        session.setAttribute("contactsArr", contactsArr);
-        session.setAttribute("bDetails", bDetails);
-        session.setAttribute("complianceInspectionArr", complianceInspectionArr);
-        session.setAttribute("hazSubstancesArr", hazSubstancesArr);
-        session.setAttribute("hazRegisterArr", hazRegisterArr);
-        session.setAttribute("buildingWOFArr", buildingWOFArr);
-        session.setAttribute("buildingConsentArr", buildingConsentArr);
-        session.setAttribute("asbestosArr", asbestosArr);
-        session.setAttribute("electricalArr", electricalArr);
-        session.setAttribute("gasArr", gasArr);
-        session.setAttribute("fireArr", fireArr);
-        session.setAttribute("seismicArr", seismicArr);
-        session.setAttribute("resourceConsentArr", resourceConsentArr);
-
-<<<<<<< HEAD
 		/*Get Resource Consent from Building_Details table */
 		resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent);
 		
@@ -1018,6 +980,7 @@ public class TabController extends HttpServlet {
 		session.setAttribute("asbestosArr", asbestosArr);
 		session.setAttribute("electricalArr", electricalArr);
 		session.setAttribute("gasArr", gasArr);
+		session.setAttribute("fireArr", fireArr);
 		session.setAttribute("seismicArr", seismicArr);
 		session.setAttribute("resourceConsentArr", resourceConsentArr);
 		session.setAttribute("cTypeList", cTypeList);
@@ -1029,8 +992,6 @@ public class TabController extends HttpServlet {
 		session.setAttribute("hrRiskAssessList", hrRiskAssessList);
 		session.setAttribute("sTypeList", sTypeList);
 		session.setAttribute("rcTypeList", rcTypeList);
-=======
->>>>>>> refs/remotes/origin/master
 
         /* do redirection */
         ServletContext sContext = getServletContext();
