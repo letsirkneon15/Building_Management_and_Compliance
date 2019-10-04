@@ -116,6 +116,19 @@ public ArrayList<String> getAssessmentHazRegister(){
 	return typeArr;
 }
 
+public ArrayList<String> getLevelOfControls(){
+	
+	ArrayList<String> typeArr = new ArrayList<String>();
+	
+	typeArr.add("Elimination");
+	typeArr.add("Substitution");
+	typeArr.add("Engineering Controls");
+	typeArr.add("Administrative Controls");
+	typeArr.add("PPE");
+	
+	return typeArr;
+}
+
 public ArrayList<String> getTypeSeismic(){
 	
 	ArrayList<String> typeArr = new ArrayList<String>();
@@ -147,6 +160,17 @@ public ArrayList<String> getYesNo(){
 	
 	typeArr.add("Yes");
 	typeArr.add("No");
+	
+	return typeArr;
+}
+
+public ArrayList<String> getFireHazardCategory(){
+	
+	ArrayList<String> typeArr = new ArrayList<String>();
+	
+	typeArr.add("A");
+	typeArr.add("B");
+	typeArr.add("C");
 	
 	return typeArr;
 }

@@ -124,10 +124,14 @@
 									</div>
 									<!-- Level of Control  -->
 									<div class="col-sm-6">
-										<label for="levelOfControl">Level of Control:</label> <input
-											class="form-control" name="crtHRLevelOfControl"
-											id="crtHRLevelOfControl" type="text"
-											value="${crtHRLevelOfControl}">
+										<label for="levelOfControl">Level of Control:</label> 
+										<select class="form-control"
+											id="crtHRLevelOfControl"
+											name="crtHRLevelOfControl">
+											<d:forEach var="levelOfControls" items="${levelOfControlsList}">
+												<option value="${levelOfControls}">${levelOfControls}</option>
+											</d:forEach>
+										</select>
 									</div>
 								</div>
 							</div>
@@ -226,9 +230,14 @@
 									</div>
 									<!-- Level of Control  -->
 									<div class="col-sm-6">
-										<label for="levelOfControl">Level of Control:</label> <input
-											class="form-control" name="edtHRLevelOfControl"
-											id="edtHRLevelOfControl" type="text" value="">
+										<label for="levelOfControl">Level of Control:</label> 
+										<select class="form-control"
+											id="edtHRLevelOfControl"
+											name="edtHRLevelOfControl">
+											<d:forEach var="levelOfControls" items="${levelOfControlsList}">
+												<option value="${levelOfControls}">${levelOfControls}</option>
+											</d:forEach>
+										</select>
 									</div>
 								</div>
 							</div>

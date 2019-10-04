@@ -88,8 +88,12 @@
 			<div class="form-group">
 				<label for="fireHazardCategory" class="col-xs-2">Fire Hazard Category</label>
 				<div class="col-xs-7">
-					<input type="text" class="form-control" id="fireHazardCategory" name="fireHazardCategory"
-						value="${bHeader.fireHazardCategory}" />
+					<select class="form-control" id="fireHazardCategory"
+											name="fireHazardCategory"  data-selected="${bHeader.fireHazardCategory}">
+						<c:forEach var="fireHazCat" items="${fireHazCatList}">
+							<option value="${fireHazCat}">${fireHazCat}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>		
 			
@@ -120,8 +124,12 @@
 			<div class="form-group">
 				<label for="asbestosPresent" class="col-xs-2">Asbestos Present</label>
 				<div class="col-xs-7">
-					<input type="text" class="form-control" id="asbestosPresent" name="asbestosPresent"
-						value="${bHeader.asbestosPresent}" />
+					<select class="form-control" id="asbestosPresent"
+											name="asbestosPresent"  data-selected="${bHeader.asbestosPresent}">
+						<c:forEach var="yesNo" items="${yesNoList}">
+							<option value="${yesNo}">${yesNo}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>		
 			

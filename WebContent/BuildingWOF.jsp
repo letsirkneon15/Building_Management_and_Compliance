@@ -84,7 +84,7 @@
 			<!-- Create a Form to create record -->
 			<form
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&amp;tab=WOF"
-				method="post" class="form-group">
+				method="post" class="form-group" enctype="multipart/form-data">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width: 100%">
 						<div class="well">

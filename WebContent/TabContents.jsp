@@ -221,6 +221,13 @@ function activeTab(tab){
     $('.nav-tabs a[href="#' + tab + '"]').tab('show');
 };
 
+/**************** For Drop Down Default Value ********************************/
+
+$("select[data-selected]").each(function() {
+    var selected = $(this).data("selected");
+    $("select[data-selected='" + selected + "'] option[value='" + selected + "']").attr("selected", "selected");
+})
+
 /**************** Upload Attachment/Image ********************************/
 
 $(".custom-file-input").on("change", function() {
@@ -490,7 +497,7 @@ $('#editHazardRegister').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtHRIdentifiedHazard"]').val(identifiedhazard);
     $(e.currentTarget).find('select[name="edtHRInitialRiskAssessment"]').val(initialriskassessment);
     $(e.currentTarget).find('input[name="edtHRControls"]').val(controls);
-    $(e.currentTarget).find('input[name="edtHRLevelOfControl"]').val(levelofcontrol);
+    $(e.currentTarget).find('select[name="edtHRLevelOfControl"]').val(levelofcontrol);
     $(e.currentTarget).find('select[name="edtHRResidualRiskAssessment"]').val(residualriskassessment);
 });
 

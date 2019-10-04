@@ -1,5 +1,6 @@
 package com.bmc.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,14 +15,21 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.bmc.model.BuildingDetailsMgr;
 import com.bmc.model.BuildingHeaderMgr;
@@ -30,17 +38,21 @@ import com.bmc.model.ContactsMgr;
 import com.bmc.model.HardCodedData;
 import com.bmc.model.HazardRegisterMgr;
 import com.bmc.model.HazardousSubstanceMgr;
+import com.bmc.pojo.BMCProp;
 import com.bmc.pojo.BuildingDetails;
 import com.bmc.pojo.BuildingHeader;
 import com.bmc.pojo.ComplianceInspection;
 import com.bmc.pojo.Contacts;
 import com.bmc.pojo.HazardRegister;
 import com.bmc.pojo.HazardousSubstance;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class TabController
  */
 @WebServlet("/Tabs")
+@MultipartConfig
 public class TabController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +60,12 @@ public class TabController extends HttpServlet {
     private Context envContext;
     private DataSource dataSource;
     private Connection conn;
+    private String uploadDirectory;
+    private MultipartRequest req;
+    
+    /* fix max file size 500 Mb */
+    private int maxFileSize = 500000 * 1024;
+    
 
     /**
      * @see Servlet#init(ServletConfig)
@@ -64,6 +82,16 @@ public class TabController extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        /* Retrieve values from Properties File */
+    	BMCProp bmc = new BMCProp();
+		try {
+			bmc.getProperties();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		uploadDirectory = bmc.getFileUploadFolder();
     }
 
     /**
@@ -117,6 +145,8 @@ public class TabController extends HttpServlet {
 		ArrayList<String> rcTypeList = new ArrayList<String>();
 		ArrayList<String> yesNoList = new ArrayList<String>();
 		ArrayList<String> fTypeList = new ArrayList<String>();
+		ArrayList<String> levelOfControlsList = new ArrayList<String>();
+		ArrayList<String> fireHazCatList = new ArrayList<String>();
 		
 		BuildingHeader bHeaderInfo = new BuildingHeader();
         BuildingDetails buildDetails = new BuildingDetails();
@@ -136,8 +166,7 @@ public class TabController extends HttpServlet {
         if (session != null) {
             userID = (String) session.getAttribute("userID");
         }
-
-
+        
 		/* Get Type/Assessment - Item List */
 		cTypeList = new HardCodedData().getTypeContacts();
 		wTypeList = new HardCodedData().getTypeWof();
@@ -150,12 +179,21 @@ public class TabController extends HttpServlet {
 		rcTypeList = new HardCodedData().getTypeResource();
 		yesNoList = new HardCodedData().getYesNo();
 		fTypeList = new HardCodedData().getTypeFire();
+		levelOfControlsList = new HardCodedData().getLevelOfControls();
+		fireHazCatList = new HardCodedData().getFireHazardCategory();
 		
         /* Do this when submit button was clicked */
         action = request.getParameter("action");
         if (action != null) {
 
-            buildingID = Integer.parseInt(request.getParameter("buildingID"));
+        	if(ServletFileUpload.isMultipartContent(request)){
+        		req = new MultipartRequest(request, uploadDirectory, maxFileSize, "UTF-8", 
+        				new DefaultFileRenamePolicy());	
+        		buildingID = Integer.parseInt(req.getParameter("buildingID"));
+        	}else {
+        		buildingID = Integer.parseInt(request.getParameter("buildingID"));
+        	}
+            
 
             System.out.println("Action: " + action);
 
@@ -192,10 +230,10 @@ public class TabController extends HttpServlet {
                         break;
 
                     case "WOF":
-                        String crtWName = request.getParameter("crtWName");
-                        int crtWTitledYear = Integer.parseInt(request.getParameter("crtWTitledYear"));
-                        String crtWAttachment = request.getParameter("crtWAttachment");
-                        String crtWType = request.getParameter("crtWType");
+                        String crtWName = req.getParameter("crtWName");
+                        int crtWTitledYear = Integer.parseInt(req.getParameter("crtWTitledYear"));
+                        String crtWAttachment = req.getParameter("crtWAttachment");
+                        String crtWType = req.getParameter("crtWType");
 
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(buildDetails.getRecordID(), conWOF, buildingID, crtWName,
@@ -1048,6 +1086,8 @@ public class TabController extends HttpServlet {
 		session.setAttribute("rcTypeList", rcTypeList);
 		session.setAttribute("yesNoList", yesNoList);
 		session.setAttribute("fTypeList", fTypeList);
+		session.setAttribute("levelOfControlsList", levelOfControlsList);
+		session.setAttribute("fireHazCatList", fireHazCatList);
 
         /* do redirection */
         ServletContext sContext = getServletContext();
@@ -1060,8 +1100,30 @@ public class TabController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
+        
+        if(ServletFileUpload.isMultipartContent(request)){
+            try {
+                List<FileItem> multiparts = new ServletFileUpload(
+                                         new DiskFileItemFactory()).parseRequest(request);
+               
+                for(FileItem item : multiparts){
+                    if(!item.isFormField()){
+                        String name = new File(item.getName()).getName();
+                        item.write( new File(uploadDirectory + File.separator + name));
+                    }
+                }
+            
+               //File uploaded successfully
+               request.setAttribute("message", "File Uploaded Successfully");
+            } catch (Exception ex) {
+               request.setAttribute("message", "File Upload Failed due to " + ex);
+            }          
+          
+        }else{
+            request.setAttribute("message",
+                                 "Sorry this Servlet only handles file upload request");
+        }
+        
         doGet(request, response);
     }
-
-
 }
