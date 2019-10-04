@@ -78,7 +78,7 @@
 												Password?</a>
 										</div>
 										<div class="text-center">
-											<a class="small" href="UserRegistration.jsp" style="font-size:12px">Create an Account!</a>
+											<a class="small" href="CreateAccount.jsp" style="font-size:12px">Create an Account!</a>
 										</div>
 									</form>
 								</div>
