@@ -54,6 +54,11 @@
 									<input type="text" class="form-control form-control-user"
 										id="companyName" placeholder="Company Name">
 								</div>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="companyAddress" placeholder="Company Address">
+								</div>
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
 										id="contactNum" placeholder="Contact Number">
