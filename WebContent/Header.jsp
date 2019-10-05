@@ -15,8 +15,8 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="MainPage.jsp">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link" href="${pageContext.request.contextPath}/BuildingController">
+          <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
 
@@ -27,30 +27,23 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-home"></i>
-          <span>Home</span>
+        <a class="nav-link" href="AboutUs.jsp" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-users"></i>
+          <span>About Us</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="MainPage.jsp" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="${pageContext.request.contextPath}/BuildingController" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-building"></i>
           <span>Buildings</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Reports" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-file"></i>
           <span>Reports</span>
-        </a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="AboutUs.jsp" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-users"></i>
-          <span>About Us</span>
         </a>
       </li>
       

@@ -72,7 +72,7 @@ public class BuildingHeaderMgr {
 		ArrayList<BuildingHeader> bhArr = new ArrayList<>();
 
 		String qry = "SELECT * FROM dbo.User_Building ub INNER JOIN dbo.Building_Header bh on "
-				+ "ub.BuildingID = bh.BUildingID where userID=? ";
+				+ "ub.BuildingID = bh.BuildingID where userID=? ";
 		
 		if(!status.equals("D")) {
 			qry = qry + " AND (ub.status=? OR ub.status=NULL) AND (bh.status=? OR bh.status=NULL)";

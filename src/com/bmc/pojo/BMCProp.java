@@ -8,6 +8,7 @@ public class BMCProp {
 	
 	private String webServiceURL;
 	private String fileUploadFolder;
+	private String fileDownloadFolder;
 	
 	public void getProperties() throws IOException{
 		Properties progProperties = new Properties();
@@ -15,7 +16,7 @@ public class BMCProp {
 		progProperties.load(in);
 	    this.setWebServiceURL(progProperties.getProperty("webserviceURL"));
 	    this.setFileUploadFolder(progProperties.getProperty("fileUploadFolder"));
-	    
+	    this.setFileDownloadFolder(progProperties.getProperty("fileDownloadFolder"));
 	}
 
 	public String getWebServiceURL() {
@@ -33,4 +34,13 @@ public class BMCProp {
 	public void setFileUploadFolder(String fileUploadFolder) {
 		this.fileUploadFolder = fileUploadFolder;
 	}
+
+	public String getFileDownloadFolder() {
+		return fileDownloadFolder;
+	}
+
+	public void setFileDownloadFolder(String fileDownloadFolder) {
+		this.fileDownloadFolder = fileDownloadFolder;
+	}
+	
 }

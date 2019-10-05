@@ -175,4 +175,16 @@ public ArrayList<String> getFireHazardCategory(){
 	return typeArr;
 }
 
+public ArrayList<String> getReportFormat(){
+	
+	ArrayList<String> typeArr = new ArrayList<String>();
+	
+	typeArr.add("Building General Information");
+	typeArr.add("BWOF Anniversary Current vs Expired");
+	typeArr.add("Asbestos");
+	typeArr.add("Hazardous Substance");
+	
+	return typeArr;
+}
+
 }
