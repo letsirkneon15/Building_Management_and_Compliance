@@ -97,30 +97,23 @@
 			<!-- Image Default Profile -->
 			<div class="col-xl-5 col-lg-5">
 				<div class="card shadow mb-4">
-
 					<!-- Card Body -->
 					<div class="card-body" align="center">
 						<div>
 							<img src="images/default_profile.png" alt="skyscrapper"
-								height=85% width=85%>
+								height=400 width=85%>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
 	</div>
-
 	<div class="row">
 		<div class="col-xl-3 col-lg-3"></div>
 	</div>
-	</div>
+
 	<!-- /.container-fluid -->
-
 	<br>
-
 
 
 	<!-- The Professionals Section -->
