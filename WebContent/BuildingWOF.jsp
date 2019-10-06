@@ -211,6 +211,8 @@
 												name="edtWAttachment" id="edtWAttachment" value="">
 											<label class="custom-file-label" for="customFile"
 												id="edtWAttachmentLbl"></label>
+											<input class="form-control" name="oldAttachment"
+												id="oldAttachment" type="hidden" value=""> 
 										</div>
 									</div>
 								</div>

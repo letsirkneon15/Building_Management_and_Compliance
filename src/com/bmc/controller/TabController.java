@@ -118,6 +118,7 @@ public class TabController extends HttpServlet {
         String conD = "D";
         String conFire = "Fire";
         String conStatus="";
+        String attachment = "";
 
 		BuildingHeader bHeader = new BuildingHeader();
 		List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
@@ -564,10 +565,15 @@ public class TabController extends HttpServlet {
                         int edtWTitledYear = Integer.parseInt(request.getParameter("edtWTitledYear"));
                         String edtWAttachment = request.getParameter("edtWAttachment");
                         String edtWType = request.getParameter("edtWType");
+                        
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtWAttachment)) && (!edtWAttachment.trim().equals(""))) {
+                        	attachment = edtWAttachment;
+                        }
 
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtWRecordID, conWOF, buildingID, edtWName,
-                                edtWAttachment, edtWType, edtWTitledYear, buildDetails.getConsentNumber(),
+                                attachment, edtWType, edtWTitledYear, buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(), userID,
                                 today, buildDetails.getStatus());
 
@@ -588,9 +594,14 @@ public class TabController extends HttpServlet {
                         String edtCSAttachment = request.getParameter("edtCSAttachment");
                         String edtCSType = request.getParameter("edtCSType");
 
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtCSAttachment)) && (!edtCSAttachment.trim().equals(""))) {
+                        	attachment = edtCSAttachment;
+                        }
+                        
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtCSRecordID, conConsent, buildingID, edtCSName,
-                                edtCSAttachment, edtCSType, buildDetails.getTitledYear(),
+                                attachment, edtCSType, buildDetails.getTitledYear(),
                                 edtCSConsentNumber, buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -609,10 +620,15 @@ public class TabController extends HttpServlet {
                         String edtAName = request.getParameter("edtAName");
                         String edtAAttachment = request.getParameter("edtAAttachment");
                         String edtAType = request.getParameter("edtAType");
+                        
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtAAttachment)) && (!edtAAttachment.trim().equals(""))) {
+                        	attachment = edtAAttachment;
+                        }
 
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtARecordID, conAsbestos, buildingID, edtAName,
-                                edtAAttachment, edtAType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
+                                attachment, edtAType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -632,9 +648,14 @@ public class TabController extends HttpServlet {
                         String edtEAttachment = request.getParameter("edtEAttachment");
                         String edtEType = request.getParameter("edtEType");
 
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtEAttachment)) && (!edtEAttachment.trim().equals(""))) {
+                        	attachment = edtEAttachment;
+                        }
+                        
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtERecordID, conElectrical, buildingID, edtEName,
-                                edtEAttachment, edtEType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
+                                attachment, edtEType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -654,9 +675,14 @@ public class TabController extends HttpServlet {
                         String edtGAttachment = request.getParameter("edtGAttachment");
                         String edtGType = request.getParameter("edtGType");
 
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtGAttachment)) && (!edtGAttachment.trim().equals(""))) {
+                        	attachment = edtGAttachment;
+                        }
+                        
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtGRecordID, conGas, buildingID, edtGName,
-                                edtGAttachment, edtGType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
+                                attachment, edtGType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -676,10 +702,15 @@ public class TabController extends HttpServlet {
                         String edtFName = request.getParameter("edtFName");
                         String edtFAttachment = request.getParameter("edtFAttachment");
                         String edtFType = request.getParameter("edtFType");
+                        
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtFAttachment)) && (!edtFAttachment.trim().equals(""))) {
+                        	attachment = edtFAttachment;
+                        }
 
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtFRecordID, conFire, buildingID, edtFName,
-                                edtFAttachment, edtFType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
+                                attachment, edtFType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -754,10 +785,15 @@ public class TabController extends HttpServlet {
                         String edtSRName = request.getParameter("edtSRName");
                         String edtSRAttachment = request.getParameter("edtSRAttachment");
                         String edtSRType = request.getParameter("edtSRType");
+                        
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtSRAttachment)) && (!edtSRAttachment.trim().equals(""))) {
+                        	attachment = edtSRAttachment;
+                        }
 
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtSRRecordID, conSeismic, buildingID, edtSRName,
-                                edtSRAttachment, edtSRType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
+                        		attachment, edtSRType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -777,9 +813,14 @@ public class TabController extends HttpServlet {
                         String edtRCAttachment = request.getParameter("edtRCAttachment");
                         String edtRCType = request.getParameter("edtRCType");
 
+                        attachment = request.getParameter("oldAttachment");
+                        if((!attachment.equals(edtRCAttachment)) && (!edtRCAttachment.trim().equals(""))) {
+                        	attachment = edtRCAttachment;
+                        }
+                        
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(edtRCRecordID, conResourceConsent, buildingID, edtRCName,
-                                edtRCAttachment, edtRCType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
+                                attachment, edtRCType, buildDetails.getTitledYear(), buildDetails.getConsentNumber(),
                                 buildDetails.getUploadedBy(), buildDetails.getUploadedDate(),
                                 userID, today, buildDetails.getStatus());
 
@@ -814,10 +855,15 @@ public class TabController extends HttpServlet {
                         String edtCIDescription = request.getParameter("edtCIDescription");
                         String edtCIInspectionStat = request.getParameter("edtCIInspectionStat");
                         String edtCIImage = request.getParameter("edtCIImage");
+                        
+                        String image = request.getParameter("oldImage");
+                        if((!image.equals(edtCIImage)) && (!edtCIImage.trim().equals(""))) {
+                        	image = edtCIImage;
+                        }
 
                         /* Save values in Compliance Inspection POJO */
                         comInspection = new ComplianceInspection(edtCIRecordID, buildingID, edtCIInspectionDate,
-                                edtCIFinding, edtCIDescription, edtCIInspectionStat, edtCIImage,
+                                edtCIFinding, edtCIDescription, edtCIInspectionStat, image,
                                 comInspection.getCreatedBy(), comInspection.getCreationDate(),
                                 userID, today, comInspection.getStatus());
 

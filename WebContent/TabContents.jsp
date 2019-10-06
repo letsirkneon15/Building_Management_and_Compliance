@@ -350,6 +350,7 @@ $('#editWof').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtWName"]').val(name);
     $(e.currentTarget).find('input[name="edtWTitledYear"]').val(titledyear);
     $(e.currentTarget).find('label[id="edtWAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtWType"]').val(type);
     $(e.currentTarget).find('input[name="edtWUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtWLastUploadedBy"]').val(lastuploadedby);
@@ -371,6 +372,7 @@ $('#editConsent').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtCSName"]').val(name);
     $(e.currentTarget).find('input[name="edtCSConsentNumber"]').val(consentnumber);
     $(e.currentTarget).find('label[id="edtCSAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtCSType"]').val(type);
     $(e.currentTarget).find('input[name="edtCSUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtCSLastUploadedBy"]').val(lastuploadedby);
@@ -390,6 +392,7 @@ $('#editAsbestos').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtAName"]').val(name);
     $(e.currentTarget).find('label[id="edtAAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtAType"]').val(type);
     $(e.currentTarget).find('input[name="edtAUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtALastUploadedBy"]').val(lastuploadedby);
@@ -408,6 +411,7 @@ $('#editElectrical').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtEName"]').val(name);
     $(e.currentTarget).find('label[id="edtEAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtEType"]').val(type);
     $(e.currentTarget).find('input[name="edtEUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtELastUploadedBy"]').val(lastuploadedby);
@@ -426,6 +430,7 @@ $('#editGas').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtGName"]').val(name);
     $(e.currentTarget).find('label[id="edtGAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtGType"]').val(type);
     $(e.currentTarget).find('input[name="edtGUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtGLastUploadedBy"]').val(lastuploadedby);
@@ -444,6 +449,7 @@ $('#editFire').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtFName"]').val(name);
     $(e.currentTarget).find('label[id="edtFAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtFType"]').val(type);
     $(e.currentTarget).find('input[name="edtFUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtFLastUploadedBy"]').val(lastuploadedby);
@@ -514,6 +520,7 @@ $('#editSeismicResilience').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtSRName"]').val(name);
     $(e.currentTarget).find('label[id="edtSRAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtSRType"]').val(type);
     $(e.currentTarget).find('input[name="edtSRUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtSRLastUploadedBy"]').val(lastuploadedby);
@@ -532,6 +539,7 @@ $('#editResourceConsent').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
     $(e.currentTarget).find('input[name="edtRCName"]').val(name);
     $(e.currentTarget).find('label[id="edtRCAttachmentLbl"]').text(attachment);
+    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
     $(e.currentTarget).find('select[name="edtRCType"]').val(type);
     $(e.currentTarget).find('input[name="edtRCUploadedBy"]').val(uploadedby);
     $(e.currentTarget).find('input[name="edtRCLastUploadedBy"]').val(lastuploadedby);
@@ -553,6 +561,7 @@ $('#editCInspection').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtCIDescription"]').val(description);
     $(e.currentTarget).find('input[name="edtCIInspectionStat"]').val(inspectionstatus);
     $(e.currentTarget).find('label[id="edtCIImageLbl"]').text(image);
+    $(e.currentTarget).find('input[name="oldImage"]').val(image);
 });
 
 /**************** DELETE MODALS HERE **************************************/

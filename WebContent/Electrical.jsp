@@ -200,6 +200,7 @@
 												name="edtEAttachment" id="edtEAttachment" value="">
 											<label class="custom-file-label" for="customFile"
 												id="edtEAttachmentLbl"></label>
+											<input class="form-control" name="oldAttachment" id="oldAttachment" type="hidden" value=""> 
 										</div>
 									</div>
 								</div>

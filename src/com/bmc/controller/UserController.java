@@ -57,7 +57,7 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding( "UTF-8" );
-		String newPage = "/CreateAccount.jsp";
+		String newPage = "/UserRegistration.jsp";
 		String action = "";
 		String userID = "";
 		String firstName = "";
@@ -98,24 +98,7 @@ public class UserController extends HttpServlet {
 			emailAdd = request.getParameter("emailAdd");
 			password = request.getParameter("password");
 
-			if(action.equalsIgnoreCase("signup")) {
-
-				/* Format name = lastName, firstName */ 
-				name = lastName + ", " + firstName;
-				
-				/* Check how many same userID exists and add 1 
-				 * User id should be: example: firstName.lastName001 */
-				userID = firstName + "." + lastName;
-				userIDCtr = new UserMgr().countUserID(conn, userID) + 1;
-				
-				userIDStr = Integer.toString(userIDCtr);
-				if(userIDStr.length()==1) {
-					userID = userID + "00" + userIDStr;
-				}else if(userIDStr.length()==2){
-					userID = userID + "0" + userIDStr;
-				}else {
-					userID = userID + userIDStr;
-				}
+			if(action.equalsIgnoreCase("edtAccount")) {
 				
 				/* Save values in contacts POJO */
 				userAcct = new UserAccount(userID, password, name, contactNumber, emailAdd, companyName, companyAddress, 
@@ -142,13 +125,6 @@ public class UserController extends HttpServlet {
 					RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
 					rDispatcher.forward(request, response);
 				}
-
-			}else if(action.equalsIgnoreCase("editAccnt")) {
-
-
-
-			}else if(action.equalsIgnoreCase("dltAccnt")) {
-
 			}
 		}
 

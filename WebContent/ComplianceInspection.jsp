@@ -189,6 +189,7 @@
      				  				<div class="custom-file">
     									<input type="file" class="custom-file-input" accept="image/*" name="edtCIImage" id="edtCIImage" value="">
     									<label class="custom-file-label" for="customFile" id="edtCIImageLbl"></label>
+    									<input class="form-control" name="oldImage" id="oldImage" type="hidden" value=""> 
   					  				</div>
   									</div>
 								</div>

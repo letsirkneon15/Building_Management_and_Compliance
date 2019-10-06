@@ -184,6 +184,8 @@
      				  <div class="custom-file">
     						<input type="file" class="custom-file-input" name="edtCSAttachment" id="edtCSAttachment" value="">
     						<label class="custom-file-label" for="customFile"  id="edtCSAttachmentLbl"></label>
+    						<input class="form-control" name="oldAttachment"
+												id="oldAttachment" type="hidden" value=""> 
   					  </div>
   					</div>
   				</div>

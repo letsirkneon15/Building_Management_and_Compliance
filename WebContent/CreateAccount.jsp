@@ -80,7 +80,7 @@
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
 											name="repeatPassword" id="repeatPassword"
-											placeholder="Repeat Password" required>
+											placeholder="Confirm Password" required>
 									</div>
 								</div>
 								
