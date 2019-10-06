@@ -20,7 +20,7 @@ public class UserTabMgr {
 		   String qry = "SELECT a.* from dbo.User_Tab a WHERE userID=? ";
 		   
 			if(!status.equals("D")) {
-				qry = qry + " AND (status=? OR status=NULL)";
+				qry = qry + " AND (status=? OR status IS NULL)";
 			}
 			
 			try{

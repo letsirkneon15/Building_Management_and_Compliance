@@ -25,8 +25,8 @@ import com.bmc.pojo.UserAccount;
 /**
  * Servlet implementation class UserController
  */
-@WebServlet("/User")
-public class UserController extends HttpServlet {
+@WebServlet("/CreateAccount")
+public class CreateAccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Context initContext;
@@ -64,17 +64,16 @@ public class UserController extends HttpServlet {
 		String lastName = "";
 		String companyName = "";
 		String companyAddress= "";
-		String contactNumber = "";
-		String emailAdd = "";
+		String contactNum = "";
+		String email = "";
 		String password = "";
 		int isCreated = 0;
 		String name = "";
 		int userIDCtr = 0;
 		String userIDStr = "";
+		String errorMsg = "";
+		String button ="";
 		
-		response.setContentType("text/html"); 
-		request.getRequestDispatcher(newPage).include(request, response);  
-
 		UserAccount userAcct = new UserAccount();
 
 		/* Get Today's date */
@@ -84,8 +83,17 @@ public class UserController extends HttpServlet {
         System.out.println("sqlDate :" + today);
 		
 		/* Retrieve session */
-		HttpSession session=request.getSession();
-
+		HttpSession session=request.getSession(); 
+		if(session != null) {
+			userID = (String) session.getAttribute("userID");
+			firstName = (String) session.getAttribute("firstName");
+			button = (String) session.getAttribute("button");
+			
+		}
+		
+		response.setContentType("text/html"); 
+		request.getRequestDispatcher(newPage).include(request, response);  
+		
 		/* Do this when submit button was clicked */
 		action = request.getParameter("action");
 		if(action != null){
@@ -94,9 +102,10 @@ public class UserController extends HttpServlet {
 			lastName = request.getParameter("lastName");
 			companyName = request.getParameter("companyName");
 			companyAddress = request.getParameter("companyAddress");
-			contactNumber = request.getParameter("contactNumber");
-			emailAdd = request.getParameter("emailAdd");
+			contactNum = request.getParameter("contactNum");
+			email = request.getParameter("email");
 			password = request.getParameter("password");
+			button = request.getParameter("button");
 
 			if(action.equalsIgnoreCase("signup")) {
 
@@ -118,7 +127,7 @@ public class UserController extends HttpServlet {
 				}
 				
 				/* Save values in contacts POJO */
-				userAcct = new UserAccount(userID, password, name, contactNumber, emailAdd, companyName, companyAddress, 
+				userAcct = new UserAccount(userID, password, name, contactNum, email, companyName, companyAddress, 
 						userID, today, userAcct.getModifiedBy(), userAcct.getModifiedDate(), "");
 
 				/* Call Manager to create values from POJO */
@@ -126,32 +135,40 @@ public class UserController extends HttpServlet {
 				System.out.println("isCreated:" + isCreated);
 
 				session.setAttribute("userID", userID);
+				session.setAttribute("firstName", firstName);
+				request.setAttribute("lastName", lastName);
+				request.setAttribute("companyName", companyName);
+				request.setAttribute("companyAddress", companyAddress);
+				request.setAttribute("contactNum", contactNum);
+				request.setAttribute("email", email);
+				request.setAttribute("isCreated", isCreated);
+				session.setAttribute("button", button);
 
 				if (isCreated > 0) {
 
+					errorMsg = "";
 					System.out.println("Record is successfully created.");
-					/* Open Dashboard */
-					ServletContext sContext = getServletContext();
-					RequestDispatcher rDispatcher = sContext.getRequestDispatcher("/BuildingController");
-					rDispatcher.forward(request, response);
+					
+			        /* do redirection */
+			        ServletContext sContext = getServletContext();
+			        RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
+			        rDispatcher.forward(request, response);
 
 				} else {
 					System.out.println("Record is not created");
-					/* Login Page */ 
-					ServletContext sContext = getServletContext();
-					RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
-					rDispatcher.forward(request, response);
+					/* User Account Creation Page */ 
+					errorMsg = "User Account is not created.";
+					request.setAttribute("errorMsg", errorMsg);
 				}
+			}else if(action.equalsIgnoreCase("registered")) {
 
-			}else if(action.equalsIgnoreCase("editAccnt")) {
-
-
-
-			}else if(action.equalsIgnoreCase("dltAccnt")) {
-
+				session.setAttribute("userID", userID);
+				/* Open Dashboard */
+				ServletContext sContext = getServletContext();
+				RequestDispatcher rDispatcher = sContext.getRequestDispatcher("/BuildingController");
+				rDispatcher.forward(request, response);
 			}
 		}
-
 	}
 
 	/**

@@ -41,8 +41,8 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form name="createAccount" class="user" onsubmit="return validateForm()"
-								action="${pageContext.request.contextPath}/CreateAccount?action=signup"
+							<form name="createAccount" class="user"
+								action="${pageContext.request.contextPath}/CreateAccountSuccessful?action=registered"
 								method="post">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
@@ -92,7 +92,7 @@
 								
 								<button type="submit" class="btn btn-primary btn-user btn-block" name="button"
 								value="registered" data-toggle="modal">
-								 Register Account
+								<span class="glyphicon glyphicon-download"></span> Register Account
 								</button>
 
 							</form>
@@ -114,9 +114,8 @@
 	</div>
 
 	<!--START- Create User Account Info (MODAL)-->
-	<c:if test = "${button=='registered'}">
 		<div class="modal fade show in" id="registered" role="dialog">
-		<div class="modal-dialog" style="width: 50%">
+			<div class="modal-dialog" style="width: 50%">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header bg-primary">
@@ -128,7 +127,7 @@
 
 					<!-- Create a Form to inform user that the User Account registration is successful -->
 					<form
-						action="${pageContext.request.contextPath}/CreateAccount?action=registered"
+						action="${pageContext.request.contextPath}/CreateAccountSuccessful?action=registered"
 						method="post">
 						<div class="modal-body bgColorWhite">
 							<p>Hi ${firstName}, you have successfully created an account. Your user name is <b>${userID}
@@ -147,8 +146,7 @@
 				</div>
 			</div>
 		</div>
-		</c:if>
-	<!--END- Create User Account Info (MODAL)-->
+		<!--END- Create User Account Info (MODAL)-->
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="vendor/jquery/jquery.min.js"></script>
@@ -161,29 +159,5 @@
 	<script src="js/sb-admin-2.min.js"></script>
 
 </body>
-
-<script type="text/javascript">
-
-function validateForm() {
-	  var password = document.forms["createAccount"]["password"].value;
-	  var repeatPassword = document.forms["createAccount"]["repeatPassword"].value;
-	  
-	  if (password.includes(' ', 0)) {
-		  alert("Password cannot include space.");
-		  return false;
-	  }else if (password.length < 8) {
-		  alert("Password length must be equal or greater than 8 characters.");
-		  return false;
-	  }else if (! password.match( "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" )) {
-	  	  alert("Password must have at least one upper case letter, at least one lower case letter, at least one digit");
-	  	  return false;
-	  }else if (password != repeatPassword) {
-	    alert("Password must be equal with Repeat Password.");
-	    return false;
-	  }
-}
-
-
-</script>
 
 </html>

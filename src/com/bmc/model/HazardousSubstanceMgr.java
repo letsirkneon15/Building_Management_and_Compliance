@@ -20,7 +20,7 @@ public class HazardousSubstanceMgr {
 		String qry = "SELECT * FROM dbo.Hazardous_Substance WHERE buildingID=? ";
 		
 		if(!status.equals("D")) {
-			qry = qry + " AND (status=? OR status=NULL)";
+			qry = qry + " AND (status=? OR status IS NULL)";
 		}
 
 		try {

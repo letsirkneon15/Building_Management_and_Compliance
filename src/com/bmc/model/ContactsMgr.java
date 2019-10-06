@@ -20,7 +20,7 @@ public class ContactsMgr {
 		String qry = "SELECT * FROM dbo.Contacts WHERE buildingID=? ";
 		
 		if(!status.equals("D")) {
-			qry = qry + " AND (status=? OR status=NULL)";
+			qry = qry + " AND (status=? OR status IS NULL)";
 		}
 
 		try {

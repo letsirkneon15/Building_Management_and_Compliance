@@ -20,7 +20,7 @@ public class TabMgr {
 		   String qry = "SELECT * from dbo.Tab WHERE tabID Like ? AND tabDescription Like ? ";
 		   
 			if(!status.equals("D")) {
-				qry = qry + " AND (status=? OR status=NULL)";
+				qry = qry + " AND (status=? OR status IS NULL)";
 			}
 			
 			try{

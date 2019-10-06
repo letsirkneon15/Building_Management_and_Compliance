@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.bmc.model.UserMgr;
-import com.bmc.pojo.User;
+import com.bmc.pojo.UserAccount;
 import com.google.gson.Gson;
 
 @Path("/User")
@@ -41,7 +41,7 @@ public class UserWs {
 				+ name);	
 		
 		//Get User information	
-		List<User> user = new UserMgr().getUser(conn, userID, name, conStatus);
+		List<UserAccount> user = new UserMgr().getUser(conn, userID, name, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(user); 
 		System.out.println(json);
@@ -59,7 +59,7 @@ public class UserWs {
 	@POST
 	@Path("/Add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createNewInfo(User user) {
+	public Response createNewInfo(UserAccount user) {
 
 		
 		/* Add new record in User */
@@ -79,7 +79,7 @@ public class UserWs {
 	@POST
 	@Path("/Update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateInfo(User user) {
+	public Response updateInfo(UserAccount user) {
 
 		
 		/* Update records in User */
@@ -99,7 +99,7 @@ public class UserWs {
 	@POST
 	@Path("/UpdStatus")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateStatus(User user) {
+	public Response updateStatus(UserAccount user) {
 
 		
 		/* Update Status User */
@@ -119,7 +119,7 @@ public class UserWs {
 	@POST
 	@Path("/UpdPassword")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updatePassword(User user) {
+	public Response updatePassword(UserAccount user) {
 
 		
 		/* Update Password in table User */

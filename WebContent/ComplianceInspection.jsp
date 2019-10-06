@@ -115,7 +115,6 @@
     									<label class="custom-file-label" for="customFile" id="crtCIImageLbl"></label>
   					  				</div>
   									</div>
-
 									<input class="form-control" name="buildingID" id="buildingID" type="hidden" value="">
 								</div>
 							</div>

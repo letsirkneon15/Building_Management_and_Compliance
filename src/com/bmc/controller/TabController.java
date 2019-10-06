@@ -1055,9 +1055,6 @@ public class TabController extends HttpServlet {
 
         /*Get Resource Consent from Building_Details table */
         resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent, conStatus);
-
-		/*Get Resource Consent from Building_Details table */
-		resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent, conStatus);
 		
 		session.setAttribute("buildingID", buildingID);
 		session.setAttribute("tabName", tabName);

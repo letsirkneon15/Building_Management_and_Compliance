@@ -6,21 +6,21 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Date;
 
-import com.bmc.pojo.User;
+import com.bmc.pojo.UserAccount;
 
 public class UserMgr {
 	
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<User> getUser(Connection conn, String userID, String name, String status){
+	public ArrayList<UserAccount> getUser(Connection conn, String userID, String name, String status){
 		
-		   ArrayList<User> userArr = new ArrayList<>();
+		   ArrayList<UserAccount> userArr = new ArrayList<>();
 		   
 		   String qry = "SELECT * FROM dbo.[User] WHERE userID Like ? AND name Like ? ";
 		   
 			if(!status.equals("D")) {
-				qry = qry + " AND (status=? OR status=NULL)";
+				qry = qry + " AND (status=? OR status IS NULL)";
 			}
 			
 			try{
@@ -35,7 +35,7 @@ public class UserMgr {
 				
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){
-					userArr.add(new User(
+					userArr.add(new UserAccount(
 							resultSet.getString("userID"),
 							resultSet.getString("password"),
 							resultSet.getString("name"),
@@ -44,7 +44,7 @@ public class UserMgr {
 							resultSet.getString("companyName"),
 							resultSet.getString("companyAddress"),
 							resultSet.getString("createdBy"), 
-							resultSet.getDate("createdDate"),
+							resultSet.getDate("creationDate"),
 							resultSet.getString("modifiedBy"),
 							resultSet.getDate("modifiedDate"),
 							resultSet.getString("status")));	
@@ -62,6 +62,36 @@ public class UserMgr {
 			}
 		   
 		   return userArr;
+	}
+	
+	public int countUserID(Connection conn, String userID) {
+		
+		int userIDCount = 0; 
+		
+		String qry = "SELECT count(*) FROM dbo.[User] WHERE userID Like ? ";
+		System.out.println("Qry: " + qry);
+		
+		try{
+			pstatement = conn.prepareStatement(qry);
+			pstatement.setString(1, userID.trim() + '%');
+			
+			resultSet = pstatement.executeQuery();
+			resultSet.next(); 
+			
+			userIDCount = resultSet.getInt(1);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				resultSet.close();
+				pstatement.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		return userIDCount;
 	}
 	
 	public boolean checkValidUser(Connection conn, String userID, String password) {
@@ -128,7 +158,7 @@ public String getName(Connection conn, String userID) {
 		return username;
 	}
 
-	public int setUser(Connection conn, User user){
+	public int setUser(Connection conn, UserAccount user){
 		
 		   int isCreated = 0;
 		   
@@ -136,7 +166,7 @@ public String getName(Connection conn, String userID) {
 
 				String qry = "INSERT INTO dbo.[User] "
 						+ "(userID, password, name, contactNum, emailAdd, companyName, companyAddress, "
-						+ "createdBy, createdDate, modifiedBy, modifiedDate, status) "
+						+ "createdBy, creationDate, modifiedBy, modifiedDate, status) "
 						+ " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				pstatement = conn.prepareStatement(qry);
@@ -170,7 +200,7 @@ public String getName(Connection conn, String userID) {
 		   return isCreated;
 	}
 	
-	public int updateUser(Connection conn, User user){
+	public int updateUser(Connection conn, UserAccount user){
 		
 		   int isUpdated = 0;
 		   

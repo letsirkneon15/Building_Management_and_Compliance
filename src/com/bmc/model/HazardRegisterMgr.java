@@ -21,7 +21,7 @@ public class HazardRegisterMgr {
 		   String qry = "SELECT * FROM dbo.Hazard_Register WHERE buildingID=? ";
 		   
 			if(!status.equals("D")) {
-				qry = qry + " AND (status=? OR status=NULL)";
+				qry = qry + " AND (status=? OR status IS NULL)";
 			}
 
 			try {

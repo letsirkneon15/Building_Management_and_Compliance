@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.bmc.pojo.User" project="Building_Management_Compliance" 
-    file="/Building_Management_Compliance/src/com/bmc/pojo/User.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="com.bmc.pojo.UserAccount" project="Building_Management_Compliance" 
+    file="/Building_Management_Compliance/src/com/bmc/pojo/UserAccount.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="823" width="527" x="510" y="-98"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +73,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="com.bmc.controller.UserController" project="Building_Management_Compliance" 
-    file="/Building_Management_Compliance/src/com/bmc/controller/UserController.java" binary="false" 
+  <class id="9" language="java" name="com.bmc.controller.CreateAccountController" 
+    project="Building_Management_Compliance" 
+    file="/Building_Management_Compliance/src/com/bmc/controller/CreateAccountController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="156" width="404" x="25" y="-203"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

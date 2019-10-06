@@ -22,7 +22,7 @@ public class BuildingHeaderMgr {
 		String qry = "SELECT * FROM dbo.Building_Header WHERE buildingID=? AND buildingName LIKE ? "; 
 			
 		if(!status.equals("D")) {
-			qry = qry + " AND (status=? OR status=NULL)";
+			qry = qry + " AND (status=? OR status IS NULL)";
 		}
 		
 		System.out.println("QRY: " + qry);
@@ -75,7 +75,7 @@ public class BuildingHeaderMgr {
 				+ "ub.BuildingID = bh.BuildingID where userID=? ";
 		
 		if(!status.equals("D")) {
-			qry = qry + " AND (ub.status=? OR ub.status=NULL) AND (bh.status=? OR bh.status=NULL)";
+			qry = qry + " AND (ub.status=? OR ub.status IS NULL) AND (bh.status=? OR bh.status IS NULL)";
 		}
 		
 		System.out.println("QRY: " + qry);
@@ -127,7 +127,7 @@ public class BuildingHeaderMgr {
 		String qry = "SELECT * FROM dbo.Building_Header where buildingID=? ";
 		
 		if(!status.equals("D")) {
-			qry = qry + " AND (status=? OR status=NULL)";
+			qry = qry + " AND (status=? OR status IS NULL)";
 		}
 	
 		System.out.println("QRY: " + qry);

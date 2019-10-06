@@ -20,7 +20,7 @@ public class BuildingDetailsMgr {
 		String qry = "SELECT * FROM dbo.Building_Details WHERE buildingID=? AND buildingDetailsType=? ";
 		
 		if(!status.equals("D")) {
-			qry = qry + " AND (status=? OR status=NULL)";
+			qry = qry + " AND (status=? OR status IS NULL)";
 		}
 				
 		try {

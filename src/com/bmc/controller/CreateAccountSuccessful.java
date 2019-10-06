@@ -17,20 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.bmc.model.UserMgr;
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class UserController
  */
-@WebServlet("/Login")
-public class LoginController extends HttpServlet {
+@WebServlet("/CreateAccountSuccessful")
+public class CreateAccountSuccessful extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Context initContext;
 	private Context envContext;
 	private DataSource dataSource;
 	private Connection conn;
-	
+
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
@@ -47,69 +45,59 @@ public class LoginController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding( "UTF-8" );
-		String newPage = "/Login.jsp";
+		String newPage = "/CreateAccountSuccess.jsp";
 		String action = "";
 		String userID = "";
-		String password = "";
-		String errorMsg = "";
+		String button = "registered";
+		String firstName = "";
 		
 		response.setContentType("text/html"); 
 		request.getRequestDispatcher(newPage).include(request, response);  
 		
 		/* Retrieve session */
 		HttpSession session=request.getSession();
-		
+		if (session !=null ){
+			userID = (String) session.getAttribute("userID");
+			firstName = (String) session.getAttribute("firstName");
+		}
+
 		/* Do this when submit button was clicked */
 		action = request.getParameter("action");
 		if(action != null){
 			
-			if(action.equalsIgnoreCase("signin")) {
-				
-				userID = request.getParameter("userID"); 
-				password = request.getParameter("password");
-				
-				System.out.println("From controller - username: " + userID + " password: " + password);
-				
-				if(new UserMgr().checkValidUser(conn, userID, password)) {
-					
-					/* Open Dashboard */ 
-					session.setAttribute("userID", userID);
-					ServletContext sContext = getServletContext();
-					RequestDispatcher rDispatcher = sContext.getRequestDispatcher("/BuildingController");
-					rDispatcher.forward(request, response);
-					
-				}else {
-					
-					 errorMsg = "Username or Password is not correct.";
-					 
-					 session.setAttribute("userID", userID);
-				 	 request.setAttribute("errorMsg", errorMsg);
-						
-					 /* Login Page */ 
-					 ServletContext sContext = getServletContext();
-					 RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
-					 rDispatcher.forward(request, response);
-				}
-			}else if(action.equalsIgnoreCase("logout")) {
-				if(session != null) {
-					session.invalidate(); 
-				}
+			if(action.equalsIgnoreCase("registered")) {
+
+				session.setAttribute("userID", userID);
+				/* Open Dashboard */
+				ServletContext sContext = getServletContext();
+				RequestDispatcher rDispatcher = sContext.getRequestDispatcher("/BuildingController");
+				rDispatcher.forward(request, response);
 			}
 		}
+
+		session.setAttribute("userID", userID);
+		session.setAttribute("firstName", firstName);
+		request.setAttribute("button", button);
+		System.out.println("button: " + button);
+		
+        /* do redirection */
+        ServletContext sContext = getServletContext();
+        RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
+        rDispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

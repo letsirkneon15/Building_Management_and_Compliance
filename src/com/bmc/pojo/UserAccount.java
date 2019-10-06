@@ -3,7 +3,7 @@ package com.bmc.pojo;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class User implements Serializable {
+public class UserAccount implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String userID; 
@@ -19,7 +19,7 @@ public class User implements Serializable {
 	private Date modifiedDate;
 	private String status;
 	
-	public User(String userID, String password, String name, String contactNum, String emailAdd, String companyName,
+	public UserAccount(String userID, String password, String name, String contactNum, String emailAdd, String companyName,
 			String companyAddress, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate,
 			String status) {
 		super();
@@ -35,6 +35,10 @@ public class User implements Serializable {
 		this.modifiedBy = modifiedBy;
 		this.modifiedDate = modifiedDate;
 		this.status = status;
+	}
+
+	public UserAccount() {
+		
 	}
 
 	public String getUserID() {
