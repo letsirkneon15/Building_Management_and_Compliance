@@ -58,6 +58,48 @@ public class UserTabMgr {
 		   return utArr;
 	}
 	
+	public ArrayList<UserTab> getUserTabList(Connection conn, String status){
+		   
+		   ArrayList<UserTab> utArr = new ArrayList<>();
+		   
+		   String qry = "SELECT * from dbo.User_Tab WHERE ";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " (status=? OR status IS NULL)";
+			}
+			
+			try{
+				pstatement = conn.prepareStatement(qry);
+				
+				if(!status.equals("D")) {
+					pstatement.setString(1, status.trim());
+				}
+				
+				resultSet = pstatement.executeQuery();
+				while(resultSet.next()){
+					utArr.add(new UserTab(
+							resultSet.getString("userID"),
+							resultSet.getInt("tabID"),
+							resultSet.getString("tabSegment"),
+							resultSet.getString("createdBy"), 
+							resultSet.getDate("createdDate"),
+							resultSet.getString("modifiedBy"),
+							resultSet.getDate("modifiedDate"),
+							resultSet.getString("status")));	
+				}	
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					resultSet.close();
+					pstatement.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		   
+		   return utArr;
+	}
 
 	public int setUserTab(Connection conn, UserTab uTab){
 		
