@@ -64,18 +64,19 @@ public class UserController extends HttpServlet {
 		String lastName = "";
 		String companyName = "";
 		String companyAddress= "";
-		String contactNumber = "";
-		String emailAdd = "";
+		String contactNum = "";
+		String email = "";
 		String password = "";
-		int isCreated = 0;
+		int isUpdated = 0;
 		String name = "";
-		int userIDCtr = 0;
-		String userIDStr = "";
+		String conStatus = "";
+		String successMsg = "";
+		String errorMsg = "";
 		
 		response.setContentType("text/html"); 
 		request.getRequestDispatcher(newPage).include(request, response);  
 
-		UserAccount userAcct = new UserAccount();
+		UserAccount userAccnt = new UserAccount();
 
 		/* Get Today's date */
         Date todayUtil = Calendar.getInstance().getTime();
@@ -85,6 +86,10 @@ public class UserController extends HttpServlet {
 		
 		/* Retrieve session */
 		HttpSession session=request.getSession();
+		if(session != null) {
+			userID = (String) session.getAttribute("userID");
+		}
+		
 
 		/* Do this when submit button was clicked */
 		action = request.getParameter("action");
@@ -94,39 +99,53 @@ public class UserController extends HttpServlet {
 			lastName = request.getParameter("lastName");
 			companyName = request.getParameter("companyName");
 			companyAddress = request.getParameter("companyAddress");
-			contactNumber = request.getParameter("contactNumber");
-			emailAdd = request.getParameter("emailAdd");
+			contactNum = request.getParameter("contactNum");
+			email = request.getParameter("email");
 			password = request.getParameter("password");
 
 			if(action.equalsIgnoreCase("edtAccount")) {
 				
+				/* Format name = lastName, firstName */ 
+				name = lastName + ", " + firstName;
+				
 				/* Save values in contacts POJO */
-				userAcct = new UserAccount(userID, password, name, contactNumber, emailAdd, companyName, companyAddress, 
-						userID, today, userAcct.getModifiedBy(), userAcct.getModifiedDate(), "");
+				userAccnt = new UserAccount(userID, password, name, contactNum, email, companyName, companyAddress, 
+						userID, today, userAccnt.getModifiedBy(), userAccnt.getModifiedDate(), "");
 
 				/* Call Manager to create values from POJO */
-				isCreated = new UserMgr().setUser(conn, userAcct);
-				System.out.println("isCreated:" + isCreated);
+				isUpdated = new UserMgr().updateUser(conn, userAccnt);
+				System.out.println("isUpdate:" + isUpdated);
 
 				session.setAttribute("userID", userID);
+				
+				/* Get User Account by User ID */
+				userAccnt = new UserMgr().getUserAccount(conn, userID, conStatus);
 
-				if (isCreated > 0) {
-
-					System.out.println("Record is successfully created.");
-					/* Open Dashboard */
-					ServletContext sContext = getServletContext();
-					RequestDispatcher rDispatcher = sContext.getRequestDispatcher("/BuildingController");
-					rDispatcher.forward(request, response);
+				if (isUpdated > 0) {
+					System.out.println("Record is successfully updated.");
+					successMsg = "Your Account is successfully updated.";
 
 				} else {
-					System.out.println("Record is not created");
-					/* Login Page */ 
-					ServletContext sContext = getServletContext();
-					RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
-					rDispatcher.forward(request, response);
+					System.out.println("Record is not updated");
+					errorMsg = "Your Account is not updated. Please contact admin for more details.";
 				}
+				
 			}
+			
 		}
+		
+		/* Get User Account by User ID */
+		userAccnt = new UserMgr().getUserAccount(conn, userID, conStatus);
+		
+		/* Send back the userID to session and User Account to request */
+		session.setAttribute("userID", userID);
+		request.setAttribute("userAccnt", userAccnt);
+		request.setAttribute("successMsg", successMsg);
+		request.setAttribute("errorMsg", errorMsg);
+		
+		ServletContext sContext = getServletContext();
+		RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);
+		rDispatcher.forward(request, response);
 
 	}
 

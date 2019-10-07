@@ -13,7 +13,7 @@ public class UserMgr {
 	private PreparedStatement pstatement;
 	private ResultSet resultSet;
 	
-	public ArrayList<UserAccount> getUser(Connection conn, String userID, String name, String status){
+	public ArrayList<UserAccount> getUserAccountList(Connection conn, String userID, String name, String status){
 		
 		   ArrayList<UserAccount> userArr = new ArrayList<>();
 		   
@@ -62,6 +62,56 @@ public class UserMgr {
 			}
 		   
 		   return userArr;
+	}
+	
+	public UserAccount getUserAccount(Connection conn, String userID, String status){
+		
+		   UserAccount userAccnt = new UserAccount();
+		   
+		   String qry = "SELECT * FROM dbo.[User] WHERE userID = ?";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " AND (status=? OR status IS NULL)";
+			}
+			
+			try{
+				pstatement = conn.prepareStatement(qry);
+				
+				pstatement.setString(1, userID);
+				
+				if(!status.equals("D")) {
+					pstatement.setString(2, status.trim());
+				}
+				
+				resultSet = pstatement.executeQuery();
+				while(resultSet.next()){
+					userAccnt = new UserAccount(
+							resultSet.getString("userID"),
+							resultSet.getString("password"),
+							resultSet.getString("name"),
+							resultSet.getString("contactNum"),
+							resultSet.getString("emailAdd"),
+							resultSet.getString("companyName"),
+							resultSet.getString("companyAddress"),
+							resultSet.getString("createdBy"), 
+							resultSet.getDate("creationDate"),
+							resultSet.getString("modifiedBy"),
+							resultSet.getDate("modifiedDate"),
+							resultSet.getString("status"));	
+				}	
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					resultSet.close();
+					pstatement.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		   
+		   return userAccnt;
 	}
 	
 	public int countUserID(Connection conn, String userID) {
@@ -206,8 +256,8 @@ public String getName(Connection conn, String userID) {
 		   
 		   try {
 				String qry = "UPDATE dbo.[User] set "
-						+ "password=?, name=?, contactNum=?, emailAdd=?, ccompanyName=?, "
-						+ "conpanyAddress=?, modifiedBy=?, modifiedDate=?, status=? "
+						+ "password=?, name=?, contactNum=?, emailAdd=?, companyName=?, "
+						+ "companyAddress=?, modifiedBy=?, modifiedDate=?, status=? "
 						+ "where userID=? ";
 
 				pstatement = conn.prepareStatement(qry);

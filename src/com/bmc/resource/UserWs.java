@@ -41,7 +41,7 @@ public class UserWs {
 				+ name);	
 		
 		//Get User information	
-		List<UserAccount> user = new UserMgr().getUser(conn, userID, name, conStatus);
+		List<UserAccount> user = new UserMgr().getUserAccountList(conn, userID, name, conStatus);
 		Gson gson = new Gson();
 		String json = gson.toJson(user); 
 		System.out.println(json);
