@@ -66,6 +66,7 @@
 					</div>
 					<div class="card-body">
 						<div>
+							<br>
 							<p class="h2 mb-1 text-gray-600" style="text-indent: 40px">Building
 								Management & Compliance is committed to making Building
 								Management & Compliance easy. This system provides your
@@ -74,6 +75,7 @@
 								to buildings.</p>
 
 						</div>
+						<br> <br> <br> <br>
 					</div>
 				</div>
 
@@ -91,7 +93,7 @@
 					<div class="card-body">
 						<div>
 							<img src="images/building_skyscraper.jpg" alt="skyscrapper"
-								height=300 width=100%>
+								height=310 width=100%>
 						</div>
 					</div>
 				</div>
@@ -133,6 +135,7 @@
 							<div class="card-body">
 								<i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
 								<h3 class="h2 mb-1 text-gray-800">Kristel Villanueva</h3>
+								<br>
 								<p class="text-muted mb-0">Lead Developer</p>
 								<br>
 							</div>
@@ -143,6 +146,7 @@
 							<div class="card-body">
 								<i class="fas fa-4x fa-globe text-primary mb-4"></i>
 								<h3 class="h2 mb-1 text-gray-800">Angela Kuznetsova</h3>
+								<br>
 								<p class="text-muted mb-0">Junior Developer</p>
 								<br>
 							</div>
@@ -153,6 +157,7 @@
 							<div class="card-body">
 								<i class="fas fa-4x fa-heart text-primary mb-4"></i>
 								<h3 class="h2 mb-1 text-gray-800">Dexter Balsamo</h3>
+								<br>
 								<p class="text-muted mb-0">Junior Developer</p>
 								<br>
 							</div>
