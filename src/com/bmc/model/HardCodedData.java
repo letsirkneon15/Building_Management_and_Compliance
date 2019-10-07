@@ -187,4 +187,25 @@ public ArrayList<String> getReportFormat(){
 	return typeArr;
 }
 
+public ArrayList<String[]> getTabList(){
+	
+	ArrayList<String[]> tabArr = new ArrayList<String[]>();
+	
+	tabArr.add(new String[]{"GenInfo", "General Information"});
+	tabArr.add(new String[]{"Contacts", "Contacts"});
+	tabArr.add(new String[]{"WOF", "Building WOF"});
+	tabArr.add(new String[]{"Consent", "Building Consent"});
+	tabArr.add(new String[]{"Asbestos", "Asbestos"});
+	tabArr.add(new String[]{"Electrical", "Electrical"});
+	tabArr.add(new String[]{"Gas", "Gas"});
+	tabArr.add(new String[]{"Fire", "Fire"});
+	tabArr.add(new String[]{"HazSubs", "Hazardous Substances"});
+	tabArr.add(new String[]{"HazReg", "Hazard Register"});
+	tabArr.add(new String[]{"Seismic", "Seismic Resilience"});
+	tabArr.add(new String[]{"ResourceConsent", "Resource Consents"});
+	tabArr.add(new String[]{"ComIns", "Compliance Inspection"});
+	
+	return tabArr;
+}
+
 }

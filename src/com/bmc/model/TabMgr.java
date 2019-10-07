@@ -36,7 +36,7 @@ public class TabMgr {
 				resultSet = pstatement.executeQuery();
 				while(resultSet.next()){
 					tabArr.add(new Tab(
-							resultSet.getInt("tabID"),
+							resultSet.getString("tabID"),
 							resultSet.getString("tabSegment"),
 							resultSet.getString("TabDescription"),
 							resultSet.getString("createdBy"), 
@@ -60,6 +60,49 @@ public class TabMgr {
 		   return tabArr;
 	}
 	
+	public ArrayList<Tab> getAllTabs(Connection conn, String status){
+		
+		   ArrayList<Tab> tabArr = new ArrayList<>();
+		   
+		   String qry = "SELECT * from dbo.Tab WHERE ";
+		   
+			if(!status.equals("D")) {
+				qry = qry + " (status=? OR status IS NULL)";
+			}
+			
+			try{
+				pstatement = conn.prepareStatement(qry);
+
+				if(!status.equals("D")) {
+					pstatement.setString(1, status.trim());
+				}
+				
+				resultSet = pstatement.executeQuery();
+				while(resultSet.next()){
+					tabArr.add(new Tab(
+							resultSet.getString("tabID"),
+							resultSet.getString("tabSegment"),
+							resultSet.getString("TabDescription"),
+							resultSet.getString("createdBy"), 
+							resultSet.getDate("createdDate"),
+							resultSet.getString("modifiedBy"),
+							resultSet.getDate("modifiedDate"),
+							resultSet.getString("status")));	
+					
+				}	
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					resultSet.close();
+					pstatement.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		   
+		   return tabArr;
+	}
 
 	public int setTab(Connection conn, Tab tab){
 		
@@ -74,7 +117,7 @@ public class TabMgr {
 
 				pstatement = conn.prepareStatement(qry);
 
-				pstatement.setInt(1, tab.getTabID());
+				pstatement.setString(1, tab.getTabID());
 				pstatement.setString(2, tab.getTabSegment());
 				pstatement.setString(3, tab.getDescription());
 				pstatement.setDate(4,  tab.getCreationDate());
@@ -114,7 +157,7 @@ public class TabMgr {
 				pstatement.setString(3, tab.getStatus());
 				pstatement.setString(4, tab.getModifiedBy());
 				pstatement.setDate(5,  tab.getModifiedDate());
-				pstatement.setInt(6, tab.getTabID());
+				pstatement.setString(6, tab.getTabID());
 				
 
 				isUpdated = pstatement.executeUpdate();
@@ -133,7 +176,7 @@ public class TabMgr {
 		   return isUpdated;
 	}
 	
-	public int setStatus(Connection conn, String status, int tabID, String tabSegment, String modifiedBy, Date modifiedDate){
+	public int setStatus(Connection conn, String status, String tabID, String tabSegment, String modifiedBy, Date modifiedDate){
 		
 		   int isSetStatus = 0;
 		   
@@ -151,7 +194,7 @@ public class TabMgr {
 				pstatement.setString(1, status);
 				pstatement.setString(2, modifiedBy);
 				pstatement.setDate(3,  modifiedDate);
-				pstatement.setInt(4, tabID);
+				pstatement.setString(4, tabID);
 				
 				if(!tabSegment.equals("")) {
 					pstatement.setString(5, tabSegment);

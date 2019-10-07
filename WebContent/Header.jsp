@@ -55,16 +55,14 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="Help.jsp" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-hands-helping"></i>
-          <span>Help</span>
+        <a class="nav-link" href="${pageContext.request.contextPath}/Admin" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-user-cog"></i>
+          <span>Admin</span>
         </a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
-
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

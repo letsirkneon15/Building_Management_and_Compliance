@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Tab implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private int tabID; 
+	private String tabID; 
 	private String tabSegment; 
 	private String description;
 	private String createdBy;
@@ -15,7 +15,7 @@ public class Tab implements Serializable {
 	private Date modifiedDate;
 	private String status;
 	
-	public Tab(int tabID, String tabSegment, String description, String createdBy, Date creationDate, String modifiedBy,
+	public Tab(String tabID, String tabSegment, String description, String createdBy, Date creationDate, String modifiedBy,
 			Date modifiedDate, String status) {
 		super();
 		this.tabID = tabID;
@@ -28,11 +28,11 @@ public class Tab implements Serializable {
 		this.status = status;
 	}
 
-	public int getTabID() {
+	public String getTabID() {
 		return tabID;
 	}
 
-	public void setTabID(int tabID) {
+	public void setTabID(String tabID) {
 		this.tabID = tabID;
 	}
 

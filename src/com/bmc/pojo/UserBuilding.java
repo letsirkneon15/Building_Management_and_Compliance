@@ -26,6 +26,18 @@ public class UserBuilding implements Serializable {
 		this.status = status;
 	}
 
+	public UserBuilding(String userID, int buildingId, String createdBy, Date creationDate, String status) {
+		super();
+		this.userID = userID;
+		this.buildingId = buildingId;
+		this.createdBy = createdBy;
+		this.creationDate = creationDate;
+		this.status = status;
+	}
+
+	public UserBuilding() {
+	}
+
 	public String getUserID() {
 		return userID;
 	}
