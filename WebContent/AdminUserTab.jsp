@@ -57,6 +57,7 @@
 	<div class="card-header py-3">
 		<h6 class="m-0 font-weight-bold text-primary">Tabs
 			Registered for User ID: ${auserID}</h6>
+		
 	</div>
 	<form
 		action="${pageContext.request.contextPath}/Admin?action=editTabs&tab=UserTab"
@@ -64,6 +65,8 @@
 		
 		<div class="panel-default">
 		<div class="panel-body">
+		<p class="text-danger"><input type="checkbox" class="checkAllTabs" name="checkAllTabs" id="checkAllTabs"
+			value="checkAllTabs">Please check/uncheck to select/deselect all tab segments.</p>
 		<div class="table-responsive">
 			<table
 				class="table table-bordered table-hover table-striped table-condensed"

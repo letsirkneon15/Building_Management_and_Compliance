@@ -137,6 +137,26 @@ $("input[data-checkedtab]").each(function() {
     }
 })
 
+/**************** User - Tab Select/Deselect all tab Segments ****************************/
+
+$('.checkAllTabs').click(function() {
+    if ($(this).is(':checked')) {
+        $('div input').attr('checked', true);
+    } else {
+        $('div input').attr('checked', false);
+    }
+});
+
+/**************** User - Tab Select/Deselect all Buildings ****************************/
+
+$('.checkAllBuildings').click(function() {
+    if ($(this).is(':checked')) {
+        $('div input').attr('checked', true);
+    } else {
+        $('div input').attr('checked', false);
+    }
+});
+
 /**************** CREATE MODALS HERE ************************************/
 
 $('#crtUser').on('show.bs.modal', function(e) {
