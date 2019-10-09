@@ -8,24 +8,30 @@ public class Tab implements Serializable {
 	
 	private String tabID; 
 	private String tabSegment; 
-	private String description;
+	private String tabDescription;
 	private String createdBy;
 	private Date creationDate;
 	private String modifiedBy; 
 	private Date modifiedDate;
 	private String status;
 	
-	public Tab(String tabID, String tabSegment, String description, String createdBy, Date creationDate, String modifiedBy,
+	public Tab(String tabID, String tabSegment, String tabDescription, String createdBy, Date creationDate, String modifiedBy,
 			Date modifiedDate, String status) {
 		super();
 		this.tabID = tabID;
 		this.tabSegment = tabSegment;
-		this.description = description;
+		this.tabDescription = tabDescription;
 		this.createdBy = createdBy;
 		this.creationDate = creationDate;
 		this.modifiedBy = modifiedBy;
 		this.modifiedDate = modifiedDate;
 		this.status = status;
+	}
+	
+	public Tab(String tabID, String tabDescription) {
+		super();
+		this.tabID = tabID;
+		this.tabDescription = tabDescription;
 	}
 
 	public String getTabID() {
@@ -44,12 +50,12 @@ public class Tab implements Serializable {
 		this.tabSegment = tabSegment;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getTabDescription() {
+		return tabDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setTabDescription(String tabDescription) {
+		this.tabDescription = tabDescription;
 	}
 
 	public String getCreatedBy() {

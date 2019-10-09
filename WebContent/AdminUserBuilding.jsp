@@ -57,8 +57,8 @@
 							value="${b.buildingID}" data-checked="${b.status}">
 						${b.buildingName}
 					</div>
-					<input type="hidden" id="auserID" name="auserID" value="${auserID}">
 				</c:forEach>
+				<input type="hidden" id="auserID" name="auserID" value="${auserID}">
 			</div>
 		</div>
 		<div class="panel-default">

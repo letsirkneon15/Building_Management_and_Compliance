@@ -101,10 +101,6 @@ $(document).ready(function() {
     $('#userTabTable').DataTable();
 } );
 
-$(document).ready(function() {
-    $('#userBuildingTable').DataTable();
-} );
-
 $(".nav-tabs a").click(function(){
     $(this).tab('show'); 
 });
@@ -131,26 +127,24 @@ $("input[data-checked]").each(function() {
     }
 })
 
+/**************** For Check boxes Default Checked Value - User Tab ****************************/
+
+$("input[data-checkedtab]").each(function() {
+    var checkedtab = $(this).data("checkedtab");
+    $("input[data-checkedtab='" + checkedtab + "']").attr('checked', false);
+    if(checkedtab.trim() != '' && checkedtab != null && checkedtab != 'D'){
+    	$("input[data-checkedtab='" + checkedtab + "']").attr('checked', true);
+    }
+})
+
+
 /**************** CREATE MODALS HERE ************************************/
 
 $('#crtUser').on('show.bs.modal', function(e) {
-    var auserid = $(e.relatedTarget).data('auserid');
+    var userid = $(e.relatedTarget).data('userid');
 
-    $(e.currentTarget).find('input[name="auserID"]').val(auserid);
+    $(e.currentTarget).find('input[name="userID"]').val(userid);
 });
-
-$('#crtUserTab').on('show.bs.modal', function(e) {
-	var auserid = $(e.relatedTarget).data('auserid');
-
-    $(e.currentTarget).find('input[name="auserID"]').val(auserid);
-});
-
-$('#crtUserBuilding').on('show.bs.modal', function(e) {
-	var auserid = $(e.relatedTarget).data('auserid');
-
-    $(e.currentTarget).find('input[name="auserID"]').val(auserid);
-});
-
 
 /**************** EDIT MODALS HERE **************************************/
 
@@ -177,72 +171,12 @@ $('#editUser').on('show.bs.modal', function(e) {
 
 });
 
-$('#editUserTab').on('show.bs.modal', function(e) {
-    var buildingid = $(e.relatedTarget).data('buildingid');
-    var recordid = $(e.relatedTarget).data('recordid');
-    var name = $(e.relatedTarget).data('name');
-    var titledyear = $(e.relatedTarget).data('titledyear');
-    var attachment = $(e.relatedTarget).data('attachment');
-    var type = $(e.relatedTarget).data('type');
-    var uploadedby = $(e.relatedTarget).data('uploadedby');
-    var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
-
-    $(e.currentTarget).find('input[name="edtWRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
-    $(e.currentTarget).find('input[name="edtWName"]').val(name);
-    $(e.currentTarget).find('input[name="edtWTitledYear"]').val(titledyear);
-    $(e.currentTarget).find('label[id="edtWAttachmentLbl"]').text(attachment);
-    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
-    $(e.currentTarget).find('select[name="edtWType"]').val(type);
-    $(e.currentTarget).find('input[name="edtWUploadedBy"]').val(uploadedby);
-    $(e.currentTarget).find('input[name="edtWLastUploadedBy"]').val(lastuploadedby);
-
-});
-
-$('#editUserBuilding').on('show.bs.modal', function(e) {
-    var buildingid = $(e.relatedTarget).data('buildingid');
-    var recordid = $(e.relatedTarget).data('recordid');
-    var name = $(e.relatedTarget).data('name');
-    var consentnumber = $(e.relatedTarget).data('consentnumber');
-    var attachment = $(e.relatedTarget).data('attachment');
-    var type = $(e.relatedTarget).data('type');
-    var uploadedby = $(e.relatedTarget).data('uploadedby');
-    var lastuploadedby = $(e.relatedTarget).data('lastuploadedby');
-
-    $(e.currentTarget).find('input[name="edtCSRecordID"]').val(recordid);
-    $(e.currentTarget).find('input[name="buildingID"]').val(buildingid);
-    $(e.currentTarget).find('input[name="edtCSName"]').val(name);
-    $(e.currentTarget).find('input[name="edtCSConsentNumber"]').val(consentnumber);
-    $(e.currentTarget).find('label[id="edtCSAttachmentLbl"]').text(attachment);
-    $(e.currentTarget).find('input[name="oldAttachment"]').val(attachment);
-    $(e.currentTarget).find('select[name="edtCSType"]').val(type);
-    $(e.currentTarget).find('input[name="edtCSUploadedBy"]').val(uploadedby);
-    $(e.currentTarget).find('input[name="edtCSLastUploadedBy"]').val(lastuploadedby);
-
-});
-
 /**************** DELETE MODALS HERE **************************************/
 
 $('#deleteUser').on('show.bs.modal', function(e) {
 	 var auserid = $(e.relatedTarget).data('auserid');
 
 	 $(e.currentTarget).find('input[name="auserID"]').val(auserid);
-});
-
-$('#deleteUserTab').on('show.bs.modal', function(e) {
-	 var auserid = $(e.relatedTarget).data('auserid');
-	 var tabid = $(e.relatedTarget).data('tabid');
-
-	 $(e.currentTarget).find('input[name="auserID"]').val(auserid);
-	 $(e.currentTarget).find('input[name="tabID"]').val(tabid);
-});
-
-$('#deleteUserBuilding').on('show.bs.modal', function(e) {
-	 var auserid = $(e.relatedTarget).data('auserid');
-	 var abuildingid = $(e.relatedTarget).data('abuildingid');
-
-	 $(e.currentTarget).find('input[name="auserID"]').val(auserid);
-	 $(e.currentTarget).find('input[name="abuildingID"]').val(abuildingid);
 });
 
 </script>

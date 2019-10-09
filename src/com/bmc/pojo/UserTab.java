@@ -7,7 +7,7 @@ public class UserTab implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String userID; 
-	private int tabID; 
+	private String tabID; 
 	private String tabSegment; 
 	private String createdBy;
 	private Date creationDate;
@@ -15,7 +15,7 @@ public class UserTab implements Serializable {
 	private Date modifiedDate;
 	private String status;
 	
-	public UserTab(String userID, int tabID, String tabSegment, String createdBy, Date creationDate, String modifiedBy,
+	public UserTab(String userID, String tabID, String tabSegment, String createdBy, Date creationDate, String modifiedBy,
 			Date modifiedDate, String status) {
 		super();
 		this.userID = userID;
@@ -28,6 +28,16 @@ public class UserTab implements Serializable {
 		this.status = status;
 	}
 
+	public UserTab(String userID, String tabID, String tabSegment, String createdBy, Date creationDate, String status) {
+		super();
+		this.userID = userID;
+		this.tabID = tabID;
+		this.tabSegment = tabSegment;
+		this.createdBy = createdBy;
+		this.creationDate = creationDate;
+		this.status = status;
+	}
+
 	public String getUserID() {
 		return userID;
 	}
@@ -36,11 +46,11 @@ public class UserTab implements Serializable {
 		this.userID = userID;
 	}
 
-	public int getTabID() {
+	public String getTabID() {
 		return tabID;
 	}
 
-	public void setTabID(int tabID) {
+	public void setTabID(String tabID) {
 		this.tabID = tabID;
 	}
 

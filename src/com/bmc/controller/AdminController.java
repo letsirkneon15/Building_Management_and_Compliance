@@ -21,10 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.bmc.model.HardCodedData;
+import com.bmc.model.TabMgr;
 import com.bmc.model.UserBuildingMgr;
 import com.bmc.model.UserMgr;
+import com.bmc.model.UserTabMgr;
 import com.bmc.pojo.AdminUserBuilding;
+import com.bmc.pojo.AdminUserTab;
+import com.bmc.pojo.Tab;
 import com.bmc.pojo.UserAccount;
 import com.bmc.pojo.UserBuilding;
 import com.bmc.pojo.UserTab;
@@ -82,8 +85,9 @@ public class AdminController extends HttpServlet {
 
 	    UserAccount userAccnt = new UserAccount();
 	    List<UserAccount> userArr = new ArrayList<>();
-	    ArrayList<String[]> tabList = new HardCodedData().getTabList();
+	    List<Tab> tabList = new ArrayList<>();
 	    List<UserTab> userTabArr = new ArrayList<>();
+	    List<AdminUserTab> aUserTabArr = new ArrayList<>();
 	    List<UserBuilding> userBuildArr = new ArrayList<>();
 	    List<AdminUserBuilding> aUserBuildArr = new ArrayList<>();
 	    
@@ -203,13 +207,17 @@ public class AdminController extends HttpServlet {
                          aUserBuildArr.addAll(new UserBuildingMgr().getUserBuildingNotRegistered(conn, auserID));
                     	 
                          for(AdminUserBuilding aub : aUserBuildArr) {
+                        	 
                         	 String aubStatus = "D";
-                        	 for(String ub : userBuildList) {
-                        		 if(Integer.parseInt(ub) == aub.getBuildingID()) {
-                        			 aubStatus="";
-                        			 break;
-                        		 }
+                        	 if(userBuildList != null) {
+                        		 for(String ub : userBuildList) {
+                            		 if(Integer.parseInt(ub) == aub.getBuildingID()) {
+                            			 aubStatus="";
+                            			 break;
+                            		 }
+                            	 }
                         	 }
+                        	 
                         	 
                         	 userBuildArr.add(new UserBuilding(auserID, aub.getBuildingID(), userID, today,  
                         			 aubStatus));
@@ -235,7 +243,106 @@ public class AdminController extends HttpServlet {
                      	
                      	request.setAttribute("auserID", auserID);
                      	
-                     	break;  	 
+                     	break;  	
+                     	
+                    case "UserTab":
+                    	
+                    	 auserID = request.getParameter("auserID");
+                    	 String atabID = request.getParameter("atabID");
+                    	 
+                    	 String tabIDParm = atabID;
+                     	 if(atabID.equals("ALL")) {
+                     		tabIDParm = "";
+                     	 }
+                     	 System.out.println("tabIDParm: " + tabIDParm);
+                     	
+                     	 System.out.println("auserID: " + auserID);
+                     	 /* Get all user-tabs with or without tab Segments */
+                     	 aUserTabArr = new UserTabMgr().getUserTabList(conn, auserID, tabIDParm);
+                     	
+                     	 /* Get all tabs not registered to user */
+                     	 aUserTabArr.addAll(new UserTabMgr().getUserTabNotRegistered(conn, auserID, tabIDParm));
+                     	 
+                     	for(AdminUserTab atb : aUserTabArr) {
+                     		
+                     		if(!atb.getTabID().equals("")) {
+                     			
+                     			System.out.println("tabID from userTabList: " + atb.getTabID());
+                         		String[] userTabList = request.getParameterValues(atb.getTabID());
+                         		String tabDsp = "";
+                         		String tabCrt = "";
+                         		String tabUpd = "";
+                         		String tabDlt = "";
+
+                         		if(userTabList != null) {
+                         			for(String ut : userTabList) {
+                         				System.out.println("userTabList: " + ut);
+                             			if(!ut.equals("")) {
+                             				switch(ut) {
+                             					case "DSP":
+                             						tabDsp = ut;
+                             						break;
+                             					case "CRT":
+                             						tabCrt = ut;
+                             						break;
+                             					case "UPD":
+                             						tabUpd = ut;
+                             						break;
+                             					case "DLT":
+                             						tabDlt = ut;
+                             						break;
+                             				}
+                             			}
+                         		}
+			
+                             		String status= "D";
+                             		System.out.println("tabDsp: " + tabDsp);
+                             		if(!tabDsp.equals("")) {
+                             			status = "";
+                             		}
+                             		userTabArr.add(new UserTab(atb.getUserID(), atb.getTabID(), "DSP", userID, today, status));
+                             		
+                             		status= "D";
+                             		if(!tabCrt.equals("")) {
+                             			status = "";
+                             		}
+                             		userTabArr.add(new UserTab(atb.getUserID(), atb.getTabID(), "CRT", userID, today, status));
+                             		
+                             		status= "D";
+                             		if(!tabUpd.equals("")) {
+                             			status = "";
+                             		}
+                             		userTabArr.add(new UserTab(atb.getUserID(), atb.getTabID(), "UPD", userID, today, status));
+                             		
+                             		status= "D";
+                             		if(!tabDlt.equals("")) {
+                             			status = "";
+                             		}
+                             		userTabArr.add(new UserTab(atb.getUserID(), atb.getTabID(), "DLT", userID, today, status));
+                               	 }
+                     		}
+                        }
+                     	
+                     	 /* Call Manager to update values from POJO */
+                     	isUpdated = new UserTabMgr().editUserTab(conn, userTabArr);
+                     	System.out.println("isUpdated:" + isUpdated);
+                     	
+                     	if (isUpdated > 0) {
+                     		System.out.println("Record is successfully updated.");
+                     		successMsg = "Tab is successfully assigned to user.";
+                     		
+                     		/* Get all user-tabs with or without tab Segments */
+                        	 aUserTabArr = new UserTabMgr().getUserTabList(conn, auserID, tabIDParm);
+                        	
+                        	 /* Get all tabs not registered to user */
+                        	 aUserTabArr.addAll(new UserTabMgr().getUserTabNotRegistered(conn, auserID, tabIDParm));
+                     	} else {
+                     		System.out.println("Record is not updated");
+                     		errorMsg = "Tab is not successfully assigned to user. Please contact admin for more details.";
+                     	}
+                     	
+                     	request.setAttribute("auserID", auserID);
+                     	request.setAttribute("atabID", atabID);
                 }
             }else if(action.equalsIgnoreCase("dltTabs")) {
             	
@@ -263,13 +370,41 @@ public class AdminController extends HttpServlet {
             	tabName = request.getParameter("tab");
             	String auserID = request.getParameter("auserID");
             	
-            	request.setAttribute("auserID", auserID);
+            	request.setAttribute("auserID", auserID);         	
+
+                switch (tabName) {
+
+                    case "UserBuilding":
             	
-            	/* Get all user-building */
-                aUserBuildArr = new UserBuildingMgr().getUserBuildingList(conn, auserID);
+                    	/* Get all user-building */
+                    	aUserBuildArr = new UserBuildingMgr().getUserBuildingList(conn, auserID);
                 
-                /* Get all buildings not registered to user */
-                aUserBuildArr.addAll(new UserBuildingMgr().getUserBuildingNotRegistered(conn, auserID));
+                    	/* Get all buildings not registered to user */
+                    	aUserBuildArr.addAll(new UserBuildingMgr().getUserBuildingNotRegistered(conn, auserID));
+                    	
+                    	break;
+                    
+                    case "UserTab":
+                    	
+                    	String atabID = request.getParameter("atabID");
+                    	
+                    	request.setAttribute("atabID", atabID); 
+                    	
+                    	
+                    	String tabIDParm = atabID;
+                    	if(atabID.equals("ALL")) {
+                    		tabIDParm = "";
+                    	}
+                    	System.out.println("tabIDParm: " + tabIDParm);
+                    	
+                    	/* Get all user-tabs with or without tab Segments */
+                    	aUserTabArr = new UserTabMgr().getUserTabList(conn, auserID, tabIDParm);
+                    	
+                    	/* Get all tabs not registered to user */
+                    	aUserTabArr.addAll(new UserTabMgr().getUserTabNotRegistered(conn, auserID, tabIDParm));
+                    	
+                    	break;
+                }
 
             }
             
@@ -280,10 +415,15 @@ public class AdminController extends HttpServlet {
             /* Get all active users */
             userArr = new UserMgr().getUserAccountList(conn, conStatus);
             
+            /* Get all active tabs */
+            tabList = new TabMgr().getAllTabs(conn, conStatus);
+            
             session.setAttribute("userID", userID);
             request.setAttribute("userArr", userArr);
+            request.setAttribute("tabList", tabList);
             request.setAttribute("userMsg", userMsg);
             request.setAttribute("aUserBuildArr", aUserBuildArr);
+            request.setAttribute("aUserTabArr", aUserTabArr);
             request.setAttribute("tabName", tabName);
             request.setAttribute("successMsg", successMsg);
             request.setAttribute("errorMsg", errorMsg);

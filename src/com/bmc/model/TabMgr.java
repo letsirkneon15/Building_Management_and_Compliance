@@ -64,10 +64,10 @@ public class TabMgr {
 		
 		   ArrayList<Tab> tabArr = new ArrayList<>();
 		   
-		   String qry = "SELECT * from dbo.Tab WHERE ";
+		   String qry = "SELECT tabID, tabDescription from dbo.Tab WHERE ";
 		   
 			if(!status.equals("D")) {
-				qry = qry + " (status=? OR status IS NULL)";
+				qry = qry + " (status=? OR status IS NULL) GROUP BY tabID, tabDescription";
 			}
 			
 			try{
@@ -81,13 +81,7 @@ public class TabMgr {
 				while(resultSet.next()){
 					tabArr.add(new Tab(
 							resultSet.getString("tabID"),
-							resultSet.getString("tabSegment"),
-							resultSet.getString("TabDescription"),
-							resultSet.getString("createdBy"), 
-							resultSet.getDate("createdDate"),
-							resultSet.getString("modifiedBy"),
-							resultSet.getDate("modifiedDate"),
-							resultSet.getString("status")));	
+							resultSet.getString("TabDescription")));	
 					
 				}	
 			}catch(Exception e){
@@ -119,7 +113,7 @@ public class TabMgr {
 
 				pstatement.setString(1, tab.getTabID());
 				pstatement.setString(2, tab.getTabSegment());
-				pstatement.setString(3, tab.getDescription());
+				pstatement.setString(3, tab.getTabDescription());
 				pstatement.setDate(4,  tab.getCreationDate());
 				pstatement.setString(5, tab.getModifiedBy());
 				pstatement.setDate(6,  tab.getModifiedDate());
@@ -153,7 +147,7 @@ public class TabMgr {
 				pstatement = conn.prepareStatement(qry);
 				
 				pstatement.setString(1, tab.getTabSegment());
-				pstatement.setString(2, tab.getDescription());
+				pstatement.setString(2, tab.getTabDescription());
 				pstatement.setString(3, tab.getStatus());
 				pstatement.setString(4, tab.getModifiedBy());
 				pstatement.setDate(5,  tab.getModifiedDate());

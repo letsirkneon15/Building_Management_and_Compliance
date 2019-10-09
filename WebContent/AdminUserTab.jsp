@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Selection -->
@@ -24,10 +23,13 @@
 					
 					<!-- Tab Name -->
 					<div class="col-sm-4">
-						<label>User ID:</label> <select class="form-control" id="tabID"
-							name="tabID" data-selected="${userTab[1]}">
-							<c:forEach var="userTab" items="${userTabArr}">
-								<option value="${userTab[0]},${userTab[1]}">${userTab[1]}</option>
+						<label>Tab Name:</label> <select class="form-control" id="atabID"
+							name="atabID" data-selected="${atabID}">
+							<option value="ALL">ALL Tabs</option>
+							<c:forEach var="tab" items="${tabList}">
+							 	<c:if test="${not empty tab.tabID}">
+									<option value="${tab.tabID}">${tab.tabDescription}</option>
+								</c:if>
 							</c:forEach>
 						</select>
 					</div>
@@ -59,61 +61,62 @@
 	<form
 		action="${pageContext.request.contextPath}/Admin?action=editTabs&tab=UserTab"
 		method="post">
+		
 		<div class="panel-default">
-			<div class="panel-body">
-			
-			<div class="table-responsive">
+		<div class="panel-body">
+		<div class="table-responsive">
 			<table
 				class="table table-bordered table-hover table-striped table-condensed"
-				width="100%" cellspacing="0">
+				id="userTabTable" width="100%" cellspacing="0">
 				<thead>
 					<tr align="center">
-						<th>Tab Name</th>
-						<th rowspan="3">Segments</th>
+						<th>Tab ID</th>
+						<th>Tab Description</th>
+						<th>Tab Segments</th>
 					</tr>
 				</thead>
 
 				<!-- Start Rows -->
 				<tbody>
-					<d:forEach var="b" items="${aUserTabArr}" varStatus="bIndex">
+					<c:forEach var="b" items="${aUserTabArr}" varStatus="bIndex">
+						<c:if test="${not empty b.tabID}">
 						<tr>
-							<td>${b.name }</td>
-							<td>${b.attachment }</td>
-							<td>${b.type }</td>
-							<td>${b.uploadedBy }</td>
-							<td>${b.lastUploadedBy }</td>
-
-							<td align="center"><a href="#editAsbestos"
-								data-toggle="modal" data-id="edtLink${bIndex.index}"
-								data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"
-								data-name="${b.name}" data-attachment="${b.attachment}"
-								data-type="${b.type}" data-uploadedby="${b.uploadedBy}"
-								data-lastuploadedby="${b.lastUploadedBy}"> <img
-									src='images/edit.jpg' height=15 width=15></a></td>
-
-							<td align="center"><a href="#deleteAsbestos"
-								data-toggle="modal" data-id="dltLink${bIndex.index}"
-								data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"><img
-									src='images/delete.jpg' height=15 width=15></a></td>
-
+							<td>${b.tabID }</td>
+							<td>${b.tabDescription }</td>
+							<td>
+									<div class="col-sm-5">
+										<input type="checkbox" name="${b.tabID }" id="${b.tabDsp}"
+										value="DSP" data-checkedtab="${b.tabDsp}">
+										Display
+									</div>
+									<div class="col-sm-5">
+										<input type="checkbox" name="${b.tabID }" id="${b.tabCrt}"
+										value="CRT" data-checkedtab="${b.tabCrt}">
+										Create
+									</div>
+									<div class="col-sm-5">
+										<input type="checkbox" name="${b.tabID }" id="${b.tabUpd}"
+										value="UPD" data-checkedtab="${b.tabUpd}">
+										Update
+									</div>
+									<div class="col-sm-5">
+										<input type="checkbox" name="${b.tabID }" id="${b.tabDlt}"
+										value="DLT" data-checkedtab="${b.tabDlt}">
+										Delete
+									</div>				
+							</td>			
 						</tr>
-					</d:forEach>
+						</c:if>
+					</c:forEach>
 				</tbody>
 				<!-- End Rows -->
-
 			</table>
 		</div>
-			
-				<c:forEach var="b" items="${aUserBuildArr}" varStatus="bIndex">
-					<div class="col-sm-4">
-						<input type="checkbox" name="userBuildList" id="${b.buildingID}"
-							value="${b.buildingID}" data-checked="${b.status}">
-						${b.buildingName}
-					</div>
-					<input type="hidden" id="auserID" name="auserID" value="${auserID}">
-				</c:forEach>
-			</div>
 		</div>
+		</div>
+		<input type="hidden" id="auserID" name="auserID" value="${auserID}">
+		<input type="hidden" id="atabID" name="atabID" value="${atabID}">
+		
 		<div class="panel-default">
 			<div class="panel-body">
 				<!-- Button -->
@@ -137,3 +140,4 @@
 		</div>
 	</form>
 </div>
+
