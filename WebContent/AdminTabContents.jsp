@@ -137,7 +137,6 @@ $("input[data-checkedtab]").each(function() {
     }
 })
 
-
 /**************** CREATE MODALS HERE ************************************/
 
 $('#crtUser').on('show.bs.modal', function(e) {
