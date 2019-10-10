@@ -34,7 +34,7 @@
 					<c:forEach var="b" items="${electricalArr}" varStatus="bIndex">
 						<tr>
 							<td>${b.name }</td>
-							<td>${b.attachment }</td>
+							<td><a href="${pageContext.request.contextPath}/FileDownload?fileName=${b.attachment }" target="_top">${b.attachment }</a></td>
 							<td>${b.type }</td>
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>

@@ -35,7 +35,7 @@
 							<td>${b.finding }</td>
 							<td>${b.description }</td>
 							<td>${b.inspectionStatus }</td>
-							<td>${b.image }</td>
+							<td><a href="${pageContext.request.contextPath}/FileDownload?fileName=${b.image }" target="_top">${b.image }</a></td>
 							
 							<td><a href="#editCInspection" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingID="${b.buildingID}"
