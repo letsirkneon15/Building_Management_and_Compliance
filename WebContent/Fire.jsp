@@ -69,7 +69,8 @@
             </div>
 
             <!-- Create a Form to create record -->
-            <form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Fire" method="post">
+            <form onsubmit="return uploadAttachment('crtFire')"
+            action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Fire" method="post">
                 <div class="modal-body bgColorWhite">
                     <div class="table-responsive" style="width:100%">
                         <div class="well">
@@ -143,7 +144,8 @@
             </div>
 
             <!-- Create a Form to edit record -->
-            <form action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Fire" method="post">
+            <form onsubmit="return uploadAttachment('editFire')"
+            action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Fire" method="post">
                 <div class="modal-body bgColorWhite">
                     <div class="table-responsive" style="width:100%">
                         <div class="well">

@@ -79,7 +79,7 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtAsbestos')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Asbestos"
 				method="post">
 				<div class="modal-body bgColorWhite">
@@ -160,7 +160,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editAsbestos')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Asbestos"
 				method="post">
 				<div class="modal-body bgColorWhite">
@@ -195,7 +195,7 @@
      							<!-- Attachment -->
      				 		    <label>Attachment:</label>	
      				  				<div class="custom-file">
-    									<input type="file" class="custom-file-input" name="edtAAttachment" id="edtCSAttachment" value="">
+    									<input type="file" class="custom-file-input" name="edtAAttachment" id="edtAAttachment" value="">
     									<label class="custom-file-label" for="customFile" id="edtAAttachmentLbl"></label>
     									<input class="form-control" name="oldAttachment" id="oldAttachment" type="hidden" value=""> 
   					  				</div>

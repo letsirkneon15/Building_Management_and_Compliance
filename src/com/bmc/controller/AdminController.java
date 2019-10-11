@@ -154,7 +154,8 @@ public class AdminController extends HttpServlet {
         				
         				if (isCreated > 0) {
         					userMsg = "User " + name + " is successfully registered with user ID=" 
-        							+ auserID + " and password=" + password;
+        							+ auserID + " and password=" + password + "<br><p class='text-danger'>Please remember to " +
+        							"set up User-Building and User-Tab.</p>";
         					System.out.println("Record is successfully created.");
         				} else {
         					System.out.println("Record is not created");

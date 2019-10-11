@@ -228,6 +228,88 @@ $("select[data-selected]").each(function() {
     $("select[data-selected='" + selected + "'] option[value='" + selected + "']").attr("selected", "selected");
 })
 
+/**************** For Saving Uploaded File ********************************/
+function uploadAttachment(formName) {
+
+	
+	var formData = new FormData();
+	
+	switch(formName) {
+		case "crtWof":
+		formData.append('file', $('#crtWAttachment')[0].files[0]);
+			break;
+		case "editWof":
+			formData.append('file', $('#edtWAttachment')[0].files[0]);
+			break;
+		case "crtConsent":
+			formData.append('file', $('#crtCSAttachment')[0].files[0]);
+			break;
+		case "editConsent":
+			formData.append('file', $('#edtCSAttachment')[0].files[0]);
+			break;
+		case "crtAsbestos":
+			formData.append('file', $('#crtAAttachment')[0].files[0]);
+			break;
+		case "editAsbestos":
+			formData.append('file', $('#edtAAttachment')[0].files[0]);
+			break;
+		case "crtElectrical":
+			formData.append('file', $('#crtEAttachment')[0].files[0]);
+			break;
+		case "editElectrical":
+			formData.append('file', $('#edtEAttachment')[0].files[0]);
+			break;
+		case "crtGas":
+			formData.append('file', $('#crtGAttachment')[0].files[0]);
+			break;
+		case "editGas":
+			formData.append('file', $('#edtGAttachment')[0].files[0]);
+			break;
+		case "crtFire":
+			formData.append('file', $('#crtFAttachment')[0].files[0]);
+			break;
+		case "editFire":
+			formData.append('file', $('#edtFAttachment')[0].files[0]);
+			break;
+		case "crtSeismicResilience":
+			formData.append('file', $('#crtSRAttachment')[0].files[0]);
+			break;
+		case "editSeismicResilience":
+			formData.append('file', $('#edtSRAttachment')[0].files[0]);
+			break;
+		case "crtResourceConsent":
+			formData.append('file', $('#crtRCAttachment')[0].files[0]);
+			break;
+		case "editResourceConsent":
+			formData.append('file', $('#edtRCAttachment')[0].files[0]);
+			break;
+		case "crtCInspection":
+			formData.append('file', $('#crtCIImage')[0].files[0]);
+			break;
+		case "editCInspection":
+			formData.append('file', $('#edtCIImage')[0].files[0]);
+			break;
+	}
+	
+	$.ajax({
+	       url: '${pageContext.request.contextPath}/FileUpload',
+	       type: 'POST',
+	       data: formData,
+	       async: false,
+	       cache: false,
+	       contentType: false,
+	       enctype: 'multipart/form-data',
+	       processData: false,
+	       success: function (response) {
+	         console.log("file successfully submitted");
+	         return true;
+	        },error: function(){
+	         console.log("file not uploaded");
+	         return false
+	       }
+	   });
+}	
+
 /**************** Upload Attachment/Image ********************************/
 
 $(".custom-file-input").on("change", function() {

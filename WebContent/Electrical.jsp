@@ -79,7 +79,7 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtElectrical')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Electrical"
 				method="post">
 				<div class="modal-body bgColorWhite">
@@ -161,7 +161,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editElectrical')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Electrical"
 				method="post">
 				<div class="modal-body bgColorWhite">

@@ -82,9 +82,9 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtWof')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&amp;tab=WOF"
-				method="post" class="form-group" enctype="multipart/form-data">
+				method="post" class="form-group">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width: 100%">
 						<div class="well">
@@ -177,7 +177,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editWof')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&amp;tab=WOF"
 				method="post" class="form-group">
 				<div class="modal-body bgColorWhite">
@@ -264,7 +264,7 @@
 				</div>
 				<div class="modal-footer">
 					<!-- Submit Button -->
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn btn-primary" id="btnUpdate">
 						<span class="glyphicon glyphicon-edit"></span> Update
 					</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">

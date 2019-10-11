@@ -80,7 +80,7 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtResourceConsent')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=ResourceConsent"
 				method="post">
 				<div class="modal-body bgColorWhite">
@@ -165,7 +165,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editResourceConsent')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=ResourceConsent"
 				method="post">
 				<div class="modal-body bgColorWhite">

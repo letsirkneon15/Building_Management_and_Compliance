@@ -89,7 +89,7 @@ public class LoginController extends HttpServlet {
 					
 					 errorMsg = "Username or Password is not correct.";
 					 
-					 //session.setAttribute("userID", userID);
+					 session.setAttribute("userID", userID);
 				 	 request.setAttribute("errorMsg", errorMsg);
 						
 					 /* Login Page */ 

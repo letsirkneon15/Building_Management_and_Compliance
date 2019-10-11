@@ -81,7 +81,7 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtSeismicResilience')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Seismic"
 				method="post">
 				<div class="modal-body bgColorWhite">
@@ -166,7 +166,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editSeismicResilience')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Seismic"
 				method="post">
 				<div class="modal-body bgColorWhite">

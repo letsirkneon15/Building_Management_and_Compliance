@@ -76,7 +76,7 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtGas')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Gas"
 				method="post">
 				<div class="modal-body bgColorWhite">
@@ -160,7 +160,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editGas')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Gas"
 				method="post">
 				<div class="modal-body bgColorWhite">
