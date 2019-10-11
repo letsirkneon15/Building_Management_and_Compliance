@@ -72,11 +72,13 @@ public class UserController extends HttpServlet {
 		String conStatus = "";
 		String successMsg = "";
 		String errorMsg = "";
+		String role = "";
 		
 		response.setContentType("text/html"); 
 		request.getRequestDispatcher(newPage).include(request, response);  
 
 		UserAccount userAccnt = new UserAccount();
+		UserAccount userAccount = new UserAccount();
 
 		/* Get Today's date */
         Date todayUtil = Calendar.getInstance().getTime();
@@ -102,6 +104,7 @@ public class UserController extends HttpServlet {
 			contactNum = request.getParameter("contactNum");
 			email = request.getParameter("email");
 			password = request.getParameter("password");
+			role = request.getParameter("role");
 
 			if(action.equalsIgnoreCase("edtAccount")) {
 				
@@ -110,7 +113,7 @@ public class UserController extends HttpServlet {
 				
 				/* Save values in contacts POJO */
 				userAccnt = new UserAccount(userID, password, name, contactNum, email, companyName, companyAddress, 
-						userID, today, userAccnt.getModifiedBy(), userAccnt.getModifiedDate(), "");
+						role, userID, today, userAccnt.getModifiedBy(), userAccnt.getModifiedDate(), "");
 
 				/* Call Manager to create values from POJO */
 				isUpdated = new UserMgr().updateUser(conn, userAccnt);
@@ -136,9 +139,11 @@ public class UserController extends HttpServlet {
 		
 		/* Get User Account by User ID */
 		userAccnt = new UserMgr().getUserAccount(conn, userID, conStatus);
+		userAccount = userAccnt;
 		
 		/* Send back the userID to session and User Account to request */
 		session.setAttribute("userID", userID);
+		session.setAttribute("userAccount", userAccount);
 		request.setAttribute("userAccnt", userAccnt);
 		request.setAttribute("successMsg", successMsg);
 		request.setAttribute("errorMsg", errorMsg);

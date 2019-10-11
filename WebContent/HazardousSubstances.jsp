@@ -5,6 +5,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body" >
+	<c:if test="${not empty hazSubsTab.tabCrt}">
 		<div align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtHazardSubstance" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
@@ -14,6 +15,7 @@
 			</h5>
 		</button>
 		<br> <br></div>
+	</c:if>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="hazardousSubstancesTable" width="100%"
 				cellspacing="0">
@@ -31,8 +33,12 @@
 						<th>Gas, Liquid or Solid</th>
 						<th>Location</th>
 						<th>Maximum Likely Amount</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						<c:if test="${not empty hazSubsTab.tabUpd}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
+						<c:if test="${not empty hazSubsTab.tabDlt}">
+           			  		<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+           			  	</c:if>
 					</tr>
 				</thead>
 
@@ -53,7 +59,7 @@
 							<td>${b.location }</td>		
 							<td>${b.maximumLikelyAmount }</td>	
 															
-							
+							<c:if test="${not empty hazSubsTab.tabUpd}">
 							<td align="center"><a href="#editHazardSubstance" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
 								data-productname="${b.productName}" data-unnumber="${b.unNumber}" data-approvalnumber="${b.approvalNumber}" data-groupstandard="${b.groupStandard}" 
@@ -63,11 +69,14 @@
 								data-gasliquidsolid="${b.gasLiquidSolid}" data-location="${b.location}" 
 								data-maximumlikelyamount="${b.maximumLikelyAmount}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
+							</c:if>
 							
+							<c:if test="${not empty hazSubsTab.tabDlt}">
 							<td align="center"><a href="#deleteHazardSubstance" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}">
 								<img src='images/delete.jpg' height=15 width=15></a></td>	
+							</c:if>
 						</tr>
 					</d:forEach>
 				</tbody>

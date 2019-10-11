@@ -4,6 +4,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+		<c:if test="${not empty wofTab.tabCrt}">
 		<div align="right">
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#crtWof" data-id="crtLink${bIndex.index}"
@@ -16,6 +17,7 @@
 			<br>
 			<br>
 		</div>
+		</c:if>
 		<div class="table-responsive">
 			<table id="wofTable"
 				class="table table-bordered table-hover table-striped table-condensed"
@@ -28,8 +30,12 @@
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						<c:if test="${not empty wofTab.tabUpd}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
+						<c:if test="${not empty wofTab.tabDlt}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
 					</tr>
 				</thead>
 
@@ -39,11 +45,12 @@
 						<tr>
 							<td>${b.name }</td>
 							<td>${b.titledYear }</td>
-							<td>${b.attachment }</td>
+							<td><a href="${pageContext.request.contextPath}/FileDownload?fileName=${b.attachment }" target="_top">${b.attachment }</a></td>
 							<td>${b.type }</td>
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>
 
+							<c:if test="${not empty wofTab.tabUpd}">
 							<td align="center"><a href="#editWof" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}" data-name="${b.name}"
@@ -52,11 +59,14 @@
 								data-uploadedby="${b.uploadedBy}"
 								data-lastuploadedby="${b.lastUploadedBy}"> <img
 									src='images/edit.jpg' height="15" width="15" alt=""></a></td>
-
+							</c:if>
+	
+							<c:if test="${not empty wofTab.tabDlt}">
 							<td align="center"><a href="#deleteWof" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}"> <img
 									src='images/delete.jpg' height="15" width="15" alt=""></a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -82,9 +92,9 @@
 			</div>
 
 			<!-- Create a Form to create record -->
-			<form
+			<form onsubmit="return uploadAttachment('crtWof')"
 				action="${pageContext.request.contextPath}/Tabs?action=crtTabs&amp;tab=WOF"
-				method="post" class="form-group" enctype="multipart/form-data">
+				method="post" class="form-group">
 				<div class="modal-body bgColorWhite">
 					<div class="table-responsive" style="width: 100%">
 						<div class="well">
@@ -177,7 +187,7 @@
 			</div>
 
 			<!-- Create a Form to edit record -->
-			<form
+			<form onsubmit="return uploadAttachment('editWof')"
 				action="${pageContext.request.contextPath}/Tabs?action=editTabs&amp;tab=WOF"
 				method="post" class="form-group">
 				<div class="modal-body bgColorWhite">
@@ -264,7 +274,7 @@
 				</div>
 				<div class="modal-footer">
 					<!-- Submit Button -->
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn btn-primary" id="btnUpdate">
 						<span class="glyphicon glyphicon-edit"></span> Update
 					</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">

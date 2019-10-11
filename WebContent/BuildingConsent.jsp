@@ -2,7 +2,8 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
-		<div align="right">
+	<c:if test="${not empty consentTab.tabCrt}">
+	<div align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtConsent" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
@@ -11,6 +12,7 @@
 			</h5>
 		</button>
 		<br> <br> </div>
+	</c:if>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="consentTable" width="100%"
 				cellspacing="0">
@@ -22,8 +24,12 @@
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						<c:if test="${not empty consentTab.tabUpd}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						</c:if>
+						<c:if test="${not empty consentTab.tabDlt}">
+           			  		<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+           			  	</c:if>
 					</tr>
 				</thead>
 
@@ -33,21 +39,25 @@
 						<tr>
 							<td>${b.name }</td>
 							<td>${b.consentNumber }</td>
-							<td>${b.attachment }</td>
+							<td><a href="${pageContext.request.contextPath}/FileDownload?fileName=${b.attachment }" target="_top">${b.attachment }</a></td>
 							<td>${b.type }</td>
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>
 							
+							<c:if test="${not empty consentTab.tabUpd}">
 							<td align="center"><a href="#editConsent" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
 								data-name="${b.name}" data-consentnumber="${b.consentNumber}" data-attachment="${b.attachment}"
 								data-type="${b.type}" data-uploadedby="${b.uploadedBy}" data-lastuploadedby="${b.lastUploadedBy}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
+							</c:if>
 							
+							<c:if test="${not empty consentTab.tabDlt}">
 							<td align="center"><a href="#deleteConsent" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -71,7 +81,8 @@
         </div>
 	
 		<!-- Create a Form to create record -->
-		<form action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Consent" method="post">
+		<form onsubmit="return uploadAttachment('crtConsent')"
+		action="${pageContext.request.contextPath}/Tabs?action=crtTabs&tab=Consent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">
@@ -155,7 +166,8 @@
         </div>
 	
 		<!-- Create a Form to edit record -->
-		<form class="md-form" action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Consent" method="post">
+		<form onsubmit="return uploadAttachment('editConsent')"
+		class="md-form" action="${pageContext.request.contextPath}/Tabs?action=editTabs&tab=Consent" method="post">
          <div class="modal-body bgColorWhite">
          	<div class="table-responsive" style="width:100%">
          	 <div class="well">

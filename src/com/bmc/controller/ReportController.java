@@ -23,9 +23,11 @@ import javax.sql.DataSource;
 import com.bmc.model.DownloadToExcel;
 import com.bmc.model.HardCodedData;
 import com.bmc.model.ReportsMgr;
+import com.bmc.model.UserMgr;
 import com.bmc.pojo.BuildingHeader;
 import com.bmc.pojo.GenInfoAsbestos;
 import com.bmc.pojo.GenInfoHazardSubstance;
+import com.bmc.pojo.UserAccount;
 
 /**
  * Servlet implementation class LoginController
@@ -75,7 +77,9 @@ public class ReportController extends HttpServlet {
 		String reportFormat = "";
 		Boolean isDownloaded = false;
 		String button = "";
+		String conStatus = "";
 		
+		UserAccount userAccount = new UserAccount();
 		ArrayList<String> yesNoList = new ArrayList<String>();
 		ArrayList<String> reportFormatList = new ArrayList<String>();
 		
@@ -137,7 +141,11 @@ public class ReportController extends HttpServlet {
 		
 		getData(userID, buildingName, client, asbestosPresent, reportFormat);
 		
+		/* Get User Account by User ID */
+		userAccount = new UserMgr().getUserAccount(conn, userID, conStatus);
+		
 		session.setAttribute("userID", userID);
+		session.setAttribute("userAccount", userAccount);
 		request.setAttribute("yesNoList", yesNoList);
 		request.setAttribute("reportFormatList", reportFormatList);
 		request.setAttribute("bGenInfo", bGenInfo);

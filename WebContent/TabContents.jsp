@@ -56,94 +56,217 @@
 					<div class="tab-content" id="nav-tabContent">
 
 						<!-- Start General Information Tab-->
-						<div id="GenInfo" class="tab-pane fade in active">
+						<c:if test="${not empty genInfoTab.tabDsp}">
+						<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+						<div id="GenInfo" class="${tabPane}">
 							<!-- Include GeneralInformation.jsp -->
 							<%@ include file="GeneralInformation.jsp"%>
 						</div>
+						</c:if>
 						<!-- End General Information Tab-->
 						
 						<!-- Start Contacts Tab-->
-						<div id="Contacts" class="tab-pane">
+						<c:if test="${not empty contactsTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Contacts" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Contacts" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>
 							<!-- Include Contacts.jsp -->
 							<%@ include file="Contacts.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Contacts Tab-->
 
 						<!-- Start Building WOF Tab-->
-						<div id="WOF" class="tab-pane">
+						<c:if test="${not empty wofTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="WOF" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="WOF" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>
 							<!-- Include BuildingWOF.jsp -->
 							<%@ include file="BuildingWOF.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Building WOF Tab-->						
 						
 						<!-- Start Consent Tab-->
-						<div id="Consent" class="tab-pane">
+						<c:if test="${not empty consentTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Consent" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Consent" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>
 							<!-- Include Consent.jsp -->
 							<%@ include file="BuildingConsent.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Consent Tab-->	
 						
 						<!-- Start Asbestos Tab-->
-						<div id="Asbestos" class="tab-pane">
+						<c:if test="${not empty asbestosTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Asbestos" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Asbestos" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>						
 							<!-- Include Asbestos.jsp -->
 							<%@ include file="Asbestos.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Asbestos Tab-->	
 						
 						<!-- Start Electrical Tab-->
-						<div id="Electrical" class="tab-pane">
+						<c:if test="${not empty electricalTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Electrical" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Electrical" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include Electrical.jsp -->
 							<%@ include file="Electrical.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Electrical Tab-->
 						
 						<!-- Start Gas Tab-->
-						<div id="Gas" class="tab-pane">
+						<c:if test="${not empty gasTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Gas" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Gas" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include Gas.jsp -->
 							<%@ include file="Gas.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Gas Tab-->
 						
 						<!-- Start Fire Tab-->
-						<div id="Fire" class="tab-pane">
+						<c:if test="${not empty fireTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Fire" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Fire" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include Fire.jsp -->
 							<%@ include file="Fire.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Fire Tab-->
 						
 						<!-- Start Hazardous Substances Tab-->
-						<div id="HazSubs" class="tab-pane">
+						<c:if test="${not empty hazSubsTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="HazSubs" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="HazSubs" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include HazardousSubstances.jsp -->
 							<%@ include file="HazardousSubstances.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Hazardous Substances Tab-->	
 						
 						<!-- Start Hazard Register Tab-->
-						<div id="HazReg" class="tab-pane">
+						<c:if test="${not empty hazRegTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="HazReg" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="HazReg" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include HazardRegister.jsp -->
 							<%@ include file="HazardRegister.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Hazard Register Tab-->	
 		
 						<!-- Start Seismic Resilience Tab-->
-						<div id="Seismic" class="tab-pane">
+						<c:if test="${not empty seismicTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Seismic" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Seismic" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include SeismicResilience.jsp -->
 							<%@ include file="SeismicResilience.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Seismic Resilience Tab-->	
 						
 						<!-- Start Resource Consent Tab-->
-						<div id="ResourceConsent" class="tab-pane">
+						<c:if test="${not empty resourceConsentTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="ResourceConsent" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="ResourceConsent" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include ResourceConsent.jsp -->
 							<%@ include file="ResourceConsent.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Resource Consent Tab-->	
 						
 						<!-- Start Compliance Inspection Tab-->
-						<div id="ComIns" class="tab-pane">
+						<c:if test="${not empty comInsTab.tabDsp}">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="ComIns" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="ComIns" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include ComplianceInspection.jsp -->
 							<%@ include file="ComplianceInspection.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Compliance Inspection Tab-->	
 
 					</div>
@@ -227,6 +350,88 @@ $("select[data-selected]").each(function() {
     var selected = $(this).data("selected");
     $("select[data-selected='" + selected + "'] option[value='" + selected + "']").attr("selected", "selected");
 })
+
+/**************** For Saving Uploaded File ********************************/
+function uploadAttachment(formName) {
+
+	
+	var formData = new FormData();
+	
+	switch(formName) {
+		case "crtWof":
+		formData.append('file', $('#crtWAttachment')[0].files[0]);
+			break;
+		case "editWof":
+			formData.append('file', $('#edtWAttachment')[0].files[0]);
+			break;
+		case "crtConsent":
+			formData.append('file', $('#crtCSAttachment')[0].files[0]);
+			break;
+		case "editConsent":
+			formData.append('file', $('#edtCSAttachment')[0].files[0]);
+			break;
+		case "crtAsbestos":
+			formData.append('file', $('#crtAAttachment')[0].files[0]);
+			break;
+		case "editAsbestos":
+			formData.append('file', $('#edtAAttachment')[0].files[0]);
+			break;
+		case "crtElectrical":
+			formData.append('file', $('#crtEAttachment')[0].files[0]);
+			break;
+		case "editElectrical":
+			formData.append('file', $('#edtEAttachment')[0].files[0]);
+			break;
+		case "crtGas":
+			formData.append('file', $('#crtGAttachment')[0].files[0]);
+			break;
+		case "editGas":
+			formData.append('file', $('#edtGAttachment')[0].files[0]);
+			break;
+		case "crtFire":
+			formData.append('file', $('#crtFAttachment')[0].files[0]);
+			break;
+		case "editFire":
+			formData.append('file', $('#edtFAttachment')[0].files[0]);
+			break;
+		case "crtSeismicResilience":
+			formData.append('file', $('#crtSRAttachment')[0].files[0]);
+			break;
+		case "editSeismicResilience":
+			formData.append('file', $('#edtSRAttachment')[0].files[0]);
+			break;
+		case "crtResourceConsent":
+			formData.append('file', $('#crtRCAttachment')[0].files[0]);
+			break;
+		case "editResourceConsent":
+			formData.append('file', $('#edtRCAttachment')[0].files[0]);
+			break;
+		case "crtCInspection":
+			formData.append('file', $('#crtCIImage')[0].files[0]);
+			break;
+		case "editCInspection":
+			formData.append('file', $('#edtCIImage')[0].files[0]);
+			break;
+	}
+	
+	$.ajax({
+	       url: '${pageContext.request.contextPath}/FileUpload',
+	       type: 'POST',
+	       data: formData,
+	       async: false,
+	       cache: false,
+	       contentType: false,
+	       enctype: 'multipart/form-data',
+	       processData: false,
+	       success: function (response) {
+	         console.log("file successfully submitted");
+	         return true;
+	        },error: function(){
+	         console.log("file not uploaded");
+	         return false
+	       }
+	   });
+}	
 
 /**************** Upload Attachment/Image ********************************/
 

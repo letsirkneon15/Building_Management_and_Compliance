@@ -18,9 +18,11 @@
 					<input type="text" class="form-control" id="address" name="address"
 						value="${bHeader.address}" />
 				</div>
+				<c:if test="${not empty genInfoTab.tabUpd}">
 				<div class="col-xs-3">
 					<button type="submit" class="btn btn-primary" name="button" value="updateBuilding"><h5><span class="glyphicon glyphicon-edit"></span><b> Update Building</b></h5></button>
 				</div>
+				</c:if>
 			</div>
 
 			<div class="form-group">
@@ -30,11 +32,13 @@
 					<input type="text" class="form-control" id="responsibleOffice" name="responsibleOffice"
 						value="${bHeader.responsibleOffice}" />
 				</div>
+				<c:if test="${not empty genInfoTab.tabDlt}">
 				<div class="col-xs-3">
 					<button type="button" class="btn btn-primary" name="button" value="deleteBuilding"
 					 data-toggle="modal" data-target="#deleteGenInfo" data-id="dltLink${bHIndex.index}"
 					 data-buildingid="${bHeader.buildingID}"><h5><span class="glyphicon glyphicon-trash"></span><b> Delete Building &nbsp;</b></h5></button>
-				</div>				
+				</div>		
+				</c:if>		
 			</div>
 
 			<div class="form-group">

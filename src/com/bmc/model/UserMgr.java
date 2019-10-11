@@ -40,6 +40,7 @@ public class UserMgr {
 							resultSet.getString("emailAdd"),
 							resultSet.getString("companyName"),
 							resultSet.getString("companyAddress"),
+							resultSet.getString("role"),
 							resultSet.getString("createdBy"), 
 							resultSet.getDate("creationDate"),
 							resultSet.getString("modifiedBy"),
@@ -90,6 +91,7 @@ public class UserMgr {
 							resultSet.getString("emailAdd"),
 							resultSet.getString("companyName"),
 							resultSet.getString("companyAddress"),
+							resultSet.getString("role"),
 							resultSet.getString("createdBy"), 
 							resultSet.getDate("creationDate"),
 							resultSet.getString("modifiedBy"),
@@ -213,8 +215,8 @@ public String getName(Connection conn, String userID) {
 
 				String qry = "INSERT INTO dbo.[User] "
 						+ "(userID, password, name, contactNum, emailAdd, companyName, companyAddress, "
-						+ "createdBy, creationDate, modifiedBy, modifiedDate, status) "
-						+ " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?)";
+						+ "role, createdBy, creationDate, modifiedBy, modifiedDate, status) "
+						+ " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				pstatement = conn.prepareStatement(qry);
 
@@ -225,11 +227,12 @@ public String getName(Connection conn, String userID) {
 				pstatement.setString(5, user.getEmailAdd());
 				pstatement.setString(6, user.getCompanyName());
 				pstatement.setString(7, user.getCompanyAddress());
-				pstatement.setString(8, user.getCreatedBy());
-				pstatement.setDate(9, user.getCreationDate());
-				pstatement.setString(10, user.getModifiedBy());
-				pstatement.setDate(11, user.getModifiedDate());
-				pstatement.setString(12, user.getStatus());
+				pstatement.setString(8, user.getRole());
+				pstatement.setString(9, user.getCreatedBy());
+				pstatement.setDate(10, user.getCreationDate());
+				pstatement.setString(11, user.getModifiedBy());
+				pstatement.setDate(12, user.getModifiedDate());
+				pstatement.setString(13, user.getStatus());
 
 				isCreated = pstatement.executeUpdate();
 				pstatement.close();
@@ -254,7 +257,7 @@ public String getName(Connection conn, String userID) {
 		   try {
 				String qry = "UPDATE dbo.[User] set "
 						+ "password=?, name=?, contactNum=?, emailAdd=?, companyName=?, "
-						+ "companyAddress=?, modifiedBy=?, modifiedDate=?, status=? "
+						+ "companyAddress=?, role=?, modifiedBy=?, modifiedDate=?, status=? "
 						+ "where userID=? ";
 
 				pstatement = conn.prepareStatement(qry);
@@ -265,10 +268,11 @@ public String getName(Connection conn, String userID) {
 				pstatement.setString(4, user.getEmailAdd());
 				pstatement.setString(5, user.getCompanyName());
 				pstatement.setString(6, user.getCompanyAddress());
-				pstatement.setString(7, user.getModifiedBy());
-				pstatement.setDate(8, user.getModifiedDate());
-				pstatement.setString(9, user.getStatus());
-				pstatement.setString(10, user.getUserID());
+				pstatement.setString(7, user.getRole());
+				pstatement.setString(8, user.getModifiedBy());
+				pstatement.setDate(9, user.getModifiedDate());
+				pstatement.setString(10, user.getStatus());
+				pstatement.setString(11, user.getUserID());
 				
 
 				isUpdated = pstatement.executeUpdate();

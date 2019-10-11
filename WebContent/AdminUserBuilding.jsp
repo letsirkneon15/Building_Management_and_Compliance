@@ -51,14 +51,16 @@
 		method="post">
 		<div class="panel-default">
 			<div class="panel-body">
+			<p class="text-danger"><input type="checkbox" class="checkAllBuildings" name="checkAllBuildings" id="checkAllBuildings"
+			value="checkAllBuildings">Please check/uncheck to select/deselect all buildings.</p>
 				<c:forEach var="b" items="${aUserBuildArr}" varStatus="bIndex">
 					<div class="col-sm-4">
 						<input type="checkbox" name="userBuildList" id="${b.buildingID}"
 							value="${b.buildingID}" data-checked="${b.status}">
 						${b.buildingName}
 					</div>
-					<input type="hidden" id="auserID" name="auserID" value="${auserID}">
 				</c:forEach>
+				<input type="hidden" id="auserID" name="auserID" value="${auserID}">
 			</div>
 		</div>
 		<div class="panel-default">

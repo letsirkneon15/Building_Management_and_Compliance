@@ -185,7 +185,8 @@
 													id="confirm" value="${userAccnt.password}" />
 											</div>
 										</div>
-									
+										<input type="hidden" class="form-control" name="role"
+													id="role" value="${userAccnt.role}" />
 									
 									</div>
 								</div>

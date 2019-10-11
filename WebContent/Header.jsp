@@ -54,7 +54,7 @@
         </a>
       </li>
       
-      <c:if test="${userID=='Jane.Smith001'}">
+      <c:if test="${userAccount.role=='Admin'}">
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/Admin" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-user-cog"></i>
@@ -130,7 +130,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${userName}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${userAccount.name}</span>
                 <img class="img-profile rounded-circle" src="images/user.png">
               </a>
               <!-- Dropdown - User Information -->

@@ -1,6 +1,5 @@
 package com.bmc.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,10 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import com.bmc.model.BuildingDetailsMgr;
 import com.bmc.model.BuildingHeaderMgr;
 import com.bmc.model.ComplianceInspectionMgr;
@@ -38,15 +33,16 @@ import com.bmc.model.ContactsMgr;
 import com.bmc.model.HardCodedData;
 import com.bmc.model.HazardRegisterMgr;
 import com.bmc.model.HazardousSubstanceMgr;
-import com.bmc.pojo.BMCProp;
+import com.bmc.model.UserMgr;
+import com.bmc.model.UserTabMgr;
+import com.bmc.pojo.AdminUserTab;
 import com.bmc.pojo.BuildingDetails;
 import com.bmc.pojo.BuildingHeader;
 import com.bmc.pojo.ComplianceInspection;
 import com.bmc.pojo.Contacts;
 import com.bmc.pojo.HazardRegister;
 import com.bmc.pojo.HazardousSubstance;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.bmc.pojo.UserAccount;
 
 /**
  * Servlet implementation class TabController
@@ -59,13 +55,7 @@ public class TabController extends HttpServlet {
     private Context initContext;
     private Context envContext;
     private DataSource dataSource;
-    private Connection conn;
-    private String uploadDirectory;
-    private MultipartRequest req;
-    
-    /* fix max file size 500 Mb */
-    private int maxFileSize = 500000 * 1024;
-    
+    private Connection conn;    
 
     /**
      * @see Servlet#init(ServletConfig)
@@ -82,16 +72,6 @@ public class TabController extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        /* Retrieve values from Properties File */
-    	BMCProp bmc = new BMCProp();
-		try {
-			bmc.getProperties();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		uploadDirectory = bmc.getFileUploadFolder();
     }
 
     /**
@@ -120,6 +100,7 @@ public class TabController extends HttpServlet {
         String conStatus="";
         String attachment = "";
 
+        UserAccount userAccount = new UserAccount();
 		BuildingHeader bHeader = new BuildingHeader();
 		List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
 		List<Contacts> contactsArr = new ArrayList<Contacts>();
@@ -155,6 +136,20 @@ public class TabController extends HttpServlet {
         ComplianceInspection comInspection = new ComplianceInspection();
         HazardousSubstance hazardSub = new HazardousSubstance();
         HazardRegister hazardReg = new HazardRegister();
+        AdminUserTab genInfoTab = new AdminUserTab();
+        AdminUserTab contactsTab = new AdminUserTab();
+        AdminUserTab wofTab = new AdminUserTab();
+        AdminUserTab consentTab = new AdminUserTab();
+        AdminUserTab asbestosTab = new AdminUserTab();
+        AdminUserTab electricalTab = new AdminUserTab();
+        AdminUserTab gasTab = new AdminUserTab();
+        AdminUserTab fireTab = new AdminUserTab();
+        AdminUserTab hazSubsTab = new AdminUserTab();
+        AdminUserTab hazRegTab = new AdminUserTab();
+        AdminUserTab seismicTab = new AdminUserTab();
+        AdminUserTab resourceConsentTab = new AdminUserTab();
+        AdminUserTab comInsTab = new AdminUserTab();
+        
 
         /* Get Today's date */
         Date todayUtil = Calendar.getInstance().getTime();
@@ -187,15 +182,8 @@ public class TabController extends HttpServlet {
         action = request.getParameter("action");
         if (action != null) {
 
-        	if(ServletFileUpload.isMultipartContent(request)){
-        		req = new MultipartRequest(request, uploadDirectory, maxFileSize, "UTF-8", 
-        				new DefaultFileRenamePolicy());	
-        		buildingID = Integer.parseInt(req.getParameter("buildingID"));
-        	}else {
-        		buildingID = Integer.parseInt(request.getParameter("buildingID"));
-        	}
-            
-
+        	buildingID = Integer.parseInt(request.getParameter("buildingID"));
+      
             System.out.println("Action: " + action);
 
             /* Do this for creation of new records in TAB */
@@ -231,10 +219,10 @@ public class TabController extends HttpServlet {
                         break;
 
                     case "WOF":
-                        String crtWName = req.getParameter("crtWName");
-                        int crtWTitledYear = Integer.parseInt(req.getParameter("crtWTitledYear"));
-                        String crtWAttachment = req.getParameter("crtWAttachment");
-                        String crtWType = req.getParameter("crtWType");
+                        String crtWName = request.getParameter("crtWName");
+                        int crtWTitledYear = Integer.parseInt(request.getParameter("crtWTitledYear"));
+                        String crtWAttachment = request.getParameter("crtWAttachment");
+                        String crtWType = request.getParameter("crtWType");
 
                         /* Save values in BuildingDetails POJO */
                         buildDetails = new BuildingDetails(buildDetails.getRecordID(), conWOF, buildingID, crtWName,
@@ -1102,35 +1090,67 @@ public class TabController extends HttpServlet {
         /*Get Resource Consent from Building_Details table */
         resourceConsentArr = new BuildingDetailsMgr().getBuildingDetails(conn, buildingID, conResourceConsent, conStatus);
 		
-		session.setAttribute("buildingID", buildingID);
-		session.setAttribute("tabName", tabName);
-		session.setAttribute("bHeader", bHeader);
-		session.setAttribute("contactsArr", contactsArr);
-		session.setAttribute("bDetails", bDetails);
-		session.setAttribute("complianceInspectionArr", complianceInspectionArr);
-		session.setAttribute("hazSubstancesArr", hazSubstancesArr);
-		session.setAttribute("hazRegisterArr", hazRegisterArr);
-		session.setAttribute("buildingWOFArr", buildingWOFArr);
-		session.setAttribute("buildingConsentArr", buildingConsentArr);
-		session.setAttribute("asbestosArr", asbestosArr);
-		session.setAttribute("electricalArr", electricalArr);
-		session.setAttribute("gasArr", gasArr);
-		session.setAttribute("fireArr", fireArr);
-		session.setAttribute("seismicArr", seismicArr);
-		session.setAttribute("resourceConsentArr", resourceConsentArr);
-		session.setAttribute("cTypeList", cTypeList);
-		session.setAttribute("wTypeList", wTypeList);
-		session.setAttribute("csTypeList", csTypeList);
-		session.setAttribute("aTypeList", aTypeList);
-		session.setAttribute("eTypeList", eTypeList);
-		session.setAttribute("gTypeList", gTypeList);
-		session.setAttribute("hrRiskAssessList", hrRiskAssessList);
-		session.setAttribute("sTypeList", sTypeList);
-		session.setAttribute("rcTypeList", rcTypeList);
-		session.setAttribute("yesNoList", yesNoList);
-		session.setAttribute("fTypeList", fTypeList);
-		session.setAttribute("levelOfControlsList", levelOfControlsList);
-		session.setAttribute("fireHazCatList", fireHazCatList);
+        /*Get all tabs registered to user */
+        genInfoTab = new UserTabMgr().getAdminUserTab(conn, userID, "GenInfo");
+        contactsTab = new UserTabMgr().getAdminUserTab(conn, userID, "Contacts");
+        wofTab = new UserTabMgr().getAdminUserTab(conn, userID, "WOF");
+        consentTab = new UserTabMgr().getAdminUserTab(conn, userID, "Consent");
+        asbestosTab = new UserTabMgr().getAdminUserTab(conn, userID, "Asbestos");
+        electricalTab = new UserTabMgr().getAdminUserTab(conn, userID, "Electrical");
+        gasTab = new UserTabMgr().getAdminUserTab(conn, userID, "Gas");
+        fireTab = new UserTabMgr().getAdminUserTab(conn, userID, "Fire");
+        hazSubsTab = new UserTabMgr().getAdminUserTab(conn, userID, "HazSubs");
+        hazRegTab = new UserTabMgr().getAdminUserTab(conn, userID, "HazReg");
+        seismicTab = new UserTabMgr().getAdminUserTab(conn, userID, "Seismic");
+        resourceConsentTab = new UserTabMgr().getAdminUserTab(conn, userID, "ResourceConsent");
+        comInsTab = new UserTabMgr().getAdminUserTab(conn, userID, "ComIns");
+        
+        /* Get User Account profile */
+        userAccount = new UserMgr().getUserAccount(conn, userID, conStatus);
+        
+        session.setAttribute("userAccount", userAccount);
+		request.setAttribute("buildingID", buildingID);
+		request.setAttribute("tabName", tabName);
+		request.setAttribute("bHeader", bHeader);
+		request.setAttribute("contactsArr", contactsArr);
+		request.setAttribute("bDetails", bDetails);
+		request.setAttribute("complianceInspectionArr", complianceInspectionArr);
+		request.setAttribute("hazSubstancesArr", hazSubstancesArr);
+		request.setAttribute("hazRegisterArr", hazRegisterArr);
+		request.setAttribute("buildingWOFArr", buildingWOFArr);
+		request.setAttribute("buildingConsentArr", buildingConsentArr);
+		request.setAttribute("asbestosArr", asbestosArr);
+		request.setAttribute("electricalArr", electricalArr);
+		request.setAttribute("gasArr", gasArr);
+		request.setAttribute("fireArr", fireArr);
+		request.setAttribute("seismicArr", seismicArr);
+		request.setAttribute("resourceConsentArr", resourceConsentArr);
+		request.setAttribute("cTypeList", cTypeList);
+		request.setAttribute("wTypeList", wTypeList);
+		request.setAttribute("csTypeList", csTypeList);
+		request.setAttribute("aTypeList", aTypeList);
+		request.setAttribute("eTypeList", eTypeList);
+		request.setAttribute("gTypeList", gTypeList);
+		request.setAttribute("hrRiskAssessList", hrRiskAssessList);
+		request.setAttribute("sTypeList", sTypeList);
+		request.setAttribute("rcTypeList", rcTypeList);
+		request.setAttribute("yesNoList", yesNoList);
+		request.setAttribute("fTypeList", fTypeList);
+		request.setAttribute("levelOfControlsList", levelOfControlsList);
+		request.setAttribute("fireHazCatList", fireHazCatList);
+		request.setAttribute("genInfoTab", genInfoTab);
+		request.setAttribute("contactsTab", contactsTab);
+		request.setAttribute("wofTab", wofTab);
+		request.setAttribute("consentTab", consentTab);
+		request.setAttribute("asbestosTab", asbestosTab);
+		request.setAttribute("electricalTab", electricalTab);
+		request.setAttribute("gasTab", gasTab);
+		request.setAttribute("fireTab", fireTab);
+		request.setAttribute("hazSubsTab", hazSubsTab);
+		request.setAttribute("hazRegTab", hazRegTab);
+		request.setAttribute("seismicTab", seismicTab);
+		request.setAttribute("resourceConsentTab", resourceConsentTab);
+		request.setAttribute("comInsTab", comInsTab);
 
         /* do redirection */
         ServletContext sContext = getServletContext();
@@ -1143,29 +1163,6 @@ public class TabController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
-        
-        if(ServletFileUpload.isMultipartContent(request)){
-            try {
-                List<FileItem> multiparts = new ServletFileUpload(
-                                         new DiskFileItemFactory()).parseRequest(request);
-               
-                for(FileItem item : multiparts){
-                    if(!item.isFormField()){
-                        String name = new File(item.getName()).getName();
-                        item.write( new File(uploadDirectory + File.separator + name));
-                    }
-                }
-            
-               //File uploaded successfully
-               request.setAttribute("message", "File Uploaded Successfully");
-            } catch (Exception ex) {
-               request.setAttribute("message", "File Upload Failed due to " + ex);
-            }          
-          
-        }else{
-            request.setAttribute("message",
-                                 "Sorry this Servlet only handles file upload request");
-        }
         
         doGet(request, response);
     }

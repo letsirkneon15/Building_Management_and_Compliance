@@ -4,7 +4,8 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
-		<div align="right">
+		<c:if test="${not empty contactsTab.tabCrt}">
+		<div align="right">	
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#crtContacts" data-id="crtLink${bIndex.index}"
 				data-buildingid="${buildingID}">
@@ -15,6 +16,7 @@
 			</button>
 			<br> <br>
 		</div>
+		</c:if>
 		<div class="table-responsive">
 			<table
 				class="table table-bordered table-hover table-striped table-condensed"
@@ -28,9 +30,12 @@
 						<th>Fax</th>
 						<th>Mobile</th>
 						<th>Email Address</th>
-						
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						<c:if test="${not empty contactsTab.tabUpd}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
+						<c:if test="${not empty contactsTab.tabDlt}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
 					</tr>
 				</thead>
 
@@ -46,7 +51,7 @@
 							<td>${b.mobileNumber }</td>
 							<td>${b.emailAdd }</td>
 
-
+							<c:if test="${not empty contactsTab.tabUpd}">
 							<td align="center"><a href="#editContacts"
 								data-toggle="modal" data-id="edtLink${bIndex.index}"
 								data-buildingid="${b.buildingID}" data-recordid="${b.recordID}"
@@ -56,12 +61,14 @@
 								data-mobilenumber="${b.mobileNumber}"
 								data-emailadd="${b.emailAdd}"> <img src='images/edit.jpg'
 									height=15 width=15></a></td>
-
+							</c:if>
+							<c:if test="${not empty contactsTab.tabDlt}">
 							<td align="center"><a href="#deleteContacts"
 								data-toggle="modal" data-id="dltLink${bIndex.index}"
 								data-recordid="${b.recordID}" data-buildingid="${b.buildingID}">
 									<img src='images/delete.jpg' height=15 width=15>
 							</a></td>
+							</c:if>
 						</tr>
 					</d:forEach>
 				</tbody>
