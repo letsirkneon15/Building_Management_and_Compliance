@@ -150,6 +150,90 @@ public class UserTabMgr {
 
 		return utArr;
 	}
+	
+	public AdminUserTab getAdminUserTab(Connection conn, String userID, String tabIDParm){
+
+		AdminUserTab ut = new AdminUserTab();
+		String tabID = "";
+		String tabDsp = "";
+		String tabCrt = "";
+		String tabDlt = "";
+		String tabUpd = "";
+		String tabDescription = "";
+
+		String qry = "SELECT * from dbo.User_Tab ut INNER JOIN dbo.Tab at on " + 
+				"ut.tabID = at.tabID AND ut.tabSegment = at.tabSegment WHERE userID=? AND ut.tabID=?";
+
+		qry = qry + " ORDER BY ut.tabID";
+
+		try{
+			pstatement = conn.prepareStatement(qry);
+			pstatement.setString(1, userID);
+			pstatement.setString(2, tabIDParm);
+
+			resultSet = pstatement.executeQuery();
+			while(resultSet.next()){
+
+				if(!tabID.equals(resultSet.getString("tabID"))) {
+
+					ut = new AdminUserTab(userID, tabID, tabDescription, tabDsp, tabCrt, 
+							tabUpd, tabDlt);
+
+					tabDsp = "";
+					tabCrt = "";
+					tabUpd = "";
+					tabDlt = "";
+					
+					tabDescription = resultSet.getString("tabDescription");
+				}
+
+				switch (resultSet.getString("tabSegment")) {
+
+				case "CRT":
+					if(resultSet.getString("status").trim().equals("")
+							|| resultSet.getString("status") == null) {
+						tabCrt = resultSet.getString("tabSegment");
+					}
+					break;
+				case "DLT":
+					if(resultSet.getString("status").trim().equals("")
+							|| resultSet.getString("status") == null) {
+						tabDlt = resultSet.getString("tabSegment");
+					}
+					
+					break;
+				case "UPD":
+					if(resultSet.getString("status").trim().equals("")
+							|| resultSet.getString("status") == null) {
+						tabUpd = resultSet.getString("tabSegment");
+					}
+					break;
+				case "DSP":
+					if(resultSet.getString("status").trim().equals("")
+							|| resultSet.getString("status") == null) {
+						tabDsp = resultSet.getString("tabSegment");
+					}
+					break;
+				}
+				
+				tabID = resultSet.getString("tabID");
+
+			}	
+			ut = new AdminUserTab(userID, tabID, tabDescription, tabDsp, tabCrt, 
+					tabUpd, tabDlt);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				resultSet.close();
+				pstatement.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+
+		return ut;
+	}
 
 	public ArrayList<AdminUserTab> getUserTabNotRegistered(Connection conn, String userID, String tabIDParm){
 

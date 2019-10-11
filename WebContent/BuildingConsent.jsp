@@ -2,7 +2,8 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
-		<div align="right">
+	<c:if test="${not empty consentTab.tabCrt}">
+	<div align="right">
 	<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtConsent" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
 			<h5>
@@ -11,6 +12,7 @@
 			</h5>
 		</button>
 		<br> <br> </div>
+	</c:if>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-striped table-condensed" id="consentTable" width="100%"
 				cellspacing="0">
@@ -22,8 +24,12 @@
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						<c:if test="${not empty consentTab.tabUpd}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						</c:if>
+						<c:if test="${not empty consentTab.tabDlt}">
+           			  		<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+           			  	</c:if>
 					</tr>
 				</thead>
 
@@ -38,16 +44,20 @@
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>
 							
+							<c:if test="${not empty consentTab.tabUpd}">
 							<td align="center"><a href="#editConsent" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}" 
 								data-name="${b.name}" data-consentnumber="${b.consentNumber}" data-attachment="${b.attachment}"
 								data-type="${b.type}" data-uploadedby="${b.uploadedBy}" data-lastuploadedby="${b.lastUploadedBy}">
 								<img src='images/edit.jpg' height=15 width=15></a></td>
+							</c:if>
 							
+							<c:if test="${not empty consentTab.tabDlt}">
 							<td align="center"><a href="#deleteConsent" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingid="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>

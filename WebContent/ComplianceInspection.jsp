@@ -2,6 +2,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+	<c:if test="${not empty comInsTab.tabCrt}">
 	<div align="right">
 		<button type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#crtCInspection" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
@@ -11,7 +12,7 @@
 		</button>
 		<br> <br>
 	</div>
-	
+	</c:if>
 		<div class="table-responsive">
 			<table id="complianceInspectionTable" class="table table-bordered table-hover table-striped table-condensed" width="100%"
 				cellspacing="0">
@@ -22,8 +23,12 @@
 						<th>Descriptions</th>
 						<th>Status</th>
 						<th>Image File</th>
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
-           			  	<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+						<c:if test="${not empty comInsTab.tabUpd}">
+           			  		<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+           			  	</c:if>
+           			  	<c:if test="${not empty comInsTab.tabDlt}">
+           			  		<th class="sorting_asc_disabled sorting_desc_disabled"></th> 
+           			  	</c:if>
 					</tr>
 				</thead>
 
@@ -37,14 +42,18 @@
 							<td>${b.inspectionStatus }</td>
 							<td><a href="${pageContext.request.contextPath}/FileDownload?fileName=${b.image }" target="_top">${b.image }</a></td>
 							
+							<c:if test="${not empty comInsTab.tabUpd}">
 							<td><a href="#editCInspection" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingID="${b.buildingID}"
 								data-inspectiondate="${b.inspectionDate}" data-finding="${b.finding}" data-description="${b.description}"
 								data-inspectionstatus="${b.inspectionStatus}" data-image="${b.image}"><img src='images/edit.jpg' height=15 width=15></a></td>
-								
+							</c:if>
+							
+							<c:if test="${not empty comInsTab.tabDlt}">
 							<td><a href="#deleteCInspection" data-toggle="modal"
 								data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
 								data-buildingID="${b.buildingID}"><img src='images/delete.jpg' height=15 width=15></a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -4,6 +4,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
 	<div class="card-body">
+		<c:if test="${not empty asbestosTab.tabCrt}">
 		<div align="right">
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#crtAsbestos" data-id="crtLink${bIndex.index}"
@@ -15,6 +16,7 @@
 			</button>
 			<br> <br>
 		</div>
+		</c:if>
 		<div class="table-responsive">
 			<table
 				class="table table-bordered table-hover table-striped table-condensed"
@@ -26,8 +28,12 @@
 						<th>Type</th>
 						<th>Uploaded By</th>
 						<th>Last Uploaded</th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
-						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						<c:if test="${not empty asbestosTab.tabUpd}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
+						<c:if test="${not empty asbestosTab.tabDlt}">
+							<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+						</c:if>
 					</tr>
 				</thead>
 
@@ -40,7 +46,8 @@
 							<td>${b.type }</td>
 							<td>${b.uploadedBy }</td>
 							<td>${b.lastUploadedBy }</td>
-
+	
+							<c:if test="${not empty asbestosTab.tabUpd}">
 							<td align="center"><a href="#editAsbestos"
 								data-toggle="modal" data-id="edtLink${bIndex.index}"
 								data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"
@@ -48,11 +55,14 @@
 								data-type="${b.type}" data-uploadedby="${b.uploadedBy}"
 								data-lastuploadedby="${b.lastUploadedBy}"> <img
 									src='images/edit.jpg' height=15 width=15></a></td>
+							</c:if>
 
+							<c:if test="${not empty asbestosTab.tabDlt}">
 							<td align="center"><a href="#deleteAsbestos"
 								data-toggle="modal" data-id="dltLink${bIndex.index}"
 								data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"><img
 									src='images/delete.jpg' height=15 width=15></a></td>
+							</c:if>
 
 						</tr>
 					</d:forEach>

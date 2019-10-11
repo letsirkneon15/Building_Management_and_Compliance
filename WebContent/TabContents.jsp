@@ -56,94 +56,120 @@
 					<div class="tab-content" id="nav-tabContent">
 
 						<!-- Start General Information Tab-->
+						<c:if test="${not empty genInfoTab.tabDsp}">
 						<div id="GenInfo" class="tab-pane fade in active">
 							<!-- Include GeneralInformation.jsp -->
 							<%@ include file="GeneralInformation.jsp"%>
 						</div>
+						</c:if>
 						<!-- End General Information Tab-->
 						
 						<!-- Start Contacts Tab-->
+						<c:if test="${not empty contactsTab.tabDsp}">
 						<div id="Contacts" class="tab-pane">
 							<!-- Include Contacts.jsp -->
 							<%@ include file="Contacts.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Contacts Tab-->
 
 						<!-- Start Building WOF Tab-->
+						<c:if test="${not empty wofTab.tabDsp}">
 						<div id="WOF" class="tab-pane">
 							<!-- Include BuildingWOF.jsp -->
 							<%@ include file="BuildingWOF.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Building WOF Tab-->						
 						
 						<!-- Start Consent Tab-->
+						<c:if test="${not empty consentTab.tabDsp}">
 						<div id="Consent" class="tab-pane">
 							<!-- Include Consent.jsp -->
 							<%@ include file="BuildingConsent.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Consent Tab-->	
 						
 						<!-- Start Asbestos Tab-->
+						<c:if test="${not empty asbestosTab.tabDsp}">
 						<div id="Asbestos" class="tab-pane">
 							<!-- Include Asbestos.jsp -->
 							<%@ include file="Asbestos.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Asbestos Tab-->	
 						
 						<!-- Start Electrical Tab-->
+						<c:if test="${not empty electricalTab.tabDsp}">
 						<div id="Electrical" class="tab-pane">
 							<!-- Include Electrical.jsp -->
 							<%@ include file="Electrical.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Electrical Tab-->
 						
 						<!-- Start Gas Tab-->
+						<c:if test="${not empty gasTab.tabDsp}">
 						<div id="Gas" class="tab-pane">
 							<!-- Include Gas.jsp -->
 							<%@ include file="Gas.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Gas Tab-->
 						
 						<!-- Start Fire Tab-->
+						<c:if test="${not empty fireTab.tabDsp}">
 						<div id="Fire" class="tab-pane">
 							<!-- Include Fire.jsp -->
 							<%@ include file="Fire.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Fire Tab-->
 						
 						<!-- Start Hazardous Substances Tab-->
+						<c:if test="${not empty hazSubsTab.tabDsp}">
 						<div id="HazSubs" class="tab-pane">
 							<!-- Include HazardousSubstances.jsp -->
 							<%@ include file="HazardousSubstances.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Hazardous Substances Tab-->	
 						
 						<!-- Start Hazard Register Tab-->
+						<c:if test="${not empty hazRegTab.tabDsp}">
 						<div id="HazReg" class="tab-pane">
 							<!-- Include HazardRegister.jsp -->
 							<%@ include file="HazardRegister.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Hazard Register Tab-->	
 		
 						<!-- Start Seismic Resilience Tab-->
+						<c:if test="${not empty seismicTab.tabDsp}">
 						<div id="Seismic" class="tab-pane">
 							<!-- Include SeismicResilience.jsp -->
 							<%@ include file="SeismicResilience.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Seismic Resilience Tab-->	
 						
 						<!-- Start Resource Consent Tab-->
+						<c:if test="${not empty resourceConsentTab.tabDsp}">
 						<div id="ResourceConsent" class="tab-pane">
 							<!-- Include ResourceConsent.jsp -->
 							<%@ include file="ResourceConsent.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Resource Consent Tab-->	
 						
 						<!-- Start Compliance Inspection Tab-->
+						<c:if test="${not empty comInsTab.tabDsp}">
 						<div id="ComIns" class="tab-pane">
 							<!-- Include ComplianceInspection.jsp -->
 							<%@ include file="ComplianceInspection.jsp"%>
 						</div>
+						</c:if>
 						<!-- End Compliance Inspection Tab-->	
 
 					</div>

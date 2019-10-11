@@ -2,6 +2,7 @@
 <!-- DataTables -->
 <div class="card shadow mb-4">
     <div class="card-body" >
+    	<c:if test="${not empty fireTab.tabCrt}">
         <div align="right">
             <button type="button" class="btn btn-primary"
                     data-toggle="modal" data-target="#crtFire" data-id="crtLink${bIndex.index}" data-buildingid="${buildingID}">
@@ -10,6 +11,7 @@
                 </h5>
             </button>
             <br> <br> </div>
+        </c:if>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped table-condensed" id="fireTable" width="100%"
                    cellspacing="0">
@@ -20,8 +22,12 @@
                     <th>Type</th>
                     <th>Uploaded By</th>
                     <th>Last Uploaded</th>
-                    <th class="sorting_asc_disabled sorting_desc_disabled"></th>
-                    <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    <c:if test="${not empty fireTab.tabUpd}">
+                    	<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </c:if>
+                    <c:if test="${not empty fireTab.tabDlt}">
+                    	<th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </c:if>
                 </tr>
                 </thead>
 
@@ -35,16 +41,20 @@
                         <td>${b.uploadedBy }</td>
                         <td>${b.lastUploadedBy }</td>
 
+						<c:if test="${not empty fireTab.tabUpd}">
                         <td align="center"><a href="#editFire" data-toggle="modal"
                                               data-id="edtLink${bIndex.index}" data-recordid="${b.recordID}" data-buildingid="${b.buildingID}"
                                               data-name="${b.name}" data-attachment="${b.attachment}" data-type="${b.type}" data-uploadedby="${b.uploadedBy}"
                                               data-lastuploadedby="${b.lastUploadedBy}">
                             <img src='images/edit.jpg' height=15 width=15></a></td>
-
+                        </c:if>
+                        
+						<c:if test="${not empty fireTab.tabDlt}">
                         <td align="center"><a href="#deleteFire" data-toggle="modal"
                                               data-id="dltLink${bIndex.index}" data-recordid="${b.recordID}"
                                               data-buildingid="${b.buildingID}">
                             <img src='images/delete.jpg' height=15 width=15></a></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
                 </tbody>
