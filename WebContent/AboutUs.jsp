@@ -69,8 +69,7 @@
 					<div class="card-body">
 						<div>
 							<br>
-							<p class="h2 mb-1 text-gray-600" style="text-indent: 40px">Building
-								Management & Compliance is committed to making Building
+							<p class="h2 mb-1 text-gray-600" style="text-indent: 40px">BM&C is committed to making Building
 								Management & Compliance easy. This system provides your
 								organisation with tools needed to ensure that you can
 								demonstrate compliance with all legislative obligations relevant
