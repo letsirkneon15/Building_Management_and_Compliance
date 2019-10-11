@@ -29,6 +29,7 @@
 						<th>Company Name</th>
 						<th>Company Address</th>
 						<th>Password</th>
+						<th>User Role</th>
 
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
 						<th class="sorting_asc_disabled sorting_desc_disabled"></th>
@@ -47,6 +48,7 @@
 							<td>${b.companyName }</td>
 							<td>${b.companyAddress }</td>
 							<td>${b.password }</td>
+							<td>${b.role }</td>
 
 							<td align="center"><a href="#editUser" data-toggle="modal"
 								data-id="edtLink${bIndex.index}" data-auserid="${b.userID}"
@@ -54,8 +56,8 @@
 								data-lastname="${b.name.split(',')[0].trim()}"
 								data-contactnum="${b.contactNum}" data-emailadd="${b.emailAdd}"
 								data-companyname="${b.companyName}"
-								data-companyaddress="${b.companyAddress}"
-								data-password="${b.password}"> <img src='images/edit.jpg'
+								data-companyaddress="${b.companyAddress}" 
+								data-password="${b.password}" data-userrole="${b.role}"> <img src='images/edit.jpg'
 									height=15 width=15></a></td>
 
 							<td align="center"><a href="#deleteUser"
@@ -146,6 +148,21 @@
 									</div>
 								</div>
 							</div>
+							
+							<div class="panel-default">
+								<div class="panel-body">
+									<!-- User Role -->
+									<div class="col-sm-6">
+										<label>User Role:</label> 
+										<select class="form-control" id="crtRole" name="crtRole">
+			  							<c:forEach var="userRole" items="${roleList}">
+  			     							<option value="${userRole}">${userRole}</option>
+	   		  							</c:forEach>
+	      							</select>
+									</div>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -251,6 +268,19 @@
 								</div>
 							</div>
 
+							<div class="panel-default">
+								<div class="panel-body">
+									<!-- User Role -->
+									<div class="col-sm-6">
+										<label>User Role:</label> 
+										<select class="form-control" id="edtRole" name="edtRole">
+			  							<c:forEach var="userRole" items="${roleList}">
+  			     							<option value="${userRole}">${userRole}</option>
+	   		  							</c:forEach>
+	      							</select>
+									</div>
+								</div>
+							</div>
 
 						</div>
 					</div>

@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.bmc.model.HardCodedData;
 import com.bmc.model.TabMgr;
 import com.bmc.model.UserBuildingMgr;
 import com.bmc.model.UserMgr;
@@ -84,12 +85,14 @@ public class AdminController extends HttpServlet {
 		String errorMsg = "";
 
 	    UserAccount userAccnt = new UserAccount();
+	    UserAccount userAccount = new UserAccount();
 	    List<UserAccount> userArr = new ArrayList<>();
 	    List<Tab> tabList = new ArrayList<>();
 	    List<UserTab> userTabArr = new ArrayList<>();
 	    List<AdminUserTab> aUserTabArr = new ArrayList<>();
 	    List<UserBuilding> userBuildArr = new ArrayList<>();
 	    List<AdminUserBuilding> aUserBuildArr = new ArrayList<>();
+	    ArrayList<String> roleList = new ArrayList<String>();
 	    
         /* Get Today's date */
         Date todayUtil = Calendar.getInstance().getTime();
@@ -123,6 +126,7 @@ public class AdminController extends HttpServlet {
             			String companyAddress = request.getParameter("crtCompanyAddress");
             			String contactNum = request.getParameter("crtContactNum");
             			String email = request.getParameter("crtEmail");
+            			String role = request.getParameter("crtRole");
             			
             			/* Format name = lastName, firstName */ 
         				name = lastName + ", " + firstName;
@@ -145,7 +149,7 @@ public class AdminController extends HttpServlet {
         				String password = auserID;
         				
         				/* Save values in contacts POJO */
-        				userAccnt = new UserAccount(auserID, password, name, contactNum, email, companyName, companyAddress, 
+        				userAccnt = new UserAccount(auserID, password, name, contactNum, email, companyName, companyAddress, role, 
         						userID, today, userAccnt.getModifiedBy(), userAccnt.getModifiedDate(), "");
 
         				/* Call Manager to create values from POJO */
@@ -177,12 +181,13 @@ public class AdminController extends HttpServlet {
                     	String contactNum = request.getParameter("edtContactNum");
                     	String email = request.getParameter("edtEmail");
                     	String password = request.getParameter("edtPassword");
+                    	String role = request.getParameter("edtRole");
            			
                     	/* Format name = lastName, firstName */ 
                     	name = lastName + ", " + firstName;
        				
                     	/* Save values in contacts POJO */
-                    	userAccnt = new UserAccount(auserID, password, name, contactNum, email, companyName, companyAddress, 
+                    	userAccnt = new UserAccount(auserID, password, name, contactNum, email, companyName, companyAddress, role,  
        						userAccnt.getCreatedBy(), userAccnt.getCreationDate(), userID, today, "");
 
                     	/* Call Manager to update values from POJO */
@@ -294,7 +299,8 @@ public class AdminController extends HttpServlet {
                              						break;
                              				}
                              			}
-                         		}
+                         			}
+                            	 }
 			
                              		String status= "D";
                              		System.out.println("tabDsp: " + tabDsp);
@@ -320,7 +326,6 @@ public class AdminController extends HttpServlet {
                              			status = "";
                              		}
                              		userTabArr.add(new UserTab(atb.getUserID(), atb.getTabID(), "DLT", userID, today, status));
-                               	 }
                      		}
                         }
                      	
@@ -419,7 +424,14 @@ public class AdminController extends HttpServlet {
             /* Get all active tabs */
             tabList = new TabMgr().getAllTabs(conn, conStatus);
             
+            /* Get User Roles */
+            roleList = new HardCodedData().getRoles();
+            
+            /* Get user account by userID */
+            userAccount = new UserMgr().getUserAccount(conn, userID, conStatus);
+            
             session.setAttribute("userID", userID);
+            session.setAttribute("userAccount", userAccount);
             request.setAttribute("userArr", userArr);
             request.setAttribute("tabList", tabList);
             request.setAttribute("userMsg", userMsg);
@@ -428,6 +440,7 @@ public class AdminController extends HttpServlet {
             request.setAttribute("tabName", tabName);
             request.setAttribute("successMsg", successMsg);
             request.setAttribute("errorMsg", errorMsg);
+            request.setAttribute("roleList", roleList);
             
             /* do redirection */
             ServletContext sContext = getServletContext();

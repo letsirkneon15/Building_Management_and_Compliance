@@ -289,25 +289,32 @@ public class UserTabMgr {
 			   
 			   for(UserTab ut : userTab) {
 				   int isRecordExists=0;
-				   String qry = "SELECT count(*) FROM dbo.User_Tab WHERE userID=? AND tabID=? AND tabSegment=?";
-				   
-				   pstatement = conn.prepareStatement(qry);
+				   if(ut!=null) {
+					   
+					   System.out.println("status: " + ut.getStatus() + " userID: " + ut.getUserID() + 
+							   " tabID: " + ut.getTabID() + " tabSegment: " + ut.getTabSegment() + 
+							   " CreatedBy: " + ut.getCreatedBy() + " CreationDate: " + ut.getCreationDate());
+					   
+					   String qry = "SELECT count(*) FROM dbo.User_Tab WHERE userID=? AND tabID=? AND tabSegment=?";
+					   
+					   pstatement = conn.prepareStatement(qry);
 
-				   pstatement.setString(1, ut.getUserID());
-				   pstatement.setString(2, ut.getTabID());
-				   pstatement.setString(3, ut.getTabSegment());
-				   
-				   resultSet = pstatement.executeQuery();
-				   resultSet.next(); 
-				   
-				   isRecordExists = resultSet.getInt(1);
-				   
-				   if(isRecordExists > 0) {
-					   isCreated += setStatus(conn, ut.getStatus(), ut.getUserID(), ut.getTabID(), 
-							   ut.getTabSegment(), ut.getCreatedBy(), ut.getCreationDate());
-				   }else {
-					   isCreated += setUserTab(conn, ut);
-				   }   
+					   pstatement.setString(1, ut.getUserID());
+					   pstatement.setString(2, ut.getTabID());
+					   pstatement.setString(3, ut.getTabSegment());
+					   
+					   resultSet = pstatement.executeQuery();
+					   resultSet.next(); 
+					   
+					   isRecordExists = resultSet.getInt(1);
+					   
+					   if(isRecordExists > 0) {
+						   isCreated += setStatus(conn, ut.getStatus(), ut.getUserID(), ut.getTabID(), 
+								   ut.getTabSegment(), ut.getCreatedBy(), ut.getCreationDate());
+					   }else {
+						   isCreated += setUserTab(conn, ut);
+					   }   
+				   } 
 			   }
 			      
 			}catch(Exception e){

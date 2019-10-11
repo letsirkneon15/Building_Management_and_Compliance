@@ -33,6 +33,7 @@ import com.bmc.model.ContactsMgr;
 import com.bmc.model.HardCodedData;
 import com.bmc.model.HazardRegisterMgr;
 import com.bmc.model.HazardousSubstanceMgr;
+import com.bmc.model.UserMgr;
 import com.bmc.model.UserTabMgr;
 import com.bmc.pojo.AdminUserTab;
 import com.bmc.pojo.BuildingDetails;
@@ -41,6 +42,7 @@ import com.bmc.pojo.ComplianceInspection;
 import com.bmc.pojo.Contacts;
 import com.bmc.pojo.HazardRegister;
 import com.bmc.pojo.HazardousSubstance;
+import com.bmc.pojo.UserAccount;
 
 /**
  * Servlet implementation class TabController
@@ -98,6 +100,7 @@ public class TabController extends HttpServlet {
         String conStatus="";
         String attachment = "";
 
+        UserAccount userAccount = new UserAccount();
 		BuildingHeader bHeader = new BuildingHeader();
 		List<BuildingDetails> bDetails = new ArrayList<BuildingDetails>();
 		List<Contacts> contactsArr = new ArrayList<Contacts>();
@@ -1102,6 +1105,10 @@ public class TabController extends HttpServlet {
         resourceConsentTab = new UserTabMgr().getAdminUserTab(conn, userID, "ResourceConsent");
         comInsTab = new UserTabMgr().getAdminUserTab(conn, userID, "ComIns");
         
+        /* Get User Account profile */
+        userAccount = new UserMgr().getUserAccount(conn, userID, conStatus);
+        
+        session.setAttribute("userAccount", userAccount);
 		request.setAttribute("buildingID", buildingID);
 		request.setAttribute("tabName", tabName);
 		request.setAttribute("bHeader", bHeader);

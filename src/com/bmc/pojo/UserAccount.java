@@ -13,6 +13,7 @@ public class UserAccount implements Serializable {
 	private String emailAdd; 
 	private String companyName;
 	private String companyAddress;
+	private String role;
 	private String createdBy;
 	private Date creationDate;
 	private String modifiedBy; 
@@ -20,7 +21,7 @@ public class UserAccount implements Serializable {
 	private String status;
 	
 	public UserAccount(String userID, String password, String name, String contactNum, String emailAdd, String companyName,
-			String companyAddress, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate,
+			String companyAddress, String role, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate,
 			String status) {
 		super();
 		this.userID = userID;
@@ -30,6 +31,7 @@ public class UserAccount implements Serializable {
 		this.emailAdd = emailAdd;
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
+		this.role = role;
 		this.createdBy = createdBy;
 		this.creationDate = creationDate;
 		this.modifiedBy = modifiedBy;
@@ -95,6 +97,14 @@ public class UserAccount implements Serializable {
 
 	public void setCompanyAddress(String companyAddress) {
 		this.companyAddress = companyAddress;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getCreatedBy() {

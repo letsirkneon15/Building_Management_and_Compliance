@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 import com.bmc.model.BuildingHeaderMgr;
 import com.bmc.model.UserMgr;
 import com.bmc.pojo.BuildingHeader;
+import com.bmc.pojo.UserAccount;
 
 /**
  * Servlet implementation class BuildingController
@@ -60,7 +61,7 @@ public class BuildingController extends HttpServlet {
 		request.setCharacterEncoding( "UTF-8" );
 		String newPage = "/MainPage.jsp";
 		String userID = "";
-		String userName = "";
+		UserAccount userAccount = new UserAccount();
 		String conStatus="";
 		
 		/* Retrieve session values from BuildingHeader */
@@ -72,13 +73,12 @@ public class BuildingController extends HttpServlet {
 		/* Get Building Header by User ID */
 		List<BuildingHeader> bHeaderArr = new ArrayList<>();
 		bHeaderArr = new BuildingHeaderMgr().getBuildingHeaderByUserId(conn, userID, conStatus);
-		userName = new UserMgr().getName(conn, userID);
+		userAccount = new UserMgr().getUserAccount(conn, userID, conStatus);
 		
-		
-		session.setAttribute("bHeaderArr", bHeaderArr);
 		session.setAttribute("userID", userID);
-		session.setAttribute("userName", userName);
-		
+		session.setAttribute("userAccount", userAccount);
+		request.setAttribute("bHeaderArr", bHeaderArr);
+
 		/* do redirection */ 
 		ServletContext sContext = getServletContext();
 		RequestDispatcher rDispatcher = sContext.getRequestDispatcher(newPage);

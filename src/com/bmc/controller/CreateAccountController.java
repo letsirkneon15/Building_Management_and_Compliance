@@ -73,8 +73,10 @@ public class CreateAccountController extends HttpServlet {
 		String userIDStr = "";
 		String errorMsg = "";
 		String button ="";
+		String role = "User";
 		
 		UserAccount userAcct = new UserAccount();
+		UserAccount userAccount = new UserAccount();
 
 		/* Get Today's date */
         Date todayUtil = Calendar.getInstance().getTime();
@@ -128,21 +130,23 @@ public class CreateAccountController extends HttpServlet {
 				
 				/* Save values in contacts POJO */
 				userAcct = new UserAccount(userID, password, name, contactNum, email, companyName, companyAddress, 
-						userID, today, userAcct.getModifiedBy(), userAcct.getModifiedDate(), "");
+						role, userID, today, userAcct.getModifiedBy(), userAcct.getModifiedDate(), "");
+				userAccount = userAcct;
 
 				/* Call Manager to create values from POJO */
 				isCreated = new UserMgr().setUser(conn, userAcct);
 				System.out.println("isCreated:" + isCreated);
-
+				
 				session.setAttribute("userID", userID);
-				session.setAttribute("firstName", firstName);
+				session.setAttribute("userAccount", userAccount);
+				request.setAttribute("firstName", firstName);
 				request.setAttribute("lastName", lastName);
 				request.setAttribute("companyName", companyName);
 				request.setAttribute("companyAddress", companyAddress);
 				request.setAttribute("contactNum", contactNum);
 				request.setAttribute("email", email);
 				request.setAttribute("isCreated", isCreated);
-				session.setAttribute("button", button);
+				request.setAttribute("button", button);
 
 				if (isCreated > 0) {
 

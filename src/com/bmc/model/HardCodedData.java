@@ -208,4 +208,14 @@ public ArrayList<String[]> getTabList(){
 	return tabArr;
 }
 
+public ArrayList<String> getRoles(){
+	
+	ArrayList<String> typeArr = new ArrayList<String>();
+	
+	typeArr.add("User");
+	typeArr.add("Admin");
+	
+	return typeArr;
+}
+
 }

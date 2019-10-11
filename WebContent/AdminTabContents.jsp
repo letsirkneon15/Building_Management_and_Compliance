@@ -177,6 +177,7 @@ $('#editUser').on('show.bs.modal', function(e) {
     var companyaddress = $(e.relatedTarget).data('companyaddress');
     var emailadd = $(e.relatedTarget).data('emailadd');
     var password = $(e.relatedTarget).data('password');
+    var userrole = $(e.relatedTarget).data('userrole');
     
     $(e.currentTarget).find('input[name="edtUserID"]').val(auserid);
     $(e.currentTarget).find('input[name="edtFirstName"]').val(firstname);
@@ -187,6 +188,7 @@ $('#editUser').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="edtCompanyAddress"]').val(companyaddress);
     $(e.currentTarget).find('input[name="edtEmail"]').val(emailadd);
     $(e.currentTarget).find('input[name="edtPassword"]').val(password);
+    $(e.currentTarget).find('select[name="edtRole"]').val(userrole);
 
 });
 

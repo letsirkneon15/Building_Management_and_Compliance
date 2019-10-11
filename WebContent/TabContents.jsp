@@ -57,7 +57,8 @@
 
 						<!-- Start General Information Tab-->
 						<c:if test="${not empty genInfoTab.tabDsp}">
-						<div id="GenInfo" class="tab-pane fade in active">
+						<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+						<div id="GenInfo" class="${tabPane}">
 							<!-- Include GeneralInformation.jsp -->
 							<%@ include file="GeneralInformation.jsp"%>
 						</div>
@@ -66,7 +67,15 @@
 						
 						<!-- Start Contacts Tab-->
 						<c:if test="${not empty contactsTab.tabDsp}">
-						<div id="Contacts" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Contacts" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Contacts" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>
 							<!-- Include Contacts.jsp -->
 							<%@ include file="Contacts.jsp"%>
 						</div>
@@ -75,7 +84,15 @@
 
 						<!-- Start Building WOF Tab-->
 						<c:if test="${not empty wofTab.tabDsp}">
-						<div id="WOF" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="WOF" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="WOF" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>
 							<!-- Include BuildingWOF.jsp -->
 							<%@ include file="BuildingWOF.jsp"%>
 						</div>
@@ -84,7 +101,15 @@
 						
 						<!-- Start Consent Tab-->
 						<c:if test="${not empty consentTab.tabDsp}">
-						<div id="Consent" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Consent" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Consent" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>
 							<!-- Include Consent.jsp -->
 							<%@ include file="BuildingConsent.jsp"%>
 						</div>
@@ -93,7 +118,15 @@
 						
 						<!-- Start Asbestos Tab-->
 						<c:if test="${not empty asbestosTab.tabDsp}">
-						<div id="Asbestos" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Asbestos" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Asbestos" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>						
 							<!-- Include Asbestos.jsp -->
 							<%@ include file="Asbestos.jsp"%>
 						</div>
@@ -102,7 +135,15 @@
 						
 						<!-- Start Electrical Tab-->
 						<c:if test="${not empty electricalTab.tabDsp}">
-						<div id="Electrical" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Electrical" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Electrical" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include Electrical.jsp -->
 							<%@ include file="Electrical.jsp"%>
 						</div>
@@ -111,7 +152,15 @@
 						
 						<!-- Start Gas Tab-->
 						<c:if test="${not empty gasTab.tabDsp}">
-						<div id="Gas" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Gas" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Gas" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include Gas.jsp -->
 							<%@ include file="Gas.jsp"%>
 						</div>
@@ -120,7 +169,15 @@
 						
 						<!-- Start Fire Tab-->
 						<c:if test="${not empty fireTab.tabDsp}">
-						<div id="Fire" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Fire" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Fire" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include Fire.jsp -->
 							<%@ include file="Fire.jsp"%>
 						</div>
@@ -129,7 +186,15 @@
 						
 						<!-- Start Hazardous Substances Tab-->
 						<c:if test="${not empty hazSubsTab.tabDsp}">
-						<div id="HazSubs" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="HazSubs" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="HazSubs" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include HazardousSubstances.jsp -->
 							<%@ include file="HazardousSubstances.jsp"%>
 						</div>
@@ -138,7 +203,15 @@
 						
 						<!-- Start Hazard Register Tab-->
 						<c:if test="${not empty hazRegTab.tabDsp}">
-						<div id="HazReg" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="HazReg" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="HazReg" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include HazardRegister.jsp -->
 							<%@ include file="HazardRegister.jsp"%>
 						</div>
@@ -147,7 +220,15 @@
 		
 						<!-- Start Seismic Resilience Tab-->
 						<c:if test="${not empty seismicTab.tabDsp}">
-						<div id="Seismic" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="Seismic" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="Seismic" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include SeismicResilience.jsp -->
 							<%@ include file="SeismicResilience.jsp"%>
 						</div>
@@ -156,7 +237,15 @@
 						
 						<!-- Start Resource Consent Tab-->
 						<c:if test="${not empty resourceConsentTab.tabDsp}">
-						<div id="ResourceConsent" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="ResourceConsent" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="ResourceConsent" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include ResourceConsent.jsp -->
 							<%@ include file="ResourceConsent.jsp"%>
 						</div>
@@ -165,7 +254,15 @@
 						
 						<!-- Start Compliance Inspection Tab-->
 						<c:if test="${not empty comInsTab.tabDsp}">
-						<div id="ComIns" class="tab-pane">
+						<c:choose>
+  							<c:when test="${empty tabPane}">
+  								<div id="ComIns" class="tab-pane fade in active">
+  								<c:set var="tabPane" value="${'tab-pane fade in active'}"/>	
+  							</c:when>
+  							<c:otherwise>
+  								<div id="ComIns" class="tab-pane">
+  							</c:otherwise>
+  						</c:choose>	
 							<!-- Include ComplianceInspection.jsp -->
 							<%@ include file="ComplianceInspection.jsp"%>
 						</div>
