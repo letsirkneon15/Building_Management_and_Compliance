@@ -54,28 +54,22 @@
 					<div class="card-body">
 						<p class="h2 mb-1 text-gray-600" align="center">We would be
 							happy to chat if you have any questions.</p>
-						<br>
-
-
-
+						<br> <br> <br>
 
 						<div class="card-body">
-
 							<div class="col-lg-4 col-md-6 text-center">
-
 								<div>
 									<span class="glyphicon glyphicon-earphone" aria-hidden="true"
-										style="font-size: 20px"></span>
+										style="font-size: 40px"></span>
 								</div>
 								<p class="h2 mb-1 text-gray-600" align="center">0211 440869</p>
 							</div>
 
 
-
 							<div class="col-lg-4 col-md-6 text-center">
 								<div>
 									<span class="glyphicon glyphicon-envelope" aria-hidden="true"
-										style="font-size: 20px"></span>
+										style="font-size: 40px"></span>
 								</div>
 								<p class="h2 mb-1 text-gray-600" align="center">Natasha.Baldwin@Gmail.com</p>
 							</div>
@@ -84,11 +78,14 @@
 							<div class="col-lg-4 col-md-6 text-center">
 								<div>
 									<span class="glyphicon glyphicon-home" aria-hidden="true"
-										style="font-size: 20px"></span>
+										style="font-size: 40px"></span>
 								</div>
 								<p class="h2 mb-1 text-gray-600" align="center">12 Pharazyn
 									St. Lower Hutt</p>
 							</div>
+							<br> <br> <br> <br> <br> <br> <br>
+							<br> <br>
+
 						</div>
 					</div>
 				</div>
@@ -101,7 +98,7 @@
 					<div class="card-body" align="center">
 						<div>
 							<img src="images/default_profile.png" alt="skyscrapper"
-								height=400 width=85%>
+								height=420 width=85%>
 						</div>
 					</div>
 				</div>
@@ -144,6 +141,7 @@
 							<div class="card-body">
 								<i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
 								<h3 class="h2 mb-1 text-gray-800">Kristel Villanueva</h3>
+								<br>
 								<p class="text-muted mb-0">Lead Developer</p>
 								<br>
 							</div>
@@ -154,6 +152,7 @@
 							<div class="card-body">
 								<i class="fas fa-4x fa-globe text-primary mb-4"></i>
 								<h3 class="h2 mb-1 text-gray-800">Angela Kuznetsova</h3>
+								<br>
 								<p class="text-muted mb-0">Junior Developer</p>
 								<br>
 							</div>
@@ -164,6 +163,7 @@
 							<div class="card-body">
 								<i class="fas fa-4x fa-heart text-primary mb-4"></i>
 								<h3 class="h2 mb-1 text-gray-800">Dexter Balsamo</h3>
+								<br>
 								<p class="text-muted mb-0">Junior Developer</p>
 								<br>
 							</div>
