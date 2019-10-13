@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.bmc.common.GetUserAccountID;
 import com.bmc.model.HardCodedData;
 import com.bmc.model.TabMgr;
 import com.bmc.model.UserBuildingMgr;
@@ -78,8 +79,6 @@ public class AdminController extends HttpServlet {
 	    String conStatus="";
 	    String name = "";
 	    String conD="D";
-	    int userIDCtr = 0;
-		String userIDStr = "";
 		String userMsg = "";
 		String successMsg = "";
 		String errorMsg = "";
@@ -133,17 +132,7 @@ public class AdminController extends HttpServlet {
         				
         				/* Check how many same userID exists and add 1 
         				 * User id should be: example: firstName.lastName001 */
-        				String auserID = firstName + "." + lastName;
-        				userIDCtr = new UserMgr().countUserID(conn, auserID) + 1;
-        				
-        				userIDStr = Integer.toString(userIDCtr);
-        				if(userIDStr.length()==1) {
-        					auserID = auserID + "00" + userIDStr;
-        				}else if(userIDStr.length()==2){
-        					auserID = auserID + "0" + userIDStr;
-        				}else {
-        					auserID = auserID + userIDStr;
-        				}
+        				String auserID = new GetUserAccountID().getUserID(conn, firstName, lastName);
         				
         				/* For Admin - password should be the same as in userid and user have to change upon login */
         				String password = auserID;

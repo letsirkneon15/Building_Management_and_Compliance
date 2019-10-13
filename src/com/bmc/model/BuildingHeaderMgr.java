@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 
 import com.bmc.pojo.BuildingHeader;
+import com.bmc.pojo.UserBuilding;
 
 public class BuildingHeaderMgr {
 
@@ -178,42 +179,55 @@ public class BuildingHeaderMgr {
 		try {
 
 			String qry = "INSERT INTO dbo.Building_Header "
-					+ "(buildingID, buildingName, buildingName, address, location, levelOrUnitNumber, coordinates, owner,"
+					+ "(buildingName, address, location, levelOrUnitNumber, coordinates, owner,"
 					+ "client, responsibleOffice, projectNumber, buildingInformation, csNumber, legalDescription, maxOccupants, "
 					+ "fireHazardCategory, yearBuilt, intendedLife, bwofAnniversary, asbestosPresent, nbsPercentage, "
 					+ "createdBy, creationDate, modifiedBy, modifiedDate, status)" + " VALUES"
-					+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstatement = conn.prepareStatement(qry);
 
-			pstatement.setInt(1, buildHeader.getBuildingID());
-			pstatement.setString(2, buildHeader.getBuildingName());
-			pstatement.setString(3, buildHeader.getAddress());
-			pstatement.setString(4, buildHeader.getLocation());
-			pstatement.setString(5, buildHeader.getLevelOrUnitNumber());
-			pstatement.setString(6, buildHeader.getCoordinates());
-			pstatement.setString(7, buildHeader.getOwner());
-			pstatement.setString(8, buildHeader.getClient());
-			pstatement.setString(9, buildHeader.getResponsibleOffice());
-			pstatement.setString(10, buildHeader.getProjectNumber());
-			pstatement.setString(11, buildHeader.getBuildingInformation());
-			pstatement.setString(12, buildHeader.getCsNumber());
-			pstatement.setString(13, buildHeader.getLegalDescription());
-			pstatement.setInt(14, buildHeader.getMaxOccupants());
-			pstatement.setString(15, buildHeader.getFireHazardCategory());
-			pstatement.setInt(16, buildHeader.getYearBuilt());
-			pstatement.setString(17, buildHeader.getIntendedLife());
-			pstatement.setInt(18, buildHeader.getBwofAnniversary());
-			pstatement.setString(19, buildHeader.getAsbestosPresent());
-			pstatement.setFloat(20, buildHeader.getNbsPercentage());
-			pstatement.setString(21, buildHeader.getCreatedBy());
-			pstatement.setDate(22, buildHeader.getCreationDate());
-			pstatement.setString(23, buildHeader.getModifiedBy());
-			pstatement.setDate(24, buildHeader.getModifiedDate());
-			pstatement.setString(25, buildHeader.getStatus());
+			pstatement.setString(1, buildHeader.getBuildingName());
+			pstatement.setString(2, buildHeader.getAddress());
+			pstatement.setString(3, buildHeader.getLocation());
+			pstatement.setString(4, buildHeader.getLevelOrUnitNumber());
+			pstatement.setString(5, buildHeader.getCoordinates());
+			pstatement.setString(6, buildHeader.getOwner());
+			pstatement.setString(7, buildHeader.getClient());
+			pstatement.setString(8, buildHeader.getResponsibleOffice());
+			pstatement.setString(9, buildHeader.getProjectNumber());
+			pstatement.setString(10, buildHeader.getBuildingInformation());
+			pstatement.setString(11, buildHeader.getCsNumber());
+			pstatement.setString(12, buildHeader.getLegalDescription());
+			pstatement.setInt(13, buildHeader.getMaxOccupants());
+			pstatement.setString(14, buildHeader.getFireHazardCategory());
+			pstatement.setInt(15, buildHeader.getYearBuilt());
+			pstatement.setString(16, buildHeader.getIntendedLife());
+			pstatement.setInt(17, buildHeader.getBwofAnniversary());
+			pstatement.setString(18, buildHeader.getAsbestosPresent());
+			pstatement.setFloat(19, buildHeader.getNbsPercentage());
+			pstatement.setString(20, buildHeader.getCreatedBy());
+			pstatement.setDate(21, buildHeader.getCreationDate());
+			pstatement.setString(22, buildHeader.getModifiedBy());
+			pstatement.setDate(23, buildHeader.getModifiedDate());
+			pstatement.setString(24, buildHeader.getStatus());
 
 			isCreated = pstatement.executeUpdate();
 			pstatement.close();
+			
+			/* Authorized the user to the newly created building */ 
+			qry = "Select buildingID from dbo.Building_Header where createdBy=? ORDER by buildingID DESC";
+			pstatement = conn.prepareStatement(qry);
+
+			pstatement.setString(1, buildHeader.getCreatedBy());
+			
+			resultSet = pstatement.executeQuery();
+			resultSet.next(); 
+			   
+			int buildingID = resultSet.getInt(1);
+			UserBuilding ub = new UserBuilding(buildHeader.getCreatedBy(), buildingID, buildHeader.getCreatedBy(), 
+					buildHeader.getCreationDate(), buildHeader.getModifiedBy(), buildHeader.getModifiedDate(), "");
+			new UserBuildingMgr().setUserBuilding(conn, ub);
 
 		} catch (Exception e) {
 			e.printStackTrace();

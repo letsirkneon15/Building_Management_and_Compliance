@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.bmc.common.GetUserAccountID;
 import com.bmc.model.UserMgr;
 import com.bmc.pojo.UserAccount;
 
@@ -69,8 +70,6 @@ public class CreateAccountController extends HttpServlet {
 		String password = "";
 		int isCreated = 0;
 		String name = "";
-		int userIDCtr = 0;
-		String userIDStr = "";
 		String errorMsg = "";
 		String button ="";
 		String role = "User";
@@ -116,18 +115,8 @@ public class CreateAccountController extends HttpServlet {
 				
 				/* Check how many same userID exists and add 1 
 				 * User id should be: example: firstName.lastName001 */
-				userID = firstName + "." + lastName;
-				userIDCtr = new UserMgr().countUserID(conn, userID) + 1;
-				
-				userIDStr = Integer.toString(userIDCtr);
-				if(userIDStr.length()==1) {
-					userID = userID + "00" + userIDStr;
-				}else if(userIDStr.length()==2){
-					userID = userID + "0" + userIDStr;
-				}else {
-					userID = userID + userIDStr;
-				}
-				
+				userID = new GetUserAccountID().getUserID(conn, firstName, lastName);
+
 				/* Save values in contacts POJO */
 				userAcct = new UserAccount(userID, password, name, contactNum, email, companyName, companyAddress, 
 						role, userID, today, userAcct.getModifiedBy(), userAcct.getModifiedDate(), "");
